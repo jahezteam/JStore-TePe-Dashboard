@@ -1,0 +1,22 @@
+
+<div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+       
+      <div class="Body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <app-text-component [(ngModel)]="form.name" [name]="'Permission Name'" [minLength]="5"  [maxLength]="200" [size]="'small'" 
+                        (inputValid)="isInputValid('name', $event)" [require]="true"
+                        [label]="'Permission Name'" [disable]="false" ></app-text-component>
+                </div>
+            </div>
+        </div>
+      </div>
+            <ng-template pTemplate="footer">
+                <button pButton type="button" label="Save" class="p-button-success" (click)="submit()" [disabled]="getValidation()"></button>&nbsp;
+                <button pButton type="button" label="cancel" class="p-button-danger" (click)="cancel()"></button>
+        </ng-template>
+    </p-card>
+</div>

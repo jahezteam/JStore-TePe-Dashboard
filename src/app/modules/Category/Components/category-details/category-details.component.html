@@ -1,0 +1,42 @@
+@if (isAuth(categoryPermissions.CategoryDetails)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component [(ngModel)]="form.name" [name]="'Name'" 
+              [minLength]="5" [maxLength]="200"
+              [size]="'small'" [require]="false" 
+              [label]="'Name'" [disable]="true"></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-editor [(ngModel)]="form.description" [name]="'Description'"
+              [size]="'small'"  [require]="false" [label]="'Description'"
+            [disable]="true"></app-editor>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-pick-list-component  [require]="false"
+                [filter]="false" [showClear]="false" [filterBy]="'name'" [label]="'Category'"
+                [options]="mainCategories" [size]="'small'" [disable]="true"
+              [(ngModel)]="selectedCategory"></app-pick-list-component>
+            </div>
+          </div>
+        </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <button pButton type="button" label="Ok" class="btn btn-success" (click)="submit()"></button>&nbsp;
+      <button pButton type="button" label="cancel" class="btn btn-primary" (click)="cancel()"></button>
+    </ng-template>
+  </p-card>
+</div>
+}

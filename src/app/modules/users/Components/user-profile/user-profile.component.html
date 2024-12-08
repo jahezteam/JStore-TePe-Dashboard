@@ -1,0 +1,130 @@
+@if (isAuth(userPermissions.UserDetails)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <ng-template pTemplate="header">
+        <h1 class="header-bg" style="align-content: center; align-items: center; text-align: center;"> User Data</h1>
+      </ng-template>
+      <div class="Body">
+          <div class="row">
+            <div class="row" style="margin-bottom:15px;">
+              <div class="col-md-2">
+                
+ @if(url)
+              {
+                <img [src]="url" alt="Choose image" class="rounded-image"  />
+              }
+              @else {
+              <img src="../../../../../assets/images/upload.jpg" alt="Choose image" class="rounded-image" />
+              }              </div>
+              <div class="col-md-10">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <app-text-component [(ngModel)]="form.firstName" [name]="'firstName'" [minLength]="3" [maxLength]="200"
+                      [size]="'small'" [require]="false" [label]="'First Name'" [disable]="true"></app-text-component>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <app-text-component [(ngModel)]="form.lastName" [name]="'lastName'" [minLength]="3" [maxLength]="200"
+                      [size]="'small'" [require]="false" [label]="'Last Name'" [disable]="true"></app-text-component>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <app-text-component [(ngModel)]="form.idNumber" [name]="'idNumber'" [minLength]="5" [maxLength]="200"
+                      [size]="'small'" [require]="false" [label]="'Id Number'" [disable]="true"></app-text-component>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <app-text-component [(ngModel)]="form.phoneNumber" [name]="'phoneNumber'" [minLength]="11" [maxLength]="200"
+                      [size]="'small'" [require]="false" [label]="'Phone Number'" [disable]="true"></app-text-component>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <app-text-component [(ngModel)]="form.userName" [name]="'userName'" [minLength]="5" [maxLength]="200"
+                      [size]="'small'" [require]="false" [label]="'User Name'" [disable]="true"></app-text-component>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <app-date-input [label]="'Date of Birth'" [size]="'medium'" [(ngModel)]="form.birthDate" [require]="false"
+                      [disable]="true"></app-date-input>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <app-email [name]="'Email Address'" [size]="'medium'" [(ngModel)]="form.email" [require]="false"
+                      [label]="'Email Address'" [disable]="true"></app-email>
+                    </div>
+                  </div>
+                  <!-- <div class="col-md-4">
+                  <div class="form-group">
+                    <app-password [name]="'Password'"   [size]="'medium'" [(ngModel)]="form.password"
+                      [require]="false"
+                    [label]="'Password'" [disable]="true"></app-password>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <app-password [name]="'Confirm Password'" [passwordMatched]="passwordMatched"   [size]="'medium'" [(ngModel)]="form.confirmPassword"
+                      [require]="false"
+                    [label]="'Confirm Password'" [disable]="true"></app-password>
+                  </div>
+                </div> -->
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <app-text-component [(ngModel)]="form.job" [name]="'job'" [minLength]="5" [maxLength]="200" [size]="'small'"
+                    [require]="false" [label]="'Job'" [disable]="true"></app-text-component>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <app-pick-list-component [disable]="true" [require]="false" [filter]="false" [showClear]="false"
+                      [filterBy]="'name'" [label]="'Nationality'" [options]="countries" [size]="'small'"
+                    [(ngModel)]="selectedCountry"></app-pick-list-component>
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
+                <div class="form-group" >
+                  <h4>Is Admin</h4>
+                  <p-inputSwitch [(ngModel)]="form.isAdmin"></p-inputSwitch>
+                </div>
+              </div> -->
+              <div class="col-md-4">
+                <h2>Roles</h2>
+                <div class="form-group">
+                  @for (item of form.roles; track item) {
+                    <ul class="ROW">
+                      <li>
+                        <h3>
+                          {{item.name}} &nbsp;&nbsp;&nbsp;
+                          <!-- <i class="fa fa-trash" (click)="deleteItem(item)"></i> -->
+                        </h3>
+                      </li>
+                    </ul>
+                  }
+                </div>
+              </div>
+            </div>
+              </div>
+            </div>
+          </div>
+        
+<br />
+</div>
+<ng-template pTemplate="footer">
+  <button pButton type="button" label="go to List" class="btn btn-primary" (click)="routrToList()"></button>&nbsp;
+</ng-template>
+</p-card>
+</div>
+}

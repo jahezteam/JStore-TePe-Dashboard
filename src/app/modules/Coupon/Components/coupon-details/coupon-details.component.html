@@ -1,0 +1,132 @@
+<!-- *ngIf="isAuth(PackagePermission.CreatePackage)" -->
+@if (isAuth(couponPermissions.CouponDetails)) {
+  <div class="container" >
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-confirmDialog header="Delete Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-card class="">
+      <ng-template pTemplate="header">
+        <h1 style="align-content: center; align-items: center; text-align: center;"> Coupon Details</h1>
+      </ng-template>
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component [(ngModel)]="form.code" [name]="'Code'" [minLength]="5" [maxLength]="150"
+                [size]="'small'"  [require]="false" [label]="'Code'"
+              [disable]="true"></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-number [name]="'Amount'"[size]="'medium'" [(ngModel)]="form.amount"
+                [require]="false" [label]="'Amount'"
+              [disable]="true"></app-number>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- <div class="col-md-4">
+          <div class="form-group">
+            <app-pick-list-component (changed)="onChanged()" [require]="false" [filter]="false" [showClear]="false"
+              [filterBy]="'name'" [label]="'Category'" [options]="category"
+            [size]="'small'" [(ngModel)]="selectedCategory"></app-pick-list-component>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <app-pick-list-component (changed)="onChanged()"
+              [require]="false" [filter]="false" [showClear]="false"
+              [filterBy]="'name'" [label]="'Question Type'" [options]="type"
+            [size]="'small'" [(ngModel)]="selectedType"></app-pick-list-component>
+          </div>
+        </div> -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <app-pick-list-component  [require]="false"
+              [filter]="false" [showClear]="false" [filterBy]="'name'" [label]="'Type'"
+              [disable]="true"
+              [options]="types" [size]="'small'"
+            [(ngModel)]="selectedType"></app-pick-list-component>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <app-pick-list-component  [require]="false"
+              [filter]="false" [showClear]="false" [filterBy]="'name'" [label]="'Discount Type'"
+              [options]="discountTypes" [size]="'small'"  [disable]="true"
+            [(ngModel)]="selectedDiscountType"></app-pick-list-component>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <app-text-area-component [(ngModel)]="form.description" [name]="'Description'"
+              [size]="'small'" [require]="false" [label]="'Description'"
+            [disable]="true"></app-text-area-component>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <!-- <app-pick-list-multi-select (changed)="onseletedPacketChanged()" [require]="false" [filter]="true"
+            [showClear]="false" [filterBy]="'name'" [label]="'Packets'" [options]="Packets" [size]="'small'"
+          [(ngModel)]="selectedPackets"></app-pick-list-multi-select> -->
+          <app-date-input [label]="'Expiry Date'" [size]="'medium'"
+          [(ngModel)]="form.expiryDate" [require]="false"  [disable]="true"></app-date-input>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <h4>Is Active</h4>
+          <p-inputSwitch [(ngModel)]="form.isActive"  [disabled]="true"></p-inputSwitch>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <h4>Is Deleted</h4>
+          <p-inputSwitch [(ngModel)]="form.isDeleted"[disabled]="true"></p-inputSwitch>
+        </div>
+      </div>
+    </div>
+    @if (form.productCoupons?.length>0) {
+      <div class="row">
+        <h3>Packages</h3>
+      </div>
+    }
+    <div class="row">
+      @if (form.productCoupons?.length>0) {
+        <div class="table-responsive">
+          @if (form.productCoupons?.length>0) {
+            <p-table [value]="form.productCoupons"
+              tableStyleClass="table align-middle table-row-dashed fs-6 gy-5">
+              <ng-template pTemplate="header">
+                <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                  <th class="min-w-125px">Code</th>
+                  <th class="min-w-125px">Name</th>
+                  <th  class="min-w-125px">Price </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowIndex="rowIndex" let-item class="text-gray-600 fw-bold">
+                <tr [ngClass]="{'redRow':true}">
+                  <td>{{item.package.code}}</td>
+                  <td>{{item.package.name}}</td>
+                  <td>{{item.package.price}}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          }
+        </div>
+      }
+    </div>
+  </div>
+  <ng-template pTemplate="footer">
+    <!-- <button pButton type="button" label="Submit" class="p-button-success" (click)="submit()"
+  [disabled]="getValidation()"></button>&nbsp; -->
+  <button pButton type="button" label="go to List" class="btn btn-primary me-3" (click)="routrToList()"></button>&nbsp;
+  <!-- <button pButton type="button" label="Reset" class="p-button-danger" (click)="reset()"></button> -->
+</ng-template>
+</p-card>
+</div>
+}

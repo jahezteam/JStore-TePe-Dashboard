@@ -1,0 +1,35 @@
+
+<p-confirmDialog header="Delete Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-toast position="top-right" key="tl"></p-toast>
+
+<h5>Dashboaed</h5>
+<!-- 
+@if (isAuth(userPermissions.AdminDashboard)) {
+  <div class="w-100 " >
+    <div class="row mt-5">
+      <div class="col-md-6 col-xl-6">
+        <div class="MyBlock ">
+          <h4 class="Title MYnotes">  User Nationalities statistics
+          </h4>
+          <button  pButton pRipple
+            icon="fa-solid fa-file-export fa-1x" class="p-button p-button-danger mx-2 imgGroupBtnResize"
+          (click)="getData(1)"></button>
+          <div class="ContBody ">
+            <app-charts-widget1  [chartData]="chartData.userNationalitiesData" [type]="'nationality'" [isHorizontal]="true"></app-charts-widget1>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-xl-6 mts-20 ">
+        <div class="MyBlock ">
+          <h4 class="Title MYnotes"> Users joined in last 6 months statistics </h4>
+          <button  pButton pRipple
+            icon="fa-solid fa-file-export fa-1x" class="p-button p-button-danger mx-2 imgGroupBtnResize"
+          (click)="getData(2)"></button>
+          <div class="ContBody ">
+            <app-charts-widget1   [chartData]="chartData.userMonthsData" [type]="'month'" [isHorizontal]="true"></app-charts-widget1>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+} -->

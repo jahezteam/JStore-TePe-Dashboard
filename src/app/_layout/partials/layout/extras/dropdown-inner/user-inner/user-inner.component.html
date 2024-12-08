@@ -1,0 +1,44 @@
+
+@if (user$ | async; as _user) {
+  <div>
+    <div ngbDropdownItem  class="dropdown-item px-5">
+      <div class="menu-content d-flex align-items-center px-3">
+        <div class="symbol symbol-50px me-5">
+        </div>
+        <div class="d-flex flex-column">
+          <div class="fw-bolder d-flex align-items-center fs-5">
+            {{ _user.firstName}} {{ _user.lastName}}
+          </div>
+          <a class="fw-bold text-muted text-hover-primary fs-7 cursor-pointer">
+            {{ _user.email }}
+          </a>
+        </div>
+      </div>
+    </div>
+    @if (adminData.Email !== _user.email) {
+      <div class="separator my-2"></div>
+    }
+    @if (adminData.Email !== _user.email) {
+      <div ngbDropdownItem class="dropdown-item px-5">
+        <!-- <a routerLink="/crafted/pages/profile" class="menu-link px-5"> -->
+        <h3 (click)="routeToProfile()">My Profile</h3>
+      <!-- </a> -->
+    </div>
+  }
+  @if (adminData.Email !== _user.email) {
+    <div class="separator my-2"></div>
+  }
+  @if (adminData.Email !== _user.email) {
+    <div ngbDropdownItem  class="dropdown-item px-5">
+      <h3 (click)="openChangePasswoedPopup()" >
+        Change Password
+      </h3>
+    </div>
+  }
+  <div class="separator my-2"></div>
+  <div ngbDropdownItem  class="dropdown-item px-5">
+    <h3 (click)="logout()" > Sign Out </h3>
+  </div>
+<!-- </div> -->
+</div>
+}

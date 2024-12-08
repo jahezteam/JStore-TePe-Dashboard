@@ -1,0 +1,14 @@
+
+<div  main-item>
+  <h5>{{label}}</h5>
+  @for (item of options; track item) {
+    <p-radioButton #child fullWidth [label]="item.text"  [name]="groupName" [value]="item.value"
+      [(ngModel)]="inputValue" #field="ngModel" [disabled]="disable"  class="form-control"
+    (keyup)="startCountingToShowValidation(field)" (change)="startCountingToShowValidation(field)"></p-radioButton>
+  }
+
+</div>
+
+
+
+

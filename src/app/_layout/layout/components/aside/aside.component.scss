@@ -1,0 +1,86 @@
+
+.aside.aside-dark {
+    background: #f9f9f9 !important;
+    border-right: 1px solid #000;
+    
+}
+
+
+// button //
+.theme-btn{
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+.btn-style-one {
+    position: relative;
+    font-size: 12px;
+    line-height: 24px;
+    padding: 15px 60px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    overflow: hidden;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 50px;
+    z-index: 1;
+    background: #191e24;
+    transition: all 500ms ease;
+}
+
+.btn-style-one.bg-theme-color3{
+    background: #7054e6;
+    color: #fff;
+}
+.btn-style-one.bg-theme-color3:hover{
+    color : #fff !important;
+}
+
+
+.btn-style-one:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    background-color: #00c7c4;
+    clip-path: polygon(50% 0, 50% 0, 50% 50%, 50% 100%, 50% 100%, 50% 50%);
+    transition: all 500ms ease;
+    z-index: -1;
+}
+
+.btn-style-one:hover:before {
+    clip-path: polygon(25% -70%, 75% -70%, 120% 50%, 75% 170%, 25% 170%, -20% 50%);
+}
+
+.btn-style-one.bg-theme-color3:before {
+    background: #191e24;
+}
+
+// end button //
+
+
+.aside-logo {
+    background: #ffffff !important;
+    padding: 10px !important;
+    border-bottom: 1px solid #ffffff !important;
+    box-shadow: 0 0px 3px rgb(174 174 174 / 38%) !important;
+}
+  
+
+.aside-toggle i{
+    background-color: #fff;
+    padding: 7px;
+    border-radius: 50%;
+    font-size: 16px;
+    border: 2px solid #2eb45d;
+}
+
+.btn-label{ 
+    padding-right: 10px;
+    display: inline-block;
+}
+

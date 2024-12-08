@@ -1,0 +1,166 @@
+@if (isAuth(userPermissions.UpdateUser)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <ng-template pTemplate="header">
+        <h1 class="header-bg" style="align-content: center; align-items: center; text-align: center;">Edit User</h1>
+      </ng-template>
+      <div class="Body">
+        <div class="row">
+          <div class="row" style="margin-bottom:15px;">
+            <div class="col-md-2">
+              <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+              @if(url)
+              {
+                <img [src]="url" alt="Choose image" class="rounded-image" (click)="file.click()" />
+              }
+              @else {
+              <img src="../../../../../assets/images/upload.jpg" alt="Choose image" class="rounded-image" (click)="file.click()" />
+              }
+            </div>
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <app-text-component [(ngModel)]="form.firstName" [name]="'firstName'" [minLength]="3" [maxLength]="200"
+                      [size]="'small'" (inputValid)="isInputValid('firstName', $event)" [require]="true" [label]="'First Name'"
+                    [disable]="false"></app-text-component>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <app-text-component [(ngModel)]="form.lastName" [name]="'lastName'" [minLength]="3" [maxLength]="200"
+                      [size]="'small'" (inputValid)="isInputValid('lastName', $event)" [require]="true" [label]="'Last Name'"
+                    [disable]="false"></app-text-component>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <app-text-component [(ngModel)]="form.idNumber" [name]="'idNumber'" [minLength]="5" [maxLength]="200"
+                      [size]="'small'" (inputValid)="isInputValid('idNumber', $event)" [require]="false" [label]="'Id Number'"
+                    [disable]="false"></app-text-component>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <app-text-component [(ngModel)]="form.phoneNumber" [name]="'phoneNumber'" [minLength]="10" [maxLength]="20"
+                      [size]="'small'" (inputValid)="isInputValid('phoneNumber', $event)" [require]="true"
+                    [label]="'Phone Number'" [disable]="false"></app-text-component>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <app-text-component [(ngModel)]="form.userName" [name]="'userName'" [minLength]="5" [maxLength]="200"
+                      [size]="'small'" (inputValid)="isInputValid('userName', $event)" [require]="true" [label]="'User Name'"
+                    [disable]="false"></app-text-component>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <app-date-input (inputValid)="isInputValid('birthDate', $event)" [label]="'Date of Birth'" [size]="'medium'"
+                    [(ngModel)]="form.birthDate" [require]="false"></app-date-input>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <app-email [name]="'Email Address'" [size]="'medium'" [(ngModel)]="form.email"
+                      (inputValid)="isInputValid('email', $event)" [require]="true" [label]="'Email Address'"
+                    [disable]="false"></app-email>
+                  </div>
+                </div>
+                <!-- <div class="col-md-4">
+                <div class="form-group">
+                  <app-password [name]="'Password'"   [size]="'medium'" [(ngModel)]="form.password"
+                    (inputValid)="isInputValid('password', $event)" [require]="true"
+                  [label]="'Password'" [disable]="false"></app-password>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <app-password [name]="'Confirm Password'" [passwordMatched]="passwordMatched"   [size]="'medium'" [(ngModel)]="form.confirmPassword"
+                    (inputValid)="isInputValid('confirmPassword', $event)" [require]="true"
+                  [label]="'Confirm Password'" [disable]="false"></app-password>
+                </div>
+              </div> -->
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <app-text-component [(ngModel)]="form.job" [name]="'job'" [minLength]="5" [maxLength]="200" [size]="'small'"
+                    (inputValid)="isInputValid('job', $event)" [require]="false" [label]="'Job'"
+                  [disable]="false"></app-text-component>
+                </div>
+              </div>
+              <!-- <div class="col-md-4">
+              <div class="form-group" >
+                <h4>Is Admin</h4>
+                <p-inputSwitch [(ngModel)]="form.isAdmin"></p-inputSwitch>
+              </div>
+            </div> -->
+            <div class="col-4">
+              <div class="form-group">
+                <app-pick-list-component [require]="false" [filter]="true" [showClear]="true" [filterBy]="'name'"
+                  [label]="'Nationality'" [options]="countries" [size]="'small'"
+                [(ngModel)]="selectedCountry"></app-pick-list-component>
+              </div>
+            </div>
+            @if (!isProfileEdit) {
+              <div class="col-md-4">
+                <div class="form-group">
+                  <app-pick-list-multi-select (changed)="onseletedRoleChanged()" [require]="false" [filter]="false"
+                    [showClear]="false" [filterBy]="'name'" [label]="'Roles'" [options]="roles" [size]="'small'"
+                  [(ngModel)]="form.roles"></app-pick-list-multi-select>
+                </div>
+                <div class="form-group">
+                  @for (item of form.roles; track item) {
+                    <ul class="ROW">
+                      <li>
+                        <h3>
+                          {{item.name}} &nbsp;&nbsp;&nbsp;
+                          <i class="fa fa-trash" (click)="deleteItem(item)"></i>
+                        </h3>
+                      </li>
+                    </ul>
+                  }
+                </div>
+              </div>
+            }
+            <!-- <div class="col-md-4">
+            <div class="form-group">
+              <app-pick-list-component (changed)="onseletedPermissionChanged()" [filter]="false" [showClear]="false"
+                [filterBy]="'name'" [label]="'Permissions'" [options]="permissions"
+              [size]="'small'" [(ngModel)]="selectedPermission"></app-pick-list-component>
+            </div>
+            <div class="form-group">
+              <ul class="ROW" *ngFor="let item of form.permissions">
+                <li>
+                  <h3>
+                    {{item.name}} &nbsp;&nbsp;&nbsp;
+                    <i class="fa fa-trash" (click)="deletePermission(item)"></i>
+                  </h3>
+                </li>
+              </ul>
+            </div>
+          </div> -->
+        </div>
+            </div>
+          </div>
+        </div>
+
+</div>
+<ng-template pTemplate="footer">
+  <button pButton type="button" label="Submit" class="btn btn-success" (click)="submit()"
+  [disabled]="getValidation()"></button>&nbsp;
+  @if (!isProfileEdit) {
+    <button pButton type="button" label="go to List" class="btn btn-primary"
+    (click)="routrToList()"></button>
+    }&nbsp;
+    <!-- <button pButton type="button" label="cancel" class="p-button-danger" (click)="cancel()"></button> -->
+  </ng-template>
+</p-card>
+</div>
+}

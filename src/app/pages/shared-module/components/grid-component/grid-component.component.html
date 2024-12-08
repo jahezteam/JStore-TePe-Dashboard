@@ -1,0 +1,50 @@
+<p-table [value]="data">
+  <ng-template pTemplate="header">
+    <tr>
+      @for (col of cols; track col) {
+        <th>
+          {{col.header}}
+        </th>
+      }
+      @if (enableEdit) {
+        <th>#</th>
+      }
+      @if (enableView) {
+        <th>#</th>
+      }
+      @if (enebleDelete) {
+        <th>#</th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-car>
+    <tr>
+      @for (col of cols; track col) {
+        <td>
+          {{car[col.field]}}
+        </td>
+      }
+      @if (enableEdit) {
+        <td>
+          <button pButton type="button"  class="p-button-primary" (click)="routrToEdit()">
+            <i class="fa fa-edit" aria-hidden="true"></i>
+          </button>
+        </td>
+      }
+      @if (enableView) {
+        <td>
+          <button pButton type="button" class="p-button-primary" (click)="routrToDetails()">
+            <i class="fa fa-info" aria-hidden="true"></i>
+          </button>
+        </td>
+      }
+      @if (enebleDelete) {
+        <td>
+          <button pButton type="button" class="p-button-danger" (click)="deleteItem(car)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </td>
+      }
+    </tr>
+  </ng-template>
+</p-table>

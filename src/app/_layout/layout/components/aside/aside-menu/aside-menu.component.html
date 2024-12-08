@@ -1,0 +1,120 @@
+<!-- Dashboard -->
+<div class="menu-item aside-wrapper">
+  <a class="menu-link without-sub" routerLink="/dashboard" routerLinkActive="active">
+    <span class="menu-icon">
+      <i class="fa-duotone fa-chart-tree-map" aria-hidden="true"></i>
+    </span>
+    <span class="menu-title" translate="MENU.DASHBOARD"></span></a>
+</div>
+
+<div class="menu-item aside-wrapper">
+  <a class="menu-link" (click)="toggleDropdown('users')">
+    <span class="menu-icon">
+      <i class="fa-duotone fa-list" aria-hidden="true"></i>
+    </span>
+    <span class="menu-title">User Management</span>
+    <span class="menu-arrow">
+      <i class="fa-duotone fa-chevron-down"></i>
+    </span>
+  </a>
+
+  <div class="menu-sub" [class.show]="activeDropdown === 'users'">
+ 
+    @if (isAuth('RoleList')) {
+      <div class="menu-item aside-wrapper">
+        <a class="menu-link without-sub" routerLink="/roles/list" routerLinkActive="active">
+          <span class="menu-icon">
+            <i class="fa-duotone fa-users-gear" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Roles"></span>
+        </a>
+      </div>
+      }
+      @if (isAuth('UserList')) {
+      <div class="menu-item aside-wrapper">
+        <a class="menu-link without-sub" routerLink="/users/list" routerLinkActive="active">
+          <span class="menu-icon">
+            <i class="fa-duotone fa-users" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Users"></span></a>
+      </div>
+      }
+  </div>
+</div>
+
+<div class="menu-item aside-wrapper">
+  <a class="menu-link" (click)="toggleDropdown('products')">
+    <span class="menu-icon">
+      <i class="fa-duotone fa-list" aria-hidden="true"></i>
+    </span>
+    <span class="menu-title">Product Management</span>
+    <span class="menu-arrow">
+      <i class="fa-duotone fa-chevron-down"></i>
+    </span>
+  </a>
+
+  <div class="menu-sub" [class.show]="activeDropdown === 'products'">
+    @if (isAuth('MainCategoryList')) {
+      <div class="menu-item">
+        <a class="menu-link" routerLink="/mainCategory/list" routerLinkActive="active">
+          <span class="menu-icon">
+            <i class="fa-duotone fa-users" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Main Categories"></span>
+        </a>
+      </div>
+    }
+    @if (isAuth('CategoryList')) {
+      <div class="menu-item">
+        <a class="menu-link" routerLink="/category/list" routerLinkActive="active">
+          <span class="menu-icon">
+            <i class="fa-duotone fa-users" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Categories"></span>
+        </a>
+      </div>
+    }
+    @if (isAuth('ColorList')) {
+      <div class="menu-item">
+        <a class="menu-link" routerLink="/color/list" routerLinkActive="active">
+          <span class="menu-icon">
+            <i class="fa-duotone fa-users" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Colors"></span>
+        </a>
+      </div>
+    }
+    @if (isAuth('CouponList')) {
+      <div class="menu-item aside-wrapper">
+        <a class="menu-link without-sub" routerLink="/coupon/list" routerLinkActive="active">
+          <span class="menu-icon">
+            <i class="fa-duotone fa-badge-percent" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Coupons"></span></a>
+      </div>
+      }
+    @if (isAuth('ProductList')) {
+      <div class="menu-item">
+        <a class="menu-link" routerLink="/product/list/*" routerLinkActive="active">
+          <span class="menu-icon">
+            <i class="fa-duotone fa-users" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Products"></span>
+        </a>
+      </div>
+    }
+  </div>
+</div>
+
+
+
+@if (isAuth('OrderList')) {
+<div class="menu-item aside-wrapper">
+  <a class="menu-link without-sub" routerLink="/order/list" routerLinkActive="active">
+    <span class="menu-icon">
+      <i class="fa-duotone fa-cart-plus" aria-hidden="true"></i>
+    </span>
+    <span class="menu-title" translate="Orders"></span></a>
+</div>
+}
+

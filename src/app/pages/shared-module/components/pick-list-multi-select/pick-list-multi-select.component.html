@@ -1,0 +1,14 @@
+<div main-item>
+  <h5>{{label}}</h5>
+  <!-- <p-dropdown  #child [options]="options" [disabled]="disable"
+  [(ngModel)]="inputValue" [placeholder]="label" optionLabel="name"
+              [filter]="filter" [filterBy]="filterBy"  [showClear]="showClear" (onChange)="selectionChanged($event)">
+</p-dropdown> -->
+
+<p-multiSelect #child  [options]="options" [disabled]="disable"
+[(ngModel)]="inputValue" [placeholder]="label" optionLabel="name"
+(onChange)="selectionChanged($event)"
+></p-multiSelect>
+<!-- <p-multiSelect [options]="cities" [(ngModel)]="selectedCities1" defaultLabel="Select a City" optionLabel="name">
+</p-multiSelect> -->
+</div>

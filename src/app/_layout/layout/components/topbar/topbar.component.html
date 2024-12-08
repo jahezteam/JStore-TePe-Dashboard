@@ -1,0 +1,36 @@
+
+<div class="d-flex align-items-center" [ngClass]="toolbarButtonMarginClass" id="kt_header_user_menu_toggle">
+  @if (getCardItems()>0) {
+    <div class="m-5 pointer" (click)="routeToCart()"><i style="font-size: 30px;" class="fa fa-shopping-cart"
+      aria-hidden="true">
+      <span style="color: red;">{{getCardItems()}}</span>
+    </i>
+  </div>
+}
+<div ngbDropdown class="dropdown">
+  <div ngbDropdownToggle class="cursor-pointer symbol" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">
+    @if (url) {
+      <img [src]="url" alt="RedMe" />
+    } @else {
+      <img src="./assets/media/avatars/blank.png" alt="RedMe" />
+    }
+    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <app-user-inner></app-user-inner>
+    </div>
+  </div>
+</div>
+<!-- 
+@if (headerLeft === 'menu') {
+  <div class="d-flex align-items-center d-lg-none ms-2" title="Show header menu">
+      <div class="
+        btn btn-icon btn-active-light-primary
+        w-30px
+        h-30px
+        w-md-40px
+        h-md-40px
+      " id="kt_header_menu_mobile_toggle">
+      <i class="fa-duotone fa-grid fa-2x" style="--fa-primary-color: #cd1d5a; --fa-secondary-color: #cd1d5a;"></i>
+    </div>
+  </div>
+} -->

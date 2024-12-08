@@ -1,0 +1,23 @@
+@media (max-width: 767px) {
+    .single-image ng-image-slider {
+      width: 100% !important;
+    }
+    
+    .single-image ng-image-slider .ng-image-slider-content {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: flex-start !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory !important;
+    }
+    
+    .single-image ng-image-slider .ng-image-slider-content .ng-image-slider-wrapper {
+      flex: 0 0 100% !important;
+      scroll-snap-align: start !important;
+      width: 100% !important;
+    }
+    
+    .single-image ng-image-slider .ng-image-slider-content .ng-image-slider-wrapper img {
+      width: 100% !important;
+    }
+  }

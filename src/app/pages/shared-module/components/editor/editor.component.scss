@@ -1,0 +1,16 @@
+.file-input-label {
+    display: inline-block;
+    cursor: pointer;
+    color: #007bff; /* Change the color as needed */
+    font-size: 24px; /* Adjust the size as needed */
+    padding: 10px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .file-input-label:hover {
+    background-color: #007bff;
+    color: #ffffff;
+  }

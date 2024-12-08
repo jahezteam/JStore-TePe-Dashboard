@@ -1,0 +1,106 @@
+@if (isAuth(ProductPermission.ProductDetails)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-confirmDialog header="Delete Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-card class="">
+      <ng-template pTemplate="header">
+        <h1 style="align-content: center; align-items: center; text-align: center;"> Product Details</h1>
+      </ng-template>
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <app-text-component [(ngModel)]="form.titleAr" [name]="'titleAr'" 
+              [size]="'small'"  [require]="false" [label]="'Arabic Title'"
+                [disable]="true"></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <app-text-component [(ngModel)]="form.titleEn" [name]="'titleEn'" 
+                [size]="'small'"  [require]="false" [label]="'English Title'"
+                [disable]="true"></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <app-text-component [(ngModel)]="form.modelNumber" [name]="'modelNumber'" 
+                [size]="'small'" [require]="false" [label]="'Model Number'"
+                [disable]="true"></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor [(ngModel)]="form.shortDescriptionAr" [name]="'shortDescriptionAr'"
+              [size]="'small'" [require]="false" [label]="'Arabic Short Description'"
+            [disable]="true"></app-editor>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor [(ngModel)]="form.shortDescriptionEn" [name]="'shortDescriptionEn'" 
+              [size]="'small'"  [require]="false" [label]="'English Short Description'"
+            [disable]="true"></app-editor>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor [(ngModel)]="form.longDescriptionAr" [name]="'longDescriptionAr'"
+              [size]="'small'" [require]="false" [label]="'Arabic Long Description'"
+            [disable]="true"></app-editor>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor [(ngModel)]="form.longDescriptionEn" [name]="'longDescriptionEn'"
+              [size]="'small'"  [require]="false" [label]="'English Long Description'"
+            [disable]="true"></app-editor>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-pick-list-component [require]="false" [disable]="false"
+                [filter]="false" [showClear]="false" [filterBy]="'name'" [label]="'Main Category'"
+                [options]="mainCategories" [size]="'small'"
+              [(ngModel)]="selectedMainCategory"></app-pick-list-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-pick-list-component  [require]="false" [disable]="true"
+                [filter]="false" [showClear]="false" [filterBy]="'name'" 
+                [label]="'Category'"
+                [options]="categories" [size]="'small'"
+              [(ngModel)]="selectedCategory"></app-pick-list-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <h4>Is Active</h4>
+              <p-inputSwitch [(ngModel)]="form.isActive" [disabled]="true"></p-inputSwitch>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <h4>Is Deleted</h4>
+              <p-inputSwitch [(ngModel)]="form.isDeleted" [disabled]="true"></p-inputSwitch>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+      <ng-template pTemplate="footer">
+        <button pButton type="button" label="go to List" class="btn btn-light-primary"
+          (click)="routrToList()"></button>&nbsp;
+      </ng-template>
+    </p-card>
+  </div>
+  }

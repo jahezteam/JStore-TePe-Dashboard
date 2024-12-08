@@ -1,0 +1,25 @@
+.upload{
+  font-weight:bold;
+  color:#28a745;
+  margin-left: 15px;
+  line-height: 36px;
+}
+.rounded-image{
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.header-bg {
+  background-image:radial-gradient(circle farthest-corner at 0.1% 99.8%, rgb(0, 189, 88) 0%, rgb(0, 189, 57) 90%);
+  color: #fff;
+}
+
+.rounded-image {
+  border-radius: 50%;
+  height: 150px !important;
+  width: 150px;
+  background: #fff;
+  border: 5px solid #2eb45d;
+  box-shadow: 0px 0px 3px #000;
+}

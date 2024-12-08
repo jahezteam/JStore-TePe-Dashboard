@@ -1,0 +1,39 @@
+
+<div main-item>
+  <h5>{{label}}</h5>
+  <textarea #child  pInputTextarea fullWidth [(ngModel)]="inputValue"
+    class="form-control" [minlength]="minLength"
+    (keyup)="startCountingToShowValidation(field)" (change)="startCountingToShowValidation(field)"
+    (paste)="startCountingToShowValidation(field)" #field="ngModel" [placeholder]="label"
+  [required]="require" [disabled]="disable" [cols]="colsCount" [rows]="rowsCount"></textarea>
+</div>
+@if (field.errors && showErrorMessage) {
+  <div >
+    @if (field.errors['required']) {
+      <p-message severity="error" [text]="requiredValidation">
+      </p-message>
+    }
+  </div>
+}
+@if (field.errors && showErrorMessage) {
+  <div >
+    @if (field.errors['minlength']) {
+      <p-message severity="error"  [text]="minLengthValidation" >
+      </p-message>
+    }
+  </div>
+}
+
+@if (field.errors && showErrorMessage) {
+  <div>
+    @if (field.errors['maxlength']) {
+      <p-message severity="error" [text]="maxLengthValidation">
+      </p-message>
+    }
+  </div>
+}
+
+
+
+
+

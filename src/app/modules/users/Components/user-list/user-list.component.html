@@ -1,0 +1,152 @@
+@if (isAuth(userPermissions.UserList)) {
+  <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <p-confirmDialog header="Delete Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-toast position="top-right" key="tl"></p-toast>
+    <!--begin::Post-->
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+      <!--begin::Container-->
+      <div id="kt_content_container" class="container-xxl">
+        <!--begin::Card-->
+        <div class="card">
+          <!--begin::Card header-->
+          <div class="card-header border-0 pt-6">
+            <!--begin::Card title-->
+            <div class="card-title">
+              <!--begin::Search-->
+              <div class="d-flex align-items-center position-relative my-1">
+                <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+                <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                  <i class="fa-duotone fa-magnifying-glass fa-lg" style="--fa-primary-color: #764EF2; --fa-secondary-color: #764EF2;"></i>
+
+                    </span>
+                    <!--end::Svg Icon-->
+                    @if (isAuth(userPermissions.SearchUser)) {
+                      <input type="text" (input)="searchInput($event)"
+                        data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14"
+                        placeholder="Search Users" />
+                    }
+                  </div>
+                  <!--end::Search-->
+                </div>
+                <!--begin::Card title-->
+                <!--begin::Card toolbar-->
+                <div class="card-toolbar">
+                  <!--begin::Toolbar-->
+                  <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                    <!--begin::Filter-->
+                    @if (isAuth(userPermissions.FilterUser)) {
+                      <button type="button" (click)="openFilterPopup()"
+                        class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+  
+                        <i class="fa-duotone fa-filters" style=""></i>
+
+                        Filter</button>
+                      }
+                      <!--end::Filter-->
+                      <!--begin::Add user-->
+                      @if (isAuth(userPermissions.CreateUser)) {
+                        <button type="button" class="btn btn-primary mr-5"
+                          (click)="routeToAdd()" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+                          <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+                          <!-- <span class="svg-icon svg-icon-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1"
+                              transform="rotate(-90 11.364 20.364)" fill="black" />
+                              <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+                            </svg>
+                          </span> -->
+                          <i class="fa-duotone fa-user-plus" aria-hidden="true"></i>
+                        <!--end::Svg Icon-->Create User</button>
+                      }
+                      @if (isAuth(userPermissions.ExportAllData)) {
+                        <button type="button" class="btn btn-primary"
+                          (click)="exportData()" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
+                          <i class="fa-duotone fa-file-export" aria-hidden="true"></i>Export Data</button>
+                        }
+                        <!--end::Add user-->
+                      </div>
+                      <!--end::Toolbar-->
+                    </div>
+                    <!--end::Card toolbar-->
+                  </div>
+                  <!--end::Card header-->
+                  <!--begin::Card body-->
+                  <div class="card-body py-4">
+                    <p-table [value]="filteredDate" tableStyleClass="table align-middle table-row-dashed fs-6 gy-5">
+                      <ng-template pTemplate="header">
+                        <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                          <th pSortableColumn="firstName" class="min-w-125px">Name <p-sortIcon field="firstName"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="userName" class="min-w-125px">User Name <p-sortIcon field="userName"></p-sortIcon>
+                      </th>
+                      <th pSortableColumn="email" class="min-w-125px">Email<p-sortIcon field="email"></p-sortIcon> </th>
+                      <th pSortableColumn="phoneNumber" class="min-w-125px">Phone Number <p-sortIcon
+                      field="phoneNumber"></p-sortIcon></th>
+                      <th pSortableColumn="nationality" class="min-w-125px">Nationality <p-sortIcon
+                      field="nationality"></p-sortIcon></th>
+                      <th class=" min-w-100px Actionlabel ">Actions </th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-item class="text-gray-600 fw-bold">
+                    <tr>
+                      <td>{{item.firstName + ' '+ item.lastName}}</td>
+                      <td>{{item.userName}}</td>
+                      <td>{{item.email}}</td>
+                      <td>{{item.phoneNumber}}</td>
+                      <td>{{item.nationality}}</td>
+                      <td class="">
+                        <div ngbDropdown class="dropdown">
+                          <div ngbDropdownToggle class="btn btn-primary dropdown-toggle" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Actions
+                          </div>
+                          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            @if (isAuth(userPermissions.UpdateUser)) {
+                              <span ngbDropdownItem (click)="routeToEdit(item.id)"
+                              class="dropdown-item" href="#">Edit</span>
+                            }
+                            @if (isAuth(userPermissions.UserDetails)) {
+                              <span ngbDropdownItem
+                              (click)="routeToDetails(item.id)" class="dropdown-item" href="#">Details</span>
+                            }
+                            @if (isAuth(userPermissions.DeleteUser)) {
+                              <span ngbDropdownItem (click)="deleteItem(item)"
+                              class="dropdown-item" href="#">Delete</span>
+                            }
+                            @if (isAuth(userPermissions.ChangeUserPassword)) {
+                              <span ngbDropdownItem
+                              (click)="changePassword(item)" class="dropdown-item" href="#">Change Password</span>
+                            }
+                            @if (isAuth(userPermissions.AssignToRole)) {
+                              <span ngbDropdownItem (click)="AssignRole(item)"
+                              class="dropdown-item" href="#">Assign To Role</span>
+                            }
+                            @if (isAuth(userPermissions.RemoveFromRole)) {
+                              <span ngbDropdownItem (click)="RemoveRole(item)"
+                              class="dropdown-item" href="#">Remove From Role</span>
+                            }
+                            @if (isAuth(userPermissions.SignUserOut) && item.isLoggedIn) {
+                              <span ngbDropdownItem
+                              (click)="logOut(item)" class="dropdown-item" href="#">Log User Out</span>
+                            }
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+                <br />
+                <app-paging [currentPage]="currentPage" [pager]="pager" [totalPages]="totalPages"
+                  (clickSetPage)="changePage($event)" [pageSize]="pageSize" (clickSetPageSize)="changePageSize($event)">
+                </app-paging>
+                <!--end::Table-->
+              </div>
+              <!--end::Card body-->
+            </div>
+            <!--end::Card-->
+          </div>
+          <!--end::Container-->
+        </div>
+        <!--end::Post-->
+      </div>
+    }

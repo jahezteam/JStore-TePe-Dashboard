@@ -1,0 +1,89 @@
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="ContIcon">
+              <i class="fa-solid fa-close fa-1x" style="color: white;"></i>
+            </div>
+          <img  [src]="'../../../../../assets/images/upload.jpg'" alt="Choose images" class="rounded-image" (click)="file.click()" />
+          </div>
+        
+        </div>
+        <div class="row">
+          <div class="row" style="margin-bottom:15px;">
+              <input type="file" #file placeholder="Choose file" (change)="uploadFiles(file.files)" style="display:none;" multiple="true">
+              @if (urls.length>0) {
+               <div class="row gallery" appMagnificPopup image-row>
+                  @for (item of urls; track $index) {
+                 <div class="col-md-3 gallery-item">
+                  <div class="ContIcon" (click)="deleteImage(item)">
+                    <i class="fa-solid fa-close fa-1x" style="color: red;"></i>
+                  </div>
+                     <a [href]="item.url" title="" class="img-zoom popimg">
+                         <div class="gallery-box">
+                             <div class="gallery-img"> <img [src]="item.url" class="img-fluid mx-auto d-block" alt="work-img"> </div>
+                             <!-- <h3 style="text-align: center;">({{$index+1}})</h3> -->
+                         </div>
+                     </a>
+                 </div>
+             }
+             </div>
+              }
+               
+           
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-pick-list-component (inputValid)="isInputValid('colorId', $event)" [require]="true"
+                [filter]="false" [showClear]="false" [filterBy]="'name'" [label]="'Color'"
+                [options]="colors" [size]="'small'"
+              [(ngModel)]="selectedColor"></app-pick-list-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-number [name]="'quantity'" [minLength]="1" [maxLength]="999999" [size]="'medium'" [(ngModel)]="form.quantity"
+                (inputValid)="isInputValid('quantity', $event)" [require]="true" [label]="'Quantity'"
+              [disable]="false"></app-number>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-number [name]="'price'" [minLength]="1" [maxLength]="999999" [size]="'medium'" [(ngModel)]="form.price"
+                (inputValid)="isInputValid('price', $event)" [require]="true" [label]="'Price'"
+              [disable]="false"></app-number>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <app-text-component [(ngModel)]="form.unitPriceAr" [name]="'unitPriceAr'" [minLength]="3" [maxLength]="200"
+                [size]="'small'" (inputValid)="isInputValid('unitPriceAr', $event)" [require]="true" [label]="'Arabic Unit Price'"
+                [disable]="false"></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <app-text-component [(ngModel)]="form.unitPriceEn" [name]="'unitPriceEn'" [minLength]="3" [maxLength]="200"
+                [size]="'small'" (inputValid)="isInputValid('unitPriceEn', $event)" [require]="true" [label]="'English Unit Price'"
+                [disable]="false"></app-text-component>
+            </div>
+          </div>
+        </div>
+        
+      
+       
+  </div>
+  <ng-template pTemplate="footer">
+    <button pButton type="button" label="Save" class="btn btn-success" (click)="submit()"
+    [disabled]="getValidation()"></button>&nbsp;
+    <button pButton type="button" label="cancel" class="btn btn-primary" (click)="cancel()"></button>
+  </ng-template>
+</p-card>
+</div>
+

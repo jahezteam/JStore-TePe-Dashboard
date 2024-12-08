@@ -1,0 +1,33 @@
+@if (isAuth(ProductPermission.FilterProduct)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <br/>
+   
+    <div class="row">
+      <div class="col-md-4">
+        <div class="data-group">
+          <h4>Is Active</h4>
+          <p-inputSwitch [(ngModel)]="data.isActive"></p-inputSwitch>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="data-group">
+          <h4>Is Deleted</h4>
+          <p-inputSwitch [(ngModel)]="data.isDeleted"></p-inputSwitch>
+        </div>
+      </div>
+    
+    </div>
+
+  <br/>
+  <div class="row" >
+    <div class="col-md-12">
+      <div class="data-group">
+        <button pButton type="button" label="Add" class="btn btn-success" (click)="ok()"></button>&nbsp;
+        <button pButton type="button" label="Clear" class="btn btn-light-primary" (click)="clearFilter()"></button>&nbsp;
+        <button pButton type="button" label="Close" class="btn btn-primary" (click)="close()"></button>
+      </div>
+    </div>
+  </div>
+</div>
+}

@@ -1,0 +1,38 @@
+	<section class="page-title" style="background-image: url(./../../../../../assets/images/background/page-title.jpg);">
+		<div class="auto-container">
+			<div class="title-outer">
+				<h1 class="title" style="color: white;">Forget Password</h1>
+				<ul class="page-breadcrumb">
+					<li><a [routerLink]="['/home']">Home</a></li>
+					<li>Forget Password</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+<div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+                <h2>
+             You are about to Logout from all previous sessions to continue press Ok or cancel to return to login page.
+            </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer" style="align-items: center; align-content: center; text-align: center;">
+        <button type="submit" id="kt_sign_in_submit" class="theme-btn btn-style-one" (click)="submit()"
+                 >
+                  Ok
+                </button>
+                <button type="submit" id="kt_sign_in_submit" class="theme-btn btn-style-one bg-theme-color5"(click)="cancel()"
+                >
+                 Cancel
+               </button>
+      </ng-template>
+    </p-card>
+  </div>

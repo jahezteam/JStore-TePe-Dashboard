@@ -1,0 +1,30 @@
+
+<div main-item>
+
+  <!-- <label for="icon">Icon</label>
+  <p-calendar  #child fullWidth #field="ngModel" [(ngModel)]="inputValue" [showIcon]="showIcon" [inputId]="inpuId"
+    [dateFormat]="dateFormat" [minDate]="minDate" [maxDate]="maxDate"
+    [monthNavigator]="monthlyNavigator" [yearNavigator]="yearlyNavigator" [yearRange]="yearRange"
+  [selectionMode]="selectionMode"  [showButtonBar]="showButtonBar" ></p-calendar> -->
+
+  <h5>{{label}}</h5>
+  <p-calendar    [required]="require"  #child fullWidth #field="ngModel" [(ngModel)]="inputValue" [showIcon]="showIcon" [inputId]="inpuId"
+    (ngModelChange)="startCountingToShowValidation(field)"
+    (keyup)="startCountingToShowValidation(field)"
+    (change)="startCountingToShowValidation(field)"
+    (paste)="startCountingToShowValidation(field)"
+    [disabled]="disable"
+  ></p-calendar>
+
+</div>
+@if (field.errors && showErrorMessage) {
+  <div >
+    <p-message severity="error"  [text]="requiredValidation">
+    </p-message>
+  </div>
+}
+<!-- <div  *ngIf="field.errors && showErrorMessage">
+<p-message  severity="error"  [text]="emailValidationMessage" >
+</p-message>
+</div> -->
+

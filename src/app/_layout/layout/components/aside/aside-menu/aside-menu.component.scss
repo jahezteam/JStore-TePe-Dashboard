@@ -1,0 +1,96 @@
+.menu-item .menu-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    flex: 0 0 100%;
+    padding: .65rem 1.8rem;
+    transition: none;
+    outline: 0 !important;
+    text-decoration: none;
+    border: 2px solid transparent;
+}
+
+.menu-item .menu-link .menu-title {
+    // color: #00a49b;
+    color: #1a4551;
+    font-weight: bold;
+    letter-spacing: .5px;
+}
+
+.menu-item .menu-link .menu-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    margin-right: .5rem;
+    color: azure !important;
+}
+
+.menu-item .menu-link.active {
+    background: #2eb45d !important;
+    background: linear-gradient(to left, #7ace95, #2eb45d) !important;
+    color: #fff !important;
+    border-radius: 0 25px 25px 0;
+    border-right: 2px solid #e0f9e9;
+    border-top: 2px solid #e0f9e9;
+    border-bottom: 2px solid #e0f9e9;
+    margin-right: 10px;
+}
+
+
+
+
+.menu-item .menu-link.active .menu-icon i,
+.menu-item .menu-link.active .menu-title {
+    color: #fff !important;
+}
+
+
+.menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+    transition: color .2s ease, background-color .2s ease;
+    background: linear-gradient(to left, #7ace95, #2eb45d) !important;
+    color: #fff;
+    border-radius: 0 25px 25px 0;
+    border-right: 2px solid #e0f9e9;
+    border-top: 2px solid #e0f9e9;
+    border-bottom: 2px solid #e0f9e9;
+    margin-right: 10px;
+}
+
+
+.menu-link .menu-icon i {
+    color: #30b55f   !important;
+    font-size: 20px !important;
+}
+
+.aside-dark .menu .menu-item.aside-wrapper .menu-link:hover i {
+    color: #ffffff !important;
+}
+
+
+.menu-sub {
+    display: none;
+    margin-left: 20px; /* Indentation for dropdown items */
+  }
+  
+  .menu-sub.show {
+    display: block;
+  }
+  
+  .menu-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+  }
+  
+  .menu-arrow {
+    margin-left: auto;
+  }
+  
+  .menu-item {
+    margin: 5px 0;
+  }
