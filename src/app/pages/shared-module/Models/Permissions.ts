@@ -1,8 +1,6 @@
-
-
 export class permissionsCollection {
-  name: string='';
-  permissions: string[]=[] as string[];
+  name: string = '';
+  permissions: string[] = [] as string[];
 }
 export class allPermissions {
   role: permissionsCollection = new permissionsCollection();
@@ -10,27 +8,99 @@ export class allPermissions {
   couponPermissions: permissionsCollection = new permissionsCollection();
   Product: permissionsCollection = new permissionsCollection();
   Order: permissionsCollection = new permissionsCollection();
+  mainCategories: permissionsCollection = new permissionsCollection();
+  categories: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
+    this.role.name = 'Roles';
+    this.role.permissions = [
+      'RoleList',
+      'CreateRole',
+      'UpdateRole',
+      'DeleteRole',
+      'SearchRole',
+      'FilterRole',
+      'RoleDetails',
+    ];
 
-    this.role.name = "Roles";
-    this.role.permissions = ["RoleList", "CreateRole", "UpdateRole",
-      "DeleteRole", "SearchRole", "FilterRole", "RoleDetails"];
+    this.user.name = 'Users';
+    this.user.permissions = [
+      'UserList',
+      'CreateUser',
+      'UpdateUser',
+      'DeleteUser',
+      'SearchUser',
+      'FilterUser',
+      'UserDetails',
+      'AssignToRole',
+      'RemoveFromRole',
+      'AdminDashboard',
+      'ExportAllData',
+      'SignUserOut',
+    ];
 
-    this.user.name = "Users";
-    this.user.permissions = ["UserList", "CreateUser", "UpdateUser",
-      "DeleteUser", "SearchUser", "FilterUser", "UserDetails", "AssignToRole", "RemoveFromRole","AdminDashboard","ExportAllData",
-    "SignUserOut"];
-    this.Product.name = "Product";
-    this.Product.permissions = ["ProductList", "CreateProduct", "UpdateProduct",
-      "DeleteProduct", "SearchProduct", "FilterProduct", "ProductDetails", "AssignCoupon", "RemoveCoupon","RefreshProducts"];
-      this.couponPermissions.name = "Coupon";
-    this.couponPermissions.permissions = ["CouponList", "CreateCoupon", "UpdateCoupon",
-      "DeleteCoupon", "SearchCoupon", "FilterCoupon", "CouponDetails", "AssignToProduct", "RemoveFromProduct"];
-      this.Order.name = "Order";
-      this.Order.permissions = ["OrderList", "CreateOrder", "UpdateOrder",
-        "DeleteOrder", "SearchOrder", "OrderDetails","AddExtraFees","AcceptOrder","RejectOrder","AttachToOrder","MoveOrders"];
+    this.Product.name = 'Product';
+    this.Product.permissions = [
+      'ProductList',
+      'CreateProduct',
+      'UpdateProduct',
+      'DeleteProduct',
+      'SearchProduct',
+      'FilterProduct',
+      'ProductDetails',
+      'AssignCoupon',
+      'RemoveCoupon',
+      'RefreshProducts',
+    ];
 
+    this.couponPermissions.name = 'Coupon';
+    this.couponPermissions.permissions = [
+      'CouponList',
+      'CreateCoupon',
+      'UpdateCoupon',
+      'DeleteCoupon',
+      'SearchCoupon',
+      'FilterCoupon',
+      'CouponDetails',
+      'AssignToProduct',
+      'RemoveFromProduct',
+    ];
+
+    this.Order.name = 'Order';
+    this.Order.permissions = [
+      'OrderList',
+      'CreateOrder',
+      'UpdateOrder',
+      'DeleteOrder',
+      'SearchOrder',
+      'OrderDetails',
+      'AddExtraFees',
+      'AcceptOrder',
+      'RejectOrder',
+      'AttachToOrder',
+      'MoveOrders',
+    ];
+
+    this.mainCategories.name = 'Main Categories';
+    this.mainCategories.permissions = [
+      'MainCategoryList',
+      'CreateMainCategory',
+      'UpdateMainCategory',
+      'DeleteMainCategory',
+      'SearchMainCategory',
+      'FilterMainCategory',
+      'MainCategoryDetails',
+    ];
+
+    this.categories.name = 'Categories';
+    this.categories.permissions = [
+      'CategoryList',
+      'CreateCategory',
+      'UpdateCategory',
+      'DeleteCategory',
+      'SearchCategory',
+      'FilterCategory',
+      'CategoryDetails',
+    ];
   }
 }
-
