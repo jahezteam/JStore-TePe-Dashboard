@@ -63,11 +63,11 @@ export class UpdateComponent {
       },
     );
   }
-  private validInput() {
-    Object.keys(this.form).forEach((i) => {
-      this.isInputValid(i, true);
-    });
-  }
+  // private validInput() {
+  //   Object.keys(this.form).forEach((i) => {
+  //     this.isInputValid(i, true);
+  //   });
+  // }
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);
   }
