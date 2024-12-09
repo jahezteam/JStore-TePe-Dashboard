@@ -5,7 +5,6 @@ import { mainCategory } from '../../Models/mainCategory';
 import { mainCategoryPermissions } from '../../Models/mainCategoryPermissions';
 import { allPermissions } from '../../../../pages/shared-module/Models/Permissions';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
-import { permission } from '../../../permissions/Models/permission';
 
 @Component({
   selector: 'app-mainCategory-details',
@@ -21,7 +20,6 @@ export class MainCategoryDetailsComponent implements OnInit, OnDestroy {
     id: 0,
     name: '',
     description: ''
-
   };
 
   constructor(private primengConfig: PrimeNGConfig,

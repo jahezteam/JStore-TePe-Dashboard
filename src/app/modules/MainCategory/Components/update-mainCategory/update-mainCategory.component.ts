@@ -25,7 +25,6 @@ export class UpdateMainCategoryComponent implements OnInit, OnDestroy {
     id: 0,
     name: '',
     description:''
-
   };
   permissions: any;
   selectedPermission: permission = {} as permission;

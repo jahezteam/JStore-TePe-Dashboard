@@ -69,6 +69,14 @@
                 </div>
               }
             </p-accordionTab>
+            <p-accordionTab header="Feature Type">
+              @for (item of allPermissions.featureType.permissions; track item) {
+                <div>
+                  <h5>{{item}}</h5>
+                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
 <!--            <p-accordionTab header="Color">-->
 <!--              @for (item of allPermissions.colors.permissions; track item) {-->
 <!--                <div>-->
@@ -93,6 +101,7 @@
 <!--                </div>-->
 <!--              }-->
 <!--            </p-accordionTab>-->
+
           </p-accordion>
         </div>
     </div>
