@@ -1,4 +1,4 @@
-@if (isAuth(categoryPermissions.CategoryDetails)) {
+@if (isAuth(FeaturePermissions.UpdateFeature)) {
   <div class="container">
     <p-toast position="top-right" key="tl"></p-toast>
     <p-card class="">
@@ -7,13 +7,11 @@
           <div class="col-md-12">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.name"
-                [name]="'Name'"
-                [minLength]="5"
-                [maxLength]="200"
+                [(ngModel)]="form.nameAr"
+                [name]="'NameAr'"
                 [size]="'small'"
                 [require]="false"
-                [label]="'Name'"
+                [label]="'Name Ar'"
                 [disable]="true"
               ></app-text-component>
             </div>
@@ -22,14 +20,27 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <app-editor
-                [(ngModel)]="form.description"
-                [name]="'Description'"
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'NameEn'"
                 [size]="'small'"
                 [require]="false"
-                [label]="'Description'"
+                [label]="'Name En'"
                 [disable]="true"
-              ></app-editor>
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.code"
+                [name]="'code'"
+                [size]="'small'"
+                [label]="'code'"
+                [disable]="true"
+              ></app-text-component>
             </div>
           </div>
         </div>
@@ -41,11 +52,11 @@
                 [filter]="false"
                 [showClear]="false"
                 [filterBy]="'name'"
-                [label]="'Category'"
-                [options]="mainCategories"
+                [label]="'Feature Type'"
+                [options]="featureTypes"
                 [size]="'small'"
                 [disable]="true"
-                [(ngModel)]="selectedCategory"
+                [(ngModel)]="selectedFeatureTypes"
               ></app-pick-list-component>
             </div>
           </div>
@@ -55,7 +66,7 @@
         <button
           pButton
           type="button"
-          label="Ok"
+          label="Save"
           class="btn btn-success"
           (click)="submit()"
         ></button

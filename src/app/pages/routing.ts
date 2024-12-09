@@ -38,6 +38,12 @@ const Routing: Routes = [
       import('../modules/MainCategory/mainCategory.module').then((m) => m.MainCategorysModule),
   },
   {
+    path: 'feature',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/feature/feature.module').then((m) => m.FeatureModule),
+  },
+  {
     path: 'feature-type',
     canActivate: [AuthGuard],
     loadChildren: () =>

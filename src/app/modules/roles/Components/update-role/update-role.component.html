@@ -86,7 +86,10 @@
               }
             </p-accordionTab>
             <p-accordionTab header="Main Categories">
-              @for (item of allPermissions.mainCategories.permissions; track item) {
+              @for (
+                item of allPermissions.mainCategories.permissions;
+                track item
+              ) {
                 <div>
                   <h5>{{ item }}</h5>
                   <p-inputSwitch
@@ -108,10 +111,25 @@
               }
             </p-accordionTab>
             <p-accordionTab header="Feature Type">
-              @for (item of allPermissions.featureType.permissions; track item) {
+              @for (
+                item of allPermissions.featureType.permissions;
+                track item
+              ) {
                 <div>
-                  <h5>{{item}}</h5>
-                  <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Feature">
+              @for (item of allPermissions.feature.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
                 </div>
               }
             </p-accordionTab>

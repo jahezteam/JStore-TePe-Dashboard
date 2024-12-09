@@ -47,7 +47,8 @@ export class CategoryListComponent implements OnInit,OnDestroy  {
     private changeDetection: ChangeDetectorRef,
     private AuthService: AuthenticationService,
     private confirmationService: ConfirmationService,
-    private auth:AuthenticationService,private pickList:PickListService) { }
+    private auth:AuthenticationService,
+              private pickList:PickListService) { }
   ngOnDestroy(): void {
     if (this.ref) {
       this.ref.close();
@@ -57,10 +58,8 @@ export class CategoryListComponent implements OnInit,OnDestroy  {
   ngOnInit(): void {
     this.pickList.getMainCategories().subscribe(res=>{
       this.mainCategories=res;
-
       this.loadData();
       this.primengConfig.ripple = true;
-
     });
     this.primengConfig.ripple = true;
 

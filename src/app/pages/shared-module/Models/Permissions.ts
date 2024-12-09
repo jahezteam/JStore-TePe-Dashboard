@@ -12,6 +12,7 @@ export class allPermissions {
   categories: permissionsCollection = new permissionsCollection();
   region: permissionsCollection = new permissionsCollection();
   featureType: permissionsCollection = new permissionsCollection();
+  feature: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -103,6 +104,17 @@ export class allPermissions {
       'SearchCategory',
       'FilterCategory',
       'CategoryDetails',
+    ];
+
+    this.feature.name = 'Feature';
+    this.feature.permissions = [
+      'FeatureList',
+      'CreateFeature',
+      'UpdateFeature',
+      'DeleteFeature',
+      'SearchFeature',
+      'FilterFeature',
+      'FeatureDetails',
     ];
 
     this.featureType.name = 'Feature Type';

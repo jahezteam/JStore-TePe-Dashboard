@@ -14,6 +14,9 @@ export class PickListService {
   getMainCategories() {
     return this.caller.GetWithFullUrl(this.apiUrl + "/MainCategory/GetLookup");
   }
+  getFeatureTypes() {
+    return this.caller.GetWithFullUrl(this.apiUrl + "/FeatureType/GetLookup");
+  }
   getgroups() {
     return this.caller.GetWithFullUrl(this.apiUrl + "/ImageGroup/GetGroupsLookup");
   }

@@ -1,4 +1,4 @@
-@if (isAuth(categoryPermissions.CreateCategory)) {
+@if (isAuth(featurePermissions.UpdateFeature)) {
   <div class="container">
     <p-toast position="top-right" key="tl"></p-toast>
     <p-card class="">
@@ -7,14 +7,14 @@
           <div class="col-md-12">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.name"
-                [name]="'Name'"
+                [(ngModel)]="form.nameAr"
+                [name]="'NameAr'"
                 [minLength]="5"
                 [maxLength]="200"
                 [size]="'small'"
-                (inputValid)="isInputValid('name', $event)"
+                (inputValid)="isInputValid('nameAr', $event)"
                 [require]="true"
-                [label]="'Name'"
+                [label]="'NameAr'"
                 [disable]="false"
               ></app-text-component>
             </div>
@@ -23,17 +23,34 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <app-editor
-                [(ngModel)]="form.description"
-                [name]="'Description'"
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'nameEn'"
                 [minLength]="5"
-                [maxLength]="1000"
+                [maxLength]="200"
                 [size]="'small'"
-                (inputValid)="isInputValid('description', $event)"
+                (inputValid)="isInputValid('nameEn', $event)"
                 [require]="true"
-                [label]="'Description'"
+                [label]="'Name En'"
                 [disable]="false"
-              ></app-editor>
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.code"
+                [name]="'code'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('code', $event)"
+                [require]="true"
+                [label]="'code'"
+                [disable]="false"
+              ></app-text-component>
             </div>
           </div>
         </div>
@@ -41,15 +58,15 @@
           <div class="col-md-12">
             <div class="form-group">
               <app-pick-list-component
-                (inputValid)="isInputValid('categoryId', $event)"
+                (inputValid)="isInputValid('featureTypeId', $event)"
                 [require]="true"
                 [filter]="false"
                 [showClear]="false"
                 [filterBy]="'name'"
-                [label]="'Category'"
-                [options]="mainCategories"
+                [label]="'Feature Type'"
+                [options]="featureTypes"
                 [size]="'small'"
-                [(ngModel)]="selectedCategory"
+                [(ngModel)]="selectedFeatureTypes"
               ></app-pick-list-component>
             </div>
           </div>

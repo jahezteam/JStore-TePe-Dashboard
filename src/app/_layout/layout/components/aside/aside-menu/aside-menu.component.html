@@ -19,7 +19,7 @@
   </a>
 
   <div class="menu-sub" [class.show]="activeDropdown === 'users'">
- 
+
     @if (isAuth('RoleList')) {
       <div class="menu-item aside-wrapper">
         <a class="menu-link without-sub" routerLink="/roles/list" routerLinkActive="active">
@@ -100,6 +100,26 @@
             <i class="fa-duotone fa-users" aria-hidden="true"></i>
           </span>
           <span class="menu-title" translate="Products"></span>
+        </a>
+      </div>
+    }
+    @if (isAuth('FeatureTypeList')) {
+      <div class="menu-item">
+        <a class="menu-link" routerLink="/feature-type/list" routerLinkActive="active">
+          <span class="menu-icon">
+            <i class="fa-duotone fa-users" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Featute Type"></span>
+        </a>
+      </div>
+    }
+    @if (isAuth('FeatureList')) {
+      <div class="menu-item">
+        <a class="menu-link" routerLink="/feature/list" routerLinkActive="active">
+          <span class="menu-icon">
+            <i class="fa-duotone fa-users" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Featute"></span>
         </a>
       </div>
     }

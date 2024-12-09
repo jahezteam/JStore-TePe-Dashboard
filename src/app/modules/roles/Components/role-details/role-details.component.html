@@ -6,8 +6,16 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <app-text-component [(ngModel)]="form.roleName" [name]="'Role Name'" [minLength]="5" [maxLength]="200"
-              [size]="'small'" [require]="false" [label]="'Role Name'" [disable]="true"></app-text-component>
+              <app-text-component
+                [(ngModel)]="form.roleName"
+                [name]="'Role Name'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="false"
+                [label]="'Role Name'"
+                [disable]="true"
+              ></app-text-component>
             </div>
           </div>
         </div>
@@ -16,99 +24,146 @@
             <p-accordionTab header="Roles">
               @for (item of allPermissions.role.permissions; track item) {
                 <div>
-                  <h5>{{item}}</h5>
-                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
                 </div>
               }
             </p-accordionTab>
             <p-accordionTab header="Users">
               @for (item of allPermissions.user.permissions; track item) {
                 <div>
-                  <h5>{{item}}</h5>
-                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
                 </div>
               }
             </p-accordionTab>
-<!--            <p-accordionTab header="Main Categories">-->
-<!--              @for (item of allPermissions.mainCategories.permissions; track item) {-->
-<!--                <div>-->
-<!--                  <h5>{{item}}</h5>-->
-<!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
-<!--                </div>-->
-<!--              }-->
-<!--            </p-accordionTab>-->
-<!--            <p-accordionTab header="Categories">-->
-<!--              @for (item of allPermissions.categories.permissions; track item) {-->
-<!--                <div>-->
-<!--                  <h5>{{item}}</h5>-->
-<!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
-<!--                </div>-->
-<!--              }-->
-<!--            </p-accordionTab>-->
+            <!--            <p-accordionTab header="Main Categories">-->
+            <!--              @for (item of allPermissions.mainCategories.permissions; track item) {-->
+            <!--                <div>-->
+            <!--                  <h5>{{item}}</h5>-->
+            <!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
+            <!--                </div>-->
+            <!--              }-->
+            <!--            </p-accordionTab>-->
+            <!--            <p-accordionTab header="Categories">-->
+            <!--              @for (item of allPermissions.categories.permissions; track item) {-->
+            <!--                <div>-->
+            <!--                  <h5>{{item}}</h5>-->
+            <!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
+            <!--                </div>-->
+            <!--              }-->
+            <!--            </p-accordionTab>-->
             <p-accordionTab header="Products">
               @for (item of allPermissions.Product.permissions; track item) {
                 <div>
-                  <h5>{{item}}</h5>
-                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
                 </div>
               }
             </p-accordionTab>
             <p-accordionTab header="Coupon">
-              @for (item of allPermissions.couponPermissions.permissions; track item) {
+              @for (
+                item of allPermissions.couponPermissions.permissions;
+                track item
+              ) {
                 <div>
-                  <h5>{{item}}</h5>
-                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
                 </div>
               }
             </p-accordionTab>
             <p-accordionTab header="Order">
               @for (item of allPermissions.Order.permissions; track item) {
                 <div>
-                  <h5>{{item}}</h5>
-                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
                 </div>
               }
             </p-accordionTab>
             <p-accordionTab header="Feature Type">
-              @for (item of allPermissions.featureType.permissions; track item) {
+              @for (
+                item of allPermissions.featureType.permissions;
+                track item
+              ) {
                 <div>
-                  <h5>{{item}}</h5>
-                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
                 </div>
               }
             </p-accordionTab>
-<!--            <p-accordionTab header="Color">-->
-<!--              @for (item of allPermissions.colors.permissions; track item) {-->
-<!--                <div>-->
-<!--                  <h5>{{item}}</h5>-->
-<!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
-<!--                </div>-->
-<!--              }-->
-<!--            </p-accordionTab>-->
-<!--            <p-accordionTab header="MainCategory">-->
-<!--              @for (item of allPermissions.MainCategory.permissions; track item) {-->
-<!--                <div>-->
-<!--                  <h5>{{item}}</h5>-->
-<!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
-<!--                </div>-->
-<!--              }-->
-<!--            </p-accordionTab>-->
-<!--            <p-accordionTab header="Category">-->
-<!--              @for (item of allPermissions.Category.permissions; track item) {-->
-<!--                <div>-->
-<!--                  <h5>{{item}}</h5>-->
-<!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
-<!--                </div>-->
-<!--              }-->
-<!--            </p-accordionTab>-->
-
+            <p-accordionTab header="Feature ">
+              @for (item of allPermissions.feature.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <!--            <p-accordionTab header="Color">-->
+            <!--              @for (item of allPermissions.colors.permissions; track item) {-->
+            <!--                <div>-->
+            <!--                  <h5>{{item}}</h5>-->
+            <!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
+            <!--                </div>-->
+            <!--              }-->
+            <!--            </p-accordionTab>-->
+            <!--            <p-accordionTab header="MainCategory">-->
+            <!--              @for (item of allPermissions.MainCategory.permissions; track item) {-->
+            <!--                <div>-->
+            <!--                  <h5>{{item}}</h5>-->
+            <!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
+            <!--                </div>-->
+            <!--              }-->
+            <!--            </p-accordionTab>-->
+            <!--            <p-accordionTab header="Category">-->
+            <!--              @for (item of allPermissions.Category.permissions; track item) {-->
+            <!--                <div>-->
+            <!--                  <h5>{{item}}</h5>-->
+            <!--                  <p-inputSwitch [disabled]="true" [ngModel]="isChecked(item)"></p-inputSwitch>-->
+            <!--                </div>-->
+            <!--              }-->
+            <!--            </p-accordionTab>-->
           </p-accordion>
         </div>
-    </div>
-    <ng-template pTemplate="footer">
-      <button pButton type="button" label="Ok" class="btn btn-success" (click)="submit()"></button>&nbsp;
-      <button pButton type="button" label="cancel" class="btn btn-primary" (click)="cancel()"></button>
-    </ng-template>
-  </p-card>
-</div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Ok"
+          class="btn btn-success"
+          (click)="submit()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
 }
