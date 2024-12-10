@@ -106,7 +106,6 @@ export class MainCategoryListComponent implements OnInit, OnDestroy {
   totalPages: number = 0;
   pager: number[] = [1];
   pageSize: number = environment.pageSize;
-
   loadData() {
     this.service.getPagination(this.paginator).subscribe((res: any) => {
       if (res) {
@@ -121,7 +120,6 @@ export class MainCategoryListComponent implements OnInit, OnDestroy {
       }
     });
   }
-
   routeToAdd() {
     this.router.navigateByUrl("/mainCategory/add");
   }

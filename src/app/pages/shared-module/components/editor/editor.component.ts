@@ -1,18 +1,5 @@
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  Input,
-  forwardRef,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild, } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgModel } from '@angular/forms';
-import { Message } from 'primeng/api';
 import { Editor, Toolbar } from 'ngx-editor';
 
 @Component({
@@ -111,7 +98,7 @@ export class EditorComponent implements OnInit, ControlValueAccessor, AfterViewI
     ['horizontal_rule', 'format_clear', 'indent', 'outdent'],
     ['superscript', 'subscript'],
     ['undo', 'redo'],
-  ]; 
+  ];
   // colorPresets = ['red', '#FF0000', 'rgb(255, 0, 0)'];
 
   ngOnDestroy(): void {
@@ -120,7 +107,7 @@ export class EditorComponent implements OnInit, ControlValueAccessor, AfterViewI
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.inputValid.emit(this.feild.nativeElement.validity.valid);
+      this.inputValid.emit(this.feild?.nativeElement.validity.valid);
     });
   }
   imageUrl:any;
@@ -133,7 +120,7 @@ content:string='';
         for (let index = 0; index < input.files.length; index++) {
           const file = input.files[index];
           const reader = new FileReader();
-    
+
           reader.onload = (e) => {
             this.imageUrl = e.target?.result;
             this.content+=`<img src="${this.imageUrl}" alt="Image" />`
@@ -143,13 +130,13 @@ content:string='';
             }
 
           };
-    
+
           reader.readAsDataURL(file);
-      
+
       }
 
     }
- 
+
   }
   insertImageToEditor(content: string): void {
     // Assuming your editor supports a method to insert HTML or content directly
@@ -170,6 +157,6 @@ content:string='';
   ngOnInit(): void {
     this.editor = new Editor();
   }
-  
+
 
 }*/

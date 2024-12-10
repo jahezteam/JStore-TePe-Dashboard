@@ -46,7 +46,17 @@ export class CategorysService {
     return this.ser.getPagination(model, '/Category/SearchPagging', isSearch);
   }
   update(model: category) {
-    return this.ser.Update(model, '/Category/UpdateCategory');
+    const formData = new FormData();
+    formData.append('id', model.id.toString());
+    formData.append('NameAr', model.nameAr);
+    formData.append('NameEn', model.nameEn);
+    formData.append('DescriptionAr', model.descriptionAr);
+    formData.append('DescriptionEn', model.descriptionEn);
+    formData.append('Icon', model.icon);
+    formData.append('Image', model.image);
+    formData.append('MainCategoryId', model.mainCategoryId);
+
+    return this.ser.UpdateFormData(formData, '/Category/UpdateCategory');
   }
   delete(id: number) {
     return this.ser.DeleteWithQueryParam(

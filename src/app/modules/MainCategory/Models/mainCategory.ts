@@ -1,7 +1,9 @@
-import { permission } from "../../permissions/Models/permission";
-
 export interface mainCategory{
-    id:number;
-    name:string;
-    description:string;
+  id: number;
+  nameAr: string;
+  nameEn: string;
+  descriptionAr: string;
+  descriptionEn: string;
+  icon: string;
+  image: string;
 }

@@ -25,8 +25,12 @@ export class CreateMainCategoryComponent implements OnInit, OnDestroy {
 
   form: mainCategory = {
     id: 0,
-    name: '',
-    description: '',
+    nameAr: '',
+    nameEn: '',
+    descriptionAr: '',
+    descriptionEn: '',
+    icon: '',
+    image: '',
   };
   constructor(
     private validationService: ValidateService,
@@ -51,13 +55,31 @@ export class CreateMainCategoryComponent implements OnInit, OnDestroy {
   registerForm() {
     this.form = {
       id: 0,
-      name: '',
-      description: '',
+      nameAr: '',
+      nameEn: '',
+      descriptionAr: '',
+      descriptionEn: '',
+      icon: '',
+      image: '',
     };
-    this.validationService.registerForm(['name', 'description']);
+    this.validationService.registerForm([
+      'nameAr',
+      'nameEn',
+      'descriptionAr',
+      'descriptionEn',
+      'icon',
+      'image',
+    ]);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),
     );
+  }
+  onImageSelected(file: any | null): void {
+    if (file) {
+      this.form.image = file
+    } else {
+      console.log('No file selected or invalid file.');
+    }
   }
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);

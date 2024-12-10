@@ -45,7 +45,8 @@
                   <p-table [value]="filteredDate" tableStyleClass="table align-middle table-row-dashed fs-6 gy-5">
                     <ng-template pTemplate="header">
                       <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-                        <th pSortableColumn="name" class="min-w-125px"> Name <p-sortIcon field="name"></p-sortIcon>
+                        <th pSortableColumn="nameAr" class="min-w-125px"> Name Ar<p-sortIcon field="name"></p-sortIcon>
+                        <th pSortableColumn="nameEn" class="min-w-125px"> Name En<p-sortIcon field="name"></p-sortIcon>
                         <!-- <th pSortableColumn="isActive" class="min-w-125px">Is Active <p-sortIcon field="isActive"></p-sortIcon>
                           <th pSortableColumn="isDeleted" class="min-w-125px">Is Deleted <p-sortIcon field="isDeleted"></p-sortIcon> -->
 
@@ -55,7 +56,9 @@
                   </ng-template>
                   <ng-template pTemplate="body" let-item class="text-gray-600 fw-bold">
                     <tr>
-                      <td>{{item.name}}</td>
+                      <td>{{item.nameAr}}</td>
+                      <td>{{item.nameEn}}</td>
+
                       <!-- <td>{{item.isActive}}</td>
                       <td>{{item.isDeleted}}</td> -->
 

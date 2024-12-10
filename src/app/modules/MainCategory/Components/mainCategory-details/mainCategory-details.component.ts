@@ -18,8 +18,12 @@ export class MainCategoryDetailsComponent implements OnInit, OnDestroy {
 
   form: mainCategory = {
     id: 0,
-    name: '',
-    description: ''
+    nameAr: '',
+    nameEn: '',
+    descriptionAr: '',
+    descriptionEn: '',
+    icon: '',
+    image: '',
   };
 
   constructor(private primengConfig: PrimeNGConfig,
@@ -41,8 +45,12 @@ export class MainCategoryDetailsComponent implements OnInit, OnDestroy {
   registerForm() {
     this.form = {
       id: this.config.data?.id,
-      name: this.config.data?.name,
-      description: this.config.data?.description
+      nameAr: this.config.data?.nameAr,
+      nameEn: this.config.data?.nameEn,
+      descriptionAr: this.config.data?.descriptionAr,
+      descriptionEn: this.config.data?.descriptionEn,
+      icon: this.config.data?.icon,
+      image: this.config.data?.image,
     };
   }
   submit() {

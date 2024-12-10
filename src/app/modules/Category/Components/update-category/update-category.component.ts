@@ -60,7 +60,7 @@ export class UpdateCategoryComponent implements OnInit, OnDestroy {
   }
 
   registerForm() {
-    console.log(this.config)
+    console.log(this.config);
     this.form = {
       id: this.config.data?.id,
       nameAr: this.config.data?.nameAr,
@@ -103,7 +103,7 @@ export class UpdateCategoryComponent implements OnInit, OnDestroy {
   }
   onImageSelected(file: any | null): void {
     if (file) {
-      this.form.image = file
+      this.form.image = file;
     } else {
       console.log('No file selected or invalid file.');
     }

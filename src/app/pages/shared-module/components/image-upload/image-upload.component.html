@@ -1,0 +1,23 @@
+<div class="image-upload" [class.disabled]="disable">
+  <label>{{ label }}</label>
+  <div class="upload-area" (click)="onButtonClick()" *ngIf="!disable">
+    <input
+      #fileInput
+      type="file"
+      class="d-none"
+      (change)="onFileSelected($event)"
+      [disabled]="disable"
+    />
+    <p *ngIf="!file">Click to select an image</p>
+    <p *ngIf="file">Selected: {{ file.name }}</p>
+  </div>
+
+  <!-- Image Preview Section -->
+  <div class="image-preview" *ngIf="filePreview">
+    <img [src]="filePreview" alt="Image Preview" />
+  </div>
+
+  <div class="error-message" *ngIf="showErrorMessage">
+    {{ errorMessage }}
+  </div>
+</div>
