@@ -6,28 +6,73 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
+              <app-image-upload
+                [label]="'Profile Picture'"
+                [required]="true"
+                [maxSizeMB]="2"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                [disable]="true"
+              >
+              </app-image-upload>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.name"
-                [name]="'Name'"
+                [(ngModel)]="form.nameAr"
+                [name]="'nameAr'"
                 [minLength]="5"
                 [maxLength]="200"
                 [size]="'small'"
-                [require]="false"
-                [label]="'Name'"
+                [require]="true"
+                [label]="'Name Ar'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'nameEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'Name En'"
                 [disable]="true"
               ></app-text-component>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="form-group">
               <app-editor
-                [(ngModel)]="form.description"
-                [name]="'Description'"
+                [(ngModel)]="form.descriptionAr"
+                [name]="'descriptionAr'"
+                [minLength]="5"
+                [maxLength]="1000"
                 [size]="'small'"
-                [require]="false"
-                [label]="'Description'"
+                [require]="true"
+                [label]="'Description Ar'"
+                [disable]="true"
+
+              ></app-editor>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor
+                [(ngModel)]="form.descriptionEn"
+                [name]="'descriptionEn'"
+                [minLength]="5"
+                [maxLength]="1000"
+                [size]="'small'"
+                [require]="true"
+                [label]="'Description En'"
                 [disable]="true"
               ></app-editor>
             </div>
@@ -36,15 +81,31 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.icon"
+                [name]="'icon'"
+                [minLength]="3"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'icon'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
               <app-pick-list-component
-                [require]="false"
+                [disable]="true"
+                [require]="true"
                 [filter]="false"
                 [showClear]="false"
                 [filterBy]="'name'"
                 [label]="'Category'"
                 [options]="mainCategories"
                 [size]="'small'"
-                [disable]="true"
                 [(ngModel)]="selectedCategory"
               ></app-pick-list-component>
             </div>

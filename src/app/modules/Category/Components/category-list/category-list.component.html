@@ -1,6 +1,9 @@
 @if (isAuth(categoryPermissions.CategoryList)) {
   <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <p-confirmDialog header="Delete Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-confirmDialog
+      header="Delete Confirmation"
+      icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
     <p-toast position="top-right" key="tl"></p-toast>
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -15,79 +18,148 @@
               <!--begin::Search-->
               <div class="d-flex align-items-center position-relative my-1">
                 <span class="svg-icon svg-icon-1 position-absolute ms-6">
-                      <i class="fa-duotone fa-magnifying-glass fa-lg" style="--fa-primary-color: #764EF2; --fa-secondary-color: #764EF2;"></i>
-                    </span>
-                    @if (isAuth(categoryPermissions.SearchCategory)) {
-                      <input type="text" (input)="searchInput($event)"
-                        data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14"
-                        placeholder="Search Categorys" />
-                    }
-                  </div>
-                </div>
-                <div class="card-toolbar">
-                  <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                    <button type="button" (click)="openFilterPopup()" class="btn btn-light-primary me-3"
-                      data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                      <span class="svg-icon svg-icon-2">
-                          <i class="fa-duotone fa-filters"></i>
-                        </span>
-                      Filter</button>
-                      @if (isAuth(categoryPermissions.CreateCategory)) {
-                        <button type="button" class="btn btn-primary"
-                          (click)="openAddPopup()" data-bs-toggle="modal" data-bs-target="#kt_modal_add_user">
-                          <i class="fa-duotone fa-circle-plus"></i>
-                        Create Category</button>
-                      }
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body py-4">
-                  <p-table [value]="filteredDate" tableStyleClass="table align-middle table-row-dashed fs-6 gy-5">
-                    <ng-template pTemplate="header">
-                      <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-                        <th pSortableColumn="name" class="min-w-125px"> Name <p-sortIcon field="name"></p-sortIcon>
-                          <th pSortableColumn="mainCategory" class="min-w-125px"> Main Category <p-sortIcon field="mainCategory"></p-sortIcon>
-
-                      </th>
-                      <th class="min-w-100px Actionlabel ">Actions </th>
-                    </tr>
-                  </ng-template>
-                  <ng-template pTemplate="body" let-item class="text-gray-600 fw-bold">
-                    <tr>
-                      <td>{{item.name}}</td>
-                      <td>{{getMainCategory(item.mainCategoryId)}}</td>
-                      <td class="">
-                        <div ngbDropdown class="dropdown">
-                          <div ngbDropdownToggle class="btn btn-primary dropdown-toggle" category="button" id="dropdownMenuLink"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Actions
-                          </div>
-                          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            @if (isAuth(categoryPermissions.UpdateCategory)) {
-                              <span ngbDropdownItem (click)="openEditPopup(item)"
-                              class="dropdown-item">Edit</span>
-                            }
-                            @if (isAuth(categoryPermissions.CategoryDetails)) {
-                              <span ngbDropdownItem (click)="openDetailsPopup(item)"
-                              class="dropdown-item">Details</span>
-                            }
-                            @if (isAuth(categoryPermissions.DeleteCategory)) {
-                              <span ngbDropdownItem (click)="deleteItem(item)"
-                              class="dropdown-item">Delete</span>
-                            }
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </ng-template>
-                </p-table>
-                <br />
-                <app-paging [currentPage]="currentPage" [pager]="pager" [totalPages]="totalPages"
-                  (clickSetPage)="changePage($event)" [pageSize]="pageSize" (clickSetPageSize)="changePageSize($event)">
-                </app-paging>
+                  <i
+                    class="fa-duotone fa-magnifying-glass fa-lg"
+                    style="
+                      --fa-primary-color: #764ef2;
+                      --fa-secondary-color: #764ef2;
+                    "
+                  ></i>
+                </span>
+                @if (isAuth(categoryPermissions.SearchCategory)) {
+                  <input
+                    type="text"
+                    (input)="searchInput($event)"
+                    data-kt-user-table-filter="search"
+                    class="form-control form-control-solid w-250px ps-14"
+                    placeholder="Search Categorys"
+                  />
+                }
+              </div>
+            </div>
+            <div class="card-toolbar">
+              <div
+                class="d-flex justify-content-end"
+                data-kt-user-table-toolbar="base"
+              >
+                <button
+                  type="button"
+                  (click)="openFilterPopup()"
+                  class="btn btn-light-primary me-3"
+                  data-kt-menu-trigger="click"
+                  data-kt-menu-placement="bottom-end"
+                >
+                  <span class="svg-icon svg-icon-2">
+                    <i class="fa-duotone fa-filters"></i>
+                  </span>
+                  Filter
+                </button>
+                @if (isAuth(categoryPermissions.CreateCategory)) {
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="openAddPopup()"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal_add_user"
+                  >
+                    <i class="fa-duotone fa-circle-plus"></i>
+                    Create Category
+                  </button>
+                }
               </div>
             </div>
           </div>
+          <div class="card-body py-4">
+            <p-table
+              [value]="filteredDate"
+              tableStyleClass="table align-middle table-row-dashed fs-6 gy-5"
+            >
+              <ng-template pTemplate="header">
+                <tr
+                  class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
+                >
+                  <th pSortableColumn="nameAr" class="min-w-125px">
+                    Name AR <p-sortIcon field="name"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="nameEn" class="min-w-125px">
+                    Name EN <p-sortIcon field="name"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="mainCategory" class="min-w-125px">
+                    Main Category <p-sortIcon field="mainCategory"></p-sortIcon>
+                  </th>
+                  <th class="min-w-100px Actionlabel">Actions</th>
+                </tr>
+              </ng-template>
+              <ng-template
+                pTemplate="body"
+                let-item
+                class="text-gray-600 fw-bold"
+              >
+                <tr>
+                  <td>{{ item.nameAr }}</td>
+                  <td>{{ item.nameEn }}</td>
+                  <td>{{ getMainCategory(item.mainCategoryId) }}</td>
+                  <td class="">
+                    <div ngbDropdown class="dropdown">
+                      <div
+                        ngbDropdownToggle
+                        class="btn btn-primary dropdown-toggle"
+                        category="button"
+                        id="dropdownMenuLink"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Actions
+                      </div>
+                      <div
+                        ngbDropdownMenu
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        @if (isAuth(categoryPermissions.UpdateCategory)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="openEditPopup(item)"
+                            class="dropdown-item"
+                            >Edit</span
+                          >
+                        }
+                        @if (isAuth(categoryPermissions.CategoryDetails)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="openDetailsPopup(item)"
+                            class="dropdown-item"
+                            >Details</span
+                          >
+                        }
+                        @if (isAuth(categoryPermissions.DeleteCategory)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="deleteItem(item)"
+                            class="dropdown-item"
+                            >Delete</span
+                          >
+                        }
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <br />
+            <app-paging
+              [currentPage]="currentPage"
+              [pager]="pager"
+              [totalPages]="totalPages"
+              (clickSetPage)="changePage($event)"
+              [pageSize]="pageSize"
+              (clickSetPageSize)="changePageSize($event)"
+            >
+            </app-paging>
+          </div>
         </div>
       </div>
-    }
+    </div>
+  </div>
+}

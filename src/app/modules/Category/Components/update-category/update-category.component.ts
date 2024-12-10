@@ -1,15 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
-import {
-  DialogService,
-  DynamicDialogConfig,
-  DynamicDialogRef,
-} from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogConfig, DynamicDialogRef, } from 'primeng/dynamicdialog';
 import { category } from '../../Models/category';
 import { categoryPermissions } from '../../Models/categoryPermissions';
 import { ValidateService } from '../../../../pages/shared-module/Services/validate.service';
 import { allPermissions } from '../../../../pages/shared-module/Models/Permissions';
-import { permission } from '../../../permissions/Models/permission';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
 import { dropdown } from 'app/pages/shared-module/Models/dropDown';
@@ -27,8 +22,12 @@ export class UpdateCategoryComponent implements OnInit, OnDestroy {
   allPermissions: allPermissions = new allPermissions();
   form: category = {
     id: 0,
-    name: '',
-    description: '',
+    nameAr: '',
+    nameEn: '',
+    descriptionAr: '',
+    descriptionEn: '',
+    icon: '',
+    image: '',
     mainCategoryId: '',
   };
   selectedCategory: dropdown = {} as dropdown;
@@ -61,19 +60,30 @@ export class UpdateCategoryComponent implements OnInit, OnDestroy {
   }
 
   registerForm() {
-    // console.log(this.config)
+    console.log(this.config)
     this.form = {
       id: this.config.data?.id,
-      name: this.config.data?.name,
-      description: this.config.data?.description,
+      nameAr: this.config.data?.nameAr,
+      nameEn: this.config.data?.nameEn,
+      descriptionAr: this.config.data?.descriptionAr,
+      descriptionEn: this.config.data?.descriptionEn,
+      icon: this.config.data?.icon,
+      image: this.config.data?.image,
       mainCategoryId: this.config.data?.mainCategoryId,
     };
     let item = this.mainCategories.filter(
       (x) => x.id == this.config.data?.mainCategoryId,
     );
     this.selectedCategory = item![0];
-    this.validationService.registerForm(['name', 'description', 'categoryId']);
-
+    this.validationService.registerForm([
+      'nameAr',
+      'nameEn',
+      'descriptionAr',
+      'descriptionEn',
+      'icon',
+      'image',
+      'mainCategoryId',
+    ]);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),
     );
@@ -91,9 +101,16 @@ export class UpdateCategoryComponent implements OnInit, OnDestroy {
   getValidation() {
     return !this.valid;
   }
+  onImageSelected(file: any | null): void {
+    if (file) {
+      this.form.image = file
+    } else {
+      console.log('No file selected or invalid file.');
+    }
+  }
+
   submit() {
     this.form.mainCategoryId = this.selectedCategory.id;
-
     this.ref.close(this.form);
   }
   cancel() {

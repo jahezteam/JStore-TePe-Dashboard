@@ -4,7 +4,6 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { category } from '../../Models/category';
 import { categoryPermissions } from '../../Models/categoryPermissions';
 import { ValidateService } from '../../../../pages/shared-module/Services/validate.service';
-import { allPermissions } from '../../../../pages/shared-module/Models/Permissions';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { dropdown } from 'app/pages/shared-module/Models/dropDown';
@@ -23,8 +22,12 @@ export class CreateCategoryComponent implements OnInit, OnDestroy {
 
   form: category = {
     id: 0,
-    name: '',
-    description: '',
+    nameAr: '',
+    nameEn: '',
+    descriptionAr: '',
+    descriptionEn: '',
+    icon: '',
+    image: '',
     mainCategoryId: '',
   };
   constructor(
@@ -36,20 +39,10 @@ export class CreateCategoryComponent implements OnInit, OnDestroy {
     private pickList: PickListService,
     private auth: AuthenticationService,
   ) {}
-  ngOnDestroy(): void {
-    if (this.ref) {
-      this.ref.close();
-    }
-  }
+
   ngOnInit(): void {
     this.pickList.getMainCategories().subscribe((res) => {
       this.mainCategories = res;
-      console.log(this.mainCategories);
-
-
-
-
-
       this.registerForm();
       this.primengConfig.ripple = true;
     });
@@ -62,14 +55,30 @@ export class CreateCategoryComponent implements OnInit, OnDestroy {
   registerForm() {
     this.form = {
       id: 0,
-      name: '',
-      description: '',
+      nameAr: '',
+      nameEn: '',
+      descriptionAr: '',
+      descriptionEn: '',
+      icon: '',
+      image: '',
       mainCategoryId: '',
     };
-    this.validationService.registerForm(['name', 'description', 'categoryId']);
+    this.validationService.registerForm([
+      'nameAr',
+      'nameEn',
+      'descriptionAr',
+      'descriptionEn',
+      'icon',
+      'image',
+      'mainCategoryId',
+    ]);
     this.validationService.validStatus.subscribe(
-      (status) => (this.valid = status),
+      (status) => {
+        this.form.mainCategoryId = this.selectedCategory.id;
+        this.valid = status
+      },
     );
+
   }
 
   isInputValid(name: string, status: boolean) {
@@ -85,5 +94,18 @@ export class CreateCategoryComponent implements OnInit, OnDestroy {
   }
   cancel() {
     this.ref.close(null);
+  }
+
+  onImageSelected(file: any | null): void {
+    if (file) {
+      this.form.image = file
+    } else {
+      console.log('No file selected or invalid file.');
+    }
+  }
+  ngOnDestroy(): void {
+    if (this.ref) {
+      this.ref.close();
+    }
   }
 }

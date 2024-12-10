@@ -50,12 +50,6 @@ const Routing: Routes = [
       import('../modules/feature-type/feature-type.module').then((m) => m.FeatureTypeModule),
   },
   {
-    path: 'color',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('../modules/color/color.module').then((m) => m.ColorModule),
-  },
-  {
     path: 'category',
     canActivate: [AuthGuard],
     loadChildren: () =>

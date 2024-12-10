@@ -1,8 +1,10 @@
-import { permission } from "../../permissions/Models/permission";
-
-export interface category{
-    id:number;
-    name:string;
-    description:string;
-    mainCategoryId:string;
+export interface category {
+  id: number;
+  nameAr: string;
+  nameEn: string;
+  descriptionAr: string;
+  descriptionEn: string;
+  icon: string;
+  image: string;
+  mainCategoryId: string;
 }

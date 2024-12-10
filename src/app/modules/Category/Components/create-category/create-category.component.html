@@ -6,32 +6,77 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
+              <app-image-upload
+                [label]="'Profile Picture'"
+                [required]="true"
+                [maxSizeMB]="2"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                (imageSelected)="onImageSelected($event)"
+                (inputValid)="isInputValid('image', $event)"
+              >
+              </app-image-upload>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.name"
-                [name]="'Name'"
+                [(ngModel)]="form.nameAr"
+                [name]="'nameAr'"
                 [minLength]="5"
                 [maxLength]="200"
                 [size]="'small'"
-                (inputValid)="isInputValid('name', $event)"
+                (inputValid)="isInputValid('nameAr', $event)"
                 [require]="true"
-                [label]="'Name'"
+                [label]="'Name Ar'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'nameEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('nameEn', $event)"
+                [require]="true"
+                [label]="'Name En'"
                 [disable]="false"
               ></app-text-component>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="form-group">
               <app-editor
-                [(ngModel)]="form.description"
-                [name]="'Description'"
+                [(ngModel)]="form.descriptionAr"
+                [name]="'descriptionAr'"
                 [minLength]="5"
                 [maxLength]="1000"
                 [size]="'small'"
-                (inputValid)="isInputValid('description', $event)"
+                (inputValid)="isInputValid('descriptionAr', $event)"
                 [require]="true"
-                [label]="'Description'"
+                [label]="'Description Ar'"
+                [disable]="false"
+              ></app-editor>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor
+                [(ngModel)]="form.descriptionEn"
+                [name]="'descriptionEn'"
+                [minLength]="5"
+                [maxLength]="1000"
+                [size]="'small'"
+                (inputValid)="isInputValid('descriptionEn', $event)"
+                [require]="true"
+                [label]="'Description En'"
                 [disable]="false"
               ></app-editor>
             </div>
@@ -40,8 +85,25 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.icon"
+                [name]="'icon'"
+                [minLength]="3"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('icon', $event)"
+                [require]="true"
+                [label]="'icon'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
               <app-pick-list-component
-                (inputValid)="isInputValid('categoryId', $event)"
+                (inputValid)="isInputValid('mainCategoryId', $event)"
                 [require]="true"
                 [filter]="false"
                 [showClear]="false"

@@ -6,8 +6,8 @@ import { DialogModule } from 'primeng/dialog';
 import { TextAreaComponent } from './components/text-area-component/text-area-component.component';
 import { CheckBoxComponentComponent } from './components/check-box-component/check-box-component.component';
 import { GridComponentComponent } from './components/grid-component/grid-component.component';
-import { AccordionModule } from 'primeng/accordion';     //accordion and accordion tab
-import { MenuItem, MessageService } from 'primeng/api';                  //api
+import { AccordionModule } from 'primeng/accordion'; //accordion and accordion tab
+import { MessageService } from 'primeng/api'; //api
 import { InputTextModule } from 'primeng/inputtext';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
@@ -38,13 +38,13 @@ import { ImageModule } from 'primeng/image';
 import { PickListMultiSelectComponent } from './components/pick-list-multi-select/pick-list-multi-select.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ToggleButtonModule } from 'primeng/togglebutton';
-import { RouterModule } from '@angular/router';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { NgbDropdownModule,NgbModule,NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxEditorModule } from 'ngx-editor';
 import { EditorComponent } from './components/editor/editor.component';
 import { MagnificPopupDirective } from './Directives/magnific-popup.directive';
+import { ImageUploadComponent } from "./components/image-upload/image-upload.component";
 
 
 const NGX_EDITOR_CONFIG = {
@@ -95,6 +95,7 @@ const NGX_EDITOR_CONFIG = {
 @NgModule({
   declarations: [
     TextComponent,
+    ImageUploadComponent,
     RadioButtonComponentComponent,
     PickListComponent,
     TextAreaComponent,
@@ -147,7 +148,7 @@ imports:[
   ],
   exports: [
     TextComponent,
-     NgbModule,
+    NgbModule,
     TableModule,
     DialogModule,
     RadioButtonComponentComponent,
@@ -172,7 +173,7 @@ imports:[
     ImageModule,
     NgxPermissionsModule,
     DialogModule,
-     NgbModalModule,
+    NgbModalModule,
     IsAuthorizedDirective,
     AccordionModule,
     CheckboxModule,
@@ -181,7 +182,8 @@ imports:[
     ToggleButtonModule,
     EditorComponent,
     NgxEditorModule,
-    MagnificPopupDirective
+    MagnificPopupDirective,
+    ImageUploadComponent
   ],
   providers: [MessageService]
 })

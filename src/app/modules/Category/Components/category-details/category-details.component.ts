@@ -5,7 +5,6 @@ import { category } from '../../Models/category';
 import { categoryPermissions } from '../../Models/categoryPermissions';
 import { allPermissions } from '../../../../pages/shared-module/Models/Permissions';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
-import { permission } from '../../../permissions/Models/permission';
 import { dropdown } from 'app/pages/shared-module/Models/dropDown';
 import { PickListService } from 'app/pages/shared-module/Services/pick-list.service';
 
@@ -22,8 +21,12 @@ export class CategoryDetailsComponent implements OnInit , OnDestroy {
   selectedCategory:dropdown={} as dropdown;
   form: category = {
     id:0,
-    name:'',
-    description:'',
+    nameAr:'',
+    nameEn:'',
+    descriptionAr:'',
+    descriptionEn:'',
+    icon:'',
+    image:'',
     mainCategoryId:''
 
   };
@@ -56,8 +59,12 @@ export class CategoryDetailsComponent implements OnInit , OnDestroy {
   registerForm(){
     this.form = {
       id:this.config.data?.id,
-      name:this.config.data?.name,
-      description:this.config.data?.description,
+      nameAr:this.config.data?.nameAr,
+      nameEn:this.config.data?.nameEn,
+      descriptionAr:this.config.data?.descriptionAr,
+      descriptionEn:this.config.data?.descriptionEn,
+      icon:this.config.data?.icon,
+      image:this.config.data?.image,
       mainCategoryId:this.config.data?.mainCategoryId
     };
 

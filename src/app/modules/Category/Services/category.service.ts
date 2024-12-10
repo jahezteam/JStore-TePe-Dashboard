@@ -10,14 +10,16 @@ import { paginator } from '../../../pages/shared-module/Models/Paginator';
 export class CategorysService {
   constructor(private ser: ApiCallerService) {}
   post(model: category) {
-    // let pers:per[]=[] as per[];
-    // model.permissions.forEach(x=>{
-    //   let per:per={} as per;
-    //   per.id=x.id;
-    //   per.name=x.name;
-    //   pers.push(per);
-    // })
-    return this.ser.Create(model, '/Category/CreateCategory');
+  const formData = new FormData();
+    formData.append('NameAr', model.nameAr);
+    formData.append('NameEn', model.nameEn);
+    formData.append('DescriptionAr', model.descriptionAr);
+    formData.append('DescriptionEn', model.descriptionEn);
+    formData.append('Icon', model.icon);
+    formData.append('Image', model.image);
+    formData.append('MainCategoryId', model.mainCategoryId);
+
+    return this.ser.CreateWithFile(formData, '/Category/CreateCategory');
   }
   getById(id: number) {
     return this.ser.GetById('Category/GetCategoryById?Id=' + id, id);
