@@ -72,6 +72,14 @@ const Routing: Routes = [
       import('../modules/region/region.module').then((m) => m.RegionModule),
   },
   {
+    path: 'newsletter',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/newsletter/newsletter.module').then(
+        (m) => m.NewsletterModule,
+      ),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./builder/builder.module').then((m) => m.BuilderModule),

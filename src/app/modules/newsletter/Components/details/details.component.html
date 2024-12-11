@@ -1,0 +1,73 @@
+@if (isAuth(newsletterPermissions.NewsLetterDetails)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.email"
+                [name]="'email'"
+                [size]="'small'"
+                [require]="false"
+                [label]="'Email'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <h4>Is Active</h4>
+              <p-inputSwitch
+                [(ngModel)]="form.isActive"
+                [disabled]="true"
+              ></p-inputSwitch>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <h4>Is Subscribe</h4>
+              <p-inputSwitch
+                [(ngModel)]="form.isSubScribe"
+                [disabled]="true"
+              ></p-inputSwitch>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <h4>Is Deleted</h4>
+              <p-inputSwitch
+                [(ngModel)]="form.isDeleted"
+                [disabled]="true"
+              ></p-inputSwitch>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Ok"
+          class="btn btn-success"
+          (click)="submit()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}

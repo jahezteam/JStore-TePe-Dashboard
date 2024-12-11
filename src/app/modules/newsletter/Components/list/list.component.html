@@ -1,0 +1,191 @@
+@if (isAuth(newsletterPermissions.NewsLetterList)) {
+  <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <p-confirmDialog
+      header="Delete Confirmation"
+      icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
+    <p-toast position="top-right" key="tl"></p-toast>
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+      <!--begin::Container-->
+      <div id="kt_content_container" class="container-xxl">
+        <!--begin::Card-->
+        <div class="card">
+          <!--begin::Card header-->
+          <div class="card-header border-0 pt-6">
+            <!--begin::Card title-->
+            <div class="card-title">
+              <!--begin::Search-->
+              <div class="d-flex align-items-center position-relative my-1">
+                <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                  <i
+                    class="fa-duotone fa-magnifying-glass fa-lg"
+                    style="
+                      --fa-primary-color: #764ef2;
+                      --fa-secondary-color: #764ef2;
+                    "
+                  ></i>
+                </span>
+                @if (isAuth(newsletterPermissions.SearchNewsLetter)) {
+                  <input
+                    type="text"
+                    (input)="searchInput($event)"
+                    data-kt-user-table-filter="search"
+                    class="form-control form-control-solid w-250px ps-14"
+                    placeholder="Search Feature Type"
+                  />
+                }
+              </div>
+            </div>
+            <div class="card-toolbar">
+              <div
+                class="d-flex justify-content-end"
+                data-kt-user-table-toolbar="base"
+              >
+                <button
+                  type="button"
+                  (click)="openFilterPopup()"
+                  class="btn btn-light-primary me-3"
+                  data-kt-menu-trigger="click"
+                  data-kt-menu-placement="bottom-end"
+                >
+                  <span class="svg-icon svg-icon-2">
+                    <i class="fa-duotone fa-filters"></i>
+                  </span>
+                  Filter
+                </button>
+                @if (isAuth(newsletterPermissions.CreateNewsLetter)) {
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="openAddPopup()"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal_add_user"
+                  >
+                    <i class="fa-duotone fa-circle-plus"></i>
+                    Create FeatureType
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
+          <div class="card-body py-4">
+            <p-table
+              [value]="filteredDate"
+              tableStyleClass="table align-middle table-row-dashed fs-6 gy-5"
+            >
+              <ng-template pTemplate="header">
+                <tr
+                  class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
+                >
+                  <th pSortableColumn="name" class="min-w-125px">
+                    Email <p-sortIcon field="Email"></p-sortIcon>
+                    <!-- <th pSortableColumn="isActive" class="min-w-125px">Is Active <p-sortIcon field="isActive"></p-sortIcon>
+                      <th pSortableColumn="isDeleted" class="min-w-125px">Is Deleted <p-sortIcon field="isDeleted"></p-sortIcon> -->
+                  </th>
+                  <th pSortableColumn="isSubScribe" class="min-w-125px">
+                    isSubscribe
+                  </th>
+                  <th pSortableColumn="isActive" class="min-w-125px">
+                    isActive
+                  </th>
+                  <th pSortableColumn="isDeleted" class="min-w-125px">
+                    isDeleted
+                  </th>
+                  <th class="min-w-100px Actionlabel">Actions</th>
+                </tr>
+              </ng-template>
+              <ng-template
+                pTemplate="body"
+                let-item
+                class="text-gray-600 fw-bold"
+              >
+                <tr>
+                  <td>{{ item.email }}</td>
+                  <td>{{ item.isSubScribe }}</td>
+                  <td>{{ item.isActive }}</td>
+                  <td>{{ item.isDeleted }}</td>
+
+                  <td class="">
+                    <div ngbDropdown class="dropdown">
+                      <div
+                        ngbDropdownToggle
+                        class="btn btn-primary dropdown-toggle"
+                        featureType="button"
+                        id="dropdownMenuLink"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Actions
+                      </div>
+                      <div
+                        ngbDropdownMenu
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        <!--                        @if (isAuth(newsletterPermissions.UpdateNewsLetter)) {-->
+                        <!--                          <span-->
+                        <!--                            ngbDropdownItem-->
+                        <!--                            (click)="openEditPopup(item)"-->
+                        <!--                            class="dropdown-item"-->
+                        <!--                          >Edit</span-->
+                        <!--                          >-->
+                        <!--                        }-->
+                        @if (isAuth(newsletterPermissions.NewsLetterDetails)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="openDetailsPopup(item)"
+                            class="dropdown-item"
+                            >Details</span
+                          >
+                        }
+                        @if (isAuth(newsletterPermissions.DeleteNewsLetter)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="deleteItem(item)"
+                            class="dropdown-item"
+                            >Delete</span
+                          >
+                        }
+                        <!--                        @if (-->
+                        <!--                          isAuth(newsletterPermissions.ToggleActiveNewsLetter)-->
+                        <!--                        ) {-->
+                        <span
+                          ngbDropdownItem
+                          (click)="toggleActive(item.id)"
+                          class="dropdown-item"
+                          >Toggle Active</span
+                        >
+                        <!--                        }-->
+                        <!--                        @if (-->
+                        <!--                          isAuth(newsletterPermissions.ToggleActiveNewsLetter)-->
+                        <!--                        ) {-->
+                        <span
+                          ngbDropdownItem
+                          (click)="toggleSubscribe(item.id)"
+                          class="dropdown-item"
+                          >Toggle Subscribe</span
+                        >
+                        <!--                        }-->
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <br />
+            <app-paging
+              [currentPage]="currentPage"
+              [pager]="pager"
+              [totalPages]="totalPages"
+              (clickSetPage)="changePage($event)"
+              [pageSize]="pageSize"
+              (clickSetPageSize)="changePageSize($event)"
+            >
+            </app-paging>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

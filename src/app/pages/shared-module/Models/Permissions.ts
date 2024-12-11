@@ -10,9 +10,11 @@ export class allPermissions {
   Order: permissionsCollection = new permissionsCollection();
   mainCategories: permissionsCollection = new permissionsCollection();
   categories: permissionsCollection = new permissionsCollection();
-  region: permissionsCollection = new permissionsCollection();
   featureType: permissionsCollection = new permissionsCollection();
   feature: permissionsCollection = new permissionsCollection();
+  region: permissionsCollection = new permissionsCollection();
+  city: permissionsCollection = new permissionsCollection();
+  newsLetter: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -137,6 +139,28 @@ export class allPermissions {
       'SearchRegion',
       'FilterRegion',
       'RegionDetails',
+    ];
+
+    this.city.name = 'City';
+    this.city.permissions = [
+      'CityList',
+      'CreateCity',
+      'UpdateCity',
+      'DeleteCity',
+      'SearchCity',
+      'FilterCity',
+      'CityDetails',
+    ];
+
+    this.newsLetter.name = 'NewsLetter';
+    this.newsLetter.permissions = [
+      'NewsLetterList',
+      'CreateNewsLetter',
+      'UpdateNewsLetter',
+      'DeleteNewsLetter',
+      'SearchNewsLetter',
+      'FilterNewsLetter',
+      'NewsLetterDetails',
     ];
   }
 }

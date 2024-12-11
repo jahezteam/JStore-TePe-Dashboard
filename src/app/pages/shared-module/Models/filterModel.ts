@@ -1,9 +1,6 @@
-import { dropdown } from "./dropDown";
-
-export interface filter{
-    isActive:boolean;
-    isDeleted:boolean;
+export interface filter {
+  isActive: boolean;
+  isDeleted: boolean;
+  isActivated: boolean;
+  isSubScribe: boolean;
 }
-
-
-

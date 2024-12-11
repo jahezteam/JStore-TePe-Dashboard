@@ -1,0 +1,42 @@
+@if (isAuth(newsletterPermissions.CreateNewsLetter)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-email
+                [(ngModel)]="form.email"
+                [name]="'email'"
+                [size]="'small'"
+                (inputValid)="isInputValid('email', $event)"
+                [require]="true"
+                [label]="'email'"
+                [disable]="false"
+              ></app-email>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Save"
+          class="btn btn-success"
+          (click)="submit()"
+          [disabled]="getValidation()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}
