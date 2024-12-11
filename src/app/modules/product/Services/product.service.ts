@@ -18,7 +18,7 @@ export class ProductService {
     return this.ser.CreateWithFile(model, '/Product/CreateProduct');
   }
   getById(id: number) {
-    return this.ser.GetById('/Product/GetProductById?Id=' + id, id);
+    return this.ser.GetById('/Product/GetCategoryById?Id=' + id, id);
   }
   getList() {
     return this.ser.GetWithFullUrl(environment.apiUrl + '/Product/GetProducts');

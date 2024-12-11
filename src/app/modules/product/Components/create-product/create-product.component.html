@@ -194,14 +194,14 @@
         <div class="row">
           <div class="card-body py-4">
             <p-table
-              [value]="pColors"
+              [value]="pFeatures"
               tableStyleClass="table align-middle table-row-dashed fs-6 gy-5"
             >
               <ng-template pTemplate="header">
                 <tr
                   class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
                 >
-                  <th class="min-w-125px">Color</th>
+                  <th class="min-w-125px">Feature Type</th>
                   <th pSortableColumn="quantity" class="min-w-125px">
                     Quantity <p-sortIcon field="quantity"></p-sortIcon>
                   </th>
@@ -217,33 +217,45 @@
                 class="text-gray-600 fw-bold"
               >
                 <tr>
-                  <td>{{ item.colorId }}</td>
+                  <td>{{ getFeatureName(item.featureId) }}</td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.price }}</td>
                   <td>{{ item.unitPriceAr }}</td>
                   <td>{{ item.unitPriceEn }}</td>
 
-                  <!-- <td class="">
-            <div ngbDropdown class="dropdown">
-              <div ngbDropdownToggle class="btn btn-primary dropdown-toggle" role="button" id="dropdownMenuLink"
-                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Actions
-              </div>
-              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                @if (isAuth(ProductPermission.UpdateProduct)) {
-                <span ngbDropdownItem (click)="routeToEdit(item.id)" class="dropdown-item" href="#">Edit</span>
-                }
-                @if (isAuth(ProductPermission.ProductDetails)) {
-                <span ngbDropdownItem (click)="routeToDetails(item.id)" class="dropdown-item"
-                  href="#">Details</span>
-                }
-                @if (isAuth(ProductPermission.DeleteProduct) && !item.isDeleted) {
-                <span ngbDropdownItem (click)="deleteItem(item)" class="dropdown-item" href="#">Delete</span>
-                }
-
-              </div>
-            </div>
-          </td> -->
+                  <td class="">
+                    <div ngbDropdown class="dropdown">
+                      <div
+                        ngbDropdownToggle
+                        class="btn btn-primary dropdown-toggle"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Actions
+                      </div>
+                      <div
+                        ngbDropdownMenu
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        @if (
+                          isAuth(ProductPermission.DeleteProduct) &&
+                          !item.isDeleted
+                        ) {
+                          <span
+                            ngbDropdownItem
+                            (click)="deleteFeature(item)"
+                            class="dropdown-item"
+                            href="#"
+                            >Delete</span
+                          >
+                        }
+                      </div>
+                    </div>
+                  </td>
                 </tr>
               </ng-template>
             </p-table>

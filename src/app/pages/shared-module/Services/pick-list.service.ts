@@ -12,7 +12,7 @@ export class PickListService {
   }
   apiUrl: string = environment.apiUrl;
   getMainCategories() {
-    return this.caller.GetWithFullUrl(this.apiUrl + "/MainCategory/GetLookup");
+    return this.caller.GetWithFullUrl(this.apiUrl + "/Product/GetMainCategoryLookup");
   }
   getFeatureTypes() {
     return this.caller.GetWithFullUrl(this.apiUrl + "/FeatureType/GetLookup");

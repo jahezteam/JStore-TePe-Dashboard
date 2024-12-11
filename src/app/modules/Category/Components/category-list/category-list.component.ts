@@ -1,10 +1,6 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  ConfirmationService,
-  MessageService,
-  PrimeNGConfig,
-} from 'primeng/api';
+import { ConfirmationService, MessageService, PrimeNGConfig, } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { category } from '../../Models/category';
 import { categoryPermissions } from '../../Models/categoryPermissions';
@@ -75,7 +71,7 @@ export class CategoryListComponent implements OnInit, OnDestroy {
   }
   getMainCategory(id: any) {
     let item = this.mainCategories.filter((x) => x.id == id);
-    return item![0].name;
+    return item![0]?.name;
   }
   isAuth(per: string) {
     return this.auth.isAuthorized(per);

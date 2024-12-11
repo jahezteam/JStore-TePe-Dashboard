@@ -7,11 +7,10 @@ import { ProductListComponent } from './Components/product-list/product-list.com
 import { FilterProductComponent } from './Components/filter-product/filter-product.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PermissionGuard } from '../auth/services/permission.guard';
-import { AuthGuard } from '../auth/services/auth.guard';
 
 import { SharedModuleModule } from '../../pages/shared-module/shared-module.module';
 import { ProductPermissions } from './Models/productPermissions';
-import { CreateProductColorComponent } from './Components/create-productColor/create-productColor.component';
+import { CreateProductFeatureComponent } from './Components/create-productFeature/create-productFeature.component';
 import { UpdateProductColorComponent } from './Components/update-productColor/update-productColor.component';
 
 export const routes: Routes = [
@@ -49,7 +48,7 @@ export const routes: Routes = [
     UpdateProductComponent,
     ProductDetailsComponent,
     ProductListComponent,
-    FilterProductComponent,CreateProductColorComponent,
+    FilterProductComponent,CreateProductFeatureComponent,
     UpdateProductColorComponent
   ],
   imports: [

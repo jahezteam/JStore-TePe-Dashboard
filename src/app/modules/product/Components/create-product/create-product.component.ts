@@ -1,19 +1,15 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  ConfirmationService,
-  MessageService,
-  PrimeNGConfig,
-} from 'primeng/api';
+import { ConfirmationService, MessageService, PrimeNGConfig, } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ValidateService } from '../../../../pages/shared-module/Services/validate.service';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
 import { ProductPermissions } from '../../Models/productPermissions';
-import { product, productColor } from '../../Models/product';
+import { product, productFeature } from '../../Models/product';
 import { ProductService } from '../../Services/product.service';
 import { picklist } from 'app/pages/shared-module/Models/pickList';
-import { CreateProductColorComponent } from '../create-productColor/create-productColor.component';
+import { CreateProductFeatureComponent } from '../create-productFeature/create-productFeature.component';
 import { CategorysService } from "../../../Category/Services/category.service";
 
 @Component({
@@ -35,6 +31,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
   categories: picklist[] = [] as picklist[];
   selectedCategory: picklist = {} as picklist;
   selectedMainCategory: picklist = {} as picklist;
+  featuresTypes: picklist[] = [] as picklist[];
   form: product = {
     id: 0,
     titleAr: '',
@@ -44,11 +41,16 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     shortDescriptionAr: '',
     shortDescriptionEn: '',
     modelNumber: '',
-    categoryId: '',
-    colors: [],
+    categoryId: '8',
+    features: [] as productFeature[],
     isActive: true,
     isDeleted: false,
   };
+  ref: DynamicDialogRef = new DynamicDialogRef();
+  pFeatures: productFeature[] = [] as productFeature[];
+  imagePath: number = 0;
+  url: any;
+  file: any = null;
   constructor(
     private validationService: ValidateService,
     private service: ProductService,
@@ -67,6 +69,12 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     this.registerForm();
     this.primengConfig.ripple = true;
     this.getMainCategories();
+    this.getFeaturesTypes();
+  }
+  getFeaturesTypes() {
+    this.picklistService.getFeatureTypes().subscribe((res: any) => {
+      this.featuresTypes = res;
+    });
   }
   routrToList() {
     this.router.navigateByUrl('/product/list/*');
@@ -85,20 +93,19 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       (status) => (this.valid = status),
     );
   }
-  ref: DynamicDialogRef = new DynamicDialogRef();
-  pColors: productColor[] = [] as productColor[];
+
   openAddPopup() {
-    this.ref = this.dialogService.open(CreateProductColorComponent, {
+    this.ref = this.dialogService.open(CreateProductFeatureComponent, {
       header: 'Create Color',
       width: '75%',
       contentStyle: { 'max-height': '750px', overflow: 'auto' },
       baseZIndex: 10000,
     });
 
-    this.ref.onClose.subscribe((item: productColor) => {
+    this.ref.onClose.subscribe((item: productFeature) => {
       if (item != null) {
-        this.pColors.push(item);
-        console.log(item);
+        this.pFeatures.push(item);
+        this.form.features.push(item);
         // this.service.post(item).subscribe((res: any) => {
         //   if (res) {
         //     this.messageService.add({ key: 'tl', severity: 'success', summary: 'success', detail: 'Color Created Succesfully' });
@@ -128,14 +135,26 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     });
   }
   handleSelectMainCategory(event: any) {
-    console.log(event.value.id);
-    this.categoryService.getById(event.value.id).subscribe((res: any) => {
-      this.categories = res;
+    this.picklistService.getMainCategories().subscribe((res: any) => {
+      this.categories = res.find((x: any) => x.id == event.value.id).data;
     })
   }
-  imagePath: number = 0;
-  url: any;
-  file: any = null;
+  deleteFeature(index: number) {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to delete this color?',
+      accept: () => {
+        this.pFeatures.splice(index, 1);
+        this.changeDetection.detectChanges();
+      },
+    });
+  }
+  getFeatureName(id: string) {
+    if (this.featuresTypes.length > 0) {
+      return this.featuresTypes.filter((x) => x.id == id)[0].name;
+    }
+    return '';
+  }
+
   uploadFile = (files: any) => {
     if (files.length === 0) {
       return;
@@ -156,10 +175,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     this.file = fileToUpload;
   };
   submit() {
-    const formData = new FormData();
-    formData.append('command', JSON.stringify(this.form));
-    if (this.file !== null) formData.append('file', this.file, this.file.name);
-    this.service.postFormData(formData).subscribe((res: any) => {
+    this.service.post(this.form).subscribe((res: any) => {
       if (res) {
         this.messageService.add({
           key: 'tl',
@@ -185,7 +201,6 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     this.selectedMainCategory = {} as picklist;
     this.categories = [] as picklist[];
     this.mainCategories = [] as picklist[];
-
     this.imagePath = 0;
     this.url = '';
     this.file = null;
@@ -199,8 +214,8 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       shortDescriptionAr: '',
       shortDescriptionEn: '',
       modelNumber: '',
-      categoryId: '',
-      colors: [],
+      categoryId: '8',
+      features:[],
       isActive: true,
       isDeleted: false,
     };

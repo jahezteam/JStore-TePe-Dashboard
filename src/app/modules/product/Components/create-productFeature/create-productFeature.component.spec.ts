@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateProductColorComponent } from './create-productColor.component';
+import { CreateProductFeatureComponent } from './create-productFeature.component';
 
 describe('CreateProductColorComponent', () => {
-  let component: CreateProductColorComponent;
-  let fixture: ComponentFixture<CreateProductColorComponent>;
+  let component: CreateProductFeatureComponent;
+  let fixture: ComponentFixture<CreateProductFeatureComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateProductColorComponent ]
+      declarations: [ CreateProductFeatureComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateProductColorComponent);
+    fixture = TestBed.createComponent(CreateProductFeatureComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

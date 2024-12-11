@@ -2,12 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ValidateService } from '../../../../pages/shared-module/Services/validate.service';
-import { allPermissions } from '../../../../pages/shared-module/Models/Permissions';
-import { permission } from '../../../permissions/Models/permission';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
-import { dropdown } from 'app/pages/shared-module/Models/dropDown';
-import { productColor } from '../../Models/product';
+import { productFeature } from '../../Models/product';
 import { picklist } from 'app/pages/shared-module/Models/pickList';
 
 @Component({
@@ -21,14 +18,13 @@ export class UpdateProductColorComponent implements OnInit, OnDestroy {
   valid = false;
   colors:picklist[] =[] as picklist[];
   selectedColor:picklist={} as picklist;
-  form: productColor = {
+  form: productFeature = {
     id: 0,
-    colorId: '',
-    imageName: [],
-    price:0,
-    quantity:0,
-    unitPriceAr:'',
-    unitPriceEn:''
+    price: 0,
+    quantity: 0,
+    unitPriceAr: '',
+    unitPriceEn: '',
+    featureId: '',
   };
   permissions: any;
   constructor(private validationService: ValidateService, private primengConfig: PrimeNGConfig,
@@ -52,12 +48,11 @@ export class UpdateProductColorComponent implements OnInit, OnDestroy {
     // console.log(this.config)
     this.form = {
       id: this.config.data?.id,
-      imageName: this.config.data?.imageName,
-      colorId: this.config.data?.colorId,
+      unitPriceAr: this.config.data?.unitPriceAr,
+      unitPriceEn: this.config.data?.unitPriceEn,
       price: this.config.data?.price,
       quantity: this.config.data?.quantity,
-      unitPriceAr: this.config.data?.unitPriceAr,
-      unitPriceEn: this.config.data?.unitPriceEn
+      featureId: this.config.data?.featureId,
     };
     this.validationService.registerForm(["unitPriceEn",'unitPriceAr'
       ,'quantity','price','colorId']);

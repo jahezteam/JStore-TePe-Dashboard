@@ -1,4 +1,3 @@
-
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
@@ -13,6 +12,7 @@ import { product } from '../../Models/product';
 import { ProductPermissions } from '../../Models/productPermissions';
 import { ProductService } from '../../Services/product.service';
 import { picklist } from 'app/pages/shared-module/Models/pickList';
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -135,10 +135,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
   categories: picklist[] = [] as picklist[];
   selectedCategory: picklist = {} as picklist;
   selectedMainCategory: picklist = {} as picklist;
-  getMainCategory(categoryId: string) {
-    return '';
-  }
   getCategory(categoryId: string) {
+    this.picklistService.getMainCategories().subscribe((res: any) => {
+      this.categories = res.data ;
+    })
+    if(this.categories){
+      return this.categories?.filter(x => x.id == categoryId)[0]?.name;
+    }
     return '';
 
   }

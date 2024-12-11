@@ -22,16 +22,16 @@ export interface product {
   categoryId:string;
   isActive: boolean;
   isDeleted: boolean;
-  colors:productColor[];
+  features:productFeature[];
 }
-export interface productColor {
+export interface productFeature {
   id: number;
   unitPriceAr: string,
   unitPriceEn: string;
-  imageName: string[];
   price: number;
   quantity: number;
-  colorId:string
+  productId?:string;
+  featureId:string;
 }
 // export interface _products {
 //   id: number;
