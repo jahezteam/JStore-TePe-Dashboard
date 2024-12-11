@@ -11,13 +11,17 @@ const Routing: Routes = [
   {
     path: 'shared',
     loadChildren: () =>
-      import('./shared-module/shared-module.module').then((m) => m.SharedModuleModule),
+      import('./shared-module/shared-module.module').then(
+        (m) => m.SharedModuleModule,
+      ),
   },
   {
     path: 'permissions',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import('../modules/permissions/permissions.module').then((m) => m.PermissionsModule),
+      import('../modules/permissions/permissions.module').then(
+        (m) => m.PermissionsModule,
+      ),
   },
   {
     path: 'roles',
@@ -35,7 +39,9 @@ const Routing: Routes = [
     path: 'mainCategory',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import('../modules/MainCategory/mainCategory.module').then((m) => m.MainCategorysModule),
+      import('../modules/MainCategory/mainCategory.module').then(
+        (m) => m.MainCategorysModule,
+      ),
   },
   {
     path: 'feature',
@@ -47,13 +53,23 @@ const Routing: Routes = [
     path: 'feature-type',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import('../modules/feature-type/feature-type.module').then((m) => m.FeatureTypeModule),
+      import('../modules/feature-type/feature-type.module').then(
+        (m) => m.FeatureTypeModule,
+      ),
   },
   {
     path: 'category',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import('../modules/Category/category.module').then((m) => m.CategorysModule),
+      import('../modules/Category/category.module').then(
+        (m) => m.CategorysModule,
+      ),
+  },
+  {
+    path: 'region',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/region/region.module').then((m) => m.RegionModule),
   },
   {
     path: '',

@@ -129,5 +129,14 @@ export class allPermissions {
     ];
 
     this.region.name = 'Region';
+    this.region.permissions = [
+      'RegionList',
+      'CreateRegion',
+      'UpdateRegion',
+      'DeleteRegion',
+      'SearchRegion',
+      'FilterRegion',
+      'RegionDetails',
+    ];
   }
 }

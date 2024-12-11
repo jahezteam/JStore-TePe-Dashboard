@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { ValidateService } from '../../../../pages/shared-module/Services/validate.service';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
-import { FeatureTypePermissions } from '../../Modals/feature-type-permissions';
 import { dropdown } from '../../../../pages/shared-module/Models/dropDown';
+import { RegionPermissions } from '../../Models/regionPermissions';
 import { allPermissions } from '../../../../pages/shared-module/Models/Permissions';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
-import { FeatureType } from '../../Modals/feature-type';
+import { Region } from '../../Models/region';
 
 @Component({
   selector: 'app-create',
@@ -17,14 +17,14 @@ import { FeatureType } from '../../Modals/feature-type';
 })
 export class CreateComponent {
   valid = false;
-  featureTypePermissions = FeatureTypePermissions;
+  regionPermissions = RegionPermissions;
   permissions: any;
   selectedPermission: dropdown = {} as dropdown;
   selectedPermissions: dropdown[] = [] as dropdown[];
   allPermissions: allPermissions = new allPermissions();
-  form: FeatureType = {
+  form: Region = {
     id: 0,
-    nameAr: '',
+    name: '',
     nameEn: '',
   };
 
@@ -37,6 +37,7 @@ export class CreateComponent {
     private pickList: PickListService,
     private auth: AuthenticationService,
   ) {}
+
   isAuth(per: string) {
     return this.auth.isAuthorized(per);
   }
@@ -46,10 +47,10 @@ export class CreateComponent {
   registerForm() {
     this.form = {
       id: 0,
-      nameAr: '',
+      name: '',
       nameEn: '',
     };
-    this.validationService.registerForm(['nameAr', 'nameEn']);
+    this.validationService.registerForm(['name', 'nameEn']);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),
     );
@@ -58,11 +59,14 @@ export class CreateComponent {
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);
   }
+
   getValidation() {
     return !this.valid;
   }
   submit() {
-    this.ref.close(this.form);
+    if (this.valid) {
+      this.ref.close(this.form);
+    }
   }
   cancel() {
     this.ref.close(null);

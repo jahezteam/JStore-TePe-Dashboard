@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { FeatureTypePermissions } from '../../Modals/feature-type-permissions';
 import { environment } from '../../../../../environments/environment';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { RegionPermissions } from '../../Models/regionPermissions';
 import { paginator } from '../../../../pages/shared-module/Models/Paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
@@ -8,15 +9,14 @@ import {
   MessageService,
   PrimeNGConfig,
 } from 'primeng/api';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
-import { FeatureTypeService } from '../../Services/feature-type.service';
-import { FeatureType } from '../../Modals/feature-type';
-import { CreateComponent } from '../create/create.component';
-import { UpdateComponent } from '../update/update.component';
-import { DetailsComponent } from '../details/details.component';
-import { FilterComponent } from '../filter/filter.component';
+import { RegionService } from '../../Services/region.service';
+import { Region } from '../../Models/region';
 import { filter } from 'app/pages/shared-module/Models/filterModel';
+import { CreateComponent } from '../create/create.component';
+import { FilterComponent } from '../filter/filter.component';
+import { DetailsComponent } from '../details/details.component';
+import { UpdateComponent } from '../update/update.component';
 
 @Component({
   selector: 'app-list',
@@ -26,7 +26,7 @@ import { filter } from 'app/pages/shared-module/Models/filterModel';
 })
 export class ListComponent {
   date: any;
-  featureTypePermissions = FeatureTypePermissions;
+  regionPermissions = RegionPermissions;
   filteredDate: any;
   currentPage = 1;
   totalPages: number = 0;
@@ -46,11 +46,12 @@ export class ListComponent {
   editRef: DynamicDialogRef = {} as DynamicDialogRef;
   refDetails: DynamicDialogRef = {} as DynamicDialogRef;
   refFilter: DynamicDialogRef = {} as DynamicDialogRef;
-
+  filter: filter = {} as filter;
+  reffilter: DynamicDialogRef = {} as DynamicDialogRef;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: FeatureTypeService,
+    private service: RegionService,
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
     public dialogService: DialogService,
@@ -135,24 +136,24 @@ export class ListComponent {
   }
 
   routeToAdd() {
-    this.router.navigateByUrl('/feature-type/add');
+    this.router.navigateByUrl('/region/add');
   }
   routeToEdit(id: any) {
-    this.router.navigateByUrl('/feature-type/edit/' + id);
+    this.router.navigateByUrl('/region/edit/' + id);
   }
   routeToDetails(id: any) {
-    this.router.navigateByUrl('/feature-type/details/' + id);
+    this.router.navigateByUrl('/region/details/' + id);
   }
 
   openAddPopup() {
     this.ref = this.dialogService.open(CreateComponent, {
-      header: 'Create Feature Type',
+      header: 'Create Region',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
     });
 
-    this.ref.onClose.subscribe((item: FeatureType) => {
+    this.ref.onClose.subscribe((item: Region) => {
       if (item != null) {
         this.service.post(item).subscribe((res: any) => {
           if (res) {
@@ -160,7 +161,7 @@ export class ListComponent {
               key: 'tl',
               severity: 'success',
               summary: 'success',
-              detail: 'Feature Type Created Succesfully',
+              detail: 'Region Created Succesfully',
             });
             this.ngOnInit();
           } else {
@@ -177,16 +178,16 @@ export class ListComponent {
       }
     });
   }
-  openEditPopup(item: FeatureType) {
+  openEditPopup(item: Region) {
     this.editRef = this.dialogService.open(UpdateComponent, {
-      header: 'Edit Feature Type',
+      header: 'Edit Region',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
       data: item,
     });
 
-    this.editRef.onClose.subscribe((item: FeatureType) => {
+    this.editRef.onClose.subscribe((item: Region) => {
       if (item != null) {
         this.service.update(item).subscribe((res: any) => {
           if (res) {
@@ -194,7 +195,7 @@ export class ListComponent {
               key: 'tl',
               severity: 'success',
               summary: 'success',
-              detail: 'Feature Type updated Succesfully',
+              detail: 'Region updated Succesfully',
             });
             this.ngOnInit();
           } else {
@@ -211,26 +212,23 @@ export class ListComponent {
       }
     });
   }
-  openDetailsPopup(item: FeatureType) {
+  openDetailsPopup(item: Region) {
     this.refDetails = this.dialogService.open(DetailsComponent, {
-      header: 'Feature Type Details',
+      header: 'Region Details',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
       data: item,
     });
-    this.refDetails.onClose.subscribe((item: FeatureType) => {
+    this.refDetails.onClose.subscribe((item: Region) => {
       if (item != null) {
       }
     });
   }
 
-  filter: filter = {} as filter;
-  reffilter: DynamicDialogRef = {} as DynamicDialogRef;
-
   openFilterPopup() {
     this.reffilter = this.dialogService.open(FilterComponent, {
-      header: 'Filter Feature Type',
+      header: 'Filter Region',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
@@ -296,9 +294,9 @@ export class ListComponent {
     });
   }
 
-  deleteItem(item: FeatureType) {
+  deleteItem(item: Region) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to Delete This Feature Type',
+      message: 'Are you sure you want to Delete This Region',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -308,7 +306,7 @@ export class ListComponent {
               key: 'tl',
               severity: 'success',
               summary: 'success',
-              detail: 'Feature Type Deleted Succesfully',
+              detail: 'Region Deleted Succesfully',
             });
             this.ngOnInit();
           } else {

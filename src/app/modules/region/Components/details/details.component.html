@@ -1,4 +1,4 @@
-@if (isAuth(featureTypePermissions.CreateFeatureType)) {
+@if (isAuth(regionPermissions.RegionDetails)) {
   <div class="container">
     <p-toast position="top-right" key="tl"></p-toast>
     <p-card class="">
@@ -7,15 +7,12 @@
           <div class="col-md-12">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.nameAr"
-                [name]="'NameAr'"
-                [minLength]="5"
-                [maxLength]="200"
+                [(ngModel)]="form.nameEn"
+                [name]="'NameEn'"
                 [size]="'small'"
-                (inputValid)="isInputValid('nameAr', $event)"
-                [require]="true"
-                [label]="'NameAr'"
-                [disable]="false"
+                [require]="false"
+                [label]="'Name En'"
+                [disable]="true"
               ></app-text-component>
             </div>
           </div>
@@ -24,15 +21,12 @@
           <div class="col-md-12">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.nameEn"
-                [name]="'nameEn'"
-                [minLength]="5"
-                [maxLength]="200"
+                [(ngModel)]="form.name"
+                [name]="'name'"
                 [size]="'small'"
-                (inputValid)="isInputValid('nameEn', $event)"
-                [require]="true"
-                [label]="'NameEn'"
-                [disable]="false"
+                [require]="false"
+                [label]="'Name Ar'"
+                [disable]="true"
               ></app-text-component>
             </div>
           </div>
@@ -42,10 +36,9 @@
         <button
           pButton
           type="button"
-          label="Save"
+          label="Ok"
           class="btn btn-success"
           (click)="submit()"
-          [disabled]="getValidation()"
         ></button
         >&nbsp;
         <button

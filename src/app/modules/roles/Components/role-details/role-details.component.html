@@ -120,6 +120,17 @@
                 </div>
               }
             </p-accordionTab>
+            <p-accordionTab header="region">
+              @for (item of allPermissions.region.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
             <!--            <p-accordionTab header="Color">-->
             <!--              @for (item of allPermissions.colors.permissions; track item) {-->
             <!--                <div>-->

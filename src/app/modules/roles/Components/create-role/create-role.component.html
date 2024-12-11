@@ -6,102 +6,160 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <app-text-component [(ngModel)]="form.roleName" [name]="'Role Name'" [minLength]="5" [maxLength]="200"
-                [size]="'small'" (inputValid)="isInputValid('roleName', $event)" [require]="true" [label]="'Role Name'"
-              [disable]="false"></app-text-component>
+              <app-text-component
+                [(ngModel)]="form.roleName"
+                [name]="'Role Name'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('roleName', $event)"
+                [require]="true"
+                [label]="'Role Name'"
+                [disable]="false"
+              ></app-text-component>
             </div>
           </div>
         </div>
         <div class="row">
-        <p-accordion>
-          <p-accordionTab header="Roles">
-            @for (item of allPermissions.role.permissions; track item) {
-              <div>
-                <h5>{{item}}</h5>
-                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
-              </div>
-            }
-          </p-accordionTab>
-          <p-accordionTab header="Users">
-            @for (item of allPermissions.user.permissions; track item) {
-              <div>
-                <h5>{{item}}</h5>
-                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
-              </div>
-            }
-          </p-accordionTab>
-          <p-accordionTab header="Main Categories">
-            @for (item of allPermissions.mainCategories.permissions; track item) {
-              <div>
-                <h5>{{item}}</h5>
-                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
-              </div>
-            }
-          </p-accordionTab>
-          <p-accordionTab header="Categories">
-            @for (item of allPermissions.categories.permissions; track item) {
-              <div>
-                <h5>{{item}}</h5>
-                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
-              </div>
-            }
-          </p-accordionTab>
-          <p-accordionTab header="Products">
-            @for (item of allPermissions.Product.permissions; track item) {
-              <div>
-                <h5>{{item}}</h5>
-                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
-              </div>
-            }
-          </p-accordionTab>
-          <p-accordionTab header="Coupon">
-            @for (item of allPermissions.couponPermissions.permissions; track item) {
-              <div>
-                <h5>{{item}}</h5>
-                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
-              </div>
-            }
-          </p-accordionTab>
-          <p-accordionTab header="Order">
-            @for (item of allPermissions.Order.permissions; track item) {
-              <div>
-                <h5>{{item}}</h5>
-                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
-              </div>
-            }
-          </p-accordionTab>
-          <p-accordionTab header="Feature Type">
-            @for (item of allPermissions.featureType.permissions; track item) {
-              <div>
-                <h5>{{item}}</h5>
-                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
-              </div>
-            }
-          </p-accordionTab>
-          <p-accordionTab header="Feature">
-            @for (item of allPermissions.feature.permissions; track item) {
-              <div>
-                <h5>{{item}}</h5>
-                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>
-              </div>
-            }
-          </p-accordionTab>
-<!--          <p-accordionTab header="Color">-->
-<!--            @for (item of allPermissions.colors.permissions; track item) {-->
-<!--              <div>-->
-<!--                <h5>{{item}}</h5>-->
-<!--                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>-->
-<!--              </div>-->
-<!--            }-->
-<!--          </p-accordionTab>-->
-        </p-accordion>
+          <p-accordion>
+            <p-accordionTab header="Roles">
+              @for (item of allPermissions.role.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Users">
+              @for (item of allPermissions.user.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Main Categories">
+              @for (
+                item of allPermissions.mainCategories.permissions;
+                track item
+              ) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Categories">
+              @for (item of allPermissions.categories.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Products">
+              @for (item of allPermissions.Product.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Coupon">
+              @for (
+                item of allPermissions.couponPermissions.permissions;
+                track item
+              ) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Order">
+              @for (item of allPermissions.Order.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Feature Type">
+              @for (
+                item of allPermissions.featureType.permissions;
+                track item
+              ) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Feature">
+              @for (item of allPermissions.feature.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="region">
+              @for (item of allPermissions.region.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <!--          <p-accordionTab header="Color">-->
+            <!--            @for (item of allPermissions.colors.permissions; track item) {-->
+            <!--              <div>-->
+            <!--                <h5>{{item}}</h5>-->
+            <!--                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>-->
+            <!--              </div>-->
+            <!--            }-->
+            <!--          </p-accordionTab>-->
+          </p-accordion>
+        </div>
       </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Save"
+          class="btn btn-success"
+          (click)="submit()"
+          [disabled]="getValidation()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
   </div>
-  <ng-template pTemplate="footer">
-    <button pButton type="button" label="Save" class="btn btn-success" (click)="submit()"
-    [disabled]="getValidation()"></button>&nbsp;
-    <button pButton type="button" label="cancel" class="btn btn-primary" (click)="cancel()"></button>
-  </ng-template>
-</p-card>
-</div>
 }

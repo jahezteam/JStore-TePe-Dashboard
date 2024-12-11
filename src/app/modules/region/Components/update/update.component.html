@@ -1,4 +1,4 @@
-@if (isAuth(featureTypePermissions.CreateFeatureType)) {
+@if (isAuth(regionPermissions.UpdateRegion)) {
   <div class="container">
     <p-toast position="top-right" key="tl"></p-toast>
     <p-card class="">
@@ -7,14 +7,14 @@
           <div class="col-md-12">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.nameAr"
-                [name]="'NameAr'"
+                [(ngModel)]="form.name"
+                [name]="'Name'"
                 [minLength]="5"
                 [maxLength]="200"
                 [size]="'small'"
-                (inputValid)="isInputValid('nameAr', $event)"
+                (inputValid)="isInputValid('name', $event)"
                 [require]="true"
-                [label]="'NameAr'"
+                [label]="'Name Ar'"
                 [disable]="false"
               ></app-text-component>
             </div>

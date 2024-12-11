@@ -1,4 +1,4 @@
-@if (isAuth(featureTypePermissions.FeatureTypeList)) {
+@if (isAuth(regionPermissions.RegionList)) {
   <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <p-confirmDialog
       header="Delete Confirmation"
@@ -25,7 +25,7 @@
                     "
                   ></i>
                 </span>
-                @if (isAuth(featureTypePermissions.SearchFeatureType)) {
+                @if (isAuth(regionPermissions.SearchRegion)) {
                   <input
                     type="text"
                     (input)="searchInput($event)"
@@ -53,7 +53,7 @@
                   </span>
                   Filter
                 </button>
-                @if (isAuth(featureTypePermissions.CreateFeatureType)) {
+                @if (isAuth(regionPermissions.CreateRegion)) {
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -92,7 +92,7 @@
                 class="text-gray-600 fw-bold"
               >
                 <tr>
-                  <td>{{ item.nameAr }}</td>
+                  <td>{{ item.name }}</td>
                   <td>{{ item.nameEn }}</td>
                   <!-- <td>{{item.isActive}}</td>
                   <td>{{item.isDeleted}}</td> -->
@@ -115,7 +115,7 @@
                         class="dropdown-menu"
                         aria-labelledby="dropdownMenuLink"
                       >
-                        @if (isAuth(featureTypePermissions.UpdateFeatureType)) {
+                        @if (isAuth(regionPermissions.UpdateRegion)) {
                           <span
                             ngbDropdownItem
                             (click)="openEditPopup(item)"
@@ -123,9 +123,7 @@
                             >Edit</span
                           >
                         }
-                        @if (
-                          isAuth(featureTypePermissions.FeatureTypeDetails)
-                        ) {
+                        @if (isAuth(regionPermissions.RegionDetails)) {
                           <span
                             ngbDropdownItem
                             (click)="openDetailsPopup(item)"
@@ -133,7 +131,7 @@
                             >Details</span
                           >
                         }
-                        @if (isAuth(featureTypePermissions.DeleteFeatureType)) {
+                        @if (isAuth(regionPermissions.DeleteRegion)) {
                           <span
                             ngbDropdownItem
                             (click)="deleteItem(item)"
