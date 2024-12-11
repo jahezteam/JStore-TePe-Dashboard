@@ -147,26 +147,22 @@
                             >Delete</span
                           >
                         }
-                        <!--                        @if (-->
-                        <!--                          isAuth(newsletterPermissions.ToggleActiveNewsLetter)-->
-                        <!--                        ) {-->
-                        <span
-                          ngbDropdownItem
-                          (click)="toggleActive(item.id)"
-                          class="dropdown-item"
-                          >Toggle Active</span
-                        >
-                        <!--                        }-->
-                        <!--                        @if (-->
-                        <!--                          isAuth(newsletterPermissions.ToggleActiveNewsLetter)-->
-                        <!--                        ) {-->
-                        <span
-                          ngbDropdownItem
-                          (click)="toggleSubscribe(item.id)"
-                          class="dropdown-item"
-                          >Toggle Subscribe</span
-                        >
-                        <!--                        }-->
+                        @if (isAuth(newsletterPermissions.UpdateNewsLetter)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="toggleActive(item.id)"
+                            class="dropdown-item"
+                            >Toggle Active</span
+                          >
+                        }
+                        @if (isAuth(newsletterPermissions.UpdateNewsLetter)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="toggleSubscribe(item.id)"
+                            class="dropdown-item"
+                            >Toggle Subscribe</span
+                          >
+                        }
                       </div>
                     </div>
                   </td>
