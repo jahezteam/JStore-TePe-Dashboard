@@ -5,7 +5,6 @@
 @import url("./assets/css/animate.css");
 // @import url("./../../../../../assets/css/owl.css");
 @import url("./assets/css/swiper.min.css");
-
 //@import url("./assets/css/jquery.fancybox.min.css");
 // @import url("./../../../../../assets/css/jquery-ui.css");
 @import url("./assets/css/linear.css");
@@ -35,6 +34,8 @@
 //@import "./assets/EditRadme.css";
 
 @import url("./assets/font-awesome/css/all.min.css");
+@import url("./assets/css/color.css");
+@import url("./assets/css/rtl.css");
 
 
 ///////////////////// start files from desiner ///////////////////////////
@@ -1776,30 +1777,30 @@ app-login {
   transition: opacity .3s ease;
 }
 .dropdown .btn-primary {
-  background:linear-gradient(to left, #41b366, #2eb45d) !important; 
+  background:linear-gradient(to left, #41b366, #2eb45d) !important;
   border-radius: 25px !important;
 }
 
 .card-toolbar .btn-primary {
-  background: linear-gradient(to top right, #ca0e50, #cd1b59); 
-  color: rgba(255, 255, 255, 0.95); 
-  border-radius: 25px; 
-  padding-top: 10px; 
-  padding-bottom: 10px; 
-  padding-left: 35px; 
-  padding-right: 35px; 
+  background: linear-gradient(to top right, #ca0e50, #cd1b59);
+  color: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 35px;
+  padding-right: 35px;
   font-weight: 500
 }
 
 
 .card-toolbar .btn-light-primary {
-  background: linear-gradient(to top right, #1976b0, #2188c9); 
-  color: #ffffff !important; 
-  border-radius: 25px; 
-  padding-top: 10px; 
-  padding-bottom: 10px; 
-  padding-left: 35px; 
-  padding-right: 35px; 
+  background: linear-gradient(to top right, #1976b0, #2188c9);
+  color: #ffffff !important;
+  border-radius: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 35px;
+  padding-right: 35px;
   font-weight: 500;
   transition: all .3s linear;
 }
@@ -1810,12 +1811,12 @@ app-login {
 }
 
 .card-toolbar .btn-light-primary .fa-duotone.fa-filters {
-  --fa-primary-color: #fff; 
+  --fa-primary-color: #fff;
   --fa-secondary-color: #fff;
 }
 
 .card-toolbar .btn-light-primary:hover:not(.btn-active) .fa-duotone.fa-filters {
-  --fa-primary-color: #efefef; 
+  --fa-primary-color: #efefef;
   --fa-secondary-color: #ffffff;
 }
 
@@ -1839,14 +1840,14 @@ app-login {
 
   .p-datatable-thead > tr > th, .p-datatable-tfoot > tr > td {
     display: none !important;
-  } 
+  }
 
   // .p-datatable-thead > tr > th, .p-datatable-tfoot > tr > td {
   //   display: flex;
   //   width: 100% !important;
   //   align-items: center;
   //   justify-content: space-between;
-  // } 
+  // }
 }
 // end table dashboard responsive
 
@@ -1883,30 +1884,30 @@ app-login {
 }
 
 .p-dialog-content .p-button {
-  box-shadow: 0 15px 20px -6px rgba(42, 212, 163 , 0.40); 
-  background: linear-gradient(154.69deg, #2AD4CA 3.49%, #2AD478 83.95%); 
-  border: 1.6px solid #2bc295; 
-  color: rgba(255, 255, 255, 0.95); 
-  font-size: 16px; 
-  border-radius: 10px; 
-  padding-top: 5px; 
-  padding-bottom: 5px; 
-  padding-left: 20px; 
-  padding-right: 20px; 
+  box-shadow: 0 15px 20px -6px rgba(42, 212, 163 , 0.40);
+  background: linear-gradient(154.69deg, #2AD4CA 3.49%, #2AD478 83.95%);
+  border: 1.6px solid #2bc295;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 16px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-weight: 500;
 }
 
 .p-button {
-  box-shadow: 0 5px 10px -6px rgba(42, 212, 163 , 0.40); 
-  background: linear-gradient(154.69deg, #2AD4CA 3.49%, #2AD478 83.95%); 
-  border: 1.6px solid #2bc295; 
-  color: rgba(255, 255, 255, 0.95); 
-  font-size: 16px; 
-  border-radius: 10px; 
-  padding-top: 5px; 
-  padding-bottom: 5px; 
-  padding-left: 20px; 
-  padding-right: 20px; 
+  box-shadow: 0 5px 10px -6px rgba(42, 212, 163 , 0.40);
+  background: linear-gradient(154.69deg, #2AD4CA 3.49%, #2AD478 83.95%);
+  border: 1.6px solid #2bc295;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 16px;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-weight: 500;
 }
 
@@ -2009,7 +2010,7 @@ p-dropdown .p-dropdown-trigger {
   border-radius: 25px;
   background-color: white;
   border: 1px solid #dae0dc;
-  
+
   box-shadow: 0 0 5px #e7e7e7;
 }
 
@@ -2068,7 +2069,7 @@ p-dropdown .p-dropdown-trigger {
 }
 
 .course-block .image-box .price {
-  height: unset !important; 
+  height: unset !important;
   width: unset !important;
   padding: 5px 10px;
 }
