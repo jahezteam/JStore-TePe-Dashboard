@@ -1,0 +1,155 @@
+@if (isAuth(branchPermissions.UpdateBranch)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.name"
+                [name]="'name'"
+                [size]="'small'"
+                [label]="'Name'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'nameEn'"
+                [size]="'small'"
+                [label]="'Name En'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-email
+                [(ngModel)]="form.email"
+                [name]="'email'"
+                [size]="'small'"
+                [label]="'Email'"
+                [disable]="true"
+              ></app-email>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.unifiedNumber"
+                [name]="'unifiedNumber'"
+                [size]="'small'"
+                [label]="'unifiedNumber'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.fax"
+                [name]="'fax'"
+                [size]="'small'"
+                [require]="true"
+                [label]="'fax'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.phone"
+                [name]="'phone'"
+                [size]="'small'"
+                [label]="'phone'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.mobile"
+                [name]="'mobile'"
+                [size]="'small'"
+                [label]="'mobile'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.address"
+                [name]="'address'"
+                [size]="'small'"
+                [label]="'address'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.addressEn"
+                [name]="'addressEn'"
+                [size]="'small'"
+                [label]="'Address En'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <h3>Is Primary</h3>
+              <p-inputSwitch [(ngModel)]="form.isPrimary"></p-inputSwitch>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group" style="height: 300px; width: 100%">
+              <label>Map Location</label>
+              <app-map></app-map>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="OK"
+          class="btn btn-success"
+          (click)="submit()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}

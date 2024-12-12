@@ -1,0 +1,191 @@
+@if (isAuth(BranchPermissions.CreateBranch)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.name"
+                [name]="'name'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('name', $event)"
+                [require]="true"
+                [label]="'Name'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'nameEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('nameEn', $event)"
+                [require]="true"
+                [label]="'Name En'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-email
+                [(ngModel)]="form.email"
+                [name]="'email'"
+                [size]="'small'"
+                (inputValid)="isInputValid('email', $event)"
+                [require]="true"
+                [label]="'Email'"
+                [disable]="false"
+              ></app-email>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.unifiedNumber"
+                [name]="'unifiedNumber'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('unifiedNumber', $event)"
+                [require]="true"
+                [label]="'unifiedNumber'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.fax"
+                [name]="'fax'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('fax', $event)"
+                [require]="true"
+                [label]="'fax'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.phone"
+                [name]="'phone'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('phone', $event)"
+                [require]="true"
+                [label]="'phone'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.mobile"
+                [name]="'mobile'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('mobile', $event)"
+                [require]="true"
+                [label]="'mobile'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.address"
+                [name]="'address'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('address', $event)"
+                [require]="true"
+                [label]="'address'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.addressEn"
+                [name]="'addressEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('addressEn', $event)"
+                [require]="true"
+                [label]="'Address En'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <h3>Is Primary</h3>
+              <p-inputSwitch [(ngModel)]="form.isPrimary"></p-inputSwitch>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group" style="height: 300px; width: 100%">
+              <label>Map Location</label>
+              <app-map (coordinatesSelected)="onMapClick($event)"></app-map>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Save"
+          class="btn btn-success"
+          (click)="submit()"
+          [disabled]="getValidation()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+  <div class="row position-relative">
+    <div class="position-absolute w-100 h-100 z-1"></div>
+  </div>
+}
