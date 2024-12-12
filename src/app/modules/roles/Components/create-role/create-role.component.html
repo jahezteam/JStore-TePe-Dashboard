@@ -121,7 +121,7 @@
                 </div>
               }
             </p-accordionTab>
-            <p-accordionTab header="region">
+            <p-accordionTab header="Region">
               @for (item of allPermissions.region.permissions; track item) {
                 <div>
                   <h5>{{ item }}</h5>
@@ -131,14 +131,46 @@
                 </div>
               }
             </p-accordionTab>
-            <!--          <p-accordionTab header="Color">-->
-            <!--            @for (item of allPermissions.colors.permissions; track item) {-->
-            <!--              <div>-->
-            <!--                <h5>{{item}}</h5>-->
-            <!--                <p-inputSwitch (onChange)="onseletedChanged(item,$event)"></p-inputSwitch>-->
-            <!--              </div>-->
-            <!--            }-->
-            <!--          </p-accordionTab>-->
+            <p-accordionTab header="City">
+              @for (item of allPermissions.city.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Contact">
+              @for (item of allPermissions.contact.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Newsletter">
+              @for (item of allPermissions.newsLetter.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
+            <p-accordionTab header="Branches">
+              @for (item of allPermissions.branch.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
           </p-accordion>
         </div>
       </div>
