@@ -16,6 +16,7 @@ export class allPermissions {
   city: permissionsCollection = new permissionsCollection();
   newsLetter: permissionsCollection = new permissionsCollection();
   contact: permissionsCollection = new permissionsCollection();
+  branch: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -173,6 +174,17 @@ export class allPermissions {
       'SearchContactUsMessage',
       'FilterContactUsMessage',
       'ContactUsMessageDetails',
+    ];
+
+    this.branch.name = 'Branch';
+    this.branch.permissions = [
+      'BranchList',
+      'CreateBranch',
+      'UpdateBranch',
+      'DeleteBranch',
+      'SearchBranch',
+      'FilterBranch',
+      'BranchDetails',
     ];
   }
 }

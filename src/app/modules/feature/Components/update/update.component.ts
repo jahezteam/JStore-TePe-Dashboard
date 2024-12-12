@@ -8,7 +8,6 @@ import {
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { allPermissions } from '../../../../pages/shared-module/Models/Permissions';
 import { FeaturePermissions } from '../../Modals/feature-permissions';
-import { FeatureType } from '../../../feature-type/Modals/feature-type';
 import { Feature } from '../../Modals/feature';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
@@ -60,7 +59,6 @@ export class UpdateComponent {
     return this.auth.isAuthorized(per);
   }
   registerForm() {
-    console.log(this.config);
     this.form = {
       id: this.config.data?.id,
       nameEn: this.config.data?.nameEn,

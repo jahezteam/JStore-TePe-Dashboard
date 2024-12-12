@@ -1,24 +1,21 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ClipboardModule } from 'ngx-clipboard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from './../../src/environments/environment';
 // #fake-start#
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { LoaderInterceptor } from './pages/shared-module/Loader/loader-interceptor';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { TokenInterceptorInterceptor } from './modules/auth/services/token-interceptor.interceptor';
 import { TranslateModule } from '@ngx-translate/core';
-import { NgxIntlTelephoneInputModule } from "ngx-intl-telephone-input";
+import { NgxIntlTelephoneInputModule } from 'ngx-intl-telephone-input';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthenticationService } from './modules/auth/services/authentication.service';
-
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 // #fake-end#
 
@@ -40,6 +37,7 @@ import { AuthenticationService } from './modules/auth/services/authentication.se
     ProgressSpinnerModule,
     NgxIntlTelephoneInputModule,
     ClipboardModule,
+    LeafletModule,
     // #fake-start#
     // environment.isMockEnabled
     //   ? HttpClientInMemoryWebApiModule.forRoot(AuthenticationService, {
@@ -49,7 +47,7 @@ import { AuthenticationService } from './modules/auth/services/authentication.se
     //   : [],
     // #fake-end#
     AppRoutingModule,
-     NgbModule,
+    NgbModule,
     NgxPermissionsModule.forRoot(),
   ],
   providers: [
@@ -61,8 +59,12 @@ import { AuthenticationService } from './modules/auth/services/authentication.se
 
     // },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

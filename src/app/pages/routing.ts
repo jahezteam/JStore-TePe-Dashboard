@@ -86,6 +86,12 @@ const Routing: Routes = [
       import('../modules/contact/contact.module').then((m) => m.ContactModule),
   },
   {
+    path: 'branch',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/branch/branch.module').then((m) => m.BranchModule),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./builder/builder.module').then((m) => m.BuilderModule),

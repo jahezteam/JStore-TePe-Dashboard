@@ -6,6 +6,23 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
+              <app-pick-list-component
+                (inputValid)="isInputValid('featureTypeId', $event)"
+                [require]="true"
+                [filter]="false"
+                [showClear]="false"
+                [filterBy]="'name'"
+                [label]="'Feature Type'"
+                [options]="featureTypes"
+                [size]="'small'"
+                [(ngModel)]="selectedFeatureTypes"
+              ></app-pick-list-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
               <app-text-component
                 [(ngModel)]="form.nameAr"
                 [name]="'nameAr'"
@@ -51,24 +68,6 @@
                 [label]="'code'"
                 [disable]="false"
               ></app-text-component>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <app-pick-list-component
-                (inputValid)="isInputValid('featureTypeId', $event)"
-                [require]="true"
-                [filter]="false"
-                [showClear]="false"
-                [filterBy]="'name'"
-                [label]="'Feature Type'"
-                [options]="featureTypes"
-                [size]="'small'"
-                [(ngModel)]="selectedFeatureTypes"
-
-              ></app-pick-list-component>
             </div>
           </div>
         </div>

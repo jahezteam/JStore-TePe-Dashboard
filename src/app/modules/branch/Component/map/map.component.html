@@ -1,0 +1,21 @@
+<div class="mt-4">
+  <div class="map-container position-relative">
+    <div class="map-frame">
+      <div
+        id="map"
+        (click)="saveCoordinates()"
+        style="
+          height: 200px;
+          width: 100%;
+          border: 2px solid black;
+          margin: 0 auto;
+        "
+      ></div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-around mt-4">
+  <p>Lat : {{ lat }}</p>
+  <p>lng : {{ lng }}</p>
+</div>

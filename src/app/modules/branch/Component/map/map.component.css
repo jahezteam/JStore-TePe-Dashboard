@@ -1,0 +1,32 @@
+.modal-custom{
+  width: 80%;
+  margin: 2px auto;
+  z-index: 9999;
+}
+
+.map-frame {
+  width: 100%;
+  overflow: hidden; /* Prevent any overflow */
+}
+
+#map {
+
+}
+.map-container {
+  position: relative;
+  width: 100%;
+  height: auto; /* Allow flexible height */
+}
+
+#map {
+  width: 100%;
+  height: 200px; /* Adjust height for responsiveness */
+  border: 2px solid black;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  #map {
+    height: 150px; /* Smaller height for smaller screens */
+  }
+}
