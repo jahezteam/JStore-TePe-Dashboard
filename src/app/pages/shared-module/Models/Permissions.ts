@@ -15,6 +15,7 @@ export class allPermissions {
   region: permissionsCollection = new permissionsCollection();
   city: permissionsCollection = new permissionsCollection();
   newsLetter: permissionsCollection = new permissionsCollection();
+  contact: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -161,6 +162,17 @@ export class allPermissions {
       'SearchNewsLetter',
       'FilterNewsLetter',
       'NewsLetterDetails',
+    ];
+
+    this.contact.name = 'Contact';
+    this.contact.permissions = [
+      'ContactList',
+      'CreateContact',
+      'UpdateContact',
+      'DeleteContact',
+      'SearchContact',
+      'FilterContact',
+      'ContactDetails',
     ];
   }
 }
