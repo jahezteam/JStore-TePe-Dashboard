@@ -5,11 +5,12 @@ import { mainCategory } from '../../Models/mainCategory';
 import { mainCategoryPermissions } from '../../Models/mainCategoryPermissions';
 import { allPermissions } from '../../../../pages/shared-module/Models/Permissions';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-mainCategory-details',
   templateUrl: './mainCategory-details.component.html',
-  styleUrls: ['./mainCategory-details.component.scss']
+  styleUrls: ['./mainCategory-details.component.scss'],
 })
 export class MainCategoryDetailsComponent implements OnInit, OnDestroy {
   valid = false;
@@ -26,10 +27,12 @@ export class MainCategoryDetailsComponent implements OnInit, OnDestroy {
     image: '',
   };
 
-  constructor(private primengConfig: PrimeNGConfig,
+  constructor(
+    private primengConfig: PrimeNGConfig,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
-    private auth: AuthenticationService) { }
+    private auth: AuthenticationService,
+  ) {}
   ngOnDestroy(): void {
     if (this.ref) {
       this.ref.close();
@@ -50,7 +53,7 @@ export class MainCategoryDetailsComponent implements OnInit, OnDestroy {
       descriptionAr: this.config.data?.descriptionAr,
       descriptionEn: this.config.data?.descriptionEn,
       icon: this.config.data?.icon,
-      image: this.config.data?.image,
+      image: environment.imageUrl + this.config.data?.image.path,
     };
   }
   submit() {
@@ -60,4 +63,3 @@ export class MainCategoryDetailsComponent implements OnInit, OnDestroy {
     this.ref.close(null);
   }
 }
-

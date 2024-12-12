@@ -1,110 +1,123 @@
 @if (isAuth(mainCategorypermissions.UpdateMainCategory)) {
-<div class="container">
-  <p-toast position="top-right" key="tl"></p-toast>
-  <p-card class="">
-    <div class="Body">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <app-image-upload
-              [label]="'Image'"
-              [required]="true"
-              [maxSizeMB]="2"
-              [allowedTypes]="['image/jpeg', 'image/png']"
-              (imageSelected)="onImageSelected($event)"
-              (inputValid)="isInputValid('image', $event)"
-            >
-            </app-image-upload>
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-image-upload
+                [label]="'Image'"
+                [required]="true"
+                [maxSizeMB]="2"
+                [filePreview]="this.form.image"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                (imageSelected)="onImageSelected($event)"
+              >
+              </app-image-upload>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameAr"
+                [name]="'nameAr'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('nameAr', $event)"
+                [require]="true"
+                [label]="'Name Ar'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'nameEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('nameEn', $event)"
+                [require]="true"
+                [label]="'Name En'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor
+                [(ngModel)]="form.descriptionAr"
+                [name]="'descriptionAr'"
+                [minLength]="5"
+                [maxLength]="1000"
+                [size]="'small'"
+                (inputValid)="isInputValid('descriptionAr', $event)"
+                [require]="true"
+                [label]="'Description Ar'"
+                [disable]="false"
+              ></app-editor>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor
+                [(ngModel)]="form.descriptionEn"
+                [name]="'descriptionEn'"
+                [minLength]="5"
+                [maxLength]="1000"
+                [size]="'small'"
+                (inputValid)="isInputValid('descriptionEn', $event)"
+                [require]="true"
+                [label]="'Description En'"
+                [disable]="false"
+              ></app-editor>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.icon"
+                [name]="'icon'"
+                [minLength]="3"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('icon', $event)"
+                [require]="true"
+                [label]="'icon'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <app-text-component
-              [(ngModel)]="form.nameAr"
-              [name]="'nameAr'"
-              [minLength]="5"
-              [maxLength]="200"
-              [size]="'small'"
-              (inputValid)="isInputValid('nameAr', $event)"
-              [require]="true"
-              [label]="'Name Ar'"
-              [disable]="false"
-            ></app-text-component>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <app-text-component
-              [(ngModel)]="form.nameEn"
-              [name]="'nameEn'"
-              [minLength]="5"
-              [maxLength]="200"
-              [size]="'small'"
-              (inputValid)="isInputValid('nameEn', $event)"
-              [require]="true"
-              [label]="'Name En'"
-              [disable]="false"
-            ></app-text-component>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <app-editor
-              [(ngModel)]="form.descriptionAr"
-              [name]="'descriptionAr'"
-              [minLength]="5"
-              [maxLength]="1000"
-              [size]="'small'"
-              (inputValid)="isInputValid('descriptionAr', $event)"
-              [require]="true"
-              [label]="'Description Ar'"
-              [disable]="false"
-            ></app-editor>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <app-editor
-              [(ngModel)]="form.descriptionEn"
-              [name]="'descriptionEn'"
-              [minLength]="5"
-              [maxLength]="1000"
-              [size]="'small'"
-              (inputValid)="isInputValid('descriptionEn', $event)"
-              [require]="true"
-              [label]="'Description En'"
-              [disable]="false"
-            ></app-editor>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <app-text-component
-              [(ngModel)]="form.icon"
-              [name]="'icon'"
-              [minLength]="3"
-              [maxLength]="200"
-              [size]="'small'"
-              (inputValid)="isInputValid('icon', $event)"
-              [require]="true"
-              [label]="'icon'"
-              [disable]="false"
-            ></app-text-component>
-          </div>
-        </div>
-      </div>
-    </div>
-    <ng-template pTemplate="footer">
-      <button pButton type="button" label="Save" class="btn btn-success" (click)="submit()"
-        [disabled]="getValidation()"></button>&nbsp;
-      <button pButton type="button" label="cancel" class="btn btn-primary" (click)="cancel()"></button>
-    </ng-template>
-  </p-card>
-</div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Save"
+          class="btn btn-success"
+          (click)="submit()"
+          [disabled]="getValidation()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
 }

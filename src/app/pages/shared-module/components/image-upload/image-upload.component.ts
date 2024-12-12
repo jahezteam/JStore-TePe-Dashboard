@@ -1,4 +1,12 @@
-import { Component, ElementRef, EventEmitter, forwardRef, Input, Output, ViewChild, } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -44,34 +52,31 @@ export class ImageUploadComponent {
 
   onFileSelected(event: any): void {
     const file = event.target.files[0];
-
     if (!file) {
       this.setValidationError(this.requiredValidation);
       this.file = null;
       this.filePreview = null; // Clear preview
       return;
     }
-
     if (this.allowedTypes.length && !this.allowedTypes.includes(file.type)) {
       this.setValidationError(this.typeValidation);
       this.file = null;
       this.filePreview = null; // Clear preview
       return;
     }
-
     if (file.size > this.maxSizeMB * 1024 * 1024) {
       this.setValidationError(this.sizeValidation);
       this.file = null;
       this.filePreview = null; // Clear preview
       return;
     }
-
     this.clearValidationError();
     this.file = file;
     this.filePreview = URL.createObjectURL(file); // Generate preview URL
     this.propagateChange(this.file);
     this.imageSelected.emit(this.file);
     this.inputValid.emit(true);
+    console.log('File selected:', this.filePreview);
   }
 
   clearValidationError(): void {
