@@ -47,4 +47,4 @@ export const routes: Routes = [
   ],
   imports: [CommonModule, SharedModuleModule, RouterModule.forChild(routes)],
 })
-export class RegionModule {}
+export class CityModule {}

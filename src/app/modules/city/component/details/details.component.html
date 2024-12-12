@@ -1,0 +1,71 @@
+@if (isAuth(cityPermissions.CityDetails)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'NameEn'"
+                [size]="'small'"
+                [require]="false"
+                [label]="'Name En'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.name"
+                [name]="'name'"
+                [size]="'small'"
+                [require]="false"
+                [label]="'Name Ar'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-pick-list-component
+                [disable]="true"
+                [filter]="false"
+                [showClear]="false"
+                [filterBy]="'name'"
+                [label]="'Region'"
+                [options]="regions"
+                [size]="'small'"
+                [(ngModel)]="selectedRegion"
+              >
+              </app-pick-list-component>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Ok"
+          class="btn btn-success"
+          (click)="submit()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}

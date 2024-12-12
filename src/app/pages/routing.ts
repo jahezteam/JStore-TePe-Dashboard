@@ -72,6 +72,12 @@ const Routing: Routes = [
       import('../modules/region/region.module').then((m) => m.RegionModule),
   },
   {
+    path: 'city',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/city/city.module').then((m) => m.CityModule),
+  },
+  {
     path: 'newsletter',
     canActivate: [AuthGuard],
     loadChildren: () =>

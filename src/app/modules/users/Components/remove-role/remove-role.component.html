@@ -1,4 +1,3 @@
-
 @if (isAuth(userPermissions.RemoveFromRole)) {
   <div class="container">
     <p-toast position="top-right" key="tl"></p-toast>
@@ -7,9 +6,17 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <app-pick-list-component (changed)="onseletedChanged()"  [require]="false" [filter]="true" [showClear]="false"
-                [filterBy]="'name'" [label]="'Roles'"  [options]="roles"
-              [size]="'small'" [(ngModel)]="selectedRole"></app-pick-list-component>
+              <app-pick-list-component
+                (changed)="onseletedChanged()"
+                [require]="false"
+                [filter]="true"
+                [showClear]="false"
+                [filterBy]="'name'"
+                [label]="'Roles'"
+                [options]="roles"
+                [size]="'small'"
+                [(ngModel)]="selectedRole"
+              ></app-pick-list-component>
             </div>
           </div>
         </div>
@@ -20,7 +27,7 @@
                 <ul class="ROW">
                   <li>
                     <h3>
-                      {{item.name}} &nbsp;&nbsp;&nbsp;
+                      {{ item.name }} &nbsp;&nbsp;&nbsp;
                       <i class="fa fa-trash" (click)="deleteItem(item)"></i>
                     </h3>
                   </li>
@@ -31,8 +38,22 @@
         </div>
       </div>
       <ng-template pTemplate="footer">
-        <button pButton type="button" label="Remove" class="p-button-success" (click)="submit()" [disabled]="getValidation()"></button>&nbsp;
-        <button pButton type="button" label="cancel" class="p-button-danger" (click)="cancel()"></button>
+        <button
+          pButton
+          type="button"
+          label="Remove"
+          class="p-button-success"
+          (click)="submit()"
+          [disabled]="getValidation()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="p-button-danger"
+          (click)="cancel()"
+        ></button>
       </ng-template>
     </p-card>
   </div>

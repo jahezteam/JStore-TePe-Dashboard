@@ -1,22 +1,23 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { environment } from '../../../../../environments/environment';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { RegionPermissions } from '../../Models/regionPermissions';
+import { filter } from 'app/pages/shared-module/Models/filterModel';
 import { paginator } from '../../../../pages/shared-module/Models/Paginator';
-import { ActivatedRoute, Router } from '@angular/router';
+import { CityPermissions } from '../../models/cityPermissions';
 import {
   ConfirmationService,
   MessageService,
   PrimeNGConfig,
 } from 'primeng/api';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
-import { RegionService } from '../../Services/region.service';
-import { Region } from '../../Models/region';
-import { filter } from 'app/pages/shared-module/Models/filterModel';
+import { CityService } from '../../services/city.service';
+import { City } from '../../models/city';
 import { CreateComponent } from '../create/create.component';
-import { FilterComponent } from '../filter/filter.component';
-import { DetailsComponent } from '../details/details.component';
 import { UpdateComponent } from '../update/update.component';
+import { DetailsComponent } from '../details/details.component';
+import { FilterComponent } from '../filter/filter.component';
+import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 
 @Component({
   selector: 'app-list',
@@ -26,7 +27,7 @@ import { UpdateComponent } from '../update/update.component';
 })
 export class ListComponent {
   date: any;
-  regionPermissions = RegionPermissions;
+  cityPermissions = CityPermissions;
   filteredDate: any;
   currentPage = 1;
   totalPages: number = 0;
@@ -48,10 +49,11 @@ export class ListComponent {
   refFilter: DynamicDialogRef = {} as DynamicDialogRef;
   filter: filter = {} as filter;
   reffilter: DynamicDialogRef = {} as DynamicDialogRef;
+  regions: any;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: RegionService,
+    private service: CityService,
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig,
     public dialogService: DialogService,
@@ -59,12 +61,15 @@ export class ListComponent {
     private AuthService: AuthenticationService,
     private confirmationService: ConfirmationService,
     private auth: AuthenticationService,
+    private pickList: PickListService,
   ) {}
 
   ngOnInit(): void {
-    this.loadData();
+    this.pickList.getRegions().subscribe((res) => {
+      this.regions = res;
+      this.loadData();
+    });
   }
-
   loadData() {
     this.service.getPagination(this.paginator).subscribe((res: any) => {
       if (res) {
@@ -78,10 +83,13 @@ export class ListComponent {
           key: 'tl',
           severity: 'error',
           summary: 'Error',
-          detail: 'Error occured Please contact system adminstrator',
+          detail: 'Error occurred Please contact system adminstrator',
         });
       }
     });
+  }
+  getRegionName(id: number) {
+    return this.regions?.filter((x: any) => x.id === id)[0]?.name;
   }
   isAuth(per: string) {
     return this.auth.isAuthorized(per);
@@ -131,29 +139,25 @@ export class ListComponent {
       }
     });
   }
-  isAuthorized(per: string) {
-    return this.AuthService.isAuthorized(per);
-  }
 
   routeToAdd() {
-    this.router.navigateByUrl('/region/add');
+    this.router.navigateByUrl('/city/add');
   }
   routeToEdit(id: any) {
-    this.router.navigateByUrl('/region/edit/' + id);
+    this.router.navigateByUrl('/city/edit/' + id);
   }
   routeToDetails(id: any) {
-    this.router.navigateByUrl('/region/details/' + id);
+    this.router.navigateByUrl('/city/details/' + id);
   }
-
   openAddPopup() {
     this.ref = this.dialogService.open(CreateComponent, {
-      header: 'Create Region',
+      header: 'Create City',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
     });
 
-    this.ref.onClose.subscribe((item: Region) => {
+    this.ref.onClose.subscribe((item: City) => {
       if (item != null) {
         this.service.post(item).subscribe((res: any) => {
           if (res) {
@@ -161,7 +165,7 @@ export class ListComponent {
               key: 'tl',
               severity: 'success',
               summary: 'success',
-              detail: 'Region Created Succesfully',
+              detail: 'City Created Succesfully',
             });
             this.ngOnInit();
           } else {
@@ -178,16 +182,16 @@ export class ListComponent {
       }
     });
   }
-  openEditPopup(item: Region) {
+  openEditPopup(item: City) {
     this.editRef = this.dialogService.open(UpdateComponent, {
-      header: 'Edit Region',
+      header: 'Edit City',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
       data: item,
     });
 
-    this.editRef.onClose.subscribe((item: Region) => {
+    this.editRef.onClose.subscribe((item: City) => {
       if (item != null) {
         this.service.update(item).subscribe((res: any) => {
           if (res) {
@@ -195,7 +199,7 @@ export class ListComponent {
               key: 'tl',
               severity: 'success',
               summary: 'success',
-              detail: 'Region updated Succesfully',
+              detail: 'City updated Succesfully',
             });
             this.ngOnInit();
           } else {
@@ -212,22 +216,22 @@ export class ListComponent {
       }
     });
   }
-  openDetailsPopup(item: Region) {
+  openDetailsPopup(item: City) {
     this.refDetails = this.dialogService.open(DetailsComponent, {
-      header: 'Region Details',
+      header: 'City Details',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
       data: item,
     });
-    this.refDetails.onClose.subscribe((item: Region) => {
+    this.refDetails.onClose.subscribe((item: City) => {
       if (item != null) {
       }
     });
   }
   openFilterPopup() {
     this.reffilter = this.dialogService.open(FilterComponent, {
-      header: 'Filter Region',
+      header: 'Filter City',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
@@ -293,9 +297,9 @@ export class ListComponent {
     });
   }
 
-  deleteItem(item: Region) {
+  deleteItem(item: City) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to Delete This Region',
+      message: 'Are you sure you want to Delete This City',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
@@ -305,7 +309,7 @@ export class ListComponent {
               key: 'tl',
               severity: 'success',
               summary: 'success',
-              detail: 'Region Deleted Succesfully',
+              detail: 'City Deleted Successfully',
             });
             this.ngOnInit();
           } else {
@@ -313,7 +317,7 @@ export class ListComponent {
               key: 'tl',
               severity: 'error',
               summary: 'Error',
-              detail: 'Error occured Please contact system adminstrator',
+              detail: 'Error occurred Please contact system adminstrator',
             });
           }
         });
