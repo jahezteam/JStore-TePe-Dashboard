@@ -10,9 +10,9 @@
                 [label]="'Image'"
                 [required]="true"
                 [maxSizeMB]="2"
+                [filePreview]="this.form.image"
                 [allowedTypes]="['image/jpeg', 'image/png']"
                 (imageSelected)="onImageSelected($event)"
-                (inputValid)="isInputValid('image', $event)"
               >
               </app-image-upload>
             </div>
@@ -103,7 +103,6 @@
           <div class="col-md-12">
             <div class="form-group">
               <app-pick-list-component
-                (inputValid)="isInputValid('mainCategoryId', $event)"
                 [require]="true"
                 [filter]="false"
                 [showClear]="false"
