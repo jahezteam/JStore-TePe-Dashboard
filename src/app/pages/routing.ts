@@ -80,6 +80,12 @@ const Routing: Routes = [
       ),
   },
   {
+    path: 'contact',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/contact/contact.module').then((m) => m.ContactModule),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./builder/builder.module').then((m) => m.BuilderModule),

@@ -166,13 +166,13 @@ export class allPermissions {
 
     this.contact.name = 'Contact';
     this.contact.permissions = [
-      'ContactList',
-      'CreateContact',
-      'UpdateContact',
-      'DeleteContact',
-      'SearchContact',
-      'FilterContact',
-      'ContactDetails',
+      'ContactUsMessageList',
+      'CreateContactUsMessage',
+      'UpdateContactUsMessage',
+      'DeleteContactUsMessage',
+      'SearchContactUsMessage',
+      'FilterContactUsMessage',
+      'ContactUsMessageDetails',
     ];
   }
 }

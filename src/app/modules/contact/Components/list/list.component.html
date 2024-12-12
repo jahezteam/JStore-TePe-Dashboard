@@ -1,4 +1,4 @@
-@if (isAuth(newsletterPermissions.NewsLetterList)) {
+@if (isAuth(contactPermissions.ContactUsMessageList)) {
   <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <p-confirmDialog
       header="Delete Confirmation"
@@ -25,7 +25,7 @@
                     "
                   ></i>
                 </span>
-                @if (isAuth(newsletterPermissions.SearchNewsLetter)) {
+                @if (isAuth(contactPermissions.SearchContactUsMessage)) {
                   <input
                     type="text"
                     (input)="searchInput($event)"
@@ -53,7 +53,7 @@
                   </span>
                   Filter
                 </button>
-                @if (isAuth(newsletterPermissions.CreateNewsLetter)) {
+                @if (isAuth(contactPermissions.CreateContactUsMessage)) {
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -62,7 +62,7 @@
                     data-bs-target="#kt_modal_add_user"
                   >
                     <i class="fa-duotone fa-circle-plus"></i>
-                    Create Newsletter
+                    Create Contact
                   </button>
                 }
               </div>
@@ -77,20 +77,14 @@
                 <tr
                   class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
                 >
-                  <th pSortableColumn="name" class="min-w-125px">
-                    Email <p-sortIcon field="Email"></p-sortIcon>
+                  <th pSortableColumn="lastName" class="min-w-125px">
+                    name <p-sortIcon field="Email"></p-sortIcon>
                     <!-- <th pSortableColumn="isActive" class="min-w-125px">Is Active <p-sortIcon field="isActive"></p-sortIcon>
                       <th pSortableColumn="isDeleted" class="min-w-125px">Is Deleted <p-sortIcon field="isDeleted"></p-sortIcon> -->
                   </th>
-                  <th pSortableColumn="isSubScribe" class="min-w-125px">
-                    isSubscribe
-                  </th>
-                  <th pSortableColumn="isActive" class="min-w-125px">
-                    isActive
-                  </th>
-                  <th pSortableColumn="isDeleted" class="min-w-125px">
-                    isDeleted
-                  </th>
+                  <th pSortableColumn="email" class="min-w-125px">email</th>
+                  <th pSortableColumn="mobile" class="min-w-125px">mobile</th>
+                  <th pSortableColumn="content" class="min-w-125px">content</th>
                   <th class="min-w-100px Actionlabel">Actions</th>
                 </tr>
               </ng-template>
@@ -100,11 +94,10 @@
                 class="text-gray-600 fw-bold"
               >
                 <tr>
+                  <td>{{ item.firstName + " " + item.lastName }}</td>
                   <td>{{ item.email }}</td>
-                  <td>{{ item.isSubScribe }}</td>
-                  <td>{{ item.isActive }}</td>
-                  <td>{{ item.isDeleted }}</td>
-
+                  <td>{{ item.mobile }}</td>
+                  <td>{{ item.content }}</td>
                   <td class="">
                     <div ngbDropdown class="dropdown">
                       <div
@@ -123,15 +116,17 @@
                         class="dropdown-menu"
                         aria-labelledby="dropdownMenuLink"
                       >
-                        <!--                        @if (isAuth(newsletterPermissions.UpdateNewsLetter)) {-->
+                        <!--                        @if (isAuth(contactPermissions.UpdateContact)) {-->
                         <!--                          <span-->
                         <!--                            ngbDropdownItem-->
                         <!--                            (click)="openEditPopup(item)"-->
                         <!--                            class="dropdown-item"-->
-                        <!--                          >Edit</span-->
+                        <!--                            >Edit</span-->
                         <!--                          >-->
                         <!--                        }-->
-                        @if (isAuth(newsletterPermissions.NewsLetterDetails)) {
+                        @if (
+                          isAuth(contactPermissions.ContactUsMessageDetails)
+                        ) {
                           <span
                             ngbDropdownItem
                             (click)="openDetailsPopup(item)"
@@ -139,28 +134,14 @@
                             >Details</span
                           >
                         }
-                        @if (isAuth(newsletterPermissions.DeleteNewsLetter)) {
+                        @if (
+                          isAuth(contactPermissions.DeleteContactUsMessage)
+                        ) {
                           <span
                             ngbDropdownItem
                             (click)="deleteItem(item)"
                             class="dropdown-item"
                             >Delete</span
-                          >
-                        }
-                        @if (isAuth(newsletterPermissions.UpdateNewsLetter)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="toggleActive(item.id)"
-                            class="dropdown-item"
-                            >Toggle Active</span
-                          >
-                        }
-                        @if (isAuth(newsletterPermissions.UpdateNewsLetter)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="toggleSubscribe(item.id)"
-                            class="dropdown-item"
-                            >Toggle Subscribe</span
                           >
                         }
                       </div>

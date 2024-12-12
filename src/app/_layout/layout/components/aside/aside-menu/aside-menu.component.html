@@ -202,6 +202,20 @@
         </a>
       </div>
     }
+    @if (isAuth("ContactUsMessageList")) {
+      <div class="menu-item">
+        <a
+          class="menu-link"
+          routerLink="/contact/list"
+          routerLinkActive="active"
+        >
+          <span class="menu-icon">
+            <i class="fa-duotone fa-newspaper" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Contact"></span>
+        </a>
+      </div>
+    }
   </div>
 </div>
 
