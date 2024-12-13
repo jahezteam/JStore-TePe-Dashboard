@@ -104,6 +104,12 @@ const Routing: Routes = [
       import('../modules/slider/slider.module').then((m) => m.SliderModule),
   },
   {
+    path: 'about',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/about/about.module').then((m) => m.AboutModule),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./builder/builder.module').then((m) => m.BuilderModule),

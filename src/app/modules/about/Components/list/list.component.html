@@ -1,4 +1,4 @@
-@if (isAuth(sliderPermissions.SliderList)) {
+@if (isAuth(AboutPermissions.AboutUsList)) {
   <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <p-confirmDialog
       header="Delete Confirmation"
@@ -25,13 +25,13 @@
                     "
                   ></i>
                 </span>
-                @if (isAuth(sliderPermissions.SearchSlider)) {
+                @if (isAuth(AboutPermissions.SearchAboutUs)) {
                   <input
                     type="text"
                     (input)="searchInput($event)"
                     data-kt-user-table-filter="search"
                     class="form-control form-control-solid w-250px ps-14"
-                    placeholder="Search Slider ..."
+                    placeholder="Search About Us"
                   />
                 }
               </div>
@@ -53,7 +53,7 @@
                   </span>
                   Filter
                 </button>
-                @if (isAuth(sliderPermissions.CreateSlider)) {
+                @if (isAuth(AboutPermissions.CreateAboutUs)) {
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -62,7 +62,7 @@
                     data-bs-target="#kt_modal_add_user"
                   >
                     <i class="fa-duotone fa-circle-plus"></i>
-                    Create Slider
+                    Create About Us
                   </button>
                 }
               </div>
@@ -77,21 +77,20 @@
                 <tr
                   class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
                 >
-                  <th pSortableColumn="name" class="min-w-125px">Imgae</th>
+                  <th pSortableColumn="image" class="min-w-125px">Image</th>
 
-                  <th pSortableColumn="title" class="min-w-125px">
-                    Title AR <p-sortIcon field="title"></p-sortIcon>
+                  <th pSortableColumn="titleAr" class="min-w-125px">
+                    Title Ar <p-sortIcon field="titleAr"></p-sortIcon>
                   </th>
                   <th pSortableColumn="titleEn" class="min-w-125px">
                     Title En <p-sortIcon field="titleEn"></p-sortIcon>
                   </th>
-                  <th pSortableColumn="name" class="min-w-125px">
-                    Description
+                  <th pSortableColumn="descriptionAr" class="min-w-125px">
+                    summary Ar
                   </th>
-                  <th pSortableColumn="name" class="min-w-125px">
-                    Description En
+                  <th pSortableColumn="descriptionEn" class="min-w-125px">
+                    summary En
                   </th>
-                  <th pSortableColumn="name" class="min-w-125px">Link</th>
                   <th class="min-w-100px Actionlabel">Actions</th>
                 </tr>
               </ng-template>
@@ -109,19 +108,16 @@
                       alt=""
                     />
                   </td>
-                  <td>
-                    {{ item.title }}
-                  </td>
+                  <td>{{ item.titleAr }}</td>
                   <td>{{ item.titleEn }}</td>
-                  <td>{{ item.description }}</td>
-                  <td>{{ item.descriptionEn }}</td>
-                  <td>{{ item.link }}</td>
+                  <td>{{ item.summaryAr }}</td>
+                  <td>{{ item.summaryEn }}</td>
                   <td class="">
                     <div ngbDropdown class="dropdown">
                       <div
                         ngbDropdownToggle
                         class="btn btn-primary dropdown-toggle"
-                        slider="button"
+                        featureType="button"
                         id="dropdownMenuLink"
                         data-bs-toggle="dropdown"
                         aria-haspopup="true"
@@ -134,7 +130,7 @@
                         class="dropdown-menu"
                         aria-labelledby="dropdownMenuLink"
                       >
-                        @if (isAuth(sliderPermissions.UpdateSlider)) {
+                        @if (isAuth(AboutPermissions.UpdateAboutUs)) {
                           <span
                             ngbDropdownItem
                             (click)="openEditPopup(item)"
@@ -142,7 +138,7 @@
                             >Edit</span
                           >
                         }
-                        @if (isAuth(sliderPermissions.SliderDetails)) {
+                        @if (isAuth(AboutPermissions.AboutUsDetails)) {
                           <span
                             ngbDropdownItem
                             (click)="openDetailsPopup(item)"
@@ -150,7 +146,7 @@
                             >Details</span
                           >
                         }
-                        @if (isAuth(sliderPermissions.DeleteSlider)) {
+                        @if (isAuth(AboutPermissions.DeleteAboutUs)) {
                           <span
                             ngbDropdownItem
                             (click)="deleteItem(item)"

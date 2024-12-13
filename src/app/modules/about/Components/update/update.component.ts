@@ -6,7 +6,7 @@ import {
   DynamicDialogRef,
 } from 'primeng/dynamicdialog';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
-import { Slider, SliderPermissions } from '../../Models/slider';
+import { About, AboutPermissions } from '../../Models/about';
 import { allPermissions } from '../../../../pages/shared-module/Models/Permissions';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
@@ -19,23 +19,20 @@ import { environment } from '../../../../../environments/environment';
   providers: [ValidateService, DialogService, MessageService],
 })
 export class UpdateComponent {
+  aboutPermissions = AboutPermissions;
   valid = false;
-  sliderPermissions = SliderPermissions;
   allPermissions: allPermissions = new allPermissions();
-  permissions: any;
-  form: Slider = {
+  form: About = {
     id: 0,
-    title: '',
     titleEn: '',
-    summary: '',
-    summaryEn: '',
-    description: '',
+    titleAr: '',
     descriptionEn: '',
+    descriptionAr: '',
+    summaryAr: '',
+    summaryEn: '',
     image: '',
-    titleLink: '',
-    titleLinkEn: '',
-    link: '',
   };
+  permissions: any;
   selectedImage: any;
 
   constructor(
@@ -48,6 +45,7 @@ export class UpdateComponent {
     private pickList: PickListService,
     private auth: AuthenticationService,
   ) {}
+
   ngOnInit(): void {
     this.registerForm();
     this.primengConfig.ripple = true;
@@ -65,32 +63,29 @@ export class UpdateComponent {
   registerForm() {
     this.form = {
       id: this.config.data?.id,
-      title: this.config.data?.title,
       titleEn: this.config.data?.titleEn,
-      summary: this.config.data?.summary,
-      summaryEn: this.config.data?.summaryEn,
-      description: this.config.data?.description,
+      titleAr: this.config.data?.titleAr,
       descriptionEn: this.config.data?.descriptionEn,
+      descriptionAr: this.config.data?.descriptionAr,
+      summaryAr: this.config.data?.summaryAr,
+      summaryEn: this.config.data?.summaryEn,
       image: environment.imageUrl + this.config.data?.image.path,
-      titleLink: this.config.data?.titleLink,
-      titleLinkEn: this.config.data?.titleLinkEn,
-      link: this.config.data?.link,
     };
     this.validationService.registerForm([
-      'title',
       'titleEn',
-      'description',
+      'titleAr',
       'descriptionEn',
-      'image',
+      'descriptionAr',
+      'summaryAr',
+      'summaryEn',
     ]);
-    this.validationService.validStatus.subscribe((status) => {
-      this.valid = status;
-    });
+    this.validationService.validStatus.subscribe(
+      (status) => (this.valid = status),
+    );
   }
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);
   }
-
   getValidation() {
     return !this.valid;
   }

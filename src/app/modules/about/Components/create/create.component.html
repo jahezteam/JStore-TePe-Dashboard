@@ -1,0 +1,139 @@
+@if (isAuth(aboutPermissions.CreateAboutUs)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-image-upload
+                [label]="'Image'"
+                [required]="true"
+                [maxSizeMB]="2"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                (imageSelected)="onImageSelected($event)"
+                (inputValid)="isInputValid('image', $event)"
+              >
+              </app-image-upload>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.titleAr"
+                [name]="'titleAr'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('titleAr', $event)"
+                [require]="true"
+                [label]="'title Ar'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.titleEn"
+                [name]="'titleEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('titleEn', $event)"
+                [require]="true"
+                [label]="'title En'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.summaryAr"
+                [name]="'summaryAr'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('summaryAr', $event)"
+                [require]="true"
+                [label]="'summary Ar'"
+                [disable]="false"
+              ></app-text-area-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.summaryEn"
+                [name]="'summaryEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('summaryEn', $event)"
+                [require]="true"
+                [label]="'summary En'"
+                [disable]="false"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor
+                [(ngModel)]="form.descriptionAr"
+                [name]="'descriptionAr'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('descriptionAr', $event)"
+                [require]="true"
+                [label]="'description Ar'"
+                [disable]="false"
+              ></app-editor>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-editor
+                [(ngModel)]="form.descriptionEn"
+                [name]="'descriptionEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('descriptionEn', $event)"
+                [require]="true"
+                [label]="'description En'"
+                [disable]="false"
+              ></app-editor>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Save"
+          class="btn btn-success"
+          (click)="submit()"
+          [disabled]="getValidation()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}

@@ -181,6 +181,16 @@
                 </div>
               }
             </p-accordionTab>
+            <p-accordionTab header="About Us">
+              @for (item of allPermissions.about.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    (onChange)="onseletedChanged(item, $event)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
           </p-accordion>
         </div>
       </div>

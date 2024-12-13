@@ -18,6 +18,7 @@ export class allPermissions {
   contact: permissionsCollection = new permissionsCollection();
   branch: permissionsCollection = new permissionsCollection();
   slider: permissionsCollection = new permissionsCollection();
+  about: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -197,6 +198,33 @@ export class allPermissions {
       'SearchSlider',
       'FilterSlider',
       'SliderDetails',
+    ];
+
+    this.about.name = 'About';
+    this.about.permissions = [
+      'AboutUsList',
+      'CreateAboutUs',
+      'UpdateAboutUs',
+      'UpdateFeatureTitle',
+      'UpdateGoalTitle',
+      'DeleteAboutUs',
+      'SearchAboutUs',
+      'FilterAboutUs',
+      'AboutUsDetails',
+      'AboutUsFeatureList',
+      'CreateAboutUsFeature',
+      'UpdateAboutUsFeature',
+      'DeleteAboutUsFeature',
+      'SearchAboutUsFeature',
+      'FilterAboutUsFeature',
+      'AboutUsFeatureDetails',
+      'AboutUsGoalList',
+      'CreateAboutUsGoal',
+      'UpdateAboutUsGoal',
+      'DeleteAboutUsGoal',
+      'SearchAboutUsGoal',
+      'FilterAboutUsGoal',
+      'AboutUsGoalDetails',
     ];
   }
 }
