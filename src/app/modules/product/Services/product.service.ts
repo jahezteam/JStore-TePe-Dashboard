@@ -4,6 +4,7 @@ import { environment } from '../../../../environments/environment';
 import { paginator } from '../../../pages/shared-module/Models/Paginator';
 import { filter } from 'app/pages/shared-module/Models/filterModel';
 import { product } from '../Models/product';
+import { convertToFormData } from '../../../pages/shared-module/Models/convertToFormData';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,8 @@ export class ProductService {
   constructor(private ser: ApiCallerService) {}
 
   post(model: product) {
-    return this.ser.Create(model, '/Product/CreateProduct');
+    const data = convertToFormData(model);
+    return this.ser.CreateWithFile(data, '/Product/CreateProduct');
   }
   postFormData(model: FormData) {
     return this.ser.CreateWithFile(model, '/Product/CreateProduct');

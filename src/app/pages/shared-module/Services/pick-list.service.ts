@@ -16,6 +16,11 @@ export class PickListService {
       this.apiUrl + '/Product/GetMainCategoryLookup',
     );
   }
+  getFeatures() {
+    return this.caller.GetWithFullUrl(
+      this.apiUrl + '/Feature/GetAllPagging?PageNumber=1&PageSize=100',
+    );
+  }
   getFeatureTypes() {
     return this.caller.GetWithFullUrl(this.apiUrl + '/FeatureType/GetLookup');
   }

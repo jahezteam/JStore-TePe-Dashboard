@@ -185,7 +185,7 @@
             <button
               pButton
               type="button"
-              label="Add Colors"
+              label="Add Product Feature"
               class="btn btn-success"
               (click)="openAddPopup()"
             ></button>
@@ -201,13 +201,11 @@
                 <tr
                   class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
                 >
-                  <th class="min-w-125px">Feature Type</th>
+                  <th class="min-w-125px">Feature</th>
                   <th pSortableColumn="quantity" class="min-w-125px">
                     Quantity <p-sortIcon field="quantity"></p-sortIcon>
                   </th>
                   <th class="min-w-125px">Price</th>
-                  <th class="min-w-125px">Arabic Unt Price</th>
-                  <th class="min-w-125px">English Unit Price</th>
                   <!-- <th class=" min-w-100px Actionlabel ">Actions </th> -->
                 </tr>
               </ng-template>
@@ -220,8 +218,6 @@
                   <td>{{ getFeatureName(item.featureId) }}</td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.price }}</td>
-                  <td>{{ item.unitPriceAr }}</td>
-                  <td>{{ item.unitPriceEn }}</td>
 
                   <td class="">
                     <div ngbDropdown class="dropdown">

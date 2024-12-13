@@ -16,15 +16,20 @@ import { picklist } from 'app/pages/shared-module/Models/pickList';
 export class CreateProductFeatureComponent implements OnInit, OnDestroy {
   valid = false;
   featureType: picklist[] = [] as picklist[];
+  features: picklist[] = [];
+  selectedFeature: picklist = {} as picklist;
   selectedFeatureType: picklist = {} as picklist;
   form: productFeature = {
     id: 0,
-    unitPriceAr: '',
-    unitPriceEn: '',
     price: 0,
     quantity: 0,
     featureId: '',
+    unitPriceAr: 11,
+    unitPriceEn: 11,
+
+    images: [],
   };
+  selectedImages: File[] = [];
   constructor(
     private validationService: ValidateService,
     private primengConfig: PrimeNGConfig,
@@ -55,19 +60,12 @@ export class CreateProductFeatureComponent implements OnInit, OnDestroy {
   registerForm() {
     this.form = {
       id: 0,
-      unitPriceAr: '',
-      unitPriceEn: '',
       price: 0,
       quantity: 0,
       featureId: '',
+      images: [],
     };
-    this.validationService.registerForm([
-      'unitPriceAr',
-      'unitPriceEn',
-      'price',
-      'quantity',
-      'featureId',
-    ]);
+    this.validationService.registerForm(['price', 'quantity', 'featureId']);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),
     );
@@ -75,11 +73,26 @@ export class CreateProductFeatureComponent implements OnInit, OnDestroy {
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);
   }
+  handleImages(files: File[]): void {
+    this.selectedImages = files;
+  }
+  handleSelectFeatureType(event: any) {
+    this.selectedFeatureType = event.value;
+    this.features =
+      this.featureType.find((x) => x.id === this.selectedFeatureType.id)
+        ?.data || [];
+    console.log(this.features);
+  }
+  onInputValidation(isValid: boolean): boolean {
+    console.log('Are the inputs valid?', isValid);
+    return isValid;
+  }
   getValidation() {
     return !this.valid;
   }
   submit() {
-    this.form.featureId = this.selectedFeatureType.id;
+    this.form.images = this.selectedImages;
+    this.form.featureId = this.selectedFeature.id;
     this.ref.close(this.form);
   }
   cancel() {

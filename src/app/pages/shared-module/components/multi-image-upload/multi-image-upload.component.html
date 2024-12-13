@@ -1,0 +1,32 @@
+<div class="image-upload" [class.disabled]="disable">
+  <label>{{ label }}</label>
+  <div class="upload-area" (click)="onButtonClick()" *ngIf="!disable">
+    <input
+      #fileInput
+      type="file"
+      class="d-none"
+      (change)="onFilesSelected($event)"
+      [disabled]="disable"
+      multiple
+    />
+    <p>Click to select images</p>
+    <p *ngIf="files.length > 0">{{ files.length }} images selected</p>
+  </div>
+
+  <!-- Image Previews Section -->
+  <div class="image-previews" *ngIf="filePreviews.length > 0">
+    <div
+      *ngFor="let preview of filePreviews; let i = index"
+      class="image-preview"
+    >
+      <img [src]="preview" alt="Image Preview" />
+      <button type="button" class="remove-button" (click)="removeImage(i)">
+        Remove
+      </button>
+    </div>
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+</div>

@@ -1,4 +1,3 @@
-
 // export interface products {
 //   id: number;
 //   name: string,
@@ -12,26 +11,27 @@
 
 export interface product {
   id: number;
-  titleAr: string,
+  titleAr: string;
   titleEn: string;
   longDescriptionAr: string;
   longDescriptionEn: string;
   shortDescriptionAr: string;
   shortDescriptionEn: string;
-  modelNumber:string;
-  categoryId:string;
+  modelNumber: string;
+  categoryId: string;
   isActive: boolean;
   isDeleted: boolean;
-  features:productFeature[];
+  features: productFeature[];
 }
 export interface productFeature {
   id: number;
-  unitPriceAr: string,
-  unitPriceEn: string;
   price: number;
   quantity: number;
-  productId?:string;
-  featureId:string;
+  productId?: string;
+  featureId: string;
+  unitPriceAr?: number;
+  unitPriceEn?: number;
+  images: any[];
 }
 // export interface _products {
 //   id: number;

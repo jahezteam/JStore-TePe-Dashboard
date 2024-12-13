@@ -3,10 +3,24 @@
   <p-card class="">
     <div class="Body">
       <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <app-multi-image-upload
+              [label]="'Upload Your Images'"
+              [maxSizeMB]="10"
+              [allowedTypes]="['image/jpeg', 'image/png']"
+              [disable]="false"
+              (imagesSelected)="handleImages($event)"
+              (inputValid)="onInputValidation($event)"
+            ></app-multi-image-upload>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <app-pick-list-component
-              (inputValid)="isInputValid('featureId', $event)"
+              (changed)="handleSelectFeatureType($event)"
               [require]="true"
               [filter]="false"
               [showClear]="false"
@@ -18,6 +32,23 @@
             ></app-pick-list-component>
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <app-pick-list-component
+              (inputValid)="isInputValid('featureId', $event)"
+              [require]="true"
+              [filter]="false"
+              [showClear]="false"
+              [filterBy]="'name'"
+              [label]="'Feature'"
+              [options]="features"
+              [size]="'small'"
+              [(ngModel)]="selectedFeature"
+            ></app-pick-list-component>
+          </div>
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <app-number
@@ -33,8 +64,6 @@
             ></app-number>
           </div>
         </div>
-      </div>
-      <div class="row">
         <div class="col-md-6">
           <div class="form-group">
             <app-number
@@ -48,36 +77,6 @@
               [label]="'Price'"
               [disable]="false"
             ></app-number>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <app-text-component
-              [(ngModel)]="form.unitPriceAr"
-              [name]="'unitPriceAr'"
-              [minLength]="3"
-              [maxLength]="200"
-              [size]="'small'"
-              (inputValid)="isInputValid('unitPriceAr', $event)"
-              [require]="true"
-              [label]="'Arabic Unit Price'"
-              [disable]="false"
-            ></app-text-component>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <app-text-component
-              [(ngModel)]="form.unitPriceEn"
-              [name]="'unitPriceEn'"
-              [minLength]="3"
-              [maxLength]="200"
-              [size]="'small'"
-              (inputValid)="isInputValid('unitPriceEn', $event)"
-              [require]="true"
-              [label]="'English Unit Price'"
-              [disable]="false"
-            ></app-text-component>
           </div>
         </div>
       </div>

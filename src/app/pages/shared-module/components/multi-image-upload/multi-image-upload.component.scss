@@ -1,0 +1,49 @@
+.image-upload {
+  border: 1px dashed #ccc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.image-previews {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.image-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.image-preview {
+  position: relative;
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.image-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+}
+
+.remove-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+}

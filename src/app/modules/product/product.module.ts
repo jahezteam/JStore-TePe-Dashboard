@@ -12,6 +12,7 @@ import { SharedModuleModule } from '../../pages/shared-module/shared-module.modu
 import { ProductPermissions } from './Models/productPermissions';
 import { CreateProductFeatureComponent } from './Components/create-productFeature/create-productFeature.component';
 import { UpdateProductColorComponent } from './Components/update-productColor/update-productColor.component';
+import { MultiImageUploadComponent } from "../../pages/shared-module/components/multi-image-upload/multi-image-upload.component";
 
 export const routes: Routes = [
   {
@@ -48,13 +49,15 @@ export const routes: Routes = [
     UpdateProductComponent,
     ProductDetailsComponent,
     ProductListComponent,
-    FilterProductComponent,CreateProductFeatureComponent,
-    UpdateProductColorComponent
+    FilterProductComponent,
+    CreateProductFeatureComponent,
+    UpdateProductColorComponent,
   ],
   imports: [
     CommonModule,
     SharedModuleModule,
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+    MultiImageUploadComponent,
+  ],
 })
-export class ProductModule { }
+export class ProductModule {}

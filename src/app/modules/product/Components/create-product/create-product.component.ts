@@ -1,6 +1,10 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfirmationService, MessageService, PrimeNGConfig, } from 'primeng/api';
+import {
+  ConfirmationService,
+  MessageService,
+  PrimeNGConfig,
+} from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { ValidateService } from '../../../../pages/shared-module/Services/validate.service';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
@@ -10,7 +14,7 @@ import { product, productFeature } from '../../Models/product';
 import { ProductService } from '../../Services/product.service';
 import { picklist } from 'app/pages/shared-module/Models/pickList';
 import { CreateProductFeatureComponent } from '../create-productFeature/create-productFeature.component';
-import { CategorysService } from "../../../Category/Services/category.service";
+import { CategorysService } from '../../../Category/Services/category.service';
 
 @Component({
   selector: 'app-create-product',
@@ -31,7 +35,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
   categories: picklist[] = [] as picklist[];
   selectedCategory: picklist = {} as picklist;
   selectedMainCategory: picklist = {} as picklist;
-  featuresTypes: picklist[] = [] as picklist[];
+  features: picklist[] = [] as picklist[];
   form: product = {
     id: 0,
     titleAr: '',
@@ -69,13 +73,17 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     this.registerForm();
     this.primengConfig.ripple = true;
     this.getMainCategories();
-    this.getFeaturesTypes();
-  }
-  getFeaturesTypes() {
-    this.picklistService.getFeatureTypes().subscribe((res: any) => {
-      this.featuresTypes = res;
+    this.picklistService.getFeatures().subscribe((res: any) => {
+      this.features = res.items;
     });
   }
+  getFeatureName(id: string) {
+    if (this.features && this.features.length > 0) {
+      return this.features?.filter((x) => x.id == id)[0]?.nameAr;
+    }
+    return '';
+  }
+
   routrToList() {
     this.router.navigateByUrl('/product/list/*');
   }
@@ -137,7 +145,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
   handleSelectMainCategory(event: any) {
     this.picklistService.getMainCategories().subscribe((res: any) => {
       this.categories = res.find((x: any) => x.id == event.value.id).data;
-    })
+    });
   }
   deleteFeature(index: number) {
     this.confirmationService.confirm({
@@ -147,12 +155,6 @@ export class CreateProductComponent implements OnInit, OnDestroy {
         this.changeDetection.detectChanges();
       },
     });
-  }
-  getFeatureName(id: string) {
-    if (this.featuresTypes.length > 0) {
-      return this.featuresTypes.filter((x) => x.id == id)[0].name;
-    }
-    return '';
   }
 
   uploadFile = (files: any) => {
@@ -215,7 +217,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       shortDescriptionEn: '',
       modelNumber: '',
       categoryId: '8',
-      features:[],
+      features: [],
       isActive: true,
       isDeleted: false,
     };
