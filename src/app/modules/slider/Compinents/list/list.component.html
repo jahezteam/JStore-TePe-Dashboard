@@ -1,4 +1,4 @@
-@if (isAuth(regionPermissions.RegionList)) {
+@if (isAuth(sliderPermissions.SliderList)) {
   <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <p-confirmDialog
       header="Delete Confirmation"
@@ -25,13 +25,13 @@
                     "
                   ></i>
                 </span>
-                @if (isAuth(regionPermissions.SearchRegion)) {
+                @if (isAuth(sliderPermissions.SearchSlider)) {
                   <input
                     type="text"
                     (input)="searchInput($event)"
                     data-kt-user-table-filter="search"
                     class="form-control form-control-solid w-250px ps-14"
-                    placeholder="Search Region"
+                    placeholder="Search Slider ..."
                   />
                 }
               </div>
@@ -53,7 +53,7 @@
                   </span>
                   Filter
                 </button>
-                @if (isAuth(regionPermissions.CreateRegion)) {
+                @if (isAuth(sliderPermissions.CreateSlider)) {
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -62,7 +62,7 @@
                     data-bs-target="#kt_modal_add_user"
                   >
                     <i class="fa-duotone fa-circle-plus"></i>
-                    Create Region
+                    Create Slider
                   </button>
                 }
               </div>
@@ -77,12 +77,19 @@
                 <tr
                   class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
                 >
+                  <th pSortableColumn="name" class="min-w-125px">Imgae</th>
+
                   <th pSortableColumn="name" class="min-w-125px">
-                    Name Ar <p-sortIcon field="name"></p-sortIcon>
-                    <!-- <th pSortableColumn="isActive" class="min-w-125px">Is Active <p-sortIcon field="isActive"></p-sortIcon>
-                      <th pSortableColumn="isDeleted" class="min-w-125px">Is Deleted <p-sortIcon field="isDeleted"></p-sortIcon> -->
+                    Title <p-sortIcon field="name"></p-sortIcon>
                   </th>
-                  <th pSortableColumn="name" class="min-w-125px">Name En</th>
+                  <th pSortableColumn="name" class="min-w-125px">Title En</th>
+                  <th pSortableColumn="name" class="min-w-125px">
+                    Description
+                  </th>
+                  <th pSortableColumn="name" class="min-w-125px">
+                    Description En
+                  </th>
+                  <th pSortableColumn="name" class="min-w-125px">Link</th>
                   <th class="min-w-100px Actionlabel">Actions</th>
                 </tr>
               </ng-template>
@@ -92,17 +99,27 @@
                 class="text-gray-600 fw-bold"
               >
                 <tr>
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.nameEn }}</td>
-                  <!-- <td>{{item.isActive}}</td>
-                  <td>{{item.isDeleted}}</td> -->
-
+                  <td>
+                    <img
+                      [src]="environment.imageUrl + item.image.path"
+                      class="img-thumbnail"
+                      style="width: 100px; height: 100px"
+                      alt=""
+                    />
+                  </td>
+                  <td>
+                    {{ item.title }}
+                  </td>
+                  <td>{{ item.titleEn }}</td>
+                  <td>{{ item.description }}</td>
+                  <td>{{ item.descriptionEn }}</td>
+                  <td>{{ item.link }}</td>
                   <td class="">
                     <div ngbDropdown class="dropdown">
                       <div
                         ngbDropdownToggle
                         class="btn btn-primary dropdown-toggle"
-                        featureType="button"
+                        slider="button"
                         id="dropdownMenuLink"
                         data-bs-toggle="dropdown"
                         aria-haspopup="true"
@@ -115,7 +132,7 @@
                         class="dropdown-menu"
                         aria-labelledby="dropdownMenuLink"
                       >
-                        @if (isAuth(regionPermissions.UpdateRegion)) {
+                        @if (isAuth(sliderPermissions.UpdateSlider)) {
                           <span
                             ngbDropdownItem
                             (click)="openEditPopup(item)"
@@ -123,7 +140,7 @@
                             >Edit</span
                           >
                         }
-                        @if (isAuth(regionPermissions.RegionDetails)) {
+                        @if (isAuth(sliderPermissions.SliderDetails)) {
                           <span
                             ngbDropdownItem
                             (click)="openDetailsPopup(item)"
@@ -131,7 +148,7 @@
                             >Details</span
                           >
                         }
-                        @if (isAuth(regionPermissions.DeleteRegion)) {
+                        @if (isAuth(sliderPermissions.DeleteSlider)) {
                           <span
                             ngbDropdownItem
                             (click)="deleteItem(item)"

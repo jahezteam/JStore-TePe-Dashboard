@@ -98,6 +98,12 @@ const Routing: Routes = [
       import('../modules/branch/branch.module').then((m) => m.BranchModule),
   },
   {
+    path: 'slider',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/slider/slider.module').then((m) => m.SliderModule),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./builder/builder.module').then((m) => m.BuilderModule),

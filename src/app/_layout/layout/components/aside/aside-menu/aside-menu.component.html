@@ -240,6 +240,20 @@
         </a>
       </div>
     }
+    @if (isAuth("SliderList")) {
+      <div class="menu-item">
+        <a
+          class="menu-link"
+          routerLink="/slider/list"
+          routerLinkActive="active"
+        >
+          <span class="menu-icon">
+            <i class="fa-duotone fa-images" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Slider"></span>
+        </a>
+      </div>
+    }
   </div>
 </div>
 

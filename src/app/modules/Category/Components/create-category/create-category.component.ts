@@ -72,13 +72,10 @@ export class CreateCategoryComponent implements OnInit, OnDestroy {
       'image',
       'mainCategoryId',
     ]);
-    this.validationService.validStatus.subscribe(
-      (status) => {
-        this.form.mainCategoryId = this.selectedCategory.id;
-        this.valid = status
-      },
-    );
-
+    this.validationService.validStatus.subscribe((status) => {
+      this.form.mainCategoryId = this.selectedCategory.id;
+      this.valid = status;
+    });
   }
 
   isInputValid(name: string, status: boolean) {
@@ -95,10 +92,9 @@ export class CreateCategoryComponent implements OnInit, OnDestroy {
   cancel() {
     this.ref.close(null);
   }
-
   onImageSelected(file: any | null): void {
     if (file) {
-      this.form.image = file
+      this.form.image = file;
     } else {
       console.log('No file selected or invalid file.');
     }

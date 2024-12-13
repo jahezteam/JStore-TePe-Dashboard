@@ -17,6 +17,7 @@ export class allPermissions {
   newsLetter: permissionsCollection = new permissionsCollection();
   contact: permissionsCollection = new permissionsCollection();
   branch: permissionsCollection = new permissionsCollection();
+  slider: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -185,6 +186,17 @@ export class allPermissions {
       'SearchBranch',
       'FilterBranch',
       'BranchDetails',
+    ];
+
+    this.slider.name = 'Slider';
+    this.slider.permissions = [
+      'SliderList',
+      'CreateSlider',
+      'UpdateSlider',
+      'DeleteSlider',
+      'SearchSlider',
+      'FilterSlider',
+      'SliderDetails',
     ];
   }
 }

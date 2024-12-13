@@ -1,4 +1,4 @@
-@if (isAuth(categorypermissions.UpdateCategory)) {
+@if (isAuth(sliderPermissions.UpdateSlider)) {
   <div class="container">
     <p-toast position="top-right" key="tl"></p-toast>
     <p-card class="">
@@ -13,8 +13,8 @@
                 [filePreview]="form.image"
                 [allowedTypes]="['image/jpeg', 'image/png']"
                 (imageSelected)="onImageSelected($event)"
-              >
-              </app-image-upload>
+                (inputValid)="isInputValid('image', $event)"
+              ></app-image-upload>
             </div>
           </div>
         </div>
@@ -22,14 +22,14 @@
           <div class="col-md-6">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.nameAr"
-                [name]="'nameAr'"
+                [(ngModel)]="form.title"
+                [name]="'title'"
                 [minLength]="5"
                 [maxLength]="200"
                 [size]="'small'"
-                (inputValid)="isInputValid('nameAr', $event)"
+                (inputValid)="isInputValid('title', $event)"
                 [require]="true"
-                [label]="'Name Ar'"
+                [label]="'title Ar'"
                 [disable]="false"
               ></app-text-component>
             </div>
@@ -37,14 +37,14 @@
           <div class="col-md-6">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.nameEn"
-                [name]="'nameEn'"
+                [(ngModel)]="form.titleEn"
+                [name]="'titleEn'"
                 [minLength]="5"
                 [maxLength]="200"
                 [size]="'small'"
-                (inputValid)="isInputValid('nameEn', $event)"
+                (inputValid)="isInputValid('titleEn', $event)"
                 [require]="true"
-                [label]="'Name En'"
+                [label]="'title En'"
                 [disable]="false"
               ></app-text-component>
             </div>
@@ -53,47 +53,90 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <app-editor
-                [(ngModel)]="form.descriptionAr"
-                [name]="'descriptionAr'"
+              <app-text-component
+                [(ngModel)]="form.summary"
+                [name]="'summary'"
                 [minLength]="5"
-                [maxLength]="1000"
+                [maxLength]="200"
                 [size]="'small'"
-                (inputValid)="isInputValid('descriptionAr', $event)"
+                [require]="true"
+                [label]="'summary Ar'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.summaryEn"
+                [name]="'summaryEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'summary En'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.description"
+                [name]="'description'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('description', $event)"
                 [require]="true"
                 [label]="'Description Ar'"
                 [disable]="false"
-              ></app-editor>
+              ></app-text-area-component>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <app-editor
+              <app-text-area-component
                 [(ngModel)]="form.descriptionEn"
                 [name]="'descriptionEn'"
                 [minLength]="5"
-                [maxLength]="1000"
+                [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('descriptionEn', $event)"
                 [require]="true"
-                [label]="'Description En'"
+                [label]="'description En'"
                 [disable]="false"
-              ></app-editor>
+              ></app-text-area-component>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.icon"
-                [name]="'icon'"
-                [minLength]="3"
+                [(ngModel)]="form.titleLink"
+                [name]="'titleLink'"
+                [minLength]="5"
                 [maxLength]="200"
                 [size]="'small'"
-                (inputValid)="isInputValid('icon', $event)"
                 [require]="true"
-                [label]="'icon'"
+                [label]="'titleLink Ar'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.titleLinkEn"
+                [name]="'titleLinkEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'titleLink En'"
                 [disable]="false"
               ></app-text-component>
             </div>
@@ -102,16 +145,16 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              <app-pick-list-component
-                [require]="true"
-                [filter]="false"
-                [showClear]="false"
-                [filterBy]="'name'"
-                [label]="'Category'"
-                [options]="mainCategories"
+              <app-text-component
+                [(ngModel)]="form.link"
+                [name]="'link'"
+                [minLength]="5"
+                [maxLength]="300"
                 [size]="'small'"
-                [(ngModel)]="selectedCategory"
-              ></app-pick-list-component>
+                [require]="true"
+                [label]="'link'"
+                [disable]="false"
+              ></app-text-component>
             </div>
           </div>
         </div>

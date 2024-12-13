@@ -184,6 +184,17 @@
                 </div>
               }
             </p-accordionTab>
+            <p-accordionTab header="Slider">
+              @for (item of allPermissions.slider.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
           </p-accordion>
         </div>
       </div>

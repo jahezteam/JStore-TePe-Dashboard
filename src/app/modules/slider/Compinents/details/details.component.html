@@ -1,0 +1,149 @@
+@if (isAuth(sliderPermissions.SliderDetails)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-image-upload
+                [label]="'Image'"
+                [maxSizeMB]="2"
+                [filePreview]="form.image"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                [disable]="true"
+              ></app-image-upload>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.title"
+                [name]="'title'"
+                [size]="'small'"
+                [label]="'title Ar'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.titleEn"
+                [name]="'titleEn'"
+                [size]="'small'"
+                [require]="true"
+                [label]="'title En'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.summary"
+                [name]="'summary'"
+                [size]="'small'"
+                [label]="'summary Ar'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.summaryEn"
+                [name]="'summaryEn'"
+                [size]="'small'"
+                [label]="'summary En'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.description"
+                [name]="'description'"
+                [size]="'small'"
+                [label]="'Description Ar'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.descriptionEn"
+                [name]="'descriptionEn'"
+                [size]="'small'"
+                [label]="'description En'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.titleLink"
+                [name]="'titleLink'"
+                [size]="'small'"
+                [label]="'titleLink Ar'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.titleLinkEn"
+                [name]="'titleLinkEn'"
+                [size]="'small'"
+                [label]="'titleLink En'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.link"
+                [name]="'link'"
+                [size]="'small'"
+                [label]="'link'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="OK"
+          class="btn btn-success"
+          (click)="submit()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}
