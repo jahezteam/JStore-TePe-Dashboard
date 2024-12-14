@@ -9,6 +9,7 @@ import { DetailsComponent } from './Components/details/details.component';
 import { FilterComponent } from './Components/filter/filter.component';
 import { UpdateComponent } from './Components/update/update.component';
 import { AboutPermissions } from './Models/about';
+import { FeatureListComponent } from './Components/about-feature/feature-list/feature-list.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,12 @@ export const routes: Routes = [
     component: DetailsComponent,
     canActivate: [PermissionGuard],
     data: { permission: AboutPermissions.AboutUsDetails },
+  },
+  {
+    path: 'features/:id',
+    component: FeatureListComponent,
+    canActivate: [PermissionGuard],
+    data: { permission: AboutPermissions.AboutUsFeatureList },
   },
 ];
 

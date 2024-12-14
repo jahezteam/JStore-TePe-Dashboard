@@ -139,6 +139,9 @@ export class ListComponent {
   routeToDetails(id: any) {
     this.router.navigateByUrl('/about/details/' + id);
   }
+  routeToAboutFeatures(id: any) {
+    this.router.navigateByUrl('/about/features/' + id);
+  }
 
   openAddPopup() {
     this.ref = this.dialogService.open(CreateComponent, {
@@ -223,6 +226,7 @@ export class ListComponent {
       }
     });
   }
+
   openFilterPopup() {
     this.reffilter = this.dialogService.open(FilterComponent, {
       header: 'Filter About',

@@ -45,7 +45,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     shortDescriptionAr: '',
     shortDescriptionEn: '',
     modelNumber: '',
-    categoryId: '8',
+    categoryId: '',
     features: [] as productFeature[],
     isActive: true,
     isDeleted: false,
@@ -177,6 +177,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     this.file = fileToUpload;
   };
   submit() {
+    this.form.categoryId = this.selectedCategory.id;
     this.service.post(this.form).subscribe((res: any) => {
       if (res) {
         this.messageService.add({
@@ -216,7 +217,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       shortDescriptionAr: '',
       shortDescriptionEn: '',
       modelNumber: '',
-      categoryId: '8',
+      categoryId: '',
       features: [],
       isActive: true,
       isDeleted: false,
