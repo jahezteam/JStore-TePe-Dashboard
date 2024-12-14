@@ -142,6 +142,9 @@ export class ListComponent {
   routeToAboutFeatures(id: any) {
     this.router.navigateByUrl('/about/features/' + id);
   }
+  routeToAboutGoals(id: any) {
+    this.router.navigateByUrl('/about/goals/' + id);
+  }
 
   openAddPopup() {
     this.ref = this.dialogService.open(CreateComponent, {

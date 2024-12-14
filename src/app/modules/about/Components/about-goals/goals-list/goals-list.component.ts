@@ -1,29 +1,29 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { filter } from 'app/pages/shared-module/Models/filterModel';
-import { AboutPermissions, AboutUsFeacturers } from '../../../Models/about';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AboutService } from '../../../Services/about.service';
+import { SharedModuleModule } from '../../../../../pages/shared-module/shared-module.module';
 import {
   ConfirmationService,
   MessageService,
   PrimeNGConfig,
 } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { AboutPermissions, AboutUsGoals } from '../../../Models/about';
+import { filter } from 'app/pages/shared-module/Models/filterModel';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AboutService } from '../../../Services/about.service';
 import { AuthenticationService } from '../../../../auth/services/authentication.service';
-import { CreateFeatureComponent } from '../create-feature/create-feature.component';
-import { UpdateFeatureComponent } from '../update-feature/update-feature.component';
-import { DetailsFeatureComponent } from '../details-feature/details-feature.component';
-import { SharedModuleModule } from '../../../../../pages/shared-module/shared-module.module';
+import { CreateGoalsComponent } from '../create-goals/create-goals.component';
+import { UpdateGoalsComponent } from '../update-goals/update-goals.component';
+import { DetailsGoalsComponent } from '../details-goals/details-goals.component';
 
 @Component({
-  selector: 'app-feature-list',
+  selector: 'app-goals-list',
   standalone: true,
   imports: [SharedModuleModule],
-  templateUrl: './feature-list.component.html',
-  styleUrl: './feature-list.component.scss',
   providers: [MessageService, DialogService, ConfirmationService],
+  templateUrl: './goals-list.component.html',
+  styleUrl: './goals-list.component.scss',
 })
-export class FeatureListComponent {
+export class GoalsListComponent {
   date: any;
   aboutPermissions = AboutPermissions;
   filteredDate: any;
@@ -33,6 +33,7 @@ export class FeatureListComponent {
   filter: filter = {} as filter;
   reffilter: DynamicDialogRef = {} as DynamicDialogRef;
   aboutId: number = 0;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -52,12 +53,13 @@ export class FeatureListComponent {
   ngOnInit(): void {
     this.loadData();
   }
+
   loadData() {
     this.service.getById(this.aboutId).subscribe((res: any) => {
       if (res) {
         console.log(res);
-        this.date = res.aboutUsFeacturers;
-        this.filteredDate = res.aboutUsFeacturers;
+        this.date = res.aboutUsGoals;
+        this.filteredDate = res.aboutUsGoals;
         this.changeDetection.detectChanges();
       } else {
         this.messageService.add({
@@ -80,23 +82,24 @@ export class FeatureListComponent {
   checkString(item: string) {
     return item != null && item != '' && item != ' ';
   }
+
   openAddPopup() {
-    this.ref = this.dialogService.open(CreateFeatureComponent, {
-      header: 'Create About Feature',
+    this.ref = this.dialogService.open(CreateGoalsComponent, {
+      header: 'Create About Goals',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
     });
 
-    this.ref.onClose.subscribe((item: AboutUsFeacturers) => {
+    this.ref.onClose.subscribe((item: AboutUsGoals) => {
       if (item != null) {
-        this.service.postFeature(item).subscribe((res: any) => {
+        this.service.postGoal(item).subscribe((res: any) => {
           if (res) {
             this.messageService.add({
               key: 'tl',
               severity: 'success',
               summary: 'success',
-              detail: 'About Feature Created Succesfully',
+              detail: 'About Goals Created Successfully',
             });
             this.ngOnInit();
           } else {
@@ -113,27 +116,28 @@ export class FeatureListComponent {
       }
     });
   }
-  openEditPopup(item: AboutUsFeacturers) {
-    this.service.getFeatureById(item.id).subscribe((res: any) => {
+
+  openEditPopup(item: AboutUsGoals) {
+    this.service.getGoalById(item.id).subscribe((res: any) => {
       item = res;
     });
-    this.editRef = this.dialogService.open(UpdateFeatureComponent, {
-      header: 'Edit About Feature',
+    this.editRef = this.dialogService.open(UpdateGoalsComponent, {
+      header: 'Edit About Goals',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
       data: item,
     });
 
-    this.editRef.onClose.subscribe((item: AboutUsFeacturers) => {
+    this.editRef.onClose.subscribe((item: AboutUsGoals) => {
       if (item != null) {
-        this.service.updateFeature(item).subscribe((res: any) => {
+        this.service.updateGoal(item).subscribe((res: any) => {
           if (res) {
             this.messageService.add({
               key: 'tl',
               severity: 'success',
               summary: 'success',
-              detail: 'About updated Successfully',
+              detail: 'About Goals updated Successfully',
             });
             this.ngOnInit();
           } else {
@@ -150,33 +154,33 @@ export class FeatureListComponent {
       }
     });
   }
-  openDetailsPopup(item: AboutUsFeacturers) {
-    this.refDetails = this.dialogService.open(DetailsFeatureComponent, {
-      header: 'About Feature Details',
+  openDetailsPopup(item: AboutUsGoals) {
+    this.refDetails = this.dialogService.open(DetailsGoalsComponent, {
+      header: 'About Goals Details',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
       data: item,
     });
-    this.refDetails.onClose.subscribe((item: AboutUsFeacturers) => {
+    this.refDetails.onClose.subscribe((item: AboutUsGoals) => {
       if (item != null) {
       }
     });
   }
 
-  deleteItem(item: AboutUsFeacturers) {
+  deleteItem(item: AboutUsGoals) {
     this.confirmationService.confirm({
-      message: 'Are you sure you want to Delete This About Feature?',
+      message: 'Are you sure you want to Delete This About Goals?',
       header: 'Confirm',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.service.deleteFeature(item.id).subscribe((res: any) => {
+        this.service.deleteGoal(item.id).subscribe((res: any) => {
           if (res) {
             this.messageService.add({
               key: 'tl',
               severity: 'success',
               summary: 'success',
-              detail: 'About Feature Deleted Succesfully',
+              detail: 'About Goals Deleted Succesfully',
             });
             this.ngOnInit();
           } else {
@@ -190,11 +194,5 @@ export class FeatureListComponent {
         });
       },
     });
-  }
-
-  ngOnDestroy(): void {
-    if (this.ref) {
-      this.ref.close();
-    }
   }
 }

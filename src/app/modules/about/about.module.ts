@@ -10,6 +10,7 @@ import { FilterComponent } from './Components/filter/filter.component';
 import { UpdateComponent } from './Components/update/update.component';
 import { AboutPermissions } from './Models/about';
 import { FeatureListComponent } from './Components/about-feature/feature-list/feature-list.component';
+import { GoalsListComponent } from './Components/about-goals/goals-list/goals-list.component';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,12 @@ export const routes: Routes = [
     component: FeatureListComponent,
     canActivate: [PermissionGuard],
     data: { permission: AboutPermissions.AboutUsFeatureList },
+  },
+  {
+    path: 'goals/:id',
+    component: GoalsListComponent,
+    canActivate: [PermissionGuard],
+    data: { permission: AboutPermissions.AboutUsGoalList },
   },
 ];
 

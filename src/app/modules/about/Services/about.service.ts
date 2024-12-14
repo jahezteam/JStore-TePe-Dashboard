@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiCallerService } from '../../../pages/shared-module/Services/api-caller.service';
 import { convertToFormData } from '../../../pages/shared-module/Models/convertToFormData';
-import { About } from '../Models/about';
+import { About, AboutUsGoals } from '../Models/about';
 
 @Injectable({
   providedIn: 'root',
@@ -83,6 +83,43 @@ export class AboutService {
     return this.ser.DeleteWithQueryParam(
       id,
       '/AboutUsFeature/DeleteAboutUsFeature?Id=' + id,
+    );
+  }
+
+  postGoal(model: AboutUsGoals) {
+    const formData = convertToFormData(model);
+    return this.ser.Create(formData, '/AboutGoal/CreateAboutUsGoal');
+  }
+  getGoalById(id: number) {
+    return this.ser.GetById('/AboutGoal/GetAboutUsGoalById?Id=' + id);
+  }
+  getGoalList() {
+    return this.ser.GetWithFullUrl('/AboutGoal/GetAboutUsGoal');
+  }
+  getGoalPagination(model: any, isSearch: boolean = false) {
+    return this.ser.getPagination(model, '/AboutGoal/GetAllPagging', isSearch);
+  }
+  getGoalPaginationFilter(isActive: boolean, model: any) {
+    return this.ser.getFilterPagination(
+      '/AboutGoal/GetFilteredPaginated?PageNumber=' +
+        model.pageNumber +
+        '&PageSize=' +
+        model.pageSize +
+        '&IsActive=' +
+        isActive,
+    );
+  }
+  searchGoal(model: any, isSearch: boolean = false) {
+    return this.ser.getPagination(model, '/AboutGoal/SearchPagging', isSearch);
+  }
+  updateGoal(model: AboutUsGoals) {
+    const formData = convertToFormData(model);
+    return this.ser.Update(formData, '/AboutGoal/UpdateAboutUsGoal');
+  }
+  deleteGoal(id: number) {
+    return this.ser.DeleteWithQueryParam(
+      id,
+      '/AboutGoal/DeleteAboutUsGoal?Id=' + id,
     );
   }
 }

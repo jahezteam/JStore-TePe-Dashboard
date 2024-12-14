@@ -1,4 +1,4 @@
-@if (isAuth(AboutPermissions.AboutUsList)) {
+@if (isAuth(aboutPermissions.AboutUsGoalList)) {
   <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <p-confirmDialog
       header="Delete Confirmation"
@@ -15,45 +15,13 @@
             <!--begin::Card title-->
             <div class="card-title">
               <!--begin::Search-->
-              <div class="d-flex align-items-center position-relative my-1">
-                <span class="svg-icon svg-icon-1 position-absolute ms-6">
-                  <i
-                    class="fa-duotone fa-magnifying-glass fa-lg"
-                    style="
-                      --fa-primary-color: #764ef2;
-                      --fa-secondary-color: #764ef2;
-                    "
-                  ></i>
-                </span>
-                @if (isAuth(AboutPermissions.SearchAboutUs)) {
-                  <input
-                    type="text"
-                    (input)="searchInput($event)"
-                    data-kt-user-table-filter="search"
-                    class="form-control form-control-solid w-250px ps-14"
-                    placeholder="Search About Us"
-                  />
-                }
-              </div>
             </div>
             <div class="card-toolbar">
               <div
                 class="d-flex justify-content-end"
                 data-kt-user-table-toolbar="base"
               >
-                <button
-                  type="button"
-                  (click)="openFilterPopup()"
-                  class="btn btn-light-primary me-3"
-                  data-kt-menu-trigger="click"
-                  data-kt-menu-placement="bottom-end"
-                >
-                  <span class="svg-icon svg-icon-2">
-                    <i class="fa-duotone fa-filters"></i>
-                  </span>
-                  Filter
-                </button>
-                @if (isAuth(AboutPermissions.CreateAboutUs)) {
+                @if (isAuth(aboutPermissions.CreateAboutUsGoal)) {
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -62,7 +30,7 @@
                     data-bs-target="#kt_modal_add_user"
                   >
                     <i class="fa-duotone fa-circle-plus"></i>
-                    Create About Us
+                    Create About Us Goal
                   </button>
                 }
               </div>
@@ -77,19 +45,14 @@
                 <tr
                   class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
                 >
-                  <th pSortableColumn="image" class="min-w-125px">Image</th>
-
                   <th pSortableColumn="titleAr" class="min-w-125px">
                     Title Ar <p-sortIcon field="titleAr"></p-sortIcon>
                   </th>
                   <th pSortableColumn="titleEn" class="min-w-125px">
                     Title En <p-sortIcon field="titleEn"></p-sortIcon>
                   </th>
-                  <th pSortableColumn="descriptionAr" class="min-w-125px">
-                    summary Ar
-                  </th>
-                  <th pSortableColumn="descriptionEn" class="min-w-125px">
-                    summary En
+                  <th pSortableColumn="icon" class="min-w-125px">
+                    Icon Name <p-sortIcon field="icon"></p-sortIcon>
                   </th>
                   <th class="min-w-100px Actionlabel">Actions</th>
                 </tr>
@@ -100,18 +63,9 @@
                 class="text-gray-600 fw-bold"
               >
                 <tr>
-                  <td>
-                    <img
-                      [src]="environment.imageUrl + item.image.path"
-                      class="img-thumbnail"
-                      style="width: 100px; height: 100px"
-                      alt=""
-                    />
-                  </td>
                   <td>{{ item.titleAr }}</td>
                   <td>{{ item.titleEn }}</td>
-                  <td>{{ item.summaryAr }}</td>
-                  <td>{{ item.summaryEn }}</td>
+                  <td>{{ item.icon }}</td>
                   <td class="">
                     <div ngbDropdown class="dropdown">
                       <div
@@ -130,7 +84,7 @@
                         class="dropdown-menu"
                         aria-labelledby="dropdownMenuLink"
                       >
-                        @if (isAuth(AboutPermissions.UpdateAboutUs)) {
+                        @if (isAuth(aboutPermissions.UpdateAboutUsGoal)) {
                           <span
                             ngbDropdownItem
                             (click)="openEditPopup(item)"
@@ -138,23 +92,7 @@
                             >Edit</span
                           >
                         }
-                        @if (isAuth(AboutPermissions.AboutUsFeatureList)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="routeToAboutFeatures(item.id)"
-                            class="dropdown-item"
-                            >Features</span
-                          >
-                        }
-                        @if (isAuth(AboutPermissions.AboutUsGoalList)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="routeToAboutGoals(item.id)"
-                            class="dropdown-item"
-                            >Goals</span
-                          >
-                        }
-                        @if (isAuth(AboutPermissions.AboutUsDetails)) {
+                        @if (isAuth(aboutPermissions.AboutUsGoalList)) {
                           <span
                             ngbDropdownItem
                             (click)="openDetailsPopup(item)"
@@ -162,7 +100,7 @@
                             >Details</span
                           >
                         }
-                        @if (isAuth(AboutPermissions.DeleteAboutUs)) {
+                        @if (isAuth(aboutPermissions.DeleteAboutUsGoal)) {
                           <span
                             ngbDropdownItem
                             (click)="deleteItem(item)"
@@ -177,15 +115,6 @@
               </ng-template>
             </p-table>
             <br />
-            <app-paging
-              [currentPage]="currentPage"
-              [pager]="pager"
-              [totalPages]="totalPages"
-              (clickSetPage)="changePage($event)"
-              [pageSize]="pageSize"
-              (clickSetPageSize)="changePageSize($event)"
-            >
-            </app-paging>
           </div>
         </div>
       </div>
