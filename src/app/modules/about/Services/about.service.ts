@@ -42,4 +42,47 @@ export class AboutService {
   delete(id: number) {
     return this.ser.DeleteWithQueryParam(id, '/AboutUs/DeleteAboutUs?Id=' + id);
   }
+
+  postFeature(model: any) {
+    return this.ser.Create(model, '/AboutUsFeature/CreateAboutUsFeature');
+  }
+  getFeatureById(id: number) {
+    return this.ser.GetById('/AboutUsFeature/GetAboutUsFeatureById?Id=' + id);
+  }
+  getFeatureList() {
+    return this.ser.GetWithFullUrl('/AboutUsFeature/GetAboutUsFeature');
+  }
+  getFeaturePagination(model: any, isSearch: boolean = false) {
+    return this.ser.getPagination(
+      model,
+      '/AboutUsFeature/GetAllPagging',
+      isSearch,
+    );
+  }
+  getFeaturePaginationFilter(isActive: boolean, model: any) {
+    return this.ser.getFilterPagination(
+      '/AboutUsFeature/GetFilteredPaginated?PageNumber=' +
+        model.pageNumber +
+        '&PageSize=' +
+        model.pageSize +
+        '&IsActive=' +
+        isActive,
+    );
+  }
+  searchFeature(model: any, isSearch: boolean = false) {
+    return this.ser.getPagination(
+      model,
+      '/AboutUsFeature/SearchPagging',
+      isSearch,
+    );
+  }
+  updateFeature(model: any) {
+    return this.ser.Update(model, '/AboutUsFeature/UpdateAboutUsFeature');
+  }
+  deleteFeature(id: number) {
+    return this.ser.DeleteWithQueryParam(
+      id,
+      '/AboutUsFeature/DeleteAboutUsFeature?Id=' + id,
+    );
+  }
 }
