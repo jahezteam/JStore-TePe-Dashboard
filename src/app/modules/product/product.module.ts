@@ -11,8 +11,8 @@ import { PermissionGuard } from '../auth/services/permission.guard';
 import { SharedModuleModule } from '../../pages/shared-module/shared-module.module';
 import { ProductPermissions } from './Models/productPermissions';
 import { CreateProductFeatureComponent } from './Components/create-productFeature/create-productFeature.component';
-import { UpdateProductColorComponent } from './Components/update-productColor/update-productColor.component';
-import { MultiImageUploadComponent } from "../../pages/shared-module/components/multi-image-upload/multi-image-upload.component";
+import { UpdateProductFeatureComponent } from './Components/update-productFeature/update-productFeature.component';
+import { MultiImageUploadComponent } from '../../pages/shared-module/components/multi-image-upload/multi-image-upload.component';
 
 export const routes: Routes = [
   {
@@ -26,7 +26,6 @@ export const routes: Routes = [
     component: ProductListComponent,
     canActivate: [PermissionGuard],
     data: { permission: ProductPermissions.ProductList },
-
   },
   {
     path: 'edit/:id/:searchValue',
@@ -39,9 +38,7 @@ export const routes: Routes = [
     component: ProductDetailsComponent,
     canActivate: [PermissionGuard],
     data: { permission: ProductPermissions.ProductDetails },
-  }
-
-
+  },
 ];
 @NgModule({
   declarations: [
@@ -51,7 +48,7 @@ export const routes: Routes = [
     ProductListComponent,
     FilterProductComponent,
     CreateProductFeatureComponent,
-    UpdateProductColorComponent,
+    UpdateProductFeatureComponent,
   ],
   imports: [
     CommonModule,

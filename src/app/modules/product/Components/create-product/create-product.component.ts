@@ -15,6 +15,8 @@ import { ProductService } from '../../Services/product.service';
 import { picklist } from 'app/pages/shared-module/Models/pickList';
 import { CreateProductFeatureComponent } from '../create-productFeature/create-productFeature.component';
 import { CategorysService } from '../../../Category/Services/category.service';
+import { environment } from '../../../../../environments/environment';
+import { UpdateProductFeatureComponent } from '../update-productFeature/update-productFeature.component';
 
 @Component({
   selector: 'app-create-product',
@@ -50,6 +52,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     isActive: true,
     isDeleted: false,
   };
+  urlCache: Map<File[], string> = new Map();
   ref: DynamicDialogRef = new DynamicDialogRef();
   pFeatures: productFeature[] = [] as productFeature[];
   imagePath: number = 0;
@@ -83,7 +86,9 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     }
     return '';
   }
-
+  imagePreview(files: any) {
+    return URL.createObjectURL(files);
+  }
   routrToList() {
     this.router.navigateByUrl('/product/list/*');
   }
@@ -101,13 +106,41 @@ export class CreateProductComponent implements OnInit, OnDestroy {
       (status) => (this.valid = status),
     );
   }
-
   openAddPopup() {
     this.ref = this.dialogService.open(CreateProductFeatureComponent, {
-      header: 'Create Color',
+      header: 'Create Product Feature',
       width: '75%',
       contentStyle: { 'max-height': '750px', overflow: 'auto' },
       baseZIndex: 10000,
+    });
+
+    this.ref.onClose.subscribe((item: productFeature) => {
+      console.log(item);
+
+      if (item != null) {
+        this.pFeatures.push(item);
+        this.form.features.push(item);
+        // this.service.post(item).subscribe((res: any) => {
+        //   if (res) {
+        //     this.messageService.add({ key: 'tl', severity: 'success', summary: 'success', detail: 'Color Created Succesfully' });
+        //     this.ngOnInit();
+        //   }
+        //   else {
+        //     this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Error occured Please contact system adminstrator' });
+        //   }
+        // });
+
+        this.changeDetection.detectChanges();
+      }
+    });
+  }
+  openUpdatePopup(item: productFeature) {
+    this.ref = this.dialogService.open(UpdateProductFeatureComponent, {
+      header: 'Update Product Feature',
+      width: '75%',
+      contentStyle: { 'max-height': '750px', overflow: 'auto' },
+      baseZIndex: 10000,
+      data: item,
     });
 
     this.ref.onClose.subscribe((item: productFeature) => {
@@ -207,6 +240,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     this.imagePath = 0;
     this.url = '';
     this.file = null;
+    this.pFeatures = [] as productFeature[];
 
     this.form = {
       id: 0,
@@ -228,4 +262,6 @@ export class CreateProductComponent implements OnInit, OnDestroy {
   reset() {
     this.clearInputs();
   }
+
+  protected readonly environment = environment;
 }

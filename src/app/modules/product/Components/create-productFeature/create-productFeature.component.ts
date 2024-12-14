@@ -24,9 +24,6 @@ export class CreateProductFeatureComponent implements OnInit, OnDestroy {
     price: 0,
     quantity: 0,
     featureId: '',
-    unitPriceAr: 11,
-    unitPriceEn: 11,
-
     images: [],
   };
   selectedImages: File[] = [];
@@ -100,28 +97,6 @@ export class CreateProductFeatureComponent implements OnInit, OnDestroy {
   }
   imagePath: any;
   urls: imageType[] = [] as imageType[];
-  deleteImage(item: imageType) {
-    this.urls.splice(this.urls.indexOf(item), 1);
-  }
-  uploadFiles = (files: any) => {
-    if (files.length === 0) {
-      return;
-    }
-    // formData.append('file', fileToUpload, fileToUpload.name);
-    for (const file of files) {
-      const mimeType = file.type;
-      if (mimeType.match(/image\/*/) == null) {
-        return;
-      }
-      const reader = new FileReader();
-      this.imagePath = file;
-      reader.readAsDataURL(file);
-      reader.onload = (_event) => {
-        this.urls.push({ name: file.name, url: reader.result, file: file });
-        this.changeDetection.detectChanges();
-      };
-    }
-  };
 }
 
 export interface imageType {
