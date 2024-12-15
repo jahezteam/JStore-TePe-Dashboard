@@ -6,7 +6,9 @@ export function convertToFormData(
   if (data instanceof File) {
     // Handle files explicitly
     if (parentKey) {
-      formData.append(parentKey, data);
+      console.log('parentKey', parentKey);
+      console.log('data.name', data.name);
+      formData.append(parentKey, data, data.name);
     }
   } else if (Array.isArray(data)) {
     // Handle arrays explicitly

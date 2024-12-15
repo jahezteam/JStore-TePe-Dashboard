@@ -1,0 +1,103 @@
+<div class="container">
+  <p-toast position="top-right" key="tl"></p-toast>
+  <p-card class="">
+    <div class="Body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <app-multi-image-upload
+              [label]="'Upload Your Images'"
+              [maxSizeMB]="10"
+              [allowedTypes]="['image/jpeg', 'image/png']"
+              [disable]="false"
+              [images]="selectedImages"
+              (imagesSelected)="handleImages($event)"
+              (inputValid)="onInputValidation($event)"
+            ></app-multi-image-upload>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <app-pick-list-component
+              (changed)="handleSelectFeatureType($event)"
+              [require]="true"
+              [filter]="false"
+              [showClear]="false"
+              [filterBy]="'name'"
+              [label]="'Feature Type'"
+              [options]="featureType"
+              [size]="'small'"
+              [(ngModel)]="selectedFeatureType"
+            ></app-pick-list-component>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <app-pick-list-component
+              [require]="true"
+              [filter]="false"
+              [showClear]="false"
+              [filterBy]="'name'"
+              [label]="'Feature'"
+              [options]="features"
+              [size]="'small'"
+              [(ngModel)]="selectedFeature"
+            ></app-pick-list-component>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <app-number
+              [name]="'quantity'"
+              [minLength]="1"
+              [maxLength]="999999"
+              [size]="'medium'"
+              [(ngModel)]="form.quantity"
+              (inputValid)="isInputValid('quantity', $event)"
+              [require]="true"
+              [label]="'Quantity'"
+              [disable]="false"
+            ></app-number>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <app-number
+              [name]="'price'"
+              [minLength]="1"
+              [maxLength]="999999"
+              [size]="'medium'"
+              [(ngModel)]="form.price"
+              (inputValid)="isInputValid('price', $event)"
+              [require]="true"
+              [label]="'Price'"
+              [disable]="false"
+            ></app-number>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <button
+        pButton
+        type="button"
+        label="Save"
+        class="btn btn-success"
+        (click)="submit()"
+        [disabled]="getValidation()"
+      ></button
+      >&nbsp;
+      <button
+        pButton
+        type="button"
+        label="cancel"
+        class="btn btn-primary"
+        (click)="cancel()"
+      ></button>
+    </ng-template>
+  </p-card>
+</div>

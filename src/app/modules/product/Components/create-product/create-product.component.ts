@@ -87,6 +87,12 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     return '';
   }
   imagePreview(files: any) {
+    if (files.length === 0) {
+      return '';
+    }
+    if (files instanceof String) {
+      return files;
+    }
     return URL.createObjectURL(files);
   }
   routrToList() {
@@ -115,8 +121,6 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     });
 
     this.ref.onClose.subscribe((item: productFeature) => {
-      console.log(item);
-
       if (item != null) {
         this.pFeatures.push(item);
         this.form.features.push(item);
@@ -156,7 +160,6 @@ export class CreateProductComponent implements OnInit, OnDestroy {
         //     this.messageService.add({ key: 'tl', severity: 'error', summary: 'Error', detail: 'Error occured Please contact system adminstrator' });
         //   }
         // });
-
         this.changeDetection.detectChanges();
       }
     });
@@ -213,6 +216,7 @@ export class CreateProductComponent implements OnInit, OnDestroy {
     this.form.categoryId = this.selectedCategory.id;
     this.service.post(this.form).subscribe((res: any) => {
       if (res) {
+        console.log(this.form);
         this.messageService.add({
           key: 'tl',
           severity: 'success',

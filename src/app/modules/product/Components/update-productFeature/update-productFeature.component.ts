@@ -13,15 +13,19 @@ import { picklist } from 'app/pages/shared-module/Models/pickList';
 
 @Component({
   selector: 'app-update-productColor',
-  templateUrl: './update-productColor.component.html',
-  styleUrls: ['./update-productColor.component.scss'],
+  templateUrl: './update-productFeature.component.html',
+  styleUrls: ['./update-productFeature.component.scss'],
 
   providers: [ValidateService, DialogService, MessageService],
 })
-export class UpdateProductColorComponent implements OnInit, OnDestroy {
+export class UpdateProductFeatureComponent implements OnInit, OnDestroy {
   valid = false;
   colors: picklist[] = [] as picklist[];
-  selectedColor: picklist = {} as picklist;
+  featureType: picklist[] = [] as picklist[];
+  features: picklist[] = [];
+  selectedFeature: picklist = {} as picklist;
+  selectedFeatureType: picklist = {} as picklist;
+  selectedImages: (File | string)[] = [];
   form: productFeature = {
     id: 0,
     price: 0,
@@ -48,6 +52,21 @@ export class UpdateProductColorComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.registerForm();
     this.primengConfig.ripple = true;
+    this.getFeatureType(this.config.data?.featureId);
+    // this.getFeatureType();
+  }
+  getFeatureType(id: any) {
+    this.pickList.getFeatureTypes().subscribe((res) => {
+      this.featureType = res;
+      this.selectedFeatureType =
+        this.featureType.find((item) => item.data?.find((x) => x.id == id)) ||
+        ({} as picklist);
+      this.features =
+        res.find((x: any) => x.id === this.selectedFeatureType?.id)?.data ||
+        ({} as picklist);
+      this.selectedFeature =
+        this.features.find((x) => x.id == id) || ({} as picklist);
+    });
   }
   isAuth(per: string) {
     return this.auth.isAuthorized(per);
@@ -60,28 +79,32 @@ export class UpdateProductColorComponent implements OnInit, OnDestroy {
       featureId: this.config.data?.featureId,
       images: this.config.data?.images,
     };
-    this.validationService.registerForm([
-      'price',
-      'quantity',
-      'featureId',
-      'images',
-    ]);
-
+    this.selectedImages = this.config.data?.images;
+    this.validationService.registerForm(['price', 'quantity']);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),
     );
   }
-  private validInput() {
-    Object.keys(this.form).forEach((i) => {
-      this.isInputValid(i, true);
-    });
-  }
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);
   }
-
+  onInputValidation(isValid: boolean): boolean {
+    console.log('Are the inputs valid?', isValid);
+    return isValid;
+  }
   getValidation() {
     return !this.valid;
+  }
+  handleImages(files: (File | string)[]): void {
+    this.selectedImages = files;
+    this.form.images = files;
+  }
+  handleSelectFeatureType(event: any) {
+    this.selectedFeatureType = event.value;
+    this.features =
+      this.featureType.find((x) => x.id === this.selectedFeatureType?.id)
+        ?.data || [];
+    console.log(this.features);
   }
   submit() {
     this.ref.close(this.form);

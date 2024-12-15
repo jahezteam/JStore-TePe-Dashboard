@@ -26,7 +26,7 @@ export class CreateProductFeatureComponent implements OnInit, OnDestroy {
     featureId: '',
     images: [],
   };
-  selectedImages: File[] = [];
+  selectedImages: (File | string)[] = [];
   constructor(
     private validationService: ValidateService,
     private primengConfig: PrimeNGConfig,
@@ -70,7 +70,7 @@ export class CreateProductFeatureComponent implements OnInit, OnDestroy {
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);
   }
-  handleImages(files: File[]): void {
+  handleImages(files: (File | string)[]): void {
     this.selectedImages = files;
   }
   handleSelectFeatureType(event: any) {

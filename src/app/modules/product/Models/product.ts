@@ -18,7 +18,8 @@ export interface product {
   shortDescriptionAr: string;
   shortDescriptionEn: string;
   modelNumber: string;
-  categoryId: string;
+  mainCategoryId?: any;
+  categoryId?: any;
   isActive: boolean;
   isDeleted: boolean;
   features: productFeature[];

@@ -10,6 +10,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ImageUploadComponent } from '../image-upload/image-upload.component';
 import { NgForOf, NgIf } from '@angular/common';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-multi-image-upload',
@@ -30,20 +31,32 @@ export class MultiImageUploadComponent {
   @Input() maxSizeMB: number = 5; // Maximum file size in MB
   @Input() allowedTypes: string[] = ['image/jpeg', 'image/png', 'image/gif'];
   @Input() disable: boolean = false;
-
-  @Output() imagesSelected = new EventEmitter<File[]>(); // Emits selected files
+  @Input() images: (File | string)[] = [];
+  @Output() imagesSelected = new EventEmitter<(File | string)[]>(); // Emits selected files
   @Output() inputValid = new EventEmitter<boolean>(); // Emits validation status
-
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef =
     {} as ElementRef;
 
-  public files: File[] = []; // Array to store selected files
+  public files: (File | string)[] = []; // Array to store selected files
   public filePreviews: string[] = []; // Array to store file preview URLs
   public errorMessage: string = ''; // Error message for validation
-
+  ngOnInit(): void {
+    this.imagePreview(this.images);
+  }
+  imagePreview(images: any) {
+    images.forEach((element: any) => {
+      if (element.path) {
+        this.filePreviews.push(environment.imageUrl + element.path);
+        this.files.push(element);
+      } else {
+        this.filePreviews.push(element);
+        this.files.push(element);
+      }
+    });
+  }
   onFilesSelected(event: any): void {
     const selectedFiles = Array.from(event.target.files); // Convert FileList to array
-    const validFiles: File[] = [];
+    const validFiles: (File | string)[] = [];
     const previews: string[] = [];
 
     selectedFiles.forEach((file: any) => {
@@ -58,7 +71,7 @@ export class MultiImageUploadComponent {
     });
 
     if (validFiles.length) {
-      this.files = [...this.files, ...validFiles]; // Append new valid files
+      this.files = [...this.files, ...validFiles]; // Append new files
       this.filePreviews = [...this.filePreviews, ...previews]; // Append new previews
       this.imagesSelected.emit(this.files); // Emit the updated files array
       this.inputValid.emit(true); // Notify validation success

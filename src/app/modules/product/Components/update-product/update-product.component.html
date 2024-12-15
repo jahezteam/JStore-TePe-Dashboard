@@ -185,7 +185,7 @@
             <button
               pButton
               type="button"
-              label="Add Colors"
+              label="Add Product Feature "
               class="btn btn-success"
               (click)="openAddPopup()"
             ></button>
@@ -201,14 +201,15 @@
                 <tr
                   class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
                 >
-                  <th class="min-w-125px">Feature Type</th>
+                  <th class="min-w-125px">Image</th>
+                  <th class="min-w-125px" pSortableColumn="featureId">
+                    Feature <p-sortIcon field="featureId"></p-sortIcon>
+                  </th>
                   <th pSortableColumn="quantity" class="min-w-125px">
                     Quantity <p-sortIcon field="quantity"></p-sortIcon>
                   </th>
                   <th class="min-w-125px">Price</th>
-                  <th class="min-w-125px">Arabic Unt Price</th>
-                  <th class="min-w-125px">English Unit Price</th>
-                  <!-- <th class=" min-w-100px Actionlabel ">Actions </th> -->
+                  <th class="min-w-100px Actionlabel">Actions</th>
                 </tr>
               </ng-template>
               <ng-template
@@ -217,11 +218,17 @@
                 class="text-gray-600 fw-bold"
               >
                 <tr>
+                  <td>
+                    <img
+                      [src]="imagePreview(item.images[0])"
+                      alt="ImagePreview"
+                      class="img-thumbnail"
+                      style="width: 100px; height: 100px"
+                    />
+                  </td>
                   <td>{{ getFeatureName(item.featureId) }}</td>
                   <td>{{ item.quantity }}</td>
                   <td>{{ item.price }}</td>
-                  <td>{{ item.unitPriceAr }}</td>
-                  <td>{{ item.unitPriceEn }}</td>
 
                   <td class="">
                     <div ngbDropdown class="dropdown">
@@ -242,15 +249,39 @@
                         aria-labelledby="dropdownMenuLink"
                       >
                         @if (
+                          isAuth(ProductPermission.UpdateProduct) &&
+                          !item.isDeleted
+                        ) {
+                          <span
+                            ngbDropdownItem
+                            (click)="openUpdatePopup(item)"
+                            class="dropdown-item"
+                            href="#"
+                            >Edit</span
+                          >
+                        }
+                        @if (
+                          isAuth(ProductPermission.ProductDetails) &&
+                          !item.isDeleted
+                        ) {
+                          <span
+                            ngbDropdownItem
+                            (click)="openDetailsPopup(item)"
+                            class="dropdown-item"
+                            href="#"
+                            >Details</span
+                          >
+                        }
+                        @if (
                           isAuth(ProductPermission.DeleteProduct) &&
                           !item.isDeleted
-                          ) {
+                        ) {
                           <span
                             ngbDropdownItem
                             (click)="deleteFeature(item)"
                             class="dropdown-item"
                             href="#"
-                          >Delete</span
+                            >Delete</span
                           >
                         }
                       </div>

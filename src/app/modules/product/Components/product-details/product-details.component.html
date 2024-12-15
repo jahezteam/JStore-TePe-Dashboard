@@ -1,83 +1,137 @@
 @if (isAuth(ProductPermission.ProductDetails)) {
   <div class="container">
     <p-toast position="top-right" key="tl"></p-toast>
-    <p-confirmDialog header="Delete Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-confirmDialog
+      header="Delete Confirmation"
+      icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
     <p-card class="">
       <ng-template pTemplate="header">
-        <h1 style="align-content: center; align-items: center; text-align: center;"> Product Details</h1>
+        <h1
+          style="align-content: center; align-items: center; text-align: center"
+        >
+          Product Details
+        </h1>
       </ng-template>
       <div class="Body">
+        <!-- <div class="row">
+          <div class="row" style="margin-bottom:15px;">
+            <div class="col-md-3">
+              <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+              <img [src]="url" alt="Choose image" class="rounded-image" (click)="file.click()" />
+            </div>
+          </div>
+        </div> -->
         <div class="row">
           <div class="col-md-4">
             <div class="form-group">
-              <app-text-component [(ngModel)]="form.titleAr" [name]="'titleAr'" 
-              [size]="'small'"  [require]="false" [label]="'Arabic Title'"
-                [disable]="true"></app-text-component>
+              <app-text-component
+                [(ngModel)]="form.titleAr"
+                [name]="'titleAr'"
+                [size]="'small'"
+                [label]="'Arabic Title'"
+                [disable]="true"
+              ></app-text-component>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
-              <app-text-component [(ngModel)]="form.titleEn" [name]="'titleEn'" 
-                [size]="'small'"  [require]="false" [label]="'English Title'"
-                [disable]="true"></app-text-component>
+              <app-text-component
+                [(ngModel)]="form.titleEn"
+                [name]="'titleEn'"
+                [size]="'small'"
+                [label]="'English Title'"
+                [disable]="true"
+              ></app-text-component>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
-              <app-text-component [(ngModel)]="form.modelNumber" [name]="'modelNumber'" 
-                [size]="'small'" [require]="false" [label]="'Model Number'"
-                [disable]="true"></app-text-component>
+              <app-text-component
+                [(ngModel)]="form.modelNumber"
+                [name]="'modelNumber'"
+                [size]="'small'"
+                [label]="'Model Number'"
+                [disable]="true"
+              ></app-text-component>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <app-editor [(ngModel)]="form.shortDescriptionAr" [name]="'shortDescriptionAr'"
-              [size]="'small'" [require]="false" [label]="'Arabic Short Description'"
-            [disable]="true"></app-editor>
+              <app-editor
+                [(ngModel)]="form.shortDescriptionAr"
+                [name]="'shortDescriptionAr'"
+                [size]="'small'"
+                [label]="'Arabic Short Description'"
+                [disable]="true"
+              ></app-editor>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <app-editor [(ngModel)]="form.shortDescriptionEn" [name]="'shortDescriptionEn'" 
-              [size]="'small'"  [require]="false" [label]="'English Short Description'"
-            [disable]="true"></app-editor>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <app-editor [(ngModel)]="form.longDescriptionAr" [name]="'longDescriptionAr'"
-              [size]="'small'" [require]="false" [label]="'Arabic Long Description'"
-            [disable]="true"></app-editor>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <app-editor [(ngModel)]="form.longDescriptionEn" [name]="'longDescriptionEn'"
-              [size]="'small'"  [require]="false" [label]="'English Long Description'"
-            [disable]="true"></app-editor>
+              <app-editor
+                [(ngModel)]="form.shortDescriptionEn"
+                [name]="'shortDescriptionEn'"
+                [size]="'small'"
+                [label]="'English Short Description'"
+                [disable]="true"
+              ></app-editor>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <app-pick-list-component [require]="false" [disable]="false"
-                [filter]="false" [showClear]="false" [filterBy]="'name'" [label]="'Main Category'"
-                [options]="mainCategories" [size]="'small'"
-              [(ngModel)]="selectedMainCategory"></app-pick-list-component>
+              <app-editor
+                [(ngModel)]="form.longDescriptionAr"
+                [name]="'longDescriptionAr'"
+                [size]="'small'"
+                [label]="'Arabic Long Description'"
+                [disable]="true"
+              ></app-editor>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
-              <app-pick-list-component  [require]="false" [disable]="true"
-                [filter]="false" [showClear]="false" [filterBy]="'name'" 
+              <app-editor
+                [(ngModel)]="form.longDescriptionEn"
+                [name]="'longDescriptionEn'"
+                [size]="'small'"
+                [label]="'English Long Description'"
+                [disable]="true"
+              ></app-editor>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-pick-list-component
+                [filter]="false"
+                [showClear]="false"
+                [filterBy]="'name'"
+                [label]="'Main Category'"
+                [options]="mainCategories"
+                [size]="'small'"
+                [disable]="true"
+                [(ngModel)]="selectedMainCategory"
+              ></app-pick-list-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-pick-list-component
+                [filter]="false"
+                [showClear]="false"
+                [filterBy]="'name'"
                 [label]="'Category'"
-                [options]="categories" [size]="'small'"
-              [(ngModel)]="selectedCategory"></app-pick-list-component>
+                [options]="categories"
+                [size]="'small'"
+                [disable]="true"
+                [(ngModel)]="selectedCategory"
+              ></app-pick-list-component>
             </div>
           </div>
         </div>
@@ -85,22 +139,104 @@
           <div class="col-md-6">
             <div class="form-group">
               <h4>Is Active</h4>
-              <p-inputSwitch [(ngModel)]="form.isActive" [disabled]="true"></p-inputSwitch>
+              <p-inputSwitch [(ngModel)]="form.isActive"></p-inputSwitch>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <h4>Is Deleted</h4>
-              <p-inputSwitch [(ngModel)]="form.isDeleted" [disabled]="true"></p-inputSwitch>
+              <p-inputSwitch [(ngModel)]="form.isDeleted"></p-inputSwitch>
             </div>
           </div>
         </div>
-  
+        <div class="row">
+          <div class="card-body py-4">
+            <p-table
+              [value]="pFeatures"
+              tableStyleClass="table align-middle table-row-dashed fs-6 gy-5"
+            >
+              <ng-template pTemplate="header">
+                <tr
+                  class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
+                >
+                  <th class="min-w-125px">Image</th>
+                  <th class="min-w-125px" pSortableColumn="featureId">
+                    Feature <p-sortIcon field="featureId"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="quantity" class="min-w-125px">
+                    Quantity <p-sortIcon field="quantity"></p-sortIcon>
+                  </th>
+                  <th class="min-w-125px">Price</th>
+                  <th class="min-w-100px Actionlabel">Actions</th>
+                </tr>
+              </ng-template>
+              <ng-template
+                pTemplate="body"
+                let-item
+                class="text-gray-600 fw-bold"
+              >
+                <tr>
+                  <td>
+                    <img
+                      [src]="imagePreview(item.images?.[0])"
+                      alt="ImagePreview"
+                      class="img-thumbnail"
+                      style="width: 100px; height: 100px"
+                    />
+                  </td>
+                  <td>{{ getFeatureName(item.featureId) }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.price }}</td>
+
+                  <td class="">
+                    <div ngbDropdown class="dropdown">
+                      <div
+                        ngbDropdownToggle
+                        class="btn btn-primary dropdown-toggle"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Actions
+                      </div>
+                      <div
+                        ngbDropdownMenu
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        @if (
+                          isAuth(ProductPermission.ProductDetails) &&
+                          !item.isDeleted
+                        ) {
+                          <span
+                            ngbDropdownItem
+                            (click)="openDetailsPopup(item)"
+                            class="dropdown-item"
+                            href="#"
+                            >Details</span
+                          >
+                        }
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
       </div>
       <ng-template pTemplate="footer">
-        <button pButton type="button" label="go to List" class="btn btn-light-primary"
-          (click)="routrToList()"></button>&nbsp;
+        <button
+          pButton
+          type="button"
+          label="go to List"
+          class="btn btn-light-primary"
+          (click)="routrToList()"
+        ></button
+        >&nbsp;
       </ng-template>
     </p-card>
   </div>
-  }
+}
