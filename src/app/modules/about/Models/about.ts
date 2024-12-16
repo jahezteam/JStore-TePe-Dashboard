@@ -33,6 +33,7 @@ export interface AboutUsGoals {
   descriptionAr: string;
   descriptionEn: string;
   icon: string;
+  image: any;
   aboutUsId: number;
 }
 

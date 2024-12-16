@@ -4,6 +4,21 @@
     <p-card class="">
       <div class="Body">
         <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-image-upload
+                [label]="'Image'"
+                [required]="true"
+                [maxSizeMB]="2"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                (imageSelected)="onImageSelected($event)"
+                (inputValid)="isInputValid('image', $event)"
+              >
+              </app-image-upload>
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <app-text-component

@@ -5,6 +5,7 @@ import { allPermissions } from '../../../../../pages/shared-module/Models/Permis
 import { PrimeNGConfig } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AuthenticationService } from '../../../../auth/services/authentication.service';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-details-goals',
@@ -23,6 +24,7 @@ export class DetailsGoalsComponent {
     titleEn: '',
     descriptionAr: '',
     descriptionEn: '',
+    image: '',
     icon: '',
     aboutUsId: 0,
   };
@@ -50,6 +52,7 @@ export class DetailsGoalsComponent {
       titleEn: this.config.data?.titleEn,
       descriptionAr: this.config.data?.descriptionAr,
       descriptionEn: this.config.data?.descriptionEn,
+      image: this.config.data?.image,
       icon: this.config.data?.icon,
       aboutUsId: this.config.data?.aboutUsId,
     };
@@ -68,4 +71,6 @@ export class DetailsGoalsComponent {
       this.ref.close();
     }
   }
+
+  protected readonly environment = environment;
 }

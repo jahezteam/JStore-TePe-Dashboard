@@ -32,6 +32,7 @@ export class CreateGoalsComponent {
     titleEn: '',
     descriptionAr: '',
     descriptionEn: '',
+    image: '',
     icon: '',
     aboutUsId: +this.aboutId,
   };
@@ -64,6 +65,7 @@ export class CreateGoalsComponent {
       titleEn: '',
       descriptionAr: '',
       descriptionEn: '',
+      image: '',
       icon: '',
       aboutUsId: +this.aboutId,
     };
@@ -78,7 +80,13 @@ export class CreateGoalsComponent {
       (status) => (this.valid = status),
     );
   }
-
+  onImageSelected(file: any | null): void {
+    if (file) {
+      this.form.image = file;
+    } else {
+      console.log('No file selected or invalid file.');
+    }
+  }
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);
   }

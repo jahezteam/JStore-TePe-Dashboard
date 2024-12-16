@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PickListService } from '../../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../../auth/services/authentication.service';
 import { SharedModuleModule } from '../../../../../pages/shared-module/shared-module.module';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-update-goals',
@@ -32,9 +33,11 @@ export class UpdateGoalsComponent {
     titleEn: '',
     descriptionAr: '',
     descriptionEn: '',
+    image: '',
     icon: '',
     aboutUsId: +this.aboutId,
   };
+  selectedImage: any;
   permissions: any;
   constructor(
     private route: ActivatedRoute,
@@ -55,6 +58,13 @@ export class UpdateGoalsComponent {
     this.registerForm();
     this.primengConfig.ripple = true;
   }
+  onImageSelected(file: any | null): void {
+    if (file) {
+      this.selectedImage = file;
+    } else {
+      console.log('No file selected or invalid file.');
+    }
+  }
   isAuth(per: string) {
     return this.auth.isAuthorized(per);
   }
@@ -66,6 +76,7 @@ export class UpdateGoalsComponent {
       descriptionAr: this.config.data?.descriptionAr,
       descriptionEn: this.config.data?.descriptionEn,
       icon: this.config.data?.icon,
+      image: environment.imageUrl + this.config.data?.image.path,
       aboutUsId: this.aboutId,
     };
 
@@ -90,7 +101,7 @@ export class UpdateGoalsComponent {
     return !this.valid;
   }
   submit() {
-    console.log(this.form);
+    this.form.image = this.selectedImage;
     this.ref.close(this.form);
   }
   cancel() {
