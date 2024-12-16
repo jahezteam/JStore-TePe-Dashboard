@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="form-group">
               <app-email
                 [(ngModel)]="form.email"
@@ -49,36 +49,51 @@
               ></app-email>
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.unifiedNumber"
-                [name]="'unifiedNumber'"
+                [(ngModel)]="form.whatsApp"
+                [name]="'whatsApp'"
                 [minLength]="5"
                 [maxLength]="200"
                 [size]="'small'"
-                (inputValid)="isInputValid('unifiedNumber', $event)"
                 [require]="true"
-                [label]="'unifiedNumber'"
+                [label]="'WhatsApp'"
                 [disable]="false"
               ></app-text-component>
             </div>
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <app-text-component
-                [(ngModel)]="form.fax"
-                [name]="'fax'"
-                [minLength]="5"
-                [maxLength]="200"
-                [size]="'small'"
-                (inputValid)="isInputValid('fax', $event)"
+              <app-pick-list-component
                 [require]="true"
-                [label]="'fax'"
-                [disable]="false"
-              ></app-text-component>
+                [filter]="true"
+                [showClear]="false"
+                (changed)="handleSelectedRegion($event)"
+                [filterBy]="'name'"
+                [label]="'Regions'"
+                [options]="regions"
+                [size]="'small'"
+                [(ngModel)]="selectedRegion"
+              >
+              </app-pick-list-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-pick-list-component
+                [require]="true"
+                [filter]="false"
+                [showClear]="false"
+                [filterBy]="'name'"
+                [label]="'City'"
+                [options]="cities"
+                [size]="'small'"
+                [(ngModel)]="selectedCity"
+              >
+              </app-pick-list-component>
             </div>
           </div>
         </div>

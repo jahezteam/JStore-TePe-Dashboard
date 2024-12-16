@@ -11,6 +11,8 @@ import {
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
 import * as L from 'leaflet';
+import { picklist } from 'app/pages/shared-module/Models/pickList';
+import { dropdown } from '../../../../pages/shared-module/Models/dropDown';
 
 @Component({
   selector: 'app-update',
@@ -26,8 +28,9 @@ export class UpdateComponent {
     id: 0,
     name: '',
     nameEn: '',
-    unifiedNumber: '',
-    fax: '',
+    regionId: 0,
+    cityId: 0,
+    whatsApp: '',
     phone: '',
     email: '',
     mobile: '',
@@ -41,6 +44,10 @@ export class UpdateComponent {
   selectedCoordinates!: L.LatLng;
   latitude = this.form.lat;
   longitude = this.form.long;
+  regions: dropdown[] = [] as dropdown[];
+  cities: picklist[] = [] as picklist[];
+  selectedRegion: dropdown | undefined = {} as picklist;
+  selectedCity: picklist | any[] = {} as picklist;
   constructor(
     private validationService: ValidateService,
     private primengConfig: PrimeNGConfig,
@@ -53,17 +60,37 @@ export class UpdateComponent {
   ) {}
 
   ngOnInit(): void {
+    this.getRegions();
     this.registerForm();
     this.primengConfig.ripple = true;
   }
+  getRegions() {
+    this.pickList.getRegions().subscribe((res) => {
+      this.regions = res;
 
+      this.selectedRegion = this.regions.find((id) => {
+        return this.form.regionId == Number(id.id);
+      });
+      this.handleSelectedRegion({ value: this.selectedRegion });
+      // @ts-ignore
+      this.selectedCity = this.selectedRegion.data.find((id: any) => {
+        return this.form.cityId == Number(id.id);
+      });
+    });
+  }
+  handleSelectedRegion(event: any) {
+    this.pickList.getRegions().subscribe((res) => {
+      this.cities = res.find((x: any) => x.id == event.value.id).data;
+    });
+  }
   registerForm() {
     this.form = {
       id: this.config.data.id,
       name: this.config.data.name,
       nameEn: this.config.data.nameEn,
-      unifiedNumber: this.config.data.unifiedNumber,
-      fax: this.config.data.fax,
+      regionId: this.config.data.regionId,
+      cityId: this.config.data.cityId,
+      whatsApp: this.config.data.whatsApp,
       phone: this.config.data.phone,
       email: this.config.data.email,
       mobile: this.config.data.mobile,
@@ -73,16 +100,13 @@ export class UpdateComponent {
       long: this.config.data.long,
       isPrimary: this.config.data.isPrimary,
     };
+
     this.validationService.registerForm([
       'name',
-      'nameEn',
-      'unifiedNumber',
-      'fax',
       'phone',
       'email',
       'mobile',
       'address',
-      'addressEn',
     ]);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),

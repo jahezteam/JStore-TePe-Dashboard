@@ -17,9 +17,10 @@ export interface Branch {
   addressEn: string;
   lat: number;
   long: number;
-  unifiedNumber: string;
   email: string;
   phone: string;
   mobile: string;
-  fax: string;
+  whatsApp: string;
+  regionId: number;
+  cityId: number;
 }

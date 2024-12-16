@@ -8,6 +8,7 @@ import { allPermissions } from '../../../../pages/shared-module/Models/Permissio
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
 import * as L from 'leaflet';
+import { picklist } from '../../../../pages/shared-module/Models/pickList';
 
 @Component({
   selector: 'app-create',
@@ -26,8 +27,9 @@ export class CreateComponent {
     id: 0,
     name: '',
     nameEn: '',
-    unifiedNumber: '',
-    fax: '',
+    whatsApp: '',
+    regionId: 0,
+    cityId: 0,
     phone: '',
     email: '',
     mobile: '',
@@ -40,6 +42,11 @@ export class CreateComponent {
   selectedCoordinates!: L.LatLng;
   latitude = 24.7136;
   longitude = 46.6753;
+  regions: dropdown[] = [] as dropdown[];
+  cities: picklist[] = [] as picklist[];
+  selectedRegion: picklist = {} as picklist;
+  selectedCity: picklist = {} as picklist;
+
   constructor(
     private validationService: ValidateService,
     private primengConfig: PrimeNGConfig,
@@ -56,6 +63,7 @@ export class CreateComponent {
   ngOnInit(): void {
     this.registerForm();
     this.primengConfig.ripple = true;
+    this.getRegions();
   }
 
   onMapClick(coordinates: L.LatLng) {
@@ -71,8 +79,9 @@ export class CreateComponent {
       id: 0,
       name: '',
       nameEn: '',
-      unifiedNumber: '',
-      fax: '',
+      whatsApp: '',
+      regionId: 0,
+      cityId: 0,
       phone: '',
       email: '',
       mobile: '',
@@ -84,20 +93,26 @@ export class CreateComponent {
     };
     this.validationService.registerForm([
       'name',
-      'nameEn',
-      'unifiedNumber',
-      'fax',
       'phone',
       'email',
       'mobile',
       'address',
-      'addressEn',
     ]);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),
     );
   }
-
+  getRegions() {
+    this.pickList.getRegions().subscribe((res) => {
+      console.log(res);
+      this.regions = res;
+    });
+  }
+  handleSelectedRegion(event: any) {
+    this.pickList.getRegions().subscribe((res) => {
+      this.cities = res.find((x: any) => x.id == event.value.id).data;
+    });
+  }
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);
   }
@@ -105,6 +120,8 @@ export class CreateComponent {
     return !this.valid;
   }
   submit() {
+    this.form.regionId = Number(this.selectedRegion.id);
+    this.form.cityId = Number(this.selectedCity.id);
     this.ref.close(this.form);
   }
   cancel() {

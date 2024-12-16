@@ -1,16 +1,17 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
   OnInit,
   Output,
-  EventEmitter,
-  Input,
-  forwardRef,
   ViewChild,
-  ElementRef,
-  AfterViewInit,
-} from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { dropdown } from "../../Models/dropDown";
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { dropdown } from '../../Models/dropDown';
+
 @Component({
   selector: 'app-pick-list-multi-select',
   templateUrl: './pick-list-multi-select.component.html',
@@ -23,23 +24,23 @@ import { dropdown } from "../../Models/dropDown";
     },
   ],
 })
-export class PickListMultiSelectComponent implements OnInit, ControlValueAccessor, AfterViewInit {
-  @Input() _inputValue : dropdown={} as dropdown;
+export class PickListMultiSelectComponent
+  implements OnInit, ControlValueAccessor, AfterViewInit
+{
+  @Input() _inputValue: dropdown = {} as dropdown;
   @Input() fieldKey = undefined;
-  @ViewChild("child", { static: false }) feild: ElementRef={} as ElementRef;
+  @ViewChild('child', { static: false }) feild: ElementRef = {} as ElementRef;
   @Output() inputValid = new EventEmitter<boolean>();
   @Output() changed = new EventEmitter<any>();
   @Input() require = false;
   @Input() filter = false;
   @Input() showClear = false;
-  @Input() size = "medium";
+  @Input() size = 'medium';
   @Input() filterBy = 'name';
   @Input() label = '';
-  @Input() options:dropdown [] = [];
-  @Input() isEdit:boolean =false;
-  @Input() disable:boolean =false;
-
-
+  @Input() options: dropdown[] = [];
+  @Input() isEdit: boolean = false;
+  @Input() disable: boolean = false;
 
   constructor() {}
   get inputValue() {
@@ -52,7 +53,7 @@ export class PickListMultiSelectComponent implements OnInit, ControlValueAccesso
   }
   propagateChange = (_: any) => {};
 
-  registerOnChange(fn:any) {
+  registerOnChange(fn: any) {
     this.propagateChange = fn;
   }
   registerOnTouched() {}
@@ -71,11 +72,8 @@ export class PickListMultiSelectComponent implements OnInit, ControlValueAccesso
   }
   ngAfterViewInit(): void {
     setTimeout(() => {
-      if(!this.isEdit)
-      this.inputValid.emit(false);
-      else
-      this.inputValid.emit(true);
+      if (!this.isEdit) this.inputValid.emit(false);
+      else this.inputValid.emit(true);
     });
   }
 }
-

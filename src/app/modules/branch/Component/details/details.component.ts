@@ -5,6 +5,8 @@ import { PrimeNGConfig } from 'primeng/api';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
+import { dropdown } from '../../../../pages/shared-module/Models/dropDown';
+import { picklist } from '../../../../pages/shared-module/Models/pickList';
 
 @Component({
   selector: 'app-details',
@@ -19,8 +21,9 @@ export class DetailsComponent {
     id: 0,
     name: '',
     nameEn: '',
-    unifiedNumber: '',
-    fax: '',
+    regionId: 0,
+    cityId: 0,
+    whatsApp: '',
     phone: '',
     email: '',
     mobile: '',
@@ -30,7 +33,10 @@ export class DetailsComponent {
     long: 0,
     isPrimary: false,
   };
-
+  regions: dropdown[] = [] as dropdown[];
+  cities: picklist[] = [] as picklist[];
+  selectedRegion: dropdown | undefined = {} as picklist;
+  selectedCity: picklist | any[] = {} as picklist;
   constructor(
     private primengConfig: PrimeNGConfig,
     public ref: DynamicDialogRef,
@@ -42,23 +48,44 @@ export class DetailsComponent {
   ngOnInit(): void {
     this.registerForm();
     this.primengConfig.ripple = true;
+    this.getRegions();
+  }
+  getRegions() {
+    this.pickList.getRegions().subscribe((res) => {
+      this.regions = res;
+
+      this.selectedRegion = this.regions.find((id) => {
+        return this.form.regionId == Number(id.id);
+      });
+      this.handleSelectedRegion({ value: this.selectedRegion });
+      // @ts-ignore
+      this.selectedCity = this.selectedRegion.data.find((id: any) => {
+        return this.form.cityId == Number(id.id);
+      });
+    });
+  }
+  handleSelectedRegion(event: any) {
+    this.pickList.getRegions().subscribe((res) => {
+      this.cities = res.find((x: any) => x.id == event.value.id).data;
+    });
   }
 
   registerForm() {
     this.form = {
-      id: this.config.data?.id,
-      name: this.config.data?.name,
-      nameEn: this.config.data?.nameEn,
-      unifiedNumber: this.config.data?.unifiedNumber,
-      fax: this.config.data?.fax,
-      phone: this.config.data?.phone,
-      email: this.config.data?.email,
-      mobile: this.config.data?.mobile,
-      address: this.config.data?.address,
-      addressEn: this.config.data?.addressEn,
-      lat: this.config.data?.lat,
-      long: this.config.data?.long,
-      isPrimary: this.config.data?.isPrimary,
+      id: this.config.data.id,
+      name: this.config.data.name,
+      nameEn: this.config.data.nameEn,
+      regionId: this.config.data.regionId,
+      cityId: this.config.data.cityId,
+      whatsApp: this.config.data.whatsApp,
+      phone: this.config.data.phone,
+      email: this.config.data.email,
+      mobile: this.config.data.mobile,
+      address: this.config.data.address,
+      addressEn: this.config.data.addressEn,
+      lat: this.config.data.lat,
+      long: this.config.data.long,
+      isPrimary: this.config.data.isPrimary,
     };
   }
 
