@@ -28,7 +28,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="form-group">
               <app-email
                 [(ngModel)]="form.email"
@@ -39,29 +39,47 @@
               ></app-email>
             </div>
           </div>
-        </div>
-        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <app-text-component
-                [(ngModel)]="form.unifiedNumber"
-                [name]="'unifiedNumber'"
+                [(ngModel)]="form.whatsApp"
+                [name]="'whatsApp'"
                 [size]="'small'"
-                [label]="'unifiedNumber'"
+                [label]="'WhatsApp'"
                 [disable]="true"
               ></app-text-component>
             </div>
           </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <app-text-component
-                [(ngModel)]="form.fax"
-                [name]="'fax'"
+              <app-pick-list-component
+                [filter]="true"
+                [showClear]="false"
+                [filterBy]="'name'"
+                [label]="'Regions'"
+                [options]="regions"
                 [size]="'small'"
-                [require]="true"
-                [label]="'fax'"
+                [(ngModel)]="selectedRegion"
                 [disable]="true"
-              ></app-text-component>
+              >
+              </app-pick-list-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-pick-list-component
+                [filter]="false"
+                [showClear]="false"
+                [filterBy]="'name'"
+                [label]="'City'"
+                [options]="cities"
+                [size]="'small'"
+                [(ngModel)]="selectedCity"
+                [disable]="true"
+              >
+              </app-pick-list-component>
             </div>
           </div>
         </div>
@@ -127,7 +145,7 @@
           <div class="col-md-12">
             <div class="form-group" style="height: 300px; width: 100%">
               <label>Map Location</label>
-              <app-map></app-map>
+              <app-map [lat]="form.lat" [lng]="form.long"> </app-map>
             </div>
           </div>
         </div>
