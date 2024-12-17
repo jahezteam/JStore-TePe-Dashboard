@@ -278,6 +278,20 @@
         </a>
       </div>
     }
+    @if (isAuth("TestmonialList")) {
+      <div class="menu-item">
+        <a
+          class="menu-link"
+          routerLink="/testimonials/list"
+          routerLinkActive="active"
+        >
+          <span class="menu-icon">
+            <i class="fa-duotone fa-stars" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Testimonials"></span>
+        </a>
+      </div>
+    }
   </div>
 </div>
 

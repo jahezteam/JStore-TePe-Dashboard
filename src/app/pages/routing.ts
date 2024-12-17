@@ -118,6 +118,14 @@ const Routing: Routes = [
       ),
   },
   {
+    path: 'testimonials',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/testimonial/testimonial.module').then(
+        (m) => m.TestimonialModule,
+      ),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./builder/builder.module').then((m) => m.BuilderModule),

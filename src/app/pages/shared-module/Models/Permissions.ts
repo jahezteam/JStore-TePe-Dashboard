@@ -20,6 +20,7 @@ export class allPermissions {
   slider: permissionsCollection = new permissionsCollection();
   about: permissionsCollection = new permissionsCollection();
   Questions: permissionsCollection = new permissionsCollection();
+  Testmonial: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -244,6 +245,17 @@ export class allPermissions {
       'SearchQuestion',
       'FilterQuestion',
       'QuestionDetails',
+    ];
+
+    this.Testmonial.name = 'Testmonial';
+    this.Testmonial.permissions = [
+      'TestmonialList',
+      'CreateTestmonial',
+      'UpdateTestmonial',
+      'DeleteTestmonial',
+      'SearchTestmonial',
+      'FilterTestmonial',
+      'TestmonialDetails',
     ];
   }
 }
