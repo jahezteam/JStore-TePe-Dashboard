@@ -30,6 +30,7 @@ export class CreateFeatureComponent {
     id: 0,
     featurNameAr: '',
     featurNameEn: '',
+    counter: 0,
     aboutUsId: this.aboutId,
   };
 
@@ -59,6 +60,7 @@ export class CreateFeatureComponent {
       id: 0,
       featurNameAr: '',
       featurNameEn: '',
+      counter: 0,
       aboutUsId: this.aboutId,
     };
     this.validationService.registerForm(['featurNameAr', 'featurNameEn']);

@@ -23,6 +23,7 @@ export interface AboutUsFeacturers {
   id: number;
   featurNameAr: string;
   featurNameEn: string;
+  counter: number;
   aboutUsId: number;
 }
 

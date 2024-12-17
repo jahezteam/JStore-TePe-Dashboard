@@ -31,6 +31,20 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.counter"
+                [name]="'counter'"
+                [size]="'small'"
+                [require]="false"
+                [label]="'Counter'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
       </div>
       <ng-template pTemplate="footer">
         <button

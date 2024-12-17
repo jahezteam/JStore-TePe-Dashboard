@@ -37,6 +37,23 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.counter"
+                [name]="'counter'"
+                [minLength]="2"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('counter', $event)"
+                [require]="true"
+                [label]="'counter'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
       </div>
       <ng-template pTemplate="footer">
         <button

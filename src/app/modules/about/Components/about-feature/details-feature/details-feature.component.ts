@@ -21,6 +21,7 @@ export class DetailsFeatureComponent {
     id: 0,
     featurNameAr: '',
     featurNameEn: '',
+    counter: 0,
     aboutUsId: 0,
   };
   constructor(
@@ -43,6 +44,7 @@ export class DetailsFeatureComponent {
       id: this.config.data?.id,
       featurNameAr: this.config.data?.featurNameAr,
       featurNameEn: this.config.data?.featurNameEn,
+      counter: this.config.data?.counter,
       aboutUsId: this.config.data?.aboutUsId,
     };
   }

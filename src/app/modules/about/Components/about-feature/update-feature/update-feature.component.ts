@@ -30,6 +30,7 @@ export class UpdateFeatureComponent {
     id: 0,
     featurNameAr: '',
     featurNameEn: '',
+    counter: 0,
     aboutUsId: this.aboutId,
   };
   permissions: any;
@@ -61,6 +62,7 @@ export class UpdateFeatureComponent {
       id: this.config.data?.id,
       featurNameAr: this.config.data?.featurNameAr,
       featurNameEn: this.config.data?.featurNameEn,
+      counter: this.config.data?.counter,
       aboutUsId: this.aboutId,
     };
 
