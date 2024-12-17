@@ -264,6 +264,20 @@
         </a>
       </div>
     }
+    @if (isAuth("QuestionTypeList")) {
+      <div class="menu-item">
+        <a
+          class="menu-link"
+          routerLink="/questionType/list"
+          routerLinkActive="active"
+        >
+          <span class="menu-icon">
+            <i class="fa-duotone fa-question" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Question"></span>
+        </a>
+      </div>
+    }
   </div>
 </div>
 

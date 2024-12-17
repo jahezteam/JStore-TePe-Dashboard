@@ -110,6 +110,14 @@ const Routing: Routes = [
       import('../modules/about/about.module').then((m) => m.AboutModule),
   },
   {
+    path: 'questionType',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/questions/questions.module').then(
+        (m) => m.QuestionsModule,
+      ),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./builder/builder.module').then((m) => m.BuilderModule),

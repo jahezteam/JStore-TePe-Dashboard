@@ -19,6 +19,7 @@ export class allPermissions {
   branch: permissionsCollection = new permissionsCollection();
   slider: permissionsCollection = new permissionsCollection();
   about: permissionsCollection = new permissionsCollection();
+  Questions: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -225,6 +226,24 @@ export class allPermissions {
       'SearchAboutUsGoal',
       'FilterAboutUsGoal',
       'AboutUsGoalDetails',
+    ];
+
+    this.Questions.name = 'Questions';
+    this.Questions.permissions = [
+      'QuestionTypeList',
+      'CreateQuestionType',
+      'UpdateQuestionType',
+      'DeleteQuestionType',
+      'SearchQuestionType',
+      'FilterQuestionType',
+      'QuestionTypeDetails',
+      'QuestionList',
+      'CreateQuestion',
+      'UpdateQuestion',
+      'DeleteQuestion',
+      'SearchQuestion',
+      'FilterQuestion',
+      'QuestionDetails',
     ];
   }
 }

@@ -1,0 +1,82 @@
+@if (isAuth(questionPermissions.QuestionDetails)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.questionBody"
+                [name]="'Question Body'"
+                [size]="'small'"
+                [require]="false"
+                [label]="'Question Body Ar'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.questionBodyEn"
+                [name]="'questionBodyEn'"
+                [size]="'small'"
+                [require]="false"
+                [label]="'Question Body En'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.answerBody"
+                [name]="'answerBody'"
+                [size]="'small'"
+                [require]="false"
+                [label]="'Answer Body Ar'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.answerBodyEn"
+                [name]="'answerBodyEn'"
+                [size]="'small'"
+                [require]="false"
+                [label]="'Answer Body En'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Ok"
+          class="btn btn-success"
+          (click)="submit()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}
