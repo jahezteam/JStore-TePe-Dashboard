@@ -58,7 +58,6 @@ export class AddFeatureTitleComponent {
     return this.auth.isAuthorized(per);
   }
   ngOnInit(): void {
-    console.log(this.config.data);
     this.registerForm();
   }
   registerForm() {

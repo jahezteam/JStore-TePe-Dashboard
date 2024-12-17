@@ -33,6 +33,18 @@
                     Create About Us Goal
                   </button>
                 }
+                @if (isAuth(aboutPermissions.CreateAboutUsGoal)) {
+                  <button
+                    type="button"
+                    class="btn btn-primary mx-2"
+                    (click)="openAddTitlePopup()"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal_add_user"
+                  >
+                    <i class="fa-duotone fa-circle-plus"></i>
+                    Update About Us Goal Title
+                  </button>
+                }
               </div>
             </div>
           </div>

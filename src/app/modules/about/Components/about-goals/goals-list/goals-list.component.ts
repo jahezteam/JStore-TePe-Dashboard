@@ -6,7 +6,11 @@ import {
   PrimeNGConfig,
 } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { AboutPermissions, AboutUsGoals } from '../../../Models/about';
+import {
+  AboutPermissions,
+  AboutUsGoals,
+  GoalTitle,
+} from '../../../Models/about';
 import { filter } from 'app/pages/shared-module/Models/filterModel';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AboutService } from '../../../Services/about.service';
@@ -14,6 +18,7 @@ import { AuthenticationService } from '../../../../auth/services/authentication.
 import { CreateGoalsComponent } from '../create-goals/create-goals.component';
 import { UpdateGoalsComponent } from '../update-goals/update-goals.component';
 import { DetailsGoalsComponent } from '../details-goals/details-goals.component';
+import { AddGoalTitleComponent } from '../add-goal-title/add-goal-title.component';
 
 @Component({
   selector: 'app-goals-list',
@@ -25,6 +30,7 @@ import { DetailsGoalsComponent } from '../details-goals/details-goals.component'
 })
 export class GoalsListComponent {
   date: any;
+  mainData: any;
   aboutPermissions = AboutPermissions;
   filteredDate: any;
   ref: DynamicDialogRef = new DynamicDialogRef();
@@ -57,7 +63,7 @@ export class GoalsListComponent {
   loadData() {
     this.service.getById(this.aboutId).subscribe((res: any) => {
       if (res) {
-        console.log(res);
+        this.mainData = res;
         this.date = res.aboutUsGoals;
         this.filteredDate = res.aboutUsGoals;
         this.changeDetection.detectChanges();
@@ -100,6 +106,40 @@ export class GoalsListComponent {
               severity: 'success',
               summary: 'success',
               detail: 'About Goals Created Successfully',
+            });
+            this.ngOnInit();
+          } else {
+            this.messageService.add({
+              key: 'tl',
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Error occurred Please contact system adminstrator',
+            });
+          }
+        });
+
+        this.changeDetection.detectChanges();
+      }
+    });
+  }
+  openAddTitlePopup() {
+    this.ref = this.dialogService.open(AddGoalTitleComponent, {
+      header: 'Goals Title',
+      width: '50%',
+      contentStyle: { 'max-height': '550px', overflow: 'auto' },
+      baseZIndex: 10000,
+      data: this.mainData,
+    });
+
+    this.ref.onClose.subscribe((item: GoalTitle) => {
+      if (item != null) {
+        this.service.updateGoalTitle(item).subscribe((res: any) => {
+          if (res) {
+            this.messageService.add({
+              key: 'tl',
+              severity: 'success',
+              summary: 'success',
+              detail: 'About Goals Title Updated Successfully',
             });
             this.ngOnInit();
           } else {

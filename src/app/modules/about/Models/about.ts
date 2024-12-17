@@ -25,6 +25,13 @@ export interface FeatureTitle {
   descriptionFeatureAr: string;
   descriptionFeatureEn: string;
 }
+export interface GoalTitle {
+  id: number;
+  titleGoalAr: string;
+  titleGoalEn: string;
+  descriptionGoalAr: string;
+  descriptionGoalEn: string;
+}
 
 export interface AboutUsFeacturers {
   id: number;
@@ -69,4 +76,11 @@ export enum AboutPermissions {
   SearchAboutUsGoal = 'SearchAboutUsGoal',
   FilterAboutUsGoal = 'FilterAboutUsGoal',
   AboutUsGoalDetails = 'AboutUsGoalDetails',
+  AboutUsQuestionList = 'AboutUsQuestionList',
+  CreateAboutUsQuestion = 'CreateAboutUsQuestion',
+  UpdateAboutUsQuestion = 'UpdateAboutUsQuestion',
+  DeleteAboutUsQuestion = 'DeleteAboutUsQuestion',
+  SearchAboutUsQuestion = 'SearchAboutUsQuestion',
+  FilterAboutUsQuestion = 'FilterAboutUsQuestion',
+  AboutUsQuestionDetails = 'AboutUsQuestionDetails',
 }

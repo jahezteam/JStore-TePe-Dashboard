@@ -227,6 +227,13 @@ export class allPermissions {
       'SearchAboutUsGoal',
       'FilterAboutUsGoal',
       'AboutUsGoalDetails',
+      'AboutUsQuestionList',
+      'CreateAboutUsQuestion',
+      'UpdateAboutUsQuestion',
+      'DeleteAboutUsQuestion',
+      'SearchAboutUsQuestion',
+      'FilterAboutUsQuestion',
+      'AboutUsQuestionDetails',
     ];
 
     this.Questions.name = 'Questions';

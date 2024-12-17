@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiCallerService } from '../../../pages/shared-module/Services/api-caller.service';
 import { convertToFormData } from '../../../pages/shared-module/Models/convertToFormData';
-import { About, AboutUsGoals, FeatureTitle } from '../Models/about';
+import { About, AboutUsGoals, FeatureTitle, GoalTitle } from '../Models/about';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +45,9 @@ export class AboutService {
 
   updateFeatureTitle(model: FeatureTitle) {
     return this.ser.Update(model, '/AboutUs/UpdateFeatureTitle');
+  }
+  updateGoalTitle(model: GoalTitle) {
+    return this.ser.Update(model, '/AboutUs/UpdateGoalTitle');
   }
 
   postFeature(model: any) {
