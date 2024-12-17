@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiCallerService } from '../../../pages/shared-module/Services/api-caller.service';
 import { convertToFormData } from '../../../pages/shared-module/Models/convertToFormData';
-import { About, AboutUsGoals } from '../Models/about';
+import { About, AboutUsGoals, FeatureTitle } from '../Models/about';
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +41,10 @@ export class AboutService {
   }
   delete(id: number) {
     return this.ser.DeleteWithQueryParam(id, '/AboutUs/DeleteAboutUs?Id=' + id);
+  }
+
+  updateFeatureTitle(model: FeatureTitle) {
+    return this.ser.Update(model, '/AboutUs/UpdateFeatureTitle');
   }
 
   postFeature(model: any) {

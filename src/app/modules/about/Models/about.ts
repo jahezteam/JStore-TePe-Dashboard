@@ -18,6 +18,13 @@ export interface About {
   aboutUsFeacturers?: AboutUsFeacturers[];
   aboutUsGoals?: AboutUsGoals[];
 }
+export interface FeatureTitle {
+  id: number;
+  titleFeatureAr: string;
+  titleFeatureEn: string;
+  descriptionFeatureAr: string;
+  descriptionFeatureEn: string;
+}
 
 export interface AboutUsFeacturers {
   id: number;

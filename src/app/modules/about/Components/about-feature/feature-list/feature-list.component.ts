@@ -14,6 +14,7 @@ import { CreateFeatureComponent } from '../create-feature/create-feature.compone
 import { UpdateFeatureComponent } from '../update-feature/update-feature.component';
 import { DetailsFeatureComponent } from '../details-feature/details-feature.component';
 import { SharedModuleModule } from '../../../../../pages/shared-module/shared-module.module';
+import { AddFeatureTitleComponent } from '../add-feature-title/add-feature-title.component';
 
 @Component({
   selector: 'app-feature-list',
@@ -25,6 +26,7 @@ import { SharedModuleModule } from '../../../../../pages/shared-module/shared-mo
 })
 export class FeatureListComponent {
   date: any;
+  mainData: any;
   aboutPermissions = AboutPermissions;
   filteredDate: any;
   ref: DynamicDialogRef = new DynamicDialogRef();
@@ -55,7 +57,7 @@ export class FeatureListComponent {
   loadData() {
     this.service.getById(this.aboutId).subscribe((res: any) => {
       if (res) {
-        console.log(res);
+        this.mainData = res;
         this.date = res.aboutUsFeacturers;
         this.filteredDate = res.aboutUsFeacturers;
         this.changeDetection.detectChanges();
@@ -97,6 +99,40 @@ export class FeatureListComponent {
               severity: 'success',
               summary: 'success',
               detail: 'About Feature Created Succesfully',
+            });
+            this.ngOnInit();
+          } else {
+            this.messageService.add({
+              key: 'tl',
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Error occurred Please contact system adminstrator',
+            });
+          }
+        });
+
+        this.changeDetection.detectChanges();
+      }
+    });
+  }
+  openAddTitlePopup() {
+    this.ref = this.dialogService.open(AddFeatureTitleComponent, {
+      header: 'Feature Title',
+      width: '50%',
+      contentStyle: { 'max-height': '550px', overflow: 'auto' },
+      baseZIndex: 10000,
+      data: this.mainData,
+    });
+
+    this.ref.onClose.subscribe((item: any) => {
+      if (item != null) {
+        this.service.updateFeatureTitle(item).subscribe((res: any) => {
+          if (res) {
+            this.messageService.add({
+              key: 'tl',
+              severity: 'success',
+              summary: 'success',
+              detail: 'About Feature Title Updated Successfully',
             });
             this.ngOnInit();
           } else {
