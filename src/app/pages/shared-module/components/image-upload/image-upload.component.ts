@@ -76,7 +76,6 @@ export class ImageUploadComponent {
     this.propagateChange(this.file);
     this.imageSelected.emit(this.file);
     this.inputValid.emit(true);
-    console.log('File selected:', this.filePreview);
   }
 
   clearValidationError(): void {

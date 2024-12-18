@@ -1,0 +1,439 @@
+@if (
+  isAuth(settingPermissions.List) &&
+  isAuth(settingPermissions.Update) &&
+  isAuth(settingPermissions.Delete)
+) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-confirmDialog
+      header="Delete Confirmation"
+      icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
+    <p-card class="">
+      <ng-template pTemplate="header">
+        <h1
+          style="align-content: center; align-items: center; text-align: center"
+        >
+          Settings
+        </h1>
+      </ng-template>
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-image-upload
+                [label]="'Logo'"
+                [required]="true"
+                [filePreview]="form.logo"
+                [maxSizeMB]="2"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                (imageSelected)="onLogoSelected($event)"
+              >
+              </app-image-upload>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-image-upload
+                [label]="'LogoEn'"
+                [required]="true"
+                [filePreview]="form.logoEn"
+                [maxSizeMB]="2"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                (imageSelected)="onLogoEnSelected($event)"
+              >
+              </app-image-upload>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-image-upload
+                [label]="'Light Logo'"
+                [required]="true"
+                [filePreview]="form.lightLogo"
+                [maxSizeMB]="2"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                (imageSelected)="onLightLogoSelected($event)"
+              >
+              </app-image-upload>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-image-upload
+                [label]="'Light Logo En'"
+                [required]="true"
+                [maxSizeMB]="2"
+                [filePreview]="form.lightLogoEn"
+                [allowedTypes]="['image/jpeg', 'image/png']"
+                (imageSelected)="onLightLogoEnSelected($event)"
+              >
+              </app-image-upload>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.name"
+                [name]="'name'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'Name'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'nameEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'Name En'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.address"
+                [name]="'address'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'address'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.addressEn"
+                [name]="'addressEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'Address En'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-email
+                [(ngModel)]="form.email"
+                [name]="'email'"
+                [size]="'small'"
+                [require]="true"
+                [label]="'Email'"
+                [disable]="false"
+              ></app-email>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.unifiedNumber"
+                [name]="'unifiedNumber'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'unifiedNumber'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <app-color-input
+                [(ngModel)]="form.globalColor"
+                [label]="'Choose a Global Color'"
+                [name]="'globalColor'"
+                [disable]="false"
+              ></app-color-input>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <app-color-input
+                [(ngModel)]="form.globalDarkColor"
+                [label]="'Choose a Global Dark Color'"
+                [name]="'globalDarkColor'"
+                [disable]="false"
+              ></app-color-input>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <app-color-input
+                [(ngModel)]="form.secondaryColor"
+                [label]="'Choose a Secondary Color'"
+                [name]="'secondaryColor'"
+                [disable]="false"
+              ></app-color-input>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-color-input
+                [(ngModel)]="form.gloablecolorDashboard"
+                [label]="'Choose a Global Color Dashboard'"
+                [name]="'gloablecolorDashboard'"
+                [disable]="false"
+              ></app-color-input>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="form-group">
+              <app-color-input
+                [(ngModel)]="form.blackishColor"
+                [label]="'Choose a Blackish Color'"
+                [name]="'blackishColor'"
+                [disable]="false"
+              ></app-color-input>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <app-color-input
+                [(ngModel)]="form.linkColor"
+                [label]="'Choose a Link Color'"
+                [name]="'linkColor'"
+                [disable]="false"
+              ></app-color-input>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <app-color-input
+                [(ngModel)]="form.linkHoverColor"
+                [label]="'Choose a Link Hover Color'"
+                [name]="'linkHoverColor'"
+                [disable]="false"
+              ></app-color-input>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-color-input
+                [(ngModel)]="form.secondaryColorDashboard"
+                [label]="'Choose a Secondary Color Dashboard'"
+                [name]="'secondaryColorDashboard'"
+                [disable]="false"
+              ></app-color-input>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.facebook"
+                [name]="'facebook'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'Facebook'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.twitter"
+                [name]="'twitter'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'twitter'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.instagram"
+                [name]="'instagram'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'instagram'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.snapchat"
+                [name]="'snapchat'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'snapchat'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.youtube"
+                [name]="'youtube'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'youtube'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.whatsapp"
+                [name]="'whatsapp'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'whatsapp'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.threads"
+                [name]="'threads'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'threads'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.tikTok"
+                [name]="'tikTok'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'tikTok'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.linkedIn"
+                [name]="'tikTok'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'linkedIn'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.telegram"
+                [name]="'telegram'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'telegram'"
+                [disable]="false"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.footerDescription"
+                [name]="'footerDescription'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'Footer Description'"
+                [disable]="false"
+              ></app-text-area-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.footerDescriptionEn"
+                [name]="'footerDescriptionEn'"
+                [minLength]="5"
+                [maxLength]="200"
+                [size]="'small'"
+                [require]="true"
+                [label]="'Footer Description En'"
+                [disable]="false"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group" style="height: 300px; width: 100%">
+              <label>Map Location</label>
+              <app-map (coordinatesSelected)="onMapClick($event)"></app-map>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Submit"
+          class="btn btn-success"
+          (click)="submit()"
+        ></button
+        >&nbsp;
+      </ng-template>
+    </p-card>
+  </div>
+}

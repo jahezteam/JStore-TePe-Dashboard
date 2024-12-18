@@ -48,5 +48,6 @@ export const routes: Routes = [
     MapComponent,
   ],
   imports: [CommonModule, SharedModuleModule, RouterModule.forChild(routes)],
+  exports: [MapComponent],
 })
 export class BranchModule {}

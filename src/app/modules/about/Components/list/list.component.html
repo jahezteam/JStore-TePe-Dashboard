@@ -154,6 +154,14 @@
                             >Goals</span
                           >
                         }
+                        @if (isAuth(AboutPermissions.UpdateAboutUs)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="openSliderPopup(item)"
+                            class="dropdown-item"
+                            >Slider</span
+                          >
+                        }
                         @if (isAuth(AboutPermissions.AboutUsDetails)) {
                           <span
                             ngbDropdownItem

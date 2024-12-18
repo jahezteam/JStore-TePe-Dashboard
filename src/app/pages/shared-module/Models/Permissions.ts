@@ -21,6 +21,7 @@ export class allPermissions {
   about: permissionsCollection = new permissionsCollection();
   Questions: permissionsCollection = new permissionsCollection();
   Testmonial: permissionsCollection = new permissionsCollection();
+  settings: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -263,6 +264,14 @@ export class allPermissions {
       'SearchTestmonial',
       'FilterTestmonial',
       'TestmonialDetails',
+    ];
+
+    this.settings.name = 'Settings';
+    this.settings.permissions = [
+      'SettingList',
+      'UpdateSetting',
+      'DeleteSetting',
+      'SettingDetails',
     ];
   }
 }

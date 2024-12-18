@@ -126,6 +126,14 @@ const Routing: Routes = [
       ),
   },
   {
+    path: 'setting',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/settings/settings.module').then(
+        (m) => m.SettingsModule,
+      ),
+  },
+  {
     path: '',
     loadChildren: () =>
       import('./builder/builder.module').then((m) => m.BuilderModule),

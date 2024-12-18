@@ -44,6 +44,9 @@ export class MultiImageUploadComponent {
     this.imagePreview(this.images);
   }
   imagePreview(images: any) {
+    if (!images) {
+      return;
+    }
     images.forEach((element: any) => {
       if (element.path) {
         this.filePreviews.push(environment.imageUrl + element.path);

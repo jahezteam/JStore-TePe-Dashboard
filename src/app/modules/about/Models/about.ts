@@ -41,6 +41,12 @@ export interface AboutUsFeacturers {
   aboutUsId: number;
 }
 
+export interface AboutUsSlider {
+  id: number;
+  images: any;
+  aboutUsId: number;
+}
+
 export interface AboutUsGoals {
   id: number;
   titleAr: string;

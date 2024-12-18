@@ -40,12 +40,16 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { NgbDropdownModule, NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbDropdownModule,
+  NgbModalModule,
+  NgbModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import { NgxEditorModule } from 'ngx-editor';
 import { EditorComponent } from './components/editor/editor.component';
 import { MagnificPopupDirective } from './Directives/magnific-popup.directive';
-import { ImageUploadComponent } from "./components/image-upload/image-upload.component";
-
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { ColorInputComponent } from './components/color/color.component';
 
 const NGX_EDITOR_CONFIG = {
   locals: {
@@ -109,11 +113,12 @@ const NGX_EDITOR_CONFIG = {
     IsAuthorizedDirective,
     PickListMultiSelectComponent,
     EditorComponent,
-    MagnificPopupDirective
+    ColorInputComponent,
+    MagnificPopupDirective,
   ],
-imports:[
+  imports: [
     NgbDropdownModule,
-     NgbModule,
+    NgbModule,
     CommonModule,
     DialogModule,
     AccordionModule,
@@ -136,15 +141,14 @@ imports:[
     CardModule,
     ToastModule,
     NgxPermissionsModule.forRoot(),
-     NgbModalModule,
+    NgbModalModule,
     HttpClientModule,
     FileUploadModule,
     ImageModule,
     TableModule,
     MultiSelectModule,
     ToggleButtonModule,
-    NgxEditorModule.forRoot(NGX_EDITOR_CONFIG)
-
+    NgxEditorModule.forRoot(NGX_EDITOR_CONFIG),
   ],
   exports: [
     TextComponent,
@@ -183,8 +187,9 @@ imports:[
     EditorComponent,
     NgxEditorModule,
     MagnificPopupDirective,
-    ImageUploadComponent
+    ImageUploadComponent,
+    ColorInputComponent,
   ],
-  providers: [MessageService]
+  providers: [MessageService],
 })
-export class SharedModuleModule { }
+export class SharedModuleModule {}

@@ -16,6 +16,7 @@ import { CreateComponent } from '../create/create.component';
 import { FilterComponent } from '../filter/filter.component';
 import { DetailsComponent } from '../details/details.component';
 import { UpdateComponent } from '../update/update.component';
+import { AboutSliderComponent } from '../about-slider/about-slider.component';
 
 @Component({
   selector: 'app-list',
@@ -146,6 +147,40 @@ export class ListComponent {
     this.router.navigateByUrl('/about/goals/' + id);
   }
 
+  openSliderPopup(item: any) {
+    console.log(item);
+    this.ref = this.dialogService.open(AboutSliderComponent, {
+      header: ' About Slider',
+      width: '50%',
+      contentStyle: { 'max-height': '550px', overflow: 'auto' },
+      baseZIndex: 10000,
+      data: item,
+    });
+
+    // this.ref.onClose.subscribe((item: About) => {
+    //   if (item != null) {
+    //     this.service.post(item).subscribe((res: any) => {
+    //       if (res) {
+    //         this.messageService.add({
+    //           key: 'tl',
+    //           severity: 'success',
+    //           summary: 'success',
+    //           detail: 'About Created Succesfully',
+    //         });
+    //         this.ngOnInit();
+    //       } else {
+    //         this.messageService.add({
+    //           key: 'tl',
+    //           severity: 'error',
+    //           summary: 'Error',
+    //           detail: 'Error occured Please contact system adminstrator',
+    //         });
+    //       }
+    //     });
+    //     this.changeDetection.detectChanges();
+    //   }
+    // });
+  }
   openAddPopup() {
     this.ref = this.dialogService.open(CreateComponent, {
       header: 'Create About',

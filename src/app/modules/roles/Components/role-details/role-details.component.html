@@ -43,6 +43,17 @@
                 </div>
               }
             </p-accordionTab>
+            <p-accordionTab header="Settings">
+              @for (item of allPermissions.settings.permissions; track item) {
+                <div>
+                  <h5>{{ item }}</h5>
+                  <p-inputSwitch
+                    [disabled]="true"
+                    [ngModel]="isChecked(item)"
+                  ></p-inputSwitch>
+                </div>
+              }
+            </p-accordionTab>
             <p-accordionTab header="Main Categories">
               @for (
                 item of allPermissions.mainCategories.permissions;
