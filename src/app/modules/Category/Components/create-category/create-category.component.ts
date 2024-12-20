@@ -68,7 +68,6 @@ export class CreateCategoryComponent implements OnInit, OnDestroy {
       'nameEn',
       'descriptionAr',
       'descriptionEn',
-      'icon',
       'image',
       'mainCategoryId',
     ]);

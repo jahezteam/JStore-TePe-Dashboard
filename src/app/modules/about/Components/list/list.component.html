@@ -102,7 +102,7 @@
                 <tr>
                   <td>
                     <img
-                      [src]="environment.imageUrl + item.image.path"
+                      [src]="environment.imageUrl + item.image?.path || ''"
                       class="img-thumbnail"
                       style="width: 100px; height: 100px"
                       alt=""

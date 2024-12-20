@@ -74,7 +74,6 @@ export class CreateGoalsComponent {
       'titleEn',
       'descriptionAr',
       'descriptionEn',
-      'icon',
     ]);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),

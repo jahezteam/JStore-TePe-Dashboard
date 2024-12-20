@@ -67,7 +67,6 @@ export class CreateMainCategoryComponent implements OnInit, OnDestroy {
       'nameEn',
       'descriptionAr',
       'descriptionEn',
-      'icon',
       'image',
     ]);
     this.validationService.validStatus.subscribe(
@@ -76,7 +75,7 @@ export class CreateMainCategoryComponent implements OnInit, OnDestroy {
   }
   onImageSelected(file: any | null): void {
     if (file) {
-      this.form.image = file
+      this.form.image = file;
     } else {
       console.log('No file selected or invalid file.');
     }

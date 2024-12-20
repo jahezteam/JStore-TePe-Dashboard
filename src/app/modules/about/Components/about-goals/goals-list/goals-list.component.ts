@@ -222,7 +222,8 @@ export class GoalsListComponent {
               summary: 'success',
               detail: 'About Goals Deleted Succesfully',
             });
-            this.ngOnInit();
+            this.date.filter((x: any) => x.id != item.id);
+            console.log(this.date);
           } else {
             this.messageService.add({
               key: 'tl',

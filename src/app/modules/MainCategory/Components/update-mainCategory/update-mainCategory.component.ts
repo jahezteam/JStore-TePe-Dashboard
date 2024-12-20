@@ -77,7 +77,6 @@ export class UpdateMainCategoryComponent implements OnInit, OnDestroy {
       'nameEn',
       'descriptionAr',
       'descriptionEn',
-      'icon',
     ]);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),

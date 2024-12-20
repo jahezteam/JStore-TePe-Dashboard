@@ -10,7 +10,7 @@ import { paginator } from '../../../pages/shared-module/Models/Paginator';
 export class CategorysService {
   constructor(private ser: ApiCallerService) {}
   post(model: category) {
-  const formData = new FormData();
+    const formData = new FormData();
     formData.append('NameAr', model.nameAr);
     formData.append('NameEn', model.nameEn);
     formData.append('DescriptionAr', model.descriptionAr);
@@ -46,6 +46,7 @@ export class CategorysService {
     return this.ser.getPagination(model, '/Category/SearchPagging', isSearch);
   }
   update(model: category) {
+    console.log(model);
     const formData = new FormData();
     formData.append('id', model.id.toString());
     formData.append('NameAr', model.nameAr);

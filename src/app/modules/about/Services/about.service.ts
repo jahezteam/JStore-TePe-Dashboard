@@ -36,6 +36,7 @@ export class AboutService {
     return this.ser.getPagination(model, '/AboutUs/SearchPagging', isSearch);
   }
   update(model: About) {
+    console.log(model);
     const formData = convertToFormData(model);
     return this.ser.UpdateFormData(formData, '/AboutUs/UpdateAboutUs');
   }
