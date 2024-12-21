@@ -2205,3 +2205,78 @@ span.p-inputtext:focus {
   z-index: 1234;
   display: block;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 21/12/2024 */
+
+.mr-5{
+    margin-left: 5px !important;
+}
+
+
+.menu-item .menu-link {
+  margin-left: 10px !important;
+  margin-right: unset !important;
+}
+
+.menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+  margin-left: 10px !important;
+  margin-right: unset !important;
+  border-radius:25px 0 0 25px !important;
+  border-left: 2px solid #e0f9e9 !important;
+  border-right: unset !important;
+}
+
+.menu-item .menu-link.active {
+  border-radius:25px 0 0 25px !important;
+  margin-left: 10px !important;
+  margin-right: unset !important;
+  border-left: 2px solid #e0f9e9 !important;
+  border-right: unset !important;
+}
+
+.page-item {
+    margin-left: unset;
+    margin-right: 0.5rem !important;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  text-align: justify !important;
+}
+
+.p-datatable .p-datatable-thead>tr>th {
+  text-align: justify !important;
+}
+
+.dropdown-menu.show {
+    display: block;
+    text-align: justify;
+}
+
+.p-dialog .p-dialog-content {
+    border-radius: 0px !important;
+}
+
+.p-button {
+  margin: 0 3px;
+}
+
+.p-dialog .p-dialog-header {
+  border-radius: 5px 5px 0 0 !important ;
+}
