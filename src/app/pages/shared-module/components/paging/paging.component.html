@@ -1,4 +1,4 @@
-<!-- 
+<!--
 
 <div _ngcontent-jtl-c5="" class="pagination col-md-12" style="padding:0 30px">
   <div ngbDropdown class="dropdown">
@@ -42,37 +42,73 @@
 </ul>
 </div> -->
 
-<div _ngcontent-jtl-c5="" class="pagination col-md-12" style="padding:0 30px">
+<div _ngcontent-jtl-c5="" class="pagination col-md-12" style="padding: 0 30px">
   <div ngbDropdown class="dropdown">
-    <h5 ngbDropdownToggle class="btn btn-primary dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Page Size {{pageSize}}
+    <h5
+      ngbDropdownToggle
+      class="btn btn-primary dropdown-toggle"
+      role="button"
+      id="dropdownMenuLink"
+      data-bs-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Page Size {{ pageSize }}
     </h5>
 
-    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <span  ngbDropdownItem  (click)="setPageSize(5)" class="dropdown-item">5</span>
-      <span  ngbDropdownItem (click)="setPageSize(10)" class="dropdown-item">10</span>
-      <span ngbDropdownItem (click)="setPageSize(25)" class="dropdown-item" >25</span>
-      <span ngbDropdownItem (click)="setPageSize(50)" class="dropdown-item">50</span>
-      <span ngbDropdownItem (click)="setPageSize(100)" class="dropdown-item">100</span>
-      <span ngbDropdownItem (click)="setPageSize(250)" class="dropdown-item">250</span>
+    <div
+      ngbDropdownMenu
+      class="dropdown-menu"
+      aria-labelledby="dropdownMenuLink"
+    >
+      <span ngbDropdownItem (click)="setPageSize(5)" class="dropdown-item"
+        >5</span
+      >
+      <span ngbDropdownItem (click)="setPageSize(10)" class="dropdown-item"
+        >10</span
+      >
+      <span ngbDropdownItem (click)="setPageSize(25)" class="dropdown-item"
+        >25</span
+      >
+      <span ngbDropdownItem (click)="setPageSize(50)" class="dropdown-item"
+        >50</span
+      >
+      <span ngbDropdownItem (click)="setPageSize(100)" class="dropdown-item"
+        >100</span
+      >
+      <span ngbDropdownItem (click)="setPageSize(250)" class="dropdown-item"
+        >250</span
+      >
     </div>
   </div>
-  
+
   <ul _ngcontent-jtl-c5="" class="pagination">
     <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
-      <a class="page-link" (click)="setPage(1)"><i style="font-size:26px" class="fa fa-angle-double-left"></i></a>
+      <a class="page-link" (click)="setPage(1)"
+        ><i style="font-size: 26px" class="fa fa-angle-double-left"></i
+      ></a>
     </li>
     <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
-      <a class="page-link" (click)="setPage(currentPage - 1)"><i style="font-size:26px" class="fa fa-angle-left"></i></a>
+      <a class="page-link" (click)="setPage(currentPage - 1)"
+        ><i style="font-size: 26px" class="fa fa-angle-left"></i
+      ></a>
     </li>
-    <li class="page-item" [ngClass]="{ active: currentPage === page }" *ngFor="let page of displayedPages">
+    <li
+      class="page-item page-number"
+      [ngClass]="{ active: currentPage === page }"
+      *ngFor="let page of displayedPages"
+    >
       <a class="page-link" (click)="setPage(page)">{{ page }}</a>
     </li>
     <li class="page-item" [ngClass]="{ disabled: currentPage === totalPages }">
-      <a class="page-link" (click)="setPage(currentPage + 1)"><i style="font-size:26px" class="fa fa-angle-right"></i></a>
+      <a class="page-link" (click)="setPage(currentPage + 1)"
+        ><i style="font-size: 26px" class="fa fa-angle-right"></i
+      ></a>
     </li>
     <li class="page-item" [ngClass]="{ disabled: currentPage === totalPages }">
-      <a class="page-link" (click)="setPage(totalPages)"><i style="font-size:26px" class="fa fa-angle-double-right"></i></a>
+      <a class="page-link" (click)="setPage(totalPages)"
+        ><i style="font-size: 26px" class="fa fa-angle-double-right"></i
+      ></a>
     </li>
   </ul>
 </div>

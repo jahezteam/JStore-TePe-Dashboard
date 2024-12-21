@@ -17,10 +17,16 @@
     width: 42px;
     border-radius: 50% !important;
 }
+
+
+
 :host-context([dir="rtl"]) .page-item a {
   transform: scaleX(-1);
 }
 
+:host-context([dir="rtl"]) .page-number a {
+  transform: unset !important;
+}
 .page-item a i {
   color: #2eb45d;
 }
