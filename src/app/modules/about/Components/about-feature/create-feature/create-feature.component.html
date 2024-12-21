@@ -9,7 +9,7 @@
               <app-text-component
                 [(ngModel)]="form.featurNameAr"
                 [name]="'featurNameAr'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('featurNameAr', $event)"
@@ -26,7 +26,7 @@
               <app-text-component
                 [(ngModel)]="form.featurNameEn"
                 [name]="'featurNameEn'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('featurNameEn', $event)"

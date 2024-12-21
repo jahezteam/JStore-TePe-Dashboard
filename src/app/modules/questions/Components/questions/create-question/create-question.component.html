@@ -9,7 +9,7 @@
               <app-text-area-component
                 [(ngModel)]="form.questionBody"
                 [name]="'questionBody'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('questionBody', $event)"
@@ -26,7 +26,7 @@
               <app-text-area-component
                 [(ngModel)]="form.questionBodyEn"
                 [name]="'questionBodyEn'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('questionBodyEn', $event)"

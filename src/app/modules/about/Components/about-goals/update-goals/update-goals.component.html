@@ -25,7 +25,7 @@
               <app-text-component
                 [(ngModel)]="form.titleAr"
                 [name]="'titleAr'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('titleAr', $event)"
@@ -40,7 +40,7 @@
               <app-text-component
                 [(ngModel)]="form.titleEn"
                 [name]="'titleEn'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('titleEn', $event)"
@@ -57,7 +57,7 @@
               <app-editor
                 [(ngModel)]="form.descriptionAr"
                 [name]="'descriptionAr'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('descriptionAr', $event)"
@@ -72,7 +72,7 @@
               <app-editor
                 [(ngModel)]="form.descriptionEn"
                 [name]="'descriptionEn'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('descriptionEn', $event)"
@@ -89,7 +89,7 @@
               <app-text-component
                 [(ngModel)]="form.icon"
                 [name]="'icon'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('icon', $event)"

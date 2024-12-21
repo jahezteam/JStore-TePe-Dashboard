@@ -8,7 +8,7 @@
             <app-text-component
               [(ngModel)]="form.name"
               [name]="'Permission Name'"
-              [minLength]="5"
+              [minLength]="3"
               [maxLength]="200"
               [size]="'small'"
               (inputValid)="isInputValid('name', $event)"

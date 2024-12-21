@@ -26,7 +26,7 @@
               <app-text-component
                 [(ngModel)]="form.nameAr"
                 [name]="'nameAr'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('nameAr', $event)"
@@ -43,7 +43,7 @@
               <app-text-component
                 [(ngModel)]="form.nameEn"
                 [name]="'nameEn'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('nameEn', $event)"
@@ -60,7 +60,7 @@
               <app-text-component
                 [(ngModel)]="form.code"
                 [name]="'code'"
-                [minLength]="5"
+                [minLength]="3"
                 [maxLength]="200"
                 [size]="'small'"
                 (inputValid)="isInputValid('code', $event)"
