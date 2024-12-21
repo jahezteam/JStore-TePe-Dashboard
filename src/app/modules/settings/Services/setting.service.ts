@@ -10,8 +10,6 @@ export class SettingService {
   constructor(private ser: ApiCallerService) {}
 
   post(model: any) {
-    console.log('Create', model);
-
     return this.ser.CreateWithFile(
       convertToFormData(model),
       '/Setting/CreatreSetting',

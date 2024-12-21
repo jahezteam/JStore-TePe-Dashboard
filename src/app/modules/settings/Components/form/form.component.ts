@@ -143,7 +143,7 @@ export class FormComponent {
   }
   onLightLogoEnSelected(file: any | null): void {
     if (file) {
-      this.form.lightLogoEn = file;
+      this.selectedLightLogoEn = file;
     } else {
       console.log('No file selected or invalid file.');
     }
