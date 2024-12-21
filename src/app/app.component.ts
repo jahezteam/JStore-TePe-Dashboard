@@ -1,13 +1,16 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {TranslationService} from './modules/i18n';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+} from '@angular/core';
+import { TranslationService } from './modules/i18n';
 // language list
-import {locale as enLang} from './modules/i18n/vocabs/en';
-import {locale as chLang} from './modules/i18n/vocabs/ch';
-import {locale as esLang} from './modules/i18n/vocabs/es';
-import {locale as jpLang} from './modules/i18n/vocabs/jp';
-import {locale as deLang} from './modules/i18n/vocabs/de';
-import {locale as frLang} from './modules/i18n/vocabs/fr';
+import { locale as enLang } from './modules/i18n/vocabs/en';
+import { locale as arLang } from './modules/i18n/vocabs/ar';
+
 import { LoaderServiceService } from './pages/shared-module/Loader/loader-service.service';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -17,17 +20,36 @@ import { LoaderServiceService } from './pages/shared-module/Loader/loader-servic
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  constructor(private translationService: TranslationService,public loadingService: LoaderServiceService) {
+  currentLang = localStorage.getItem('language') || 'en';
+  constructor(
+    private translationService: TranslationService,
+    public loadingService: LoaderServiceService,
+    @Inject(DOCUMENT) private doc: Document,
+  ) {
     // register translations
-    this.translationService.loadTranslations(
-      enLang,
-      chLang,
-      esLang,
-      jpLang,
-      deLang,
-      frLang
-    );
+    this.translationService.loadTranslations(enLang, arLang);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.handleLanguageChange(this.currentLang);
+  }
+
+  handleLanguageChange(lang: string) {
+    if (lang === 'ar') {
+      document.body.setAttribute('dir', 'rtl');
+      document.body.classList.add('rtl');
+      const changeStyle = this.doc.getElementById('switch-style');
+      if (changeStyle) {
+        changeStyle.setAttribute('href', './assets/css/rtl.css');
+      }
+    }
+    if (lang === 'en') {
+      document.body.setAttribute('dir', 'ltr');
+      document.body.classList.remove('rtl');
+      const changeStyle = this.doc.getElementById('switch-style');
+      if (changeStyle) {
+        changeStyle.setAttribute('href', './assets/css/ltr.css');
+      }
+    }
+  }
 }

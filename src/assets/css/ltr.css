@@ -1,39 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 /*// @import "./assets/sass/style.scss";*/
-
-/*// @import '../node_modules/@fortawesome/fontawesome-free/css/all.css';*/
-@import url("./animate.css");
-/*// @import url("./../../../../../owl.css");*/
-@import url("./swiper.min.css");
 /*//@import url("./jquery.fancybox.min.css");*/
 /*// @import url("./../../../../../jquery-ui.css");*/
-@import url("./linear.css");
-@import url("./select2.min.css");
-@import url("./fontawesome-all.css");
-@import url("./flaticon.css");
+/*// @import '../node_modules/@fortawesome/fontawesome-free/css/all.css';*/
+/*// @import url("./../../../../../owl.css");*/
+/*//@import "./assets/EditRadme.css";*/
 
-
-@import url("./tm-bs-mp.css");
-@import url("./tm-utility-classes.css");
 @import '../node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.carousel.scss';
 @import '../node_modules/ngx-owl-carousel-o/lib/styles/scss/owl.theme.default.scss';
-
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 @import "../node_modules/primeng/resources/themes/nova/theme.css";
 @import "../node_modules/primeng/resources/primeng.min.css";
 @import "../node_modules/primeicons/primeicons.css";
 
-/*//@import "./assets/EditRadme.css";*/
+
+@import url("./animate.css");
+@import url("./swiper.min.css");
+@import url("./linear.css");
+@import url("./select2.min.css");
+@import url("./fontawesome-all.css");
+@import url("./flaticon.css");
+@import url("./tm-bs-mp.css");
+@import url("./tm-utility-classes.css");
+
+@import url("./style.bundle.css");
+
+
+
 @import url("../font-awesome/css/all.min.css");
 @import url("./color.css");
-@import url("./style.bundle.rtl.css");
 
-@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
 
-body {
-  font-family: "Almarai", serif;
-}
 
 .aside-dark .menu .menu-item.show>.menu-link {
   background-color: #2eb45d  !important;
@@ -167,11 +165,11 @@ body {
 
 .p-card-header h1 {
   font-size: 17px;
-  text-align: right !important;
+  text-align: left !important;
   align-content: center;
   align-items: center;
   text-align: center;
-  padding: 10px 20px 10px 10px;
+  padding: 10px 10px 10px 20px;
   border-bottom: 1px solid #fcb530;
   background: #fcb530;
   color: #fff;
@@ -264,6 +262,16 @@ h5 {
   text-transform: capitalize;
 }
 
+/* button {
+    color: #fff !important;
+    background: #36b7ab !important;
+    border: 1px solid #36b7ab !important;
+    outline: none;
+    padding: 6px 13px;
+    border-radius:5px
+} */
+
+
 
 .dropdown-item h3 {
   margin-bottom: 0;
@@ -273,6 +281,34 @@ h5 {
 }
 
 
+
+/*
+// .p-accordion-content .ng-star-inserted {
+//   display: flex !important;
+// }
+
+ .p-accordion-content .ng-star-inserted h5 {
+   margin-left: 15px;
+   order: 2;
+ }
+
+
+ .p-accordion-header-link:hover {
+   border-color: #2f9d92 !important;
+   background: #2f9d92 !important;
+   color: #fff !important;
+ }
+
+ .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+   background: #36b7ab !important;
+   border-color: #36b7ab !important;
+ }
+ .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+   outline: 0 none;
+   outline-offset: 0;
+   box-shadow: 0 0 0 0.2rem #8dcdff00;
+ }
+*/
 .p-inputswitch.p-inputswitch-checked:not(.p-disabled):hover .p-inputswitch-slider {
   background: #36b7ab;
 }
@@ -308,6 +344,7 @@ h5 {
   width: 100% !important;
 }
 
+/* .Packages .p-card .p-card-footer {} */
 
 .status-bar {
   text-transform: capitalize;
@@ -361,8 +398,8 @@ h5 {
   background: #00c7c4!important;
   color: #fff;
   padding: 1rem;
-  border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
 }
 
 .p-dialog .p-dialog-content {
@@ -393,8 +430,8 @@ h5 {
   font-weight: 600 !important;
   background: #fff !important;
   border-top: none !important;
-  border-left: none !important;
   border-right: none !important;
+  border-left: none !important;
   font-family: Poppins, Helvetica, "sans-serif" !important;
   color: #7e8299 !important;
   font-size: 13px !important;
@@ -407,8 +444,8 @@ h5 {
   font-weight: 600 !important;
   background: #fff !important;
   border-top: none !important;
-  border-left: none !important;
   border-right: none !important;
+  border-left: none !important;
   font-family: Poppins, Helvetica, "sans-serif" !important;
   font-size: 13px !important;
   text-transform: capitalize !important;
@@ -425,7 +462,7 @@ h5 {
 }
 
 .p-dialog.p-confirm-dialog .p-confirm-dialog-message {
-  margin-right: 0 !important;
+  margin-left: 0 !important;
   font-weight: bold !important;
 }
 
@@ -470,8 +507,8 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
 }
 
 .question .thumbs {
-  padding-left: 10px !important;
   padding-right: 10px !important;
+  padding-left: 10px !important;
 }
 
 
@@ -581,7 +618,10 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
 
   }
 
+  /* .qustion-block {
 
+    overflow: hidden !important;
+  } */
 
   .qna-panel {
     display: block !important;
@@ -609,7 +649,7 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
   }
 
   .nav-pad-right {
-    margin-left: 0.4rem;
+    margin-right: 0.4rem;
     display: inline-block !important;
   }
 
@@ -684,7 +724,7 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-left: 10px;
+  margin-right: 10px;
   color: #fff;
   font-size: 20px;
   flex-shrink: 0;
@@ -695,7 +735,7 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
   width: calc(100% - 85px);
   display: inline-flex;
   flex-direction: column;
-  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .MyBlock .Title.MYnotes {
@@ -744,7 +784,7 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
   font-size: 13px;
   color: #013240;
   display: block;
-  text-align: left;
+  text-align: right;
 }
 
 .ShowAllLink a:hover {
@@ -827,7 +867,7 @@ img.h-25px.logo {
   height: 300px;
   background: transparent;
   color: #fff;
-  text-align: right;
+  text-align: left;
   position: relative;
   height: 100vh;
   padding: 30px 15px;
@@ -862,7 +902,7 @@ img.h-25px.logo {
 
   border-radius: 50%;
   position: fixed;
-  left: calc(50% - 40px);
+  right: calc(50% - 40px);
   z-index: 9;
   top: 50%;
   transform: translateY(-50%);
@@ -892,8 +932,8 @@ img.h-25px.logo {
   border-radius: 50%;
   position: absolute;
   top: 0;
-  right: 0;
   left: 0;
+  right: 0;
   bottom: 0;
   height: 100%;
   width: 100%;
@@ -902,10 +942,10 @@ img.h-25px.logo {
 .button.is-play .button-icon {
   position: absolute;
   top: 50%;
-  right: 50%;
+  left: 50%;
   width: 30px;
   height: 30px;
-  transform: translate(50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .button.is-play .button-icon .triangle {
@@ -949,6 +989,7 @@ img.h-25px.logo {
   max-height: 250px;
   min-height: 250px;
 }
+
 
 @keyframes fadeIn {
   from {
@@ -1015,9 +1056,9 @@ img.h-25px.logo {
 .Loginpage .responsive-iframe {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   width: 100%;
   height: 100%;
   border: none;
@@ -1051,7 +1092,7 @@ img.h-25px.logo {
   .Loginpage .icon-video {
     border-radius: 50%;
     position: absolute;
-    left: calc(50% - 40px);
+    right: calc(50% - 40px);
     z-index: 9;
     top: auto;
     transform: translateY(-50%);
@@ -1113,16 +1154,16 @@ img.h-25px.logo {
 }
 
 .card-header0 .card-title h3 {
-  margin-right: 38px;
+  margin-left: 38px;
 }
 
 .p-datatable-wrapper .dropdown {
-  float: left !important;
+  float: right !important;
 }
 
 .Actionlabel {
-  text-align: left !important;
-  padding-left: 80px;
+  text-align: right !important;
+  padding-right: 80px;
 }
 
 input.long-answer-text.ng-untouched.ng-pristine {
@@ -1139,7 +1180,7 @@ input.long-answer-text.ng-untouched.ng-pristine {
   border: none !important;
   height: 42px;
   border-radius: 5px !important;
-  margin: 1px 0 0px 10px !important;
+  margin: 1px 10px 0px 0 !important;
 }
 
 .MYBtns i {
@@ -1172,6 +1213,8 @@ input.long-answer-text.ng-untouched.ng-pristine {
   margin: 0.8rem 0 1.6rem !important;
 
 }
+
+
 
 
 .btn-show {
@@ -1267,16 +1310,15 @@ app-login {
 }
 
 
-/*// Ahmed*/
-   .p-button.p-button-icon-only {
-     width: 2.357rem;
-     padding: 0.429rem 0;
-     margin-top: 5px;
-   }
+.p-button.p-button-icon-only {
+  width: 2.357rem;
+  padding: 0.429rem 0;
+  margin-top: 5px;
+}
 
 .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center, .apexcharts-legend.apx-legend-position-top.apexcharts-align-center {
   justify-content: center;
-  inset: auto 0px 5px !important;
+  inset: auto 0 5px !important;
 }
 
 .imgGroupBtnResize {
@@ -1284,12 +1326,13 @@ app-login {
 }
 
 
+
 .aside.aside-dark {
   background: #f9f9f9 !important;
 }
 
 .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon) {
-  margin: 0 0px 0 0;
+  margin: 0 0 0 0px;
 }
 
 .MyBlock .Title.MYnotes {
@@ -1330,6 +1373,9 @@ app-login {
   border-radius: 50%;
 }
 
+/*.dropdown-menu.show {*/
+/*  top: 5px; }*/
+
 .imgGroupBtnResize {
   color: #fff !important;
   background: #013240 !important;
@@ -1364,7 +1410,7 @@ app-login {
   padding: 1rem;
   overflow: visible;
   border-radius: 5px;
-/*//min-height: 240px;*/
+//min-height: 240px;
 }
 
 .p-button-danger {
@@ -1401,6 +1447,8 @@ app-login {
 }
 
 
+/*// slider*/
+
 .ng-image-slider .ng-image-slider-container .main {
   height: 335px !important;
 }
@@ -1417,7 +1465,7 @@ app-login {
 }
 
 .pointer i.fa-shopping-cart span {
-  left: 14px;
+  right: 14px;
   top: -14px;
   min-width: 21px;
   font-size: 16px;
@@ -1464,7 +1512,7 @@ app-login {
   color:  #00c7c4 !important;
 }
 .main-footer {
-  overflow: hidden !important;
+  overflow:hidden !important;
 }
 
 .iti {
@@ -1475,7 +1523,6 @@ app-login {
   outline: none;
   border-radius: 25px;
 }
-
 
 .icon-box .icon {
   color: #fff;
@@ -1549,6 +1596,7 @@ app-login {
 
 
 
+/*//loader css*/
 
 .splash-screen {
   width: 100%;
@@ -1594,11 +1642,9 @@ app-login {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }
-
-
 
 
 
@@ -1614,19 +1660,19 @@ app-login {
 .loader2:before {
   content: "";
   position: absolute;
-  right: calc(100% + 14px);
+  left: calc(100% + 14px);
   bottom: -6px;
   width: 16px;
   height: 100px;
   border-radius: 20px 20px 50px 50px;
   background-repeat: no-repeat;
   background-image: linear-gradient(#ff3d00 6px, transparent 0),
-  linear-gradient(-45deg, rgba(0, 0, 0, 0.02) 49%, white 51%),
-  linear-gradient(-315deg, rgba(0, 0, 0, 0.02) 49%, white 51%),
+  linear-gradient(45deg, rgba(0, 0, 0, 0.02) 49%, white 51%),
+  linear-gradient(315deg, rgba(0, 0, 0, 0.02) 49%, white 51%),
   linear-gradient( to bottom, #ffffff 10%, #ff3d00 10%, #ff3d00 90%, #ffffff 90% );
   background-size: 3px 3px, 8px 8px, 8px 8px, 16px 88px;
-  background-position: center bottom, right 88px, left 88px, right top;
-  transform: rotate(-25deg);
+  background-position: center bottom, left 88px, right 88px, left top;
+  transform: rotate(25deg);
   animation: pencilRot 4s linear infinite;
 }
 
@@ -1638,14 +1684,14 @@ app-login {
 @keyframes pencilRot {
   0%, 45% {
     bottom: -6px;
-    right: calc(100% + 14px);
-    transform: rotate(-25deg);
+    left: calc(100% + 14px);
+    transform: rotate(25deg);
   }
   55%,
   100% {
     bottom: -12px;
-    right: calc(100% + 16px);
-    transform: rotate(-220deg);
+    left: calc(100% + 16px);
+    transform: rotate(220deg);
   }
 }
 
@@ -1656,40 +1702,40 @@ app-login {
 [data-kt-aside-minimize=on] .aside:not(:hover) .btn-custom .btn-label {
   width: 0;
   opacity: 0;
-  padding-left: 0;
+  padding-right: 0;
   transition: opacity .3s ease;
 }
 .dropdown .btn-primary {
-  background:linear-gradient(to right, #41b366, #2eb45d) !important;
+  background:linear-gradient(to left, #41b366, #2eb45d) !important;
   border-radius: 25px !important;
 }
 
 .card-toolbar .btn-primary {
-  background: linear-gradient(to top left, #ca0e50, #cd1b59);
+  background: linear-gradient(to top right, #ca0e50, #cd1b59);
   color: rgba(255, 255, 255, 0.95);
   border-radius: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 35px;
   padding-left: 35px;
+  padding-right: 35px;
   font-weight: 500
 }
 
 
 .card-toolbar .btn-light-primary {
-  background: linear-gradient(to top left, #1976b0, #2188c9);
+  background: linear-gradient(to top right, #1976b0, #2188c9);
   color: #ffffff !important;
   border-radius: 25px;
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-right: 35px;
   padding-left: 35px;
+  padding-right: 35px;
   font-weight: 500;
   transition: all .3s linear;
 }
 
 .card-toolbar .btn-light-primary:hover:not(.btn-active) {
-  background: linear-gradient(154.69deg, #ffbc37 3.49%, #fcb530 83.95%) !important;
+  background: linear-gradient(-154.69deg, #ffbc37 3.49%, #fcb530 83.95%) !important;
   color: #fff;
 }
 
@@ -1702,7 +1748,6 @@ app-login {
   --fa-primary-color: #efefef;
   --fa-secondary-color: #ffffff;
 }
-
 
 
 
@@ -1725,16 +1770,13 @@ app-login {
     display: none !important;
   }
 
-
 }
 /*// end table dashboard responsive*/
 
 
-   .btn.btn-primary:hover:not(.btn-active) {
-     background: linear-gradient(154.69deg, #ffbc37 3.49%, #fcb530 83.95%) !important;
-   }
-
-
+.btn.btn-primary:hover:not(.btn-active) {
+  background: linear-gradient(-154.69deg, #ffbc37 3.49%, #fcb530 83.95%) !important;
+}
 
 
 .p-dialog {
@@ -1751,9 +1793,9 @@ app-login {
   border-bottom: 1px solid #fcb530 !important;
   background: #fcb530 !important;
   color: #fff;
-  padding: 10px 25px 10px 10px;
-  border-top-left-radius: 25px !important;
+  padding: 10px 10px 10px 25px;
   border-top-right-radius: 25px !important;
+  border-top-left-radius: 25px !important;
 }
 
 .p-dialog .p-dialog-content {
@@ -1763,29 +1805,26 @@ app-login {
 
 .p-dialog-content .p-button {
   box-shadow: 0 15px 20px -6px rgba(42, 212, 163 , 0.40);
-  background: linear-gradient(-154.69deg, #2AD4CA 3.49%, #2AD478 83.95%);
+  background: linear-gradient(154.69deg, #2AD4CA 3.49%, #2AD478 83.95%);
   border: 1.6px solid #2bc295;
   color: rgba(255, 255, 255, 0.95);
   font-size: 16px;
   border-radius: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-right: 20px;
   padding-left: 20px;
+  padding-right: 20px;
   font-weight: 500;
 }
 
 .p-button {
   box-shadow: 0 5px 10px -6px rgba(42, 212, 163 , 0.40);
-  background: linear-gradient(-154.69deg, #2AD4CA 3.49%, #2AD478 83.95%);
+  background: linear-gradient(154.69deg, #2AD4CA 3.49%, #2AD478 83.95%);
   border: 1.6px solid #2bc295;
   color: rgba(255, 255, 255, 0.95);
   font-size: 16px;
   border-radius: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 5px 20px;
   font-weight: 500;
 }
 
@@ -1824,11 +1863,11 @@ p-calendar .p-button {
   border: 1.6px solid #2eb45d !important;
   background: #2eb45d !important;
   color: rgba(255, 255, 255, 0.95);
-  margin-right: -30px;
+  margin-left: -30px;
   font-size: 16px;
-  border-radius: 5px 0 0 5px;
+  border-radius: 0 5px 5px 0;
   font-weight: 500;
-  border-radius: 25px 0 0 25px;
+  border-radius: 0 25px 25px 0;
   width: 39px !important;
 }
 
@@ -1837,9 +1876,9 @@ p-dropdown .p-dropdown-trigger {
   border: 1.6px solid #36b7ab;
   background: #36b7ab;
   color: rgba(255, 255, 255, 0.95);
-  margin-right: -30px;
+  margin-left: -30px;
   font-size: 16px;
-  border-radius: 5px 0 0 5px;
+  border-radius: 0 5px 5px 0;
   font-weight: 500;
 }
 
@@ -1858,11 +1897,11 @@ p-dropdown .p-dropdown-trigger {
 .p-multiselect-trigger {
   position: absolute;
   top: 0;
-  left: -1px;
+  right: -1px;
   background: #30b55f;
   color: #fff;
   padding: 15px;
-  border-radius: 25px 0 0 25px;
+  border-radius: 0 25px 25px 0;
   width: 39px;
 }
 
@@ -1920,12 +1959,12 @@ p-dropdown .p-dropdown-trigger {
 
 .main-slider-nav-relative .owl-nav .owl-prev {
   position: absolute !important;
-  right: 30px !important;
+  left: 30px !important;
 }
 
 .main-slider-nav-relative .owl-nav .owl-next {
   position: absolute !important;
-  left: 30px !important;
+  right: 30px !important;
 }
 
 
@@ -1948,7 +1987,7 @@ p-dropdown .p-dropdown-trigger {
   background: #2eb45d;
   color: rgba(255, 255, 255, 0.95);
   font-size: 16px;
-  border-radius: 25px 0 0 25px;
+  border-radius: 0 25px 25px 0;
   font-weight: 500;
   width: 39px;
 }
@@ -1963,7 +2002,7 @@ p-dropdown .p-dropdown-trigger {
   margin-top: -.6rem;
   width: 16px;
   height: 16px;
-  margin-left: 7px;
+  margin-right: 7px;
   color: #cd1b59 !important;
 }
 
@@ -1984,7 +2023,7 @@ p-dropdown .p-dropdown-trigger {
 }
 
 .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
-  left: 0.429rem;
+  right: 0.429rem;
   color: #cd1b59;
   top: 22px;
 }
@@ -2003,7 +2042,7 @@ p-dropdown .p-dropdown-trigger {
   height: 20px;
 }
 .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
-  left: 0.429rem;
+  right: 0.429rem;
   color: #cd1b59;
   top: 19px;
   width: 20px;
@@ -2012,7 +2051,7 @@ p-dropdown .p-dropdown-trigger {
 .p-multiselect-header .p-multiselect-close {
   color: #cd1b59;
   bottom: 8px;
-  right: 5px;
+  left: 5px;
 }
 
 .p-checkbox .p-checkbox-box {
@@ -2020,7 +2059,7 @@ p-dropdown .p-dropdown-trigger {
 }
 
 .p-multiselect-panel .p-multiselect-header .p-checkbox {
-  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   margin-bottom: 15px;
 }
 
@@ -2043,7 +2082,7 @@ p-dropdown .p-dropdown-trigger {
     padding: 5px 10px;
     border-radius: 10px;
     border: 2px solid #e92b2b;
-    margin-right: 10px;
+    margin-left: 10px;
     display: block;
     margin-top: 15px;
   }
@@ -2056,9 +2095,9 @@ p-dropdown .p-dropdown-trigger {
 .footer {
   background-color: #fff;
   border-radius: 25px 25px 25px 25px;
-  margin-right: 5px;
-  margin-bottom: 5px;
   margin-left: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
   box-shadow: 0 0px 3px rgba(174, 174, 174, 0.38) !important;
 }
 
@@ -2069,9 +2108,9 @@ p-dropdown .p-dropdown-trigger {
   border-bottom: 1px solid #ffffff !important;
   box-shadow: 0 0px 3px rgba(174, 174, 174, 0.38) !important;
   border-radius: 25px 25px 25px 25px;
-  margin-right: 5px;
-  margin-top: 5px;
   margin-left: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
 }
 
 .aside-logo {
@@ -2110,6 +2149,9 @@ p-dropdown .p-dropdown-trigger {
   border-radius: 5px !important;
   overflow: hidden;
 }
+.p-dropdown-items-wrapper {
+// border-radius: 25px !important;
+}
 
 
 .p-datepicker {
@@ -2122,7 +2164,7 @@ p-dropdown .p-dropdown-trigger {
 
 
 .btn.btn-primary {
-  background: linear-gradient(to top left, #ca0e50, #cd1b59) !important;
+  background: linear-gradient(to top right, #ca0e50, #cd1b59) !important;
   color: rgba(255, 255, 255, 0.95);
   border-radius: 25px;
   opacity: 1;
@@ -2153,7 +2195,7 @@ p-dropdown .p-dropdown-trigger {
 
 
 .p-dropdown-header{
-  border-radius: 25PX 25px 0 0 !important;
+  border-radius: 25px 25PX 0 0 !important;
 }
 
 .btn-success {
@@ -2177,7 +2219,7 @@ p-dropdown .p-dropdown-trigger {
 
 .phoneInput {
   padding: 6px 20px;
-  margin-right: 10px;
+  margin-left: 10px;
   border: none;
 }
 
@@ -2190,12 +2232,12 @@ span.p-inputtext:focus {
 
 @media (min-width: 992px) {
   .aside-enabled.aside-fixed[data-kt-aside-minimize=on] .wrapper {
-    transition: padding-right .3s ease;
-    padding-right: 80px;
+    transition: padding-left .3s ease;
+    padding-left: 80px;
   }
   .aside-enabled.aside-fixed.header-fixed[data-kt-aside-minimize=on] .header {
-    right: 80px;
-    transition: right .3s ease;
+    left: 80px;
+    transition: left .3s ease;
   }
 }
 .drawer-on {

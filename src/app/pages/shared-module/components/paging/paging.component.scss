@@ -3,7 +3,7 @@
     border-color: #11538f;
     color: #fff;
   }
-  
+
 
 .page-item a{
   background-color: #fff !important;
@@ -17,6 +17,10 @@
     width: 42px;
     border-radius: 50% !important;
 }
+:host-context([dir="rtl"]) .page-item a {
+  transform: scaleX(-1);
+}
+
 .page-item a i {
   color: #2eb45d;
 }
@@ -29,7 +33,7 @@
     font-weight: bold;
     height: 42px;
     width: 42px;
-    border-radius: 50%; 
+    border-radius: 50%;
 }
 
 .page-item.disabled a{

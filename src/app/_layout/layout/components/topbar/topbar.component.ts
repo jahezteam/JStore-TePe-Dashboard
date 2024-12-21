@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UsersService } from '../../../../modules/users/Services/users.service';
 import { AuthenticationService } from '../../../../modules/auth/services/authentication.service';
 import { user } from '../../../../modules/users/Models/user';
+import { TranslationService } from '../../../../modules/i18n';
 
 @Component({
   selector: 'app-topbar',
@@ -18,9 +19,14 @@ export class TopbarComponent implements OnInit {
   toolbarButtonIconSizeClass = 'svg-icon-1';
   headerLeft: string = 'menu';
 
-  constructor(private layout: LayoutService, private service: UsersService,
-    private auth: AuthenticationService, private changeDetection: ChangeDetectorRef,
-    private router: Router) { }
+  constructor(
+    private layout: LayoutService,
+    private service: UsersService,
+    private auth: AuthenticationService,
+    private changeDetection: ChangeDetectorRef,
+    private router: Router,
+    private translate: TranslationService,
+  ) {}
   user$!: Observable<user>;
   url: any;
 
@@ -29,7 +35,7 @@ export class TopbarComponent implements OnInit {
 
     this.headerLeft = this.layout.getProp('header.left') as string;
 
-    this.user$.subscribe(x => {
+    this.user$.subscribe((x) => {
       this.service.getImage(x.userName).subscribe((res: any) => {
         if (res) {
           const mimeType = res.type;
@@ -41,21 +47,29 @@ export class TopbarComponent implements OnInit {
           reader.onload = (_event) => {
             this.url = reader.result;
             this.changeDetection.detectChanges();
-          }
-        }
-        else {
+          };
+        } else {
           // this.messageService.add({key: 'tl', severity:'error', summary: 'Error', detail: 'Error occured Please contact system adminstrator'});
         }
       });
     });
-
   }
+
   getCardItems(): number {
-
-    return this.auth.getKey("Packages")?.length;
+    return this.auth.getKey('Packages')?.length;
   }
-  routeToCart() {
-    if (this.auth.isAuthenticated()) { this.router.navigateByUrl('package/cart'); } else { this.router.navigateByUrl('cart'); }
 
+  routeToCart() {
+    if (this.auth.isAuthenticated()) {
+      this.router.navigateByUrl('package/cart');
+    } else {
+      this.router.navigateByUrl('cart');
+    }
+  }
+
+  changeLang() {
+    this.translate.setLanguage(
+      this.translate.getSelectedLanguage() === 'en' ? 'ar' : 'en',
+    );
   }
 }
