@@ -77,7 +77,23 @@ body {
   background-color: --js-main-color-dark!important;
 }
 
+.text-primary {
+  color: #36b7ab !important;
+}
 
+
+
+.aside-dark .menu .menu-item .menu-link .menu-title {
+  color: #00a49b;
+}
+
+.menu-state-title-primary .menu-item.show>.menu-link .menu-title {
+  color: #36b7ab !important;
+}
+
+.menu-state-title-primary .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-title {
+  color: #36b7ab;
+}
 
 @media (min-width: 992px) {
   .header-fixed .wrapper {
