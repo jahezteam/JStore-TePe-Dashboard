@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ApiCallerService } from '../../../pages/shared-module/Services/api-caller.service';
 import { convertToFormData } from '../../../pages/shared-module/Models/convertToFormData';
-import { About, AboutUsGoals, FeatureTitle, GoalTitle } from '../Models/about';
+import {
+  About,
+  AboutUsGoals,
+  FeatureTitle,
+  GoalTitle,
+  QuestionsTitle,
+} from '../Models/about';
 
 @Injectable({
   providedIn: 'root',
@@ -50,6 +56,9 @@ export class AboutService {
   updateGoalTitle(model: GoalTitle) {
     return this.ser.Update(model, '/AboutUs/UpdateGoalTitle');
   }
+  updateQuestionTitle(model: QuestionsTitle) {
+    return this.ser.Update(model, '/AboutUs/UpdateQuestionTitle');
+  }
 
   postFeature(model: any) {
     return this.ser.Create(model, '/AboutUsFeature/CreateAboutUsFeature');
@@ -94,6 +103,8 @@ export class AboutService {
     );
   }
 
+  // AboutUsGoals
+
   postGoal(model: AboutUsGoals) {
     const formData = convertToFormData(model);
     return this.ser.Create(formData, '/AboutGoal/CreateAboutUsGoal');
@@ -128,6 +139,51 @@ export class AboutService {
     return this.ser.DeleteWithQueryParam(
       id,
       '/AboutGoal/DeleteAboutUsGoal?Id=' + id,
+    );
+  }
+
+  // AboutUsQuestion
+
+  postQuestion(model: any) {
+    return this.ser.Create(model, '/AboutUsQuestion/CreateAboutUsQuestion');
+  }
+  getQuestionById(id: number) {
+    return this.ser.GetById('/AboutUsQuestion/GetAboutUsQuestionById?Id=' + id);
+  }
+  getQuestionList() {
+    return this.ser.GetWithFullUrl('/AboutUsQuestion/GetAboutUsQuestion');
+  }
+  getQuestionPagination(model: any, isSearch: boolean = false) {
+    return this.ser.getPagination(
+      model,
+      '/AboutUsQuestion/GetAllPagging',
+      isSearch,
+    );
+  }
+  getQuestionPaginationFilter(isActive: boolean, model: any) {
+    return this.ser.getFilterPagination(
+      '/AboutUsQuestion/GetFilteredPaginated?PageNumber=' +
+        model.pageNumber +
+        '&PageSize=' +
+        model.pageSize +
+        '&IsActive=' +
+        isActive,
+    );
+  }
+  searchQuestion(model: any, isSearch: boolean = false) {
+    return this.ser.getPagination(
+      model,
+      '/AboutUsQuestion/SearchPagging',
+      isSearch,
+    );
+  }
+  updateQuestion(model: any) {
+    return this.ser.Update(model, '/AboutUsQuestion/UpdateAboutUsQuestion');
+  }
+  deleteQuestion(id: number) {
+    return this.ser.DeleteWithQueryParam(
+      id,
+      '/AboutUsQuestion/DeleteAboutUsQuestion?Id=' + id,
     );
   }
 }

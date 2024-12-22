@@ -1,28 +1,24 @@
 import { Component } from '@angular/core';
-import { AboutPermissions, GoalTitle } from '../../../Models/about';
+import { AboutPermissions, AboutUsQuestions } from '../../../Models/about';
 import { dropdown } from '../../../../../pages/shared-module/Models/dropDown';
-import { ValidateService } from '../../../../../pages/shared-module/Services/validate.service';
-import {
-  DialogService,
-  DynamicDialogConfig,
-  DynamicDialogRef,
-} from 'primeng/dynamicdialog';
-import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { allPermissions } from '../../../../../pages/shared-module/Models/Permissions';
 import { ActivatedRoute } from '@angular/router';
+import { ValidateService } from '../../../../../pages/shared-module/Services/validate.service';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PickListService } from '../../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../../auth/services/authentication.service';
 import { SharedModuleModule } from '../../../../../pages/shared-module/shared-module.module';
 
 @Component({
-  selector: 'app-add-goal-title',
+  selector: 'app-create-question',
   standalone: true,
   imports: [SharedModuleModule],
-  templateUrl: './add-goal-title.component.html',
-  styleUrl: './add-goal-title.component.scss',
   providers: [ValidateService, DialogService, MessageService],
+  templateUrl: './create-question.component.html',
+  styleUrl: './create-question.component.scss',
 })
-export class AddGoalTitleComponent {
+export class CreateQuestionComponent {
   valid = false;
   aboutPermissions = AboutPermissions;
   permissions: any;
@@ -30,13 +26,13 @@ export class AddGoalTitleComponent {
   selectedPermissions: dropdown[] = [] as dropdown[];
   allPermissions: allPermissions = new allPermissions();
   aboutId: number = 0;
-  form: GoalTitle = {
-    id: this.aboutId,
-    titleGoalAr: '',
-    titleGoalEn: '',
-    descriptionGoalAr: '',
-    descriptionGoalEn: '',
-    aboutUsId: 0,
+  form: AboutUsQuestions = {
+    id: 0,
+    questionBody: '',
+    questionBodyEn: '',
+    answerBody: '',
+    answerBodyEn: '',
+    aboutUsId: +this.aboutId,
   };
 
   constructor(
@@ -48,7 +44,6 @@ export class AddGoalTitleComponent {
     private messageService: MessageService,
     private pickList: PickListService,
     private auth: AuthenticationService,
-    public config: DynamicDialogConfig,
   ) {
     this.route.params.subscribe((params) => {
       this.aboutId = params['id'];
@@ -64,19 +59,18 @@ export class AddGoalTitleComponent {
 
   registerForm() {
     this.form = {
-      id: this.config.data.id,
-      titleGoalAr: this.config.data.titleGoalAr,
-      titleGoalEn: this.config.data.titleGoalEn,
-      descriptionGoalAr: this.config.data.descriptionGoalAr,
-      descriptionGoalEn: this.config.data.descriptionGoalEn,
-      aboutUsId: this.aboutId,
+      id: 0,
+      questionBody: '',
+      questionBodyEn: '',
+      answerBody: '',
+      answerBodyEn: '',
+      aboutUsId: +this.aboutId,
     };
-
+    this.validationService.registerForm(['questionBody', 'questionBodyEn']);
     this.validationService.validStatus.subscribe(
       (status) => (this.valid = status),
     );
   }
-
   isInputValid(name: string, status: boolean) {
     this.validationService.updateFormFlag(name, status);
   }

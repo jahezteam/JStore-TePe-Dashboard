@@ -1,0 +1,92 @@
+@if (isAuth(aboutPermissions.CreateAboutUsQuestion)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row"></div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.questionBody"
+                [name]="'questionBody'"
+                [minLength]="3"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('questionBody', $event)"
+                [require]="true"
+                [label]="'Question Body'"
+                [disable]="false"
+              ></app-text-area-component>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.questionBodyEn"
+                [name]="'questionBodyEn'"
+                [minLength]="3"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('questionBodyEn', $event)"
+                [require]="true"
+                [label]="'Question Body En'"
+                [disable]="false"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.answerBody"
+                [name]="'answerBody'"
+                [minLength]="3"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('answerBody', $event)"
+                [require]="true"
+                [label]="'Answer Body'"
+                [disable]="false"
+              ></app-text-area-component>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.answerBodyEn"
+                [name]="'answerBodyEn'"
+                [minLength]="3"
+                [maxLength]="200"
+                [size]="'small'"
+                (inputValid)="isInputValid('answerBodyEn', $event)"
+                [require]="true"
+                [label]="'Answer Body En'"
+                [disable]="false"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Save"
+          class="btn btn-success"
+          (click)="submit()"
+          [disabled]="getValidation()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}

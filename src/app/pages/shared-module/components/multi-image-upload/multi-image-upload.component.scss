@@ -47,3 +47,9 @@
   text-align: center;
   cursor: pointer;
 }
+
+
+:host-context([dir="rtl"]) .remove-button {
+  left: -16px;
+  right: unset;
+}

@@ -11,6 +11,7 @@ import { UpdateComponent } from './Components/update/update.component';
 import { AboutPermissions } from './Models/about';
 import { FeatureListComponent } from './Components/about-feature/feature-list/feature-list.component';
 import { GoalsListComponent } from './Components/about-goals/goals-list/goals-list.component';
+import { QuestionListComponent } from './Components/about-questions/question-list/question-list.component';
 
 export const routes: Routes = [
   {
@@ -48,6 +49,12 @@ export const routes: Routes = [
     component: GoalsListComponent,
     canActivate: [PermissionGuard],
     data: { permission: AboutPermissions.AboutUsGoalList },
+  },
+  {
+    path: 'questions/:id',
+    component: QuestionListComponent,
+    canActivate: [PermissionGuard],
+    data: { permission: AboutPermissions.AboutUsQuestionList },
   },
 ];
 

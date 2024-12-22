@@ -17,6 +17,8 @@ export interface About {
   image: string;
   aboutUsFeacturers?: AboutUsFeacturers[];
   aboutUsGoals?: AboutUsGoals[];
+  aboutUsSlider?: AboutUsSlider[];
+  aboutUsQuestions?: AboutUsQuestions[];
 }
 export interface FeatureTitle {
   id: number;
@@ -31,6 +33,25 @@ export interface GoalTitle {
   titleGoalEn: string;
   descriptionGoalAr: string;
   descriptionGoalEn: string;
+  aboutUsId: number;
+}
+
+export interface QuestionsTitle {
+  id: number;
+  titleQuestionAr: string;
+  titleQuestionEn: string;
+  descriptionQuestionAr: string;
+  descriptionQuestionEn: string;
+  aboutUsId: number;
+}
+
+export interface AboutUsQuestions {
+  id: number;
+  questionBody: string;
+  questionBodyEn: string;
+  answerBody: string;
+  answerBodyEn: string;
+  aboutUsId: number;
 }
 
 export interface AboutUsFeacturers {

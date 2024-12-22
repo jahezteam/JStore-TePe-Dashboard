@@ -146,6 +146,9 @@ export class ListComponent {
   routeToAboutGoals(id: any) {
     this.router.navigateByUrl('/about/goals/' + id);
   }
+  routeToAboutQuestions(id: any) {
+    this.router.navigateByUrl('/about/questions/' + id);
+  }
 
   openSliderPopup(item: any) {
     console.log(item);

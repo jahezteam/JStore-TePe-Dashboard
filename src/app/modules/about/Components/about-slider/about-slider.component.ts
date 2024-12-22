@@ -58,6 +58,7 @@ export class AboutSliderComponent {
     this.registerForm();
   }
   registerForm() {
+    console.log(this.config.data);
     this.form = {
       id: 0,
       images: this.config.data?.images,
