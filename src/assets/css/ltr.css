@@ -2238,9 +2238,10 @@ span.p-inputtext:focus {
 
 
 .change-lang {
-    margin-left: 10px;
-    margin-right: unset;
+    margin-left: unset;
+    margin-right: 10px;
 }
+
 .change-lang img {
     width: 35px;
     height: 35px;
