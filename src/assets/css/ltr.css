@@ -1839,13 +1839,12 @@ app-login {
   background: var(--js-dark-color) !important;
   color: #fff;
   padding: 10px 10px 10px 25px;
-  border-top-right-radius: 25px !important;
-  border-top-left-radius: 25px !important;
+  border-radius: 5px 5px 0 0 !important;
 }
 
 .p-dialog .p-dialog-content {
   padding: 25px 15px 15px !important;
-  border-radius: 0 0 25px 25px !important;
+  border-radius: 0 0 5px 5px !important;
 }
 
 .p-dialog-content .p-button {

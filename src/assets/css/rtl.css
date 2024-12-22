@@ -41,6 +41,16 @@
   /* 3f4254 */
 }
 
+:root {
+  --js-main-color: #bb7607;
+  --js-main-color-light: #dfad07;
+  --js-light-color: #f8edba;
+  --js-main-color-dark: #3e738e;
+  --js-dark-color: #a1aaaf;
+  --js-green-color: #a81627;
+  /* 3f4254 */
+}
+
 body {
   font-family: "Almarai", serif;
 }
