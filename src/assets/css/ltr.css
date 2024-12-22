@@ -2233,3 +2233,8 @@ span.p-inputtext:focus {
 .p-dialog .p-dialog-content {
     min-height: 350px;
 }
+
+.change-lang {
+    margin-left: unset;
+    margin-right: 10px;
+}
