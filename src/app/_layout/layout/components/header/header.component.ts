@@ -1,7 +1,16 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild,} from '@angular/core';
-import {NavigationCancel, NavigationEnd, Router} from '@angular/router';
-import {Subscription} from 'rxjs';
-import {LayoutService} from '../../core/layout.service';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { NavigationCancel, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { LayoutService } from '../../core/layout.service';
+import { environment } from '../../../../../environments/environment';
+import { SettingService } from '../../../../modules/settings/Services/setting.service';
 
 @Component({
   selector: 'app-header',
@@ -16,26 +25,36 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   pageTitleAttributes!: {
     [attrName: string]: string | boolean;
   };
+  logo!: string;
   @ViewChild('ktPageTitle', { static: true })
   ktPageTitle!: ElementRef;
 
   private unsubscribe: Subscription[] = [];
 
-  constructor(private layout: LayoutService, private router: Router) {
+  constructor(
+    private layout: LayoutService,
+    private router: Router,
+    private settingServices: SettingService,
+  ) {
     this.routingChanges();
   }
 
   ngOnInit(): void {
-    this.headerContainerCssClasses = this.layout.getStringCSSClasses('headerContainer');
+    this.settingServices.getList().subscribe((res) => {
+      this.logo =
+        environment.imageUrl + res?.[0].logo.path || './assets/images/logo.png';
+    });
+    this.headerContainerCssClasses =
+      this.layout.getStringCSSClasses('headerContainer');
     this.asideDisplay = this.layout.getProp('aside.display') as boolean;
     this.headerLeft = this.layout.getProp('header.left') as string;
     this.pageTitleCssClasses = this.layout.getStringCSSClasses('pageTitle');
     this.pageTitleAttributes = this.layout.getHTMLAttributes('pageTitle');
   }
-  openMenu(){
-    let element=document.getElementById('kt_aside');
-    if(element!=undefined ||element!=null){
-        element.classList.toggle('drawer-on');
+  openMenu() {
+    let element = document.getElementById('kt_aside');
+    if (element != undefined || element != null) {
+      element.classList.toggle('drawer-on');
     }
   }
   ngAfterViewInit() {
@@ -58,6 +77,5 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.unsubscribe.push(routerSubscription);
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 }

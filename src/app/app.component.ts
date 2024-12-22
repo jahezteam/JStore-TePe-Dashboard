@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
 
   handleLanguageChange(lang: string) {
     const htmlElement = this.renderer.selectRootElement('html', true);
-
     if (lang === 'ar') {
       this.renderer.setAttribute(htmlElement, 'dir', 'rtl');
       this.renderer.addClass(htmlElement, 'rtl');

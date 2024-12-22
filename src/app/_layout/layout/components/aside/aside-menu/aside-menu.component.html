@@ -11,7 +11,6 @@
     <span class="menu-title" translate="MENU.DASHBOARD"></span
   ></a>
 </div>
-
 <div class="menu-item aside-wrapper">
   <a class="menu-link" (click)="toggleDropdown('users')">
     <span class="menu-icon">
@@ -54,7 +53,6 @@
     }
   </div>
 </div>
-
 <div class="menu-item aside-wrapper">
   <a class="menu-link" (click)="toggleDropdown('products')">
     <span class="menu-icon">
@@ -303,6 +301,33 @@
             <i class="fa-duotone fa-stars" aria-hidden="true"></i>
           </span>
           <span class="menu-title" translate="Testimonials"></span>
+        </a>
+      </div>
+    }
+  </div>
+</div>
+<div class="menu-item aside-wrapper">
+  <a class="menu-link" (click)="toggleDropdown('Vendors')">
+    <span class="menu-icon">
+      <i class="fa-duotone fa-list" aria-hidden="true"></i>
+    </span>
+    <span class="menu-title">Vendors</span>
+    <span class="menu-arrow">
+      <i class="fa-duotone fa-chevron-down"></i>
+    </span>
+  </a>
+  <div class="menu-sub" [class.show]="activeDropdown === 'Vendors'">
+    @if (isAuth("InstitutionList")) {
+      <div class="menu-item">
+        <a
+          class="menu-link"
+          routerLink="/institutions/list"
+          routerLinkActive="active"
+        >
+          <span class="menu-icon">
+            <i class="fa-duotone fa-shop" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Institutions"></span>
         </a>
       </div>
     }

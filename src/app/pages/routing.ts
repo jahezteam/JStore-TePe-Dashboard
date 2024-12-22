@@ -36,6 +36,14 @@ const Routing: Routes = [
       import('../modules/users/users.module').then((m) => m.UsersModule),
   },
   {
+    path: 'institutions',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/Institutions/institutions.module').then(
+        (m) => m.InstitutionsModule,
+      ),
+  },
+  {
     path: 'mainCategory',
     canActivate: [AuthGuard],
     loadChildren: () =>

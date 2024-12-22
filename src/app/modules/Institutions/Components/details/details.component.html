@@ -1,0 +1,122 @@
+@if (isAuth(institutionPermissions.DETAILS)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameAr"
+                [name]="'nameAr'"
+                [size]="'small'"
+                [label]="'Name Ar'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.nameEn"
+                [name]="'nameEn'"
+                [size]="'small'"
+                [label]="'NameEn'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-email
+                [(ngModel)]="form.email"
+                [name]="'email'"
+                [size]="'small'"
+                [label]="'Email'"
+                [disable]="true"
+              ></app-email>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-component
+                [(ngModel)]="form.phone"
+                [name]="'phone'"
+                [size]="'small'"
+                [label]="'Phone'"
+                [disable]="true"
+              ></app-text-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.descriptionAr"
+                [name]="'descriptionAr'"
+                [size]="'small'"
+                [label]="'Description Ar'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.descriptionEn"
+                [name]="'descriptionEn'"
+                [size]="'small'"
+                [label]="'Description En'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.locationAr"
+                [name]="'locationAr'"
+                [size]="'small'"
+                [label]="'Location Ar'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <app-text-area-component
+                [(ngModel)]="form.locationEn"
+                [name]="'locationEn'"
+                [size]="'small'"
+                [label]="'Location En'"
+                [disable]="true"
+              ></app-text-area-component>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="OK"
+          class="btn btn-success"
+          (click)="submit()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}

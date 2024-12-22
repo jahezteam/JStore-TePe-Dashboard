@@ -22,6 +22,7 @@ export class allPermissions {
   Questions: permissionsCollection = new permissionsCollection();
   Testmonial: permissionsCollection = new permissionsCollection();
   settings: permissionsCollection = new permissionsCollection();
+  institutions: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -272,6 +273,18 @@ export class allPermissions {
       'UpdateSetting',
       'DeleteSetting',
       'SettingDetails',
+    ];
+    this.institutions.name = 'Institutions';
+    this.institutions.permissions = [
+      'InstitutionList',
+      'CreateInstitution',
+      'UpdateInstitution',
+      'AssigneUsersToInstitution',
+      'RemoveUsersFromInstitution',
+      'DeleteInstitution',
+      'SearchInstitution',
+      'FilterInstitution',
+      'InstitutionDetails',
     ];
   }
 }

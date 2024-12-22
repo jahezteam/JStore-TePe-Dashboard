@@ -1,0 +1,42 @@
+@if (isAuth(institutionPermissions.ASSIGN_USERS)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              @for (item of selectedUsers; track item) {
+                <ul class="ROW">
+                  <li>
+                    <h3>
+                      {{ item.name }} &nbsp;&nbsp;&nbsp;
+                      <i class="fa fa-trash" (click)="deleteItem(item)"></i>
+                    </h3>
+                  </li>
+                </ul>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Remove"
+          class="p-button-success"
+          (click)="submit()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="p-button-danger"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}

@@ -1,0 +1,85 @@
+@if (isAuth(institutionPermissions.ASSIGN_USERS)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <app-pick-list-component
+                (changed)="onSelectedChanged()"
+                [require]="false"
+                [filter]="true"
+                [showClear]="false"
+                [filterBy]="'name'"
+                [label]="'users'"
+                [options]="users"
+                [size]="'small'"
+                [(ngModel)]="selectedUser"
+              ></app-pick-list-component>
+            </div>
+          </div>
+        </div>
+        @if (selectedUsers.length > 0) {
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <h5>Old Users</h5>
+                @for (item of selectedUsers; track item) {
+                  <ul class="ROW">
+                    <li>
+                      <h3>
+                        {{ item.name }} &nbsp;&nbsp;&nbsp;
+                        <!-- <i class="fa fa-trash" (click)="deleteItem(item)"></i> -->
+                      </h3>
+                    </li>
+                  </ul>
+                }
+              </div>
+            </div>
+          </div>
+        }
+        @if (selectedUsers.length > 0) {
+          <hr />
+        }
+        @if (newUser.length > 0) {
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <h5>New Users</h5>
+                @for (item of newUser; track item) {
+                  <ul class="ROW">
+                    <li>
+                      <h3>
+                        {{ item.name }} &nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-trash" (click)="deleteItem(item)"></i>
+                      </h3>
+                    </li>
+                  </ul>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Save"
+          class="btn btn-light-primary"
+          (click)="submit()"
+          [disabled]="getValidation()"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}
