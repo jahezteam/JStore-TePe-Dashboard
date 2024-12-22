@@ -128,8 +128,9 @@ body {
 
 .p-button {
   color: #fff !important;
-  background: #36b7ab !important;
-  border: 1px solid #36b7ab !important;
+  background: var(--js-main-color-dark) !important;
+  border: 1px solid var(--js-main-color-dark) !important;
+  border-radius: 30px !important;
 }
 
 .p-button i {
@@ -138,9 +139,9 @@ body {
 }
 
 .p-button:enabled:hover {
-  background: #36b7ab !important;
+  background: var(--js-main-color) !important;
   color: #fff;
-  border-color: #36b7ab !important;
+  border-color: var(--js-main-color) !important;
 }
 
 .p-card.p-component {
@@ -2280,4 +2281,9 @@ tbody, td, tfoot, th, thead, tr {
     width: 35px;
     height: 35px;
     border-radius: 50%;
+}
+
+.p-button .p-button-icon-left {
+    margin-left: 0.5rem;
+    margin-right: unset;
 }

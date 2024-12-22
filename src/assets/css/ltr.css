@@ -128,8 +128,9 @@
 
 .p-button {
   color: #fff !important;
-  background: #36b7ab !important;
-  border: 1px solid #36b7ab !important;
+  background: var(--js-main-color-dark) !important;
+  border: 1px solid var(--js-main-color-dark) !important;
+  border-radius: 30px !important;
 }
 
 .p-button i {
@@ -138,9 +139,9 @@
 }
 
 .p-button:enabled:hover {
-  background: #36b7ab !important;
+  background: var(--js-main-color) !important;
   color: #fff;
-  border-color: #36b7ab !important;
+  border-color: var(--js-main-color) !important;
 }
 
 .p-card.p-component {
