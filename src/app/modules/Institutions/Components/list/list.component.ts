@@ -174,7 +174,7 @@ export class ListComponent {
   }
   openAssignPopup(item: Institution) {
     this.ref = this.dialogService.open(AssignUserComponent, {
-      header: 'Create Institution',
+      header: 'Assign User To Institution',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
@@ -209,7 +209,7 @@ export class ListComponent {
   }
   openRemoveUserPopup(item: Institution) {
     this.ref = this.dialogService.open(RemoveUserComponent, {
-      header: 'Create Institution',
+      header: 'Remove User From Institution',
       width: '50%',
       contentStyle: { 'max-height': '550px', overflow: 'auto' },
       baseZIndex: 10000,
