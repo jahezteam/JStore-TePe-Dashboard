@@ -31,12 +31,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
 
+:root {
+  --js-main-color: #027ec7;
+  --js-main-color-light: #0495d3;
+  --js-light-color: #9acbe9;
+  --js-main-color-dark: #607D8B;
+  --js-dark-color: #607d8b;
+  --js-green-color: #4CAF50;
+  /* 3f4254 */
+}
+
 body {
   font-family: "Almarai", serif;
 }
 
 .aside-dark .menu .menu-item.show>.menu-link {
-  background-color: #2eb45d  !important;
+  background-color: var(--js-main-color)  !important;
 }
 
 .aside-dark .menu .menu-item.show>.menu-link .menu-title {
@@ -63,8 +73,8 @@ body {
 .btn.btn-primary:hover:not(.btn-active),
 .show>.btn.btn-primary {
   color: #fff;
-  border-color: #2f9d92 !important;
-  background-color: #2f9d92 !important;
+  border-color: --js-main-color-dark!important;
+  background-color: --js-main-color-dark!important;
 }
 
 .text-primary {
@@ -116,7 +126,7 @@ body {
 
 .btn.btn-light-primary:hover {
   color: #fff !important;
-  background-color: #2f9d92 !important;
+  background-color: --js-main-color-dark!important;
 
 }
 
@@ -132,8 +142,8 @@ body {
 .btn.btn-light-primary:hover:not(.btn-active),
 .show>.btn.btn-light-primary {
   color: #fff;
-  border-color: #2f9d92 !important;
-  background-color: #2f9d92 !important;
+  border-color: --js-main-color-dark!important;
+  background-color: --js-main-color-dark!important;
 }
 
 .form-group {
@@ -172,8 +182,8 @@ body {
   align-items: center;
   text-align: center;
   padding: 10px 20px 10px 10px;
-  border-bottom: 1px solid #fcb530;
-  background: #fcb530;
+  border-bottom: 1px solid var(--js-dark-color);
+  background: var(--js-dark-color);
   color: #fff;
   border-radius: 25px 25px 0 0;
 }
@@ -184,8 +194,8 @@ body {
 .btn-primary.active,
 .open>.dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: #2f9d92 !important;
-  border-color: #2f9d92 !important;
+  background-color: --js-main-color-dark!important;
+  border-color: --js-main-color-dark!important;
   /*set the color you want here*/
 }
 
@@ -456,7 +466,7 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
 
 
 .question-answered {
-  background-color: #2f9d92 !important;
+  background-color: --js-main-color-dark!important;
 }
 
 
@@ -769,8 +779,8 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
 .btn.btn-primary:hover:not(.btn-active),
 .show>.btn.btn-primary {
   color: #fff;
-  border-color: #2f9d92 !important;
-  background-color: #2f9d92 !important;
+  border-color: --js-main-color-dark!important;
+  background-color: --js-main-color-dark!important;
 }
 
 .btn-check:active+.btn.btn-light-primary,
@@ -782,8 +792,8 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
 .btn.btn-light-primary:hover:not(.btn-active),
 .show>.btn.btn-light-primary {
   color: #fff !important;
-  border-color: #fcb530  !important;
-  background-color: #fcb530  !important;
+  border-color: var(--js-dark-color)  !important;
+  background-color: var(--js-dark-color)  !important;
 }
 
 img.h-25px.logo {
@@ -1578,7 +1588,7 @@ app-login {
   border: 8px solid #2f9d92;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #2f9d92 transparent transparent transparent;
+  border-color: --js-main-color-darktransparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
@@ -1660,7 +1670,7 @@ app-login {
   transition: opacity .3s ease;
 }
 .dropdown .btn-primary {
-  background:linear-gradient(to right, #41b366, #2eb45d) !important;
+  background:linear-gradient(to right, #41b366, var(--js-main-color)) !important;
   border-radius: 25px !important;
 }
 
@@ -1689,7 +1699,7 @@ app-login {
 }
 
 .card-toolbar .btn-light-primary:hover:not(.btn-active) {
-  background: linear-gradient(154.69deg, #ffbc37 3.49%, #fcb530 83.95%) !important;
+  background: linear-gradient(154.69deg, var(--js-main-color-dark)3.49%, var(--js-dark-color) 83.95%) !important;
   color: #fff;
 }
 
@@ -1731,7 +1741,7 @@ app-login {
 
 
    .btn.btn-primary:hover:not(.btn-active) {
-     background: linear-gradient(154.69deg, #ffbc37 3.49%, #fcb530 83.95%) !important;
+     background: linear-gradient(154.69deg, var(--js-main-color-dark)3.49%, var(--js-dark-color) 83.95%) !important;
    }
 
 
@@ -1748,8 +1758,8 @@ app-login {
 }
 
 .p-dialog .p-dialog-header {
-  border-bottom: 1px solid #fcb530 !important;
-  background: #fcb530 !important;
+  border-bottom: 1px solid var(--js-dark-color) !important;
+  background: var(--js-dark-color) !important;
   color: #fff;
   padding: 10px 25px 10px 10px;
   border-top-left-radius: 25px !important;
@@ -1802,7 +1812,7 @@ app-login {
   color: #727070;
   background-color: #fff !important;
   background-clip: padding-box;
-  border: 1px solid #30b55f !important;
+  border: 1px solid var(--js-main-color) !important;
   border-radius: 25px !important;
   appearance: none;
   border-radius: 0.475rem;
@@ -1813,16 +1823,16 @@ app-login {
 .form-control:focus {
   color: #000;
   background-color: #fff;
-  border-color: #9bd8d5 !important;
+  border-color: var(--js-light-color) !important;
   outline: 0;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.075), 0 0 0 0.25rem rgb(198 231 229) !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.075), 0 0 0 0.25rem var(--js-light-color) !important;
 }
 
 
 p-calendar .p-button {
   box-shadow: 0 5px 10px -6px rgba(54, 255, 198, 0.4);
-  border: 1.6px solid #2eb45d !important;
-  background: #2eb45d !important;
+  border: 1.6px solid var(--js-main-color) !important;
+  background: var(--js-main-color) !important;
   color: rgba(255, 255, 255, 0.95);
   margin-right: -30px;
   font-size: 16px;
@@ -1859,7 +1869,7 @@ p-dropdown .p-dropdown-trigger {
   position: absolute;
   top: 0;
   left: -1px;
-  background: #30b55f;
+  background: var(--js-main-color);
   color: #fff;
   padding: 15px;
   border-radius: 25px 0 0 25px;
@@ -1873,9 +1883,9 @@ p-dropdown .p-dropdown-trigger {
 
 .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
   border-radius: 20px 20px 0 0;
-  background: #30b55f;
+  background: var(--js-main-color);
   color: #fff;
-  border-color: #30b55f;
+  border-color: var(--js-main-color);
 }
 
 .p-accordion .p-accordion-header .p-accordion-header-link {
@@ -1900,14 +1910,14 @@ p-dropdown .p-dropdown-trigger {
   font-size: 14px;
   margin: 5px;
   padding: 4px 7px;
-  background: #30b55f !important;
+  background: var(--js-main-color) !important;
   display: inline-block;
   cursor: pointer;
   border-radius: 3px;
   transition: all 0.3s ease-in-out;
 }
 .owl-theme .owl-nav [class*=owl-]:hover {
-  background: #30b55f !important;
+  background: var(--js-main-color) !important;
   color: #FFF;
   text-decoration: none;
 }
@@ -1944,8 +1954,8 @@ p-dropdown .p-dropdown-trigger {
 
 p-dropdown .p-dropdown-trigger {
   box-shadow: 0 5px 10px -6px rgba(42, 212, 163, 0.4);
-  border: 1.6px solid #30b55f;
-  background: #2eb45d;
+  border: 1.6px solid var(--js-main-color);
+  background: var(--js-main-color);
   color: rgba(255, 255, 255, 0.95);
   font-size: 16px;
   border-radius: 25px 0 0 25px;
@@ -2003,7 +2013,8 @@ p-dropdown .p-dropdown-trigger {
   height: 20px;
 }
 .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
-  left: 0.429rem;
+  right: unset;
+  left: 15px;
   color: #cd1b59;
   top: 19px;
   width: 20px;
@@ -2078,7 +2089,7 @@ p-dropdown .p-dropdown-trigger {
   background: #fefcf6 !important;
   padding: 10px !important;
   border-bottom: 1px solid #76d195  !important;
-  box-shadow: 0 0px 3px #30b45e !important;
+  box-shadow: 0 0px 3px var(--js-main-color) !important;
 }
 
 .aside-dark .menu .menu-item.aside-wrapper .menu-link:hover i {
@@ -2088,8 +2099,8 @@ p-dropdown .p-dropdown-trigger {
 
 
 .fa-duotone.fa-magnifying-glass {
-  --fa-primary-color: #30b45e !important;
-  --fa-secondary-color: #30b45e !important;
+  --fa-primary-color: var(--js-main-color) !important;
+  --fa-secondary-color: var(--js-main-color) !important;
 }
 .card {
   border-radius: 25px;
@@ -2122,7 +2133,7 @@ p-dropdown .p-dropdown-trigger {
 
 
 .btn.btn-primary {
-  background: linear-gradient(to top left, #ca0e50, #cd1b59) !important;
+  background: linear-gradient(to top left, var(--js-green-color), var(--js-green-color)) !important;
   color: rgba(255, 255, 255, 0.95);
   border-radius: 25px;
   opacity: 1;
@@ -2130,7 +2141,7 @@ p-dropdown .p-dropdown-trigger {
   cursor: pointer;
 }
 .btn.btn-primary:hover {
-  background: #fcb530  !important;
+  background: var(--js-dark-color)  !important;
 }
 
 .btn.btn-light-primary {
@@ -2142,7 +2153,7 @@ p-dropdown .p-dropdown-trigger {
   opacity: 1;
 }
 .btn.btn-light-primary:hover {
-  background: #fcb530  !important;
+  background: var(--js-dark-color)  !important;
 }
 
 
@@ -2157,8 +2168,8 @@ p-dropdown .p-dropdown-trigger {
 }
 
 .btn-success {
-  background-color: #2eb45d  !important;
-  border-color: #2eb45d  !important;
+  background-color: var(--js-main-color)  !important;
+  border-color: var(--js-main-color)  !important;
   color: #fff !important;
   border-radius: 25px !important;
   opacity: 1;
@@ -2167,7 +2178,7 @@ p-dropdown .p-dropdown-trigger {
 }
 
 .btn-success:hover {
-  background-color: #fcb530   !important;
+  background-color: var(--js-dark-color)   !important;
 }
 
 .input-container {
@@ -2279,4 +2290,14 @@ tbody, td, tfoot, th, thead, tr {
 
 .p-dialog .p-dialog-header {
   border-radius: 5px 5px 0 0 !important ;
+}
+
+
+.p-dialog .p-dialog-content {
+    min-height: 350px;
+}
+
+
+.menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+  background: var(--js-main-color) !important;
 }

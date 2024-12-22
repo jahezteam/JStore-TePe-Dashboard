@@ -29,13 +29,11 @@
 }
 
 .menu-item .menu-link.active {
-    background: #2eb45d !important;
-    background: linear-gradient(to left, #7ace95, #2eb45d) !important;
+    background: var(--js-main-color) !important;
+    background: linear-gradient(to left, var(--js-main-color-light), var(--js-main-color)) !important;
     color: #fff !important;
     border-radius: 0 25px 25px 0;
-    border-right: 2px solid #e0f9e9;
-    border-top: 2px solid #e0f9e9;
-    border-bottom: 2px solid #e0f9e9;
+    border: 2px solid var(--js-light-color) !important;
     margin-right: 10px;
 }
 
@@ -50,18 +48,17 @@
 
 .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
     transition: color .2s ease, background-color .2s ease;
-    background: linear-gradient(to left, #7ace95, #2eb45d) !important;
+    background: var(--js-main-color) !important;
+    background: linear-gradient(to left, var(--js-main-color-light), var(--js-main-color)) !important;
     color: #fff;
     border-radius: 0 25px 25px 0;
-    border-right: 2px solid #e0f9e9;
-    border-top: 2px solid #e0f9e9;
-    border-bottom: 2px solid #e0f9e9;
+    border: 2px solid var(--js-light-color) !important;
     margin-right: 10px;
 }
 
 
 .menu-link .menu-icon i {
-    color: #30b55f   !important;
+    color: var(--js-main-color)   !important;
     font-size: 20px !important;
 }
 

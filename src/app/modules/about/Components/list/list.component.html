@@ -1,202 +1,119 @@
 @if (isAuth(AboutPermissions.AboutUsList)) {
-  <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <p-confirmDialog
-      header="Delete Confirmation"
-      icon="pi pi-exclamation-triangle"
-    ></p-confirmDialog>
-    <p-toast position="top-right" key="tl"></p-toast>
-    <div class="post d-flex flex-column-fluid" id="kt_post">
-      <!--begin::Container-->
-      <div id="kt_content_container" class="container-xxl">
-        <!--begin::Card-->
-        <div class="card">
-          <!--begin::Card header-->
-          <div class="card-header border-0 pt-6">
-            <!--begin::Card title-->
-            <div class="card-title">
-              <!--begin::Search-->
-              <div class="d-flex align-items-center position-relative my-1">
-                <span class="svg-icon svg-icon-1 position-absolute ms-6">
-                  <i
-                    class="fa-duotone fa-magnifying-glass fa-lg"
-                    style="
-                      --fa-primary-color: #764ef2;
-                      --fa-secondary-color: #764ef2;
-                    "
-                  ></i>
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+  <p-confirmDialog header="Delete Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+  <p-toast position="top-right" key="tl"></p-toast>
+  <div class="post d-flex flex-column-fluid" id="kt_post">
+    <!--begin::Container-->
+    <div id="kt_content_container" class="container-xxl">
+      <!--begin::Card-->
+      <div class="card">
+        <!--begin::Card header-->
+        <div class="card-header border-0 pt-6">
+          <!--begin::Card title-->
+          <div class="card-title">
+            <!--begin::Search-->
+            <div class="d-flex align-items-center position-relative my-1">
+              <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                <i class="fa-duotone fa-magnifying-glass fa-lg" style="
+                      --fa-primary-color: var(--js-main-color);
+                      --fa-secondary-color: var(--js-main-color);
+                    "></i>
+              </span>
+              @if (isAuth(AboutPermissions.SearchAboutUs)) {
+              <input type="text" (input)="searchInput($event)" data-kt-user-table-filter="search"
+                class="form-control form-control-solid w-250px ps-14" placeholder="Search About Us" />
+              }
+            </div>
+          </div>
+          <div class="card-toolbar">
+            <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+              <button type="button" (click)="openFilterPopup()" class="btn btn-light-primary me-3"
+                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                <span class="svg-icon svg-icon-2">
+                  <i class="fa-duotone fa-filters"></i>
                 </span>
-                @if (isAuth(AboutPermissions.SearchAboutUs)) {
-                  <input
-                    type="text"
-                    (input)="searchInput($event)"
-                    data-kt-user-table-filter="search"
-                    class="form-control form-control-solid w-250px ps-14"
-                    placeholder="Search About Us"
-                  />
-                }
-              </div>
-            </div>
-            <div class="card-toolbar">
-              <div
-                class="d-flex justify-content-end"
-                data-kt-user-table-toolbar="base"
-              >
-                <button
-                  type="button"
-                  (click)="openFilterPopup()"
-                  class="btn btn-light-primary me-3"
-                  data-kt-menu-trigger="click"
-                  data-kt-menu-placement="bottom-end"
-                >
-                  <span class="svg-icon svg-icon-2">
-                    <i class="fa-duotone fa-filters"></i>
-                  </span>
-                  Filter
-                </button>
-                @if (isAuth(AboutPermissions.CreateAboutUs)) {
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    (click)="openAddPopup()"
-                    data-bs-toggle="modal"
-                    data-bs-target="#kt_modal_add_user"
-                  >
-                    <i class="fa-duotone fa-circle-plus"></i>
-                    Create About Us
-                  </button>
-                }
-              </div>
+                Filter
+              </button>
+              @if (isAuth(AboutPermissions.CreateAboutUs)) {
+              <button type="button" class="btn btn-primary" (click)="openAddPopup()" data-bs-toggle="modal"
+                data-bs-target="#kt_modal_add_user">
+                <i class="fa-duotone fa-circle-plus"></i>
+                Create About Us
+              </button>
+              }
             </div>
           </div>
-          <div class="card-body py-4">
-            <p-table
-              [value]="filteredDate"
-              tableStyleClass="table align-middle table-row-dashed fs-6 gy-5"
-            >
-              <ng-template pTemplate="header">
-                <tr
-                  class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
-                >
-                  <th pSortableColumn="image" class="min-w-125px">Image</th>
+        </div>
+        <div class="card-body py-4">
+          <p-table [value]="filteredDate" tableStyleClass="table align-middle table-row-dashed fs-6 gy-5">
+            <ng-template pTemplate="header">
+              <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
+                <th pSortableColumn="image" class="min-w-125px">Image</th>
 
-                  <th pSortableColumn="titleAr" class="min-w-125px">
-                    Title Ar <p-sortIcon field="titleAr"></p-sortIcon>
-                  </th>
-                  <th pSortableColumn="titleEn" class="min-w-125px">
-                    Title En <p-sortIcon field="titleEn"></p-sortIcon>
-                  </th>
-                  <th pSortableColumn="descriptionAr" class="min-w-125px">
-                    summary Ar
-                  </th>
-                  <th pSortableColumn="descriptionEn" class="min-w-125px">
-                    summary En
-                  </th>
-                  <th class="min-w-100px Actionlabel">Actions</th>
-                </tr>
-              </ng-template>
-              <ng-template
-                pTemplate="body"
-                let-item
-                class="text-gray-600 fw-bold"
-              >
-                <tr>
-                  <td>
-                    <img
-                      [src]="environment.imageUrl + item.image?.path || ''"
-                      class="img-thumbnail"
-                      style="width: 100px; height: 100px"
-                      alt=""
-                    />
-                  </td>
-                  <td>{{ item.titleAr }}</td>
-                  <td>{{ item.titleEn }}</td>
-                  <td>{{ item.summaryAr }}</td>
-                  <td>{{ item.summaryEn }}</td>
-                  <td class="">
-                    <div ngbDropdown class="dropdown">
-                      <div
-                        ngbDropdownToggle
-                        class="btn btn-primary dropdown-toggle"
-                        type="button"
-                        id="dropdownMenuLink"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Actions
-                      </div>
-                      <div
-                        ngbDropdownMenu
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuLink"
-                      >
-                        @if (isAuth(AboutPermissions.UpdateAboutUs)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="openEditPopup(item)"
-                            class="dropdown-item"
-                            >Edit</span
-                          >
-                        }
-                        @if (isAuth(AboutPermissions.AboutUsFeatureList)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="routeToAboutFeatures(item.id)"
-                            class="dropdown-item"
-                            >Features</span
-                          >
-                        }
-                        @if (isAuth(AboutPermissions.AboutUsGoalList)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="routeToAboutGoals(item.id)"
-                            class="dropdown-item"
-                            >Goals</span
-                          >
-                        }
-                        @if (isAuth(AboutPermissions.UpdateAboutUs)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="openSliderPopup(item)"
-                            class="dropdown-item"
-                            >Slider</span
-                          >
-                        }
-                        @if (isAuth(AboutPermissions.AboutUsDetails)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="openDetailsPopup(item)"
-                            class="dropdown-item"
-                            >Details</span
-                          >
-                        }
-                        @if (isAuth(AboutPermissions.DeleteAboutUs)) {
-                          <span
-                            ngbDropdownItem
-                            (click)="deleteItem(item)"
-                            class="dropdown-item"
-                            >Delete</span
-                          >
-                        }
-                      </div>
+                <th pSortableColumn="titleAr" class="min-w-125px">
+                  Title Ar <p-sortIcon field="titleAr"></p-sortIcon>
+                </th>
+                <th pSortableColumn="titleEn" class="min-w-125px">
+                  Title En <p-sortIcon field="titleEn"></p-sortIcon>
+                </th>
+                <th pSortableColumn="descriptionAr" class="min-w-125px">
+                  summary Ar
+                </th>
+                <th pSortableColumn="descriptionEn" class="min-w-125px">
+                  summary En
+                </th>
+                <th class="min-w-100px Actionlabel">Actions</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-item class="text-gray-600 fw-bold">
+              <tr>
+                <td>
+                  <img [src]="environment.imageUrl + item.image?.path || ''" class="img-thumbnail"
+                    style="width: 100px; height: 100px" alt="" />
+                </td>
+                <td>{{ item.titleAr }}</td>
+                <td>{{ item.titleEn }}</td>
+                <td>{{ item.summaryAr }}</td>
+                <td>{{ item.summaryEn }}</td>
+                <td class="">
+                  <div ngbDropdown class="dropdown">
+                    <div ngbDropdownToggle class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuLink"
+                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Actions
                     </div>
-                  </td>
-                </tr>
-              </ng-template>
-            </p-table>
-            <br />
-            <app-paging
-              [currentPage]="currentPage"
-              [pager]="pager"
-              [totalPages]="totalPages"
-              (clickSetPage)="changePage($event)"
-              [pageSize]="pageSize"
-              (clickSetPageSize)="changePageSize($event)"
-            >
-            </app-paging>
-          </div>
+                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      @if (isAuth(AboutPermissions.UpdateAboutUs)) {
+                      <span ngbDropdownItem (click)="openEditPopup(item)" class="dropdown-item">Edit</span>
+                      }
+                      @if (isAuth(AboutPermissions.AboutUsFeatureList)) {
+                      <span ngbDropdownItem (click)="routeToAboutFeatures(item.id)"
+                        class="dropdown-item">Features</span>
+                      }
+                      @if (isAuth(AboutPermissions.AboutUsGoalList)) {
+                      <span ngbDropdownItem (click)="routeToAboutGoals(item.id)" class="dropdown-item">Goals</span>
+                      }
+                      @if (isAuth(AboutPermissions.UpdateAboutUs)) {
+                      <span ngbDropdownItem (click)="openSliderPopup(item)" class="dropdown-item">Slider</span>
+                      }
+                      @if (isAuth(AboutPermissions.AboutUsDetails)) {
+                      <span ngbDropdownItem (click)="openDetailsPopup(item)" class="dropdown-item">Details</span>
+                      }
+                      @if (isAuth(AboutPermissions.DeleteAboutUs)) {
+                      <span ngbDropdownItem (click)="deleteItem(item)" class="dropdown-item">Delete</span>
+                      }
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+          <br />
+          <app-paging [currentPage]="currentPage" [pager]="pager" [totalPages]="totalPages"
+            (clickSetPage)="changePage($event)" [pageSize]="pageSize" (clickSetPageSize)="changePageSize($event)">
+          </app-paging>
         </div>
       </div>
     </div>
   </div>
+</div>
 }

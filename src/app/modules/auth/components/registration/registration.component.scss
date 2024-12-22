@@ -36,7 +36,7 @@
 // // @import url("../../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 $--theme-color1: #191e24;
-$--theme-color2: #2eb45d;
+$--theme-color2: var(--js-main-color);
 $--theme-color3: #2089ca;
 $--theme-color4: #feb52e;
 $--theme-color5: #cf1a59;

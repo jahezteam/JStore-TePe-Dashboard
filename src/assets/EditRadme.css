@@ -34,8 +34,8 @@
 .btn.btn-primary:hover:not(.btn-active),
 .show>.btn.btn-primary {
   color: #fff;
-  border-color: #2f9d92 !important;
-  background-color: #2f9d92 !important;
+  border-color: --js-main-color-dark!important;
+  background-color: --js-main-color-dark!important;
 }
 
 .text-primary {
@@ -89,7 +89,7 @@
 
 .btn.btn-light-primary:hover {
   color: #fff !important;
-  background-color: #2f9d92 !important;
+  background-color: --js-main-color-dark!important;
 
 }
 
@@ -105,8 +105,8 @@
 .btn.btn-light-primary:hover:not(.btn-active),
 .show>.btn.btn-light-primary {
   color: #fff;
-  border-color: #2f9d92 !important;
-  background-color: #2f9d92 !important;
+  border-color: --js-main-color-dark!important;
+  background-color: --js-main-color-dark!important;
 }
 
 .form-group {
@@ -154,8 +154,8 @@
 .btn-primary.active,
 .open>.dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: #2f9d92 !important;
-  border-color: #2f9d92 !important;
+  background-color: --js-main-color-dark!important;
+  border-color: --js-main-color-dark!important;
   /*set the color you want here*/
 }
 
@@ -262,8 +262,8 @@ h5 {
 
 
 .p-accordion-header-link:hover {
-  border-color: #2f9d92 !important;
-  background: #2f9d92 !important;
+  border-color: --js-main-color-dark!important;
+  background: --js-main-color-dark!important;
   color: #fff !important;
 }
 
@@ -448,7 +448,7 @@ button.p-ripple.p-element.ng-tns-c71-7.p-confirm-dialog-reject.p-button.p-compon
 
 
 .question-answered {
-  background-color: #2f9d92 !important;
+  background-color: --js-main-color-dark!important;
 }
 
 .header-tablet-and-mobile-fixed.toolbar-tablet-and-mobile-fixed .wrapper {
