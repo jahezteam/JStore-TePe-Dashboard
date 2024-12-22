@@ -13,13 +13,13 @@ import { TranslationService } from '../../../../modules/i18n';
   styleUrls: ['./topbar.component.scss'],
 })
 export class TopbarComponent implements OnInit {
-[x: string]: any;
+  [x: string]: any;
   toolbarButtonMarginClass = 'ms-1 ms-lg-3';
   toolbarButtonHeightClass = 'w-30px h-30px w-md-40px h-md-40px';
   toolbarUserAvatarHeightClass = 'symbol-30px symbol-md-40px';
   toolbarButtonIconSizeClass = 'svg-icon-1';
   headerLeft: string = 'menu';
-
+  currentLang = localStorage.getItem('language') || 'en';
 
   constructor(
     private layout: LayoutService,
