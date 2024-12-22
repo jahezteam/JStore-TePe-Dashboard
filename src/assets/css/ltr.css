@@ -2235,7 +2235,14 @@ span.p-inputtext:focus {
     min-height: 350px;
 }
 
+
+
 .change-lang {
-    margin-left: unset;
-    margin-right: 10px;
+    margin-left: 10px;
+    margin-right: unset;
+}
+.change-lang img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
 }
