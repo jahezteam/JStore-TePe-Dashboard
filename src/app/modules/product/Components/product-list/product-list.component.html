@@ -1,117 +1,196 @@
 @if (isAuth(ProductPermission.ProductList)) {
-<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-  <p-confirmDialog header="Delete Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
-  <p-toast position="top-right" key="tl"></p-toast>
-  <div class="post d-flex flex-column-fluid" id="kt_post">
-    <div id="kt_content_container" class="container-xxl">
-      <div class="card">
-        <div class="card-header border-0 pt-6">
-          <div class="card-title">
-            <div class="d-flex align-items-center position-relative my-1">
-              <span class="svg-icon svg-icon-1 position-absolute ms-6">
-                <i class="fa-duotone fa-magnifying-glass fa-lg" style="
+  <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <p-confirmDialog
+      header="Delete Confirmation"
+      icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
+    <p-toast position="top-right" key="tl"></p-toast>
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+      <div id="kt_content_container" class="container-xxl">
+        <div class="card">
+          <div class="card-header border-0 pt-6">
+            <div class="card-title">
+              <div class="d-flex align-items-center position-relative my-1">
+                <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                  <i
+                    class="fa-duotone fa-magnifying-glass fa-lg"
+                    style="
                       --fa-primary-color: var(--js-main-color);
                       --fa-secondary-color: var(--js-main-color);
-                    "></i>
-              </span>
-              @if (isAuth(ProductPermission.SearchProduct)) {
-              <input type="text" (input)="searchInput($event)" [(ngModel)]="searchVal"
-                data-kt-user-table-filter="search" class="form-control form-control-solid w-250px ps-14"
-                placeholder="Search Products" />
-              }
+                    "
+                  ></i>
+                </span>
+                @if (isAuth(ProductPermission.SearchProduct)) {
+                  <input
+                    type="text"
+                    (input)="searchInput($event)"
+                    [(ngModel)]="searchVal"
+                    data-kt-user-table-filter="search"
+                    class="form-control form-control-solid w-250px ps-14"
+                    placeholder="Search Products"
+                  />
+                }
+              </div>
+            </div>
+            <div class="card-toolbar">
+              <div
+                class="d-flex justify-content-end"
+                data-kt-user-table-toolbar="base"
+              >
+                @if (isAuth(ProductPermission.FilterProduct)) {
+                  <button
+                    type="button"
+                    (click)="openFilterPopup()"
+                    class="btn btn-light-primary me-3"
+                    data-kt-menu-trigger="click"
+                    data-kt-menu-placement="bottom-end"
+                  >
+                    <i class="fa-duotone fa-filters" aria-hidden="true"></i>
+                    Filter
+                  </button>
+                }
+                @if (isAuth(ProductPermission.CreateProduct)) {
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="routeToAdd()"
+                    data-bs-toggle="modal"
+                    data-bs-target="#kt_modal_add_user"
+                  >
+                    <i class="fa-duotone fa-circle-plus"></i>
+                    <!--end::Svg Icon-->Create Product
+                  </button>
+                }
+                <!--end::Add user-->
+              </div>
             </div>
           </div>
-          <div class="card-toolbar">
-            <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-              @if (isAuth(ProductPermission.FilterProduct)) {
-              <button type="button" (click)="openFilterPopup()" class="btn btn-light-primary me-3"
-                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                <i class="fa-duotone fa-filters" aria-hidden="true"></i>
-                Filter
-              </button>
-              }
-              @if (isAuth(ProductPermission.CreateProduct)) {
-              <button type="button" class="btn btn-primary" (click)="routeToAdd()" data-bs-toggle="modal"
-                data-bs-target="#kt_modal_add_user">
-                <i class="fa-duotone fa-circle-plus"></i>
-                <!--end::Svg Icon-->Create Product
-              </button>
-              }
-              <!--end::Add user-->
-            </div>
-          </div>
-        </div>
-        <div class="card-body py-4">
-          <p-table [value]="filteredDate" tableStyleClass="table align-middle table-row-dashed fs-6 gy-5">
-            <ng-template pTemplate="header">
-              <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-                <th pSortableColumn="titleAr" class="min-w-125px">
-                  Arabic Title <p-sortIcon field="titleAr"></p-sortIcon>
-                </th>
-                <th pSortableColumn="titleEn" class="min-w-125px">
-                  English Title <p-sortIcon field="titleEn"></p-sortIcon>
-                </th>
-                <th class="min-w-125px">Model Number</th>
-                <th class="min-w-125px">Main Category</th>
-                <th class="min-w-125px">Category</th>
-                <th class="min-w-125px">Active</th>
-                <th class="min-w-125px">Deleted</th>
-                <th class="min-w-100px Actionlabel">Actions</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-item class="text-gray-600 fw-bold">
-              <tr>
-                <td>{{ item.titleAr }}</td>
-                <td>{{ item.titleEn }}</td>
-                <td>{{ item.modelNumber }}</td>
-                <td>{{ item.mainCategoryNameAr }}</td>
-                <td>{{ item.categoryNameAr }}</td>
-                <td>{{ item.isActive }}</td>
-                <td>{{ item.isDeleted }}</td>
-                <td class="">
-                  <div ngbDropdown class="dropdown">
-                    <div ngbDropdownToggle class="btn btn-primary dropdown-toggle" role="button" id="dropdownMenuLink"
-                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Actions
-                    </div>
-                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                      @if (isAuth(ProductPermission.UpdateProduct)) {
-                      <span ngbDropdownItem (click)="routeToEdit(item.id)" class="dropdown-item" href="#">Edit</span>
-                      }
-                      @if (isAuth(ProductPermission.ProductDetails)) {
-                      <span ngbDropdownItem (click)="routeToDetails(item.id)" class="dropdown-item"
-                        href="#">Details</span>
-                      }
-                      @if (
-                      isAuth(ProductPermission.DeleteProduct) &&
-                      !item.isDeleted
-                      ) {
-                      <span ngbDropdownItem (click)="deleteItem(item)" class="dropdown-item" href="#">Delete</span>
-                      }
-                      <!-- @if (isAuth(ProductPermission.AssignProductToUser) && !item.isDeleted) {
+          <div class="card-body py-4">
+            <p-table
+              [value]="filteredDate"
+              tableStyleClass="table align-middle table-row-dashed fs-6 gy-5"
+            >
+              <ng-template pTemplate="header">
+                <tr
+                  class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0"
+                >
+                  <th pSortableColumn="titleAr" class="min-w-125px">
+                    Arabic Title <p-sortIcon field="titleAr"></p-sortIcon>
+                  </th>
+                  <th pSortableColumn="titleEn" class="min-w-125px">
+                    English Title <p-sortIcon field="titleEn"></p-sortIcon>
+                  </th>
+                  <th class="min-w-125px">Model Number</th>
+                  <th class="min-w-125px">Main Category</th>
+                  <th class="min-w-125px">Category</th>
+                  <th class="min-w-125px">Active</th>
+                  <th class="min-w-125px">Deleted</th>
+                  <th class="min-w-100px Actionlabel">Actions</th>
+                </tr>
+              </ng-template>
+              <ng-template
+                pTemplate="body"
+                let-item
+                class="text-gray-600 fw-bold"
+              >
+                <tr>
+                  <td>{{ item.titleAr }}</td>
+                  <td>{{ item.titleEn }}</td>
+                  <td>{{ item.modelNumber }}</td>
+                  <td>{{ item.mainCategoryNameAr }}</td>
+                  <td>{{ item.categoryNameAr }}</td>
+                  <td>{{ item.isActive }}</td>
+                  <td>{{ item.isDeleted }}</td>
+                  <td class="">
+                    <div ngbDropdown class="dropdown">
+                      <div
+                        ngbDropdownToggle
+                        class="btn btn-primary dropdown-toggle"
+                        role="button"
+                        id="dropdownMenuLink"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Actions
+                      </div>
+                      <div
+                        ngbDropdownMenu
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuLink"
+                      >
+                        @if (isAuth(ProductPermission.UpdateProduct)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="routeToEdit(item.id)"
+                            class="dropdown-item"
+                            href="#"
+                            >Edit</span
+                          >
+                        }
+                        @if (isAuth(ProductPermission.ProductDetails)) {
+                          <span
+                            ngbDropdownItem
+                            (click)="routeToDetails(item.id)"
+                            class="dropdown-item"
+                            href="#"
+                            >Details</span
+                          >
+                        }
+                        @if (
+                          isAuth(ProductPermission.UpdateProduct) &&
+                          !item.isDeleted
+                        ) {
+                          <span
+                            ngbDropdownItem
+                            (click)="openAddQuantityPopup(item)"
+                            class="dropdown-item"
+                            href="#"
+                            >Add Quantity</span
+                          >
+                        }
+                        @if (
+                          isAuth(ProductPermission.DeleteProduct) &&
+                          !item.isDeleted
+                        ) {
+                          <span
+                            ngbDropdownItem
+                            (click)="deleteItem(item)"
+                            class="dropdown-item"
+                            href="#"
+                            >Delete</span
+                          >
+                        }
+                        <!-- @if (isAuth(ProductPermission.AssignProductToUser) && !item.isDeleted) {
                       <span ngbDropdownItem (click)="AssignUser(item)" class="dropdown-item" href="#">Assign To
                         Users</span>
                       } -->
-                      <!-- @if (isAuth(ProductPermission.RemoveProductFromUser) && !item.isDeleted) {
+                        <!-- @if (isAuth(ProductPermission.RemoveProductFromUser) && !item.isDeleted) {
                       <span ngbDropdownItem (click)="RemoveProductFromUser(item)" class="dropdown-item" href="#">Remove
                         From Users</span>
                       } -->
-                      <!-- <a href="{{item.url}}" target="_blank"><span ngbDropdownItem *ngIf="!item.isDeleted"
+                        <!-- <a href="{{item.url}}" target="_blank"><span ngbDropdownItem *ngIf="!item.isDeleted"
                               class="dropdown-item">More</span>
                             </a> -->
+                      </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            </ng-template>
-          </p-table>
-          <br />
-          <app-paging [currentPage]="currentPage" [pager]="pager" [totalPages]="totalPages"
-            (clickSetPage)="changePage($event)" [pageSize]="pageSize" (clickSetPageSize)="changePageSize($event)">
-          </app-paging>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <br />
+            <app-paging
+              [currentPage]="currentPage"
+              [pager]="pager"
+              [totalPages]="totalPages"
+              (clickSetPage)="changePage($event)"
+              [pageSize]="pageSize"
+              (clickSetPageSize)="changePageSize($event)"
+            >
+            </app-paging>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 }

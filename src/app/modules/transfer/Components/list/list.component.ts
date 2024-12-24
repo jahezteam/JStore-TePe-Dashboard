@@ -268,7 +268,6 @@ export class ListComponent {
       baseZIndex: 10000,
       data: this.selectedData,
     });
-
     this.ref.onClose.subscribe((data: any) => {
       if (data != null) {
         this.service.transferProduct(data).subscribe(

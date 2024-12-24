@@ -12,10 +12,11 @@ import { environment } from '../../../../../environments/environment';
 import { PickListService } from '../../../../pages/shared-module/Services/pick-list.service';
 import { AuthenticationService } from '../../../auth/services/authentication.service';
 import { filter } from 'app/pages/shared-module/Models/filterModel';
-import { product } from '../../Models/product';
+import { product, productFeature } from '../../Models/product';
 import { ProductPermissions } from '../../Models/productPermissions';
 import { ProductService } from '../../Services/product.service';
 import { picklist } from 'app/pages/shared-module/Models/pickList';
+import { AddProductFeatureQuantityComponent } from '../add-product-feature-quantity/add-product-feature-quantity.component';
 
 @Component({
   selector: 'app-product-list',
@@ -153,6 +154,38 @@ export class ProductListComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(
       '/product/details/' + id + '/' + this.paginator.searchText,
     );
+  }
+  openAddQuantityPopup(item: productFeature) {
+    this.ref = this.dialogService.open(AddProductFeatureQuantityComponent, {
+      header: 'Add Product Feature Quantity',
+      width: '50%',
+      contentStyle: { 'max-height': '550px', overflow: 'auto' },
+      baseZIndex: 10000,
+      data: item,
+    });
+
+    this.ref.onClose.subscribe((item) => {
+      console.log(item);
+      if (item != null) {
+        this.service.addProductFeatureQuantity(item).subscribe((res: any) => {
+          if (res) {
+            this.messageService.add({
+              key: 'tl',
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Quantity Added Successfully',
+            });
+          } else {
+            this.messageService.add({
+              key: 'tl',
+              severity: 'error',
+              summary: 'Error',
+              detail: 'Error occurred Please contact system adminstrator',
+            });
+          }
+        });
+      }
+    });
   }
   mainCategories: picklist[] = [] as picklist[];
   categories: picklist[] = [] as picklist[];

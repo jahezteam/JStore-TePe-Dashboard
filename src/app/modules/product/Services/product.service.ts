@@ -104,4 +104,7 @@ export class ProductService {
       environment.apiUrl + '/Product/GetMainCategoryLookup',
     );
   }
+  addProductFeatureQuantity(model: any) {
+    return this.ser.Update(model, '/Product/UpdateProductFeatureQuantaty');
+  }
 }

@@ -1,0 +1,84 @@
+@if (isAuth(productPermissions.UpdateProduct)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <form [formGroup]="addQuantityForm" (ngSubmit)="onSubmit()">
+          <div formArrayName="data">
+            <div
+              *ngFor="let feature of productFeatures.controls; let i = index"
+              [formGroupName]="i"
+              class="feature-row"
+            >
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="form-group">
+                    <label for="featureName{{ i }}">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="name"
+                      id="featureName{{ i }}"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="quantaty{{ i }}">Quantity</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="quantaty"
+                      id="quantaty{{ i }}"
+                      [min]="0"
+                    />
+                    @if (
+                      productFeatures.controls[i].get("quantaty")?.errors &&
+                      productFeatures.controls[i].get("quantaty")?.touched
+                    ) {
+                      @if (
+                        productFeatures.controls[i].get("quantaty")?.errors?.[
+                          "required"
+                        ]
+                      ) {
+                        <div class="help-block">
+                          <ul class="list-unstyled text-danger">
+                            <li>Quantity is required</li>
+                          </ul>
+                        </div>
+                      } @else {
+                        <div class="help-block">
+                          <ul class="list-unstyled text-danger">
+                            <li>Quantity must be greater than 0</li>
+                          </ul>
+                        </div>
+                      }
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="button"
+          label="Save"
+          class="btn btn-success"
+          (click)="onSubmit()"
+          [disabled]="!addQuantityForm.valid"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          class="btn btn-primary"
+          (click)="cancel()"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}
