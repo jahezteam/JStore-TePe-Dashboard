@@ -32,7 +32,7 @@ export class ProductService {
 
         // Handle images for each feature
         if (feature.images && Array.isArray(feature.images)) {
-          feature.images.forEach((image: any, imgIndex: any) => {
+          feature.images.forEach((image: any) => {
             // Ensure the image is a File object
             if (image instanceof File) {
               formData.append(`Features[${index}].Images`, image);
