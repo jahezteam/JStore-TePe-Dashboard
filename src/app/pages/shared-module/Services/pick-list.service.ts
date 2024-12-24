@@ -8,6 +8,10 @@ import { environment } from '../../../../environments/environment';
 export class PickListService {
   constructor(private caller: ApiCallerService) {}
   apiUrl: string = environment.apiUrl;
+
+  getInstitutions() {
+    return this.caller.GetWithFullUrl(this.apiUrl + '/Institution/GetLookup');
+  }
   getRegions() {
     return this.caller.GetWithFullUrl(this.apiUrl + '/Region/GetLookup');
   }

@@ -44,6 +44,14 @@ const Routing: Routes = [
       ),
   },
   {
+    path: 'transfer',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('../modules/transfer/transfer.module').then(
+        (m) => m.TransferModule,
+      ),
+  },
+  {
     path: 'mainCategory',
     canActivate: [AuthGuard],
     loadChildren: () =>

@@ -1,0 +1,110 @@
+@if (isAuth(transferPermission.LIST)) {
+  <div class="container">
+    <p-toast position="top-right" key="tl"></p-toast>
+    <p-card class="">
+      <div class="Body">
+        <form [formGroup]="institutionForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="institutionId">Institutions</label>
+            <select
+              class="form-control"
+              formControlName="institutionId"
+              id="institutionId"
+            >
+              <option value="">Select Institution</option>
+              <option
+                *ngFor="let institution of institutions"
+                [value]="institution.id"
+              >
+                {{ institution.name }}
+              </option>
+            </select>
+            @if (
+              institutionForm.get("institutionId")?.errors &&
+              institutionForm.get("institutionId")?.touched
+            ) {
+              <div class="help-block">
+                <ul class="list-unstyled text-danger">
+                  <li>Institution is required</li>
+                </ul>
+              </div>
+            }
+          </div>
+          <div formArrayName="productFeatures">
+            <div
+              *ngFor="let feature of productFeatures.controls; let i = index"
+              [formGroupName]="i"
+              class="feature-row"
+            >
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="form-group">
+                    <label for="featureName{{ i }}">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="name"
+                      id="featureName{{ i }}"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="quantaty{{ i }}">Quantity</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="quantaty"
+                      id="quantaty{{ i }}"
+                      [min]="0"
+                    />
+                    @if (
+                      productFeatures.controls[i].get("quantaty")?.errors &&
+                      productFeatures.controls[i].get("quantaty")?.touched
+                    ) {
+                      @if (
+                        productFeatures.controls[i].get("quantaty")?.errors?.[
+                          "required"
+                        ]
+                      ) {
+                        <div class="help-block">
+                          <ul class="list-unstyled text-danger">
+                            <li>Quantity is required</li>
+                          </ul>
+                        </div>
+                      } @else {
+                        <div class="help-block">
+                          <ul class="list-unstyled alert-danger">
+                            <li>Quantity must be greater than 0</li>
+                          </ul>
+                        </div>
+                      }
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <ng-template pTemplate="footer">
+        <button
+          pButton
+          type="submit"
+          label="Save"
+          class="btn btn-success"
+          (click)="onSubmit()"
+          [disabled]="!institutionForm.valid"
+        ></button
+        >&nbsp;
+        <button
+          pButton
+          type="button"
+          label="cancel"
+          (click)="cancel()"
+          class="btn btn-primary"
+        ></button>
+      </ng-template>
+    </p-card>
+  </div>
+}

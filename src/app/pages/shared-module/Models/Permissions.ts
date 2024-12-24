@@ -23,6 +23,7 @@ export class allPermissions {
   Testmonial: permissionsCollection = new permissionsCollection();
   settings: permissionsCollection = new permissionsCollection();
   institutions: permissionsCollection = new permissionsCollection();
+  transfer: permissionsCollection = new permissionsCollection();
 
   fillPermissions() {
     this.role.name = 'Roles';
@@ -285,6 +286,13 @@ export class allPermissions {
       'SearchInstitution',
       'FilterInstitution',
       'InstitutionDetails',
+    ];
+    this.transfer.name = 'Transfer';
+    this.transfer.permissions = [
+      'ProductFeatureTransferList',
+      'SearchProductFeatureTransfer',
+      'FilterProductFeatureTransfer',
+      'ProductFeatureTransferDetails',
     ];
   }
 }

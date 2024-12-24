@@ -39,8 +39,13 @@ export class ProductListComponent implements OnInit, OnDestroy {
     sortingType: 'asc',
   };
   searchVal: string = '';
-
+  currentPage = 1;
+  totalPages: number = 0;
+  pager: number[] = [1];
+  pageSize: number = environment.pageSize;
   filteredDate: any;
+  ref: DynamicDialogRef = new DynamicDialogRef();
+  filter: filter = { isActive: true, isDeleted: false } as filter;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -113,10 +118,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
       }
     });
   }
-  currentPage = 1;
-  totalPages: number = 0;
-  pager: number[] = [1];
-  pageSize: number = environment.pageSize;
+
   loadData() {
     this.picklistService.getMainCategories().subscribe((res: any) => {
       this.categories = res.data;
@@ -162,9 +164,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
     }
     return '';
   }
-  ref: DynamicDialogRef = new DynamicDialogRef();
 
-  filter: filter = { isActive: true, isDeleted: false } as filter;
   openFilterPopup() {
     this.ref = this.dialogService.open(FilterProductComponent, {
       header: 'Filter Products',

@@ -166,7 +166,7 @@
     <span class="menu-icon">
       <i class="fa-duotone fa-list" aria-hidden="true"></i>
     </span>
-    <span class="menu-title">Settings</span>
+    <span class="menu-title">Settings </span>
     <span class="menu-arrow">
       <i class="fa-duotone fa-chevron-down"></i>
     </span>
@@ -311,7 +311,7 @@
     <span class="menu-icon">
       <i class="fa-duotone fa-list" aria-hidden="true"></i>
     </span>
-    <span class="menu-title">Vendors</span>
+    <span class="menu-title">Vendors Management</span>
     <span class="menu-arrow">
       <i class="fa-duotone fa-chevron-down"></i>
     </span>
@@ -328,6 +328,20 @@
             <i class="fa-duotone fa-shop" aria-hidden="true"></i>
           </span>
           <span class="menu-title" translate="Institutions"></span>
+        </a>
+      </div>
+    }
+    @if (isAuth("ProductFeatureTransferList")) {
+      <div class="menu-item">
+        <a
+          class="menu-link"
+          routerLink="/transfer/list"
+          routerLinkActive="active"
+        >
+          <span class="menu-icon">
+            <i class="fa-duotone fa-cart-plus" aria-hidden="true"></i>
+          </span>
+          <span class="menu-title" translate="Transfer"></span>
         </a>
       </div>
     }
