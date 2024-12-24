@@ -45,7 +45,6 @@ export class FilterComponent {
     });
   }
 
-  handleSelectCategory(event: any) {}
   handleSelectMainCategory(event: any) {
     this.pickList.getMainCategories().subscribe((res: any) => {
       this.categories = res.find((x: any) => x.id == event.value.id).data;
